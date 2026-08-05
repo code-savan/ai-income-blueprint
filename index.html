@@ -133,7 +133,33 @@ body {
 }
 
 /* ── CONTENT ── */
-.content { max-width: 860px; margin: 0 auto; padding: 60px 48px 100px; }
+.content { max-width: 980px; margin: 0 auto; padding: 60px 40px 100px; }
+.course-shell { display:grid; grid-template-columns:minmax(0,1fr) 340px; gap:32px; max-width:1400px; margin:0 auto; padding:0 24px 80px; align-items:start; }
+.course-shell .content { max-width:none; margin:0; padding:60px 0 100px; }
+.guide-rail { position:sticky; top:24px; display:flex; flex-direction:column; gap:16px; padding-top:60px; }
+.guide-card { background:var(--card); border:1px solid var(--rule); border-radius:16px; padding:18px 18px 16px; box-shadow:0 10px 30px rgba(124,58,237,0.08); }
+.guide-card h4 { margin:0 0 8px; font-size:15px; font-weight:700; }
+.guide-kicker { font-family:'DM Mono', monospace; font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:var(--purple); margin-bottom:10px; }
+.guide-copy { font-size:13px; color:var(--muted); line-height:1.6; }
+.plan-select, .plan-input, .plan-days { width:100%; padding:10px 12px; border:1px solid var(--rule); border-radius:10px; background:#fff; font:inherit; margin-bottom:10px; }
+.plan-row { display:grid; grid-template-columns:1fr 92px; gap:10px; }
+.guide-actions { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+.guide-btn { border:none; background:var(--purple-soft); color:var(--purple); border-radius:10px; padding:9px 12px; font-size:12px; font-weight:700; cursor:pointer; }
+.guide-btn.dark { background:var(--ink); color:#fff; }
+.guide-progress { height:10px; background:#ece7f8; border-radius:999px; overflow:hidden; margin:10px 0 8px; }
+.guide-progress > span { display:block; height:100%; background:linear-gradient(90deg,var(--purple),var(--purple-light)); width:0%; }
+.guide-meta { display:flex; justify-content:space-between; gap:8px; font-size:12px; color:var(--muted); margin-bottom:12px; }
+.module-checklist { display:flex; flex-direction:column; gap:10px; }
+.module-check { display:flex; gap:10px; align-items:flex-start; font-size:13px; color:#363636; }
+.module-check input { margin-top:2px; accent-color:var(--purple); width:16px; height:16px; }
+.module-check small { display:block; color:var(--muted); margin-top:2px; line-height:1.45; }
+.module-nav { display:flex; flex-direction:column; gap:8px; }
+.module-link { display:flex; justify-content:space-between; gap:10px; text-decoration:none; color:var(--text); border:1px solid var(--rule); padding:10px 12px; border-radius:12px; transition:.2s ease; }
+.module-link:hover, .module-link.active { border-color:var(--purple-light); background:#fbf9ff; }
+.module-link strong { font-size:13px; }
+.module-link span { font-size:11px; color:var(--muted); }
+.inline-hidden-progress { display:none !important; }
+.chapter.is-complete h2::after { content:' ✓'; color:var(--green-light); font-size:0.7em; }
 
 .chapter-hero {
   padding: 40px 0 48px;
@@ -637,6 +663,9 @@ table.tbl td.day { font-family: 'DM Mono', monospace; font-size: 13px; color: va
   .menu-overlay.show { display: block; }
   .topbar { display: flex; }
   .main { margin-left: 0; }
+  .course-shell { grid-template-columns:1fr; padding:0 14px 56px; }
+  .course-shell .content { padding:32px 0 60px; }
+  .guide-rail { position:static; padding-top:0; order:-1; }
   .content { padding: 32px 20px 80px; }
   .grid-2 { grid-template-columns: 1fr; }
   .grid-3 { grid-template-columns: 1fr; }
@@ -679,6 +708,21 @@ table.tbl td.day { font-family: 'DM Mono', monospace; font-size: 13px; color: va
         <h1>Your first AI income path.<br>Mapped day by day.</h1>
         <p>This is the complete course — two tracks, four playbooks, 300+ prompts, and a day-by-day action plan. Work through each chapter in order, or jump to the playbook that matches your current situation.</p>
       </div>
+
+      <div class="objectives" style="margin-top:28px;">
+        <h4>Best way to use this course</h4>
+        <ul>
+          <li><strong>Pass 1:</strong> Finish Foundation + Tools in one sitting so your path and stack are locked.</li>
+          <li><strong>Pass 2:</strong> Work only the roadmap and one playbook for your chosen track. Ignore everything else.</li>
+          <li><strong>Pass 3:</strong> Return to Prompt Vault, Scale, and Resources only after real execution starts.</li>
+        </ul>
+      </div>
+
+      <div class="callout" style="margin-top:22px;">
+        <div class="co-title">Before you move: what makes this page stronger now</div>
+        <p><strong>This course now has three operating layers:</strong> (1) long-form teaching in the main column, (2) a dedicated execution rail with persistent checklist plans, and (3) reusable prompts/resources deeper in the page. Read less. Execute more.</p>
+      </div>
+
       <div class="chapter" id="foundation">
         <div class="ch-label"><span>01</span></div>
         <h2>Foundation — Pick Your Lane</h2>
@@ -810,6 +854,17 @@ table.tbl td.day { font-family: 'DM Mono', monospace; font-size: 13px; color: va
             <h4>One track, fully executed</h4>
             <p>The #1 reason students stall is switching tracks at day 6. The grass is never greener — it's just under-watered. Commit for 30 days before you re-evaluate.</p>
           </div>
+        </div>
+
+        <div class="objectives">
+          <h4>Do not do these 5 things</h4>
+          <ul>
+            <li>Do not switch between Track A and Track B mid-week because one feels easier emotionally.</li>
+            <li>Do not upgrade paid tools before free workflows have produced movement.</li>
+            <li>Do not binge the Prompt Vault before you have a live offer or live outreach target.</li>
+            <li>Do not confuse tweaking your aesthetic with building revenue-generating assets.</li>
+            <li>Do not finish this chapter without booking your first 3 execution blocks on your calendar.</li>
+          </ul>
         </div>
 
         <div class="callout green">
@@ -2199,24 +2254,209 @@ Final (Day 6): Last one — no pressure. If [result] ever becomes a priority, I'
     }
   }
 
-  // ── PROGRESS CHECKBOXES (localStorage) ──
-  var checkboxes = document.querySelectorAll('input[type="checkbox"][data-module]');
-  checkboxes.forEach(function(cb) {
-    var key = 'aibp_' + cb.getAttribute('data-module');
-    var saved = localStorage.getItem(key);
-    if (saved === 'true') {
-      cb.checked = true;
-      var label = cb.closest('.progress-check');
-      if (label) label.classList.add('completed');
+
+  // ── COURSE SHELL + RIGHT RAIL ──
+  var planTemplates = {
+    '30-day-blueprint': {
+      label: '30-Day Blueprint',
+      days: 30,
+      items: [
+        { module: 'foundation-obj', text: 'Choose your track and block your first 7 days', note: 'Foundation before tools. No skipping.' },
+        { module: 'tools-obj', text: 'Set up the 6-tool stack', note: 'ChatGPT, Claude, Canva, CapCut, Gumroad, Flow.' },
+        { module: 'income-obj', text: 'Commit to the first $500 roadmap', note: 'Know the day-by-day target for your track.' },
+        { module: 'playbooks-obj', text: 'Pick your first execution playbook', note: 'A = service, B = product, C = content funnel, D = scale.' },
+        { module: 'prompts-obj', text: 'Bookmark the Prompt Vault and pull 10 working prompts', note: 'Use prompts immediately, do not just read them.' },
+        { module: 'scale-obj', text: 'Map your $500 → $2K path', note: 'Raising prices and stacking systems starts here.' },
+        { module: 'results-obj', text: 'Study the Wall of Proof', note: 'Pattern recognition builds belief and speed.' },
+        { module: 'resources-obj', text: 'Copy the templates + trackers', note: 'Leave with reusable operating assets.' }
+      ]
+    },
+    '14-day-launch': {
+      label: '14-Day Launch Sprint',
+      days: 14,
+      items: [
+        { module: 'foundation-obj', text: 'Pick a track in one sitting', note: '12-minute diagnostic, no overthinking.' },
+        { module: 'tools-obj', text: 'Set up only the essential stack', note: 'Tool accounts + one working workflow.' },
+        { module: 'income-obj', text: 'Follow the first 14 days of the roadmap', note: 'Compress attention into execution.' },
+        { module: 'playbooks-obj', text: 'Complete one playbook end-to-end', note: 'Choose one path and finish it.' },
+        { module: 'prompts-obj', text: 'Pull prompts for your active track', note: 'Not all 300. Only what you need now.' },
+        { module: 'resources-obj', text: 'Set up your tracker + weekly review', note: 'Measure movement fast.' }
+      ]
+    },
+    '7-day-cashflow': {
+      label: '7-Day Cashflow Sprint',
+      days: 7,
+      items: [
+        { module: 'foundation-obj', text: 'Bias to Track B unless your diagnostic strongly says otherwise', note: 'This sprint is for speed.' },
+        { module: 'tools-obj', text: 'Set up outreach + delivery tools only', note: 'Ignore non-essentials.' },
+        { module: 'playbooks-obj', text: 'Run Playbook A in full', note: 'Offers, leads, outreach, follow-up.' },
+        { module: 'prompts-obj', text: 'Use outreach prompts daily', note: 'Copy, personalize, send.' },
+        { module: 'results-obj', text: 'Review proof before every outreach block', note: 'Stay emotionally anchored.' }
+      ]
     }
+  };
+
+  function getPlanStore() {
+    try {
+      return JSON.parse(localStorage.getItem('aibp_plan_store') || '{}');
+    } catch (e) {
+      return {};
+    }
+  }
+  function setPlanStore(obj) { localStorage.setItem('aibp_plan_store', JSON.stringify(obj)); }
+  function getActivePlanId() { return localStorage.getItem('aibp_active_plan') || '30-day-blueprint'; }
+  function setActivePlanId(id) { localStorage.setItem('aibp_active_plan', id); }
+
+  function buildCourseShell() {
+    var main = document.querySelector('.main');
+    var content = document.querySelector('.content');
+    if (!main || !content || document.querySelector('.course-shell')) return;
+    var shell = document.createElement('div');
+    shell.className = 'course-shell';
+    content.parentNode.insertBefore(shell, content);
+    shell.appendChild(content);
+
+    var rail = document.createElement('aside');
+    rail.className = 'guide-rail';
+    rail.innerHTML =
+      '<div class="guide-card">' +
+        '<div class="guide-kicker">Execution cockpit</div>' +
+        '<h4>Run this course like a plan, not a PDF.</h4>' +
+        '<p class="guide-copy">Your active checklist lives here. Pick a sprint, save progress to this browser, and reset any time.</p>' +
+      '</div>' +
+      '<div class="guide-card" id="planCard"></div>' +
+      '<div class="guide-card" id="progressCard"></div>' +
+      '<div class="guide-card" id="modulesCard"></div>';
+    shell.appendChild(rail);
+  }
+
+  function chapterTitleFor(moduleId) {
+    var map = {
+      'foundation-obj':'Foundation', 'tools-obj':'Tools & Stack', 'income-obj':'First $500 Roadmap',
+      'playbooks-obj':'Execution Playbooks', 'prompts-obj':'Prompt Vault', 'scale-obj':'Scale to $2K/Mo',
+      'results-obj':'Wall of Proof', 'resources-obj':'Resources'
+    };
+    return map[moduleId] || moduleId;
+  }
+
+  function ensureCustomPlan(store) {
+    if (!store['custom']) {
+      store['custom'] = { label: 'Custom Plan', days: 21, items: JSON.parse(JSON.stringify(planTemplates['30-day-blueprint'].items)) };
+    }
+    return store;
+  }
+
+  function renderRail() {
+    buildCourseShell();
+    var planCard = document.getElementById('planCard');
+    var progressCard = document.getElementById('progressCard');
+    var modulesCard = document.getElementById('modulesCard');
+    if (!planCard || !progressCard || !modulesCard) return;
+
+    var store = ensureCustomPlan(getPlanStore());
+    var activeId = getActivePlanId();
+    var active = store[activeId] || planTemplates[activeId] || planTemplates['30-day-blueprint'];
+    var allPlans = Object.assign({}, planTemplates, store);
+
+    planCard.innerHTML =
+      '<div class="guide-kicker">Checklist plan</div>' +
+      '<select class="plan-select" id="planSelect">' +
+      Object.keys(allPlans).map(function(id){ return '<option value="'+id+'" '+(id===activeId?'selected':'')+'>'+allPlans[id].label+'</option>'; }).join('') +
+      '</select>' +
+      '<div class="plan-row">' +
+        '<input class="plan-input" id="customPlanName" placeholder="Custom plan name" value="'+((store.custom&&store.custom.label)||'Custom Plan').replace(/"/g,'&quot;')+'">' +
+        '<input class="plan-days" id="customPlanDays" type="number" min="1" max="120" value="'+((store.custom&&store.custom.days)||21)+'">' +
+      '</div>' +
+      '<div class="guide-actions">' +
+        '<button class="guide-btn dark" id="saveCustomPlan">Save custom</button>' +
+        '<button class="guide-btn" id="refreshChecklist">Refresh</button>' +
+        '<button class="guide-btn" id="resetChecklist">Reset checks</button>' +
+        '<button class="guide-btn" id="clearAllChecklistData">Clear all data</button>' +
+      '</div>';
+
+    var total = active.items.length;
+    var done = active.items.filter(function(item){ return localStorage.getItem('aibp_'+activeId+'_'+item.module) === 'true'; }).length;
+    var pct = total ? Math.round((done/total)*100) : 0;
+    progressCard.innerHTML =
+      '<div class="guide-kicker">Progress</div>' +
+      '<h4>'+active.label+'</h4>' +
+      '<div class="guide-progress"><span style="width:'+pct+'%"></span></div>' +
+      '<div class="guide-meta"><span>'+done+' / '+total+' complete</span><span>'+active.days+' day plan</span></div>' +
+      '<div class="module-checklist">' +
+      active.items.map(function(item){
+        var checked = localStorage.getItem('aibp_'+activeId+'_'+item.module) === 'true';
+        return '<label class="module-check">' +
+          '<input type="checkbox" data-plan="'+activeId+'" data-rail-module="'+item.module+'" '+(checked?'checked':'')+'>' +
+          '<span><strong>'+chapterTitleFor(item.module)+'</strong> — '+item.text+'<small>'+item.note+'</small></span>' +
+          '</label>';
+      }).join('') +
+      '</div>';
+
+    var chapterLinks = Array.from(document.querySelectorAll('.chapter[id]')).map(function(ch){
+      var id = ch.id;
+      var title = (ch.querySelector('h2')||{}).textContent || id;
+      return '<a class="module-link" href="#'+id+'"><div><strong>'+title+'</strong><span>'+id.replace(/-/g,' ')+'</span></div><span>↗</span></a>';
+    }).join('');
+    modulesCard.innerHTML = '<div class="guide-kicker">Jump by section</div><div class="module-nav">'+chapterLinks+'</div>';
+
+    document.querySelectorAll('.progress-check').forEach(function(el){ el.classList.add('inline-hidden-progress'); });
+
+    var planSelect = document.getElementById('planSelect');
+    if (planSelect) planSelect.onchange = function(){ setActivePlanId(this.value); syncInlineChecks(); renderRail(); };
+    var saveBtn = document.getElementById('saveCustomPlan');
+    if (saveBtn) saveBtn.onclick = function(){
+      var name = (document.getElementById('customPlanName').value || 'Custom Plan').trim();
+      var days = parseInt(document.getElementById('customPlanDays').value || '21', 10);
+      store.custom = { label: name, days: days > 0 ? days : 21, items: (store.custom && store.custom.items) || JSON.parse(JSON.stringify(planTemplates['30-day-blueprint'].items)) };
+      setPlanStore(store); setActivePlanId('custom'); renderRail();
+    };
+    var refreshBtn = document.getElementById('refreshChecklist');
+    if (refreshBtn) refreshBtn.onclick = function(){ syncInlineChecks(); renderRail(); };
+    var resetBtn = document.getElementById('resetChecklist');
+    if (resetBtn) resetBtn.onclick = function(){
+      active.items.forEach(function(item){ localStorage.removeItem('aibp_'+activeId+'_'+item.module); });
+      syncInlineChecks(); renderRail();
+    };
+    var clearBtn = document.getElementById('clearAllChecklistData');
+    if (clearBtn) clearBtn.onclick = function(){
+      Object.keys(localStorage).forEach(function(key){ if (key.indexOf('aibp_') === 0) localStorage.removeItem(key); });
+      localStorage.removeItem('aibp_plan_store');
+      localStorage.removeItem('aibp_active_plan');
+      syncInlineChecks(); renderRail();
+    };
+    document.querySelectorAll('[data-rail-module]').forEach(function(cb){
+      cb.onchange = function(){
+        localStorage.setItem('aibp_'+this.getAttribute('data-plan')+'_'+this.getAttribute('data-rail-module'), this.checked);
+        syncInlineChecks(); renderRail();
+      };
+    });
+  }
+
+  function syncInlineChecks() {
+    var activeId = getActivePlanId();
+    var active = ensureCustomPlan(getPlanStore())[activeId] || planTemplates[activeId] || planTemplates['30-day-blueprint'];
+    document.querySelectorAll('input[type="checkbox"][data-module]').forEach(function(cb) {
+      var key = 'aibp_'+activeId+'_'+cb.getAttribute('data-module');
+      var saved = localStorage.getItem(key) === 'true';
+      cb.checked = saved;
+      var label = cb.closest('.progress-check');
+      if (label) label.classList.toggle('completed', saved);
+      var chapter = cb.closest('.chapter');
+      if (chapter) chapter.classList.toggle('is-complete', saved);
+    });
+  }
+
+  // ── PROGRESS CHECKBOXES (localStorage) ──
+  syncInlineChecks();
+  document.querySelectorAll('input[type="checkbox"][data-module]').forEach(function(cb) {
     cb.addEventListener('change', function() {
-      localStorage.setItem(key, this.checked);
-      var label = this.closest('.progress-check');
-      if (label) {
-        label.classList.toggle('completed', this.checked);
-      }
+      var activeId = getActivePlanId();
+      localStorage.setItem('aibp_' + activeId + '_' + this.getAttribute('data-module'), this.checked);
+      syncInlineChecks();
+      renderRail();
     });
   });
+  renderRail();
 
   // ── RESOURCE COPY BUTTONS ──
   var resourceLinks = document.querySelectorAll('.resource-item .r-dl');
