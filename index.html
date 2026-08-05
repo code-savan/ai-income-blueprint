@@ -3,226 +3,547 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Income Blueprint — Complete System</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>AI Income Blueprint — Complete Course</title>
+<meta name="description" content="The complete AI Income Blueprint course: two income tracks, day-by-day roadmap, four execution playbooks, and 50 AI prompts. Built for beginners.">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
   --ink: #0a0a0a;
-  --paper: #f5f0e8;
-  --cream: #ede8dc;
+  --paper: #f8f6f2;
+  --cream: #efece4;
+  --card: #ffffff;
   --purple: #7C3AED;
   --purple-light: #A78BFA;
+  --purple-soft: #F3EEFB;
   --green: #1a6b3c;
   --green-light: #22c55e;
-  --rule: #c8c0b0;
-  --muted: #7a7060;
+  --rule: #e3ddd2;
+  --muted: #6b6range;
+  --muted: #6b655a;
+  --text: #2a2a2a;
+  --sidebar-w: 300px;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
   font-family: 'DM Sans', sans-serif;
   background: var(--paper);
-  color: var(--ink);
-  font-size: 15px;
-  line-height: 1.6;
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.7;
 }
-.cover {
+
+/* ── LAYOUT ── */
+.layout { display: flex; min-height: 100vh; }
+
+/* ── SIDENAV ── */
+.sidenav {
+  width: var(--sidebar-w);
+  position: fixed;
+  top: 0; bottom: 0; left: 0;
   background: var(--ink);
-  color: var(--paper);
-  min-height: 100vh;
-  display: grid;
-  grid-template-rows: 1fr auto;
-  padding: 60px;
-  position: relative;
-  overflow: hidden;
+  color: #fff;
+  padding: 28px 20px;
+  overflow-y: auto;
+  z-index: 200;
+  transition: transform 0.3s ease;
 }
-.cover::before {
-  content: '';
-  position: absolute;
-  top: -200px; right: -200px;
-  width: 700px; height: 700px;
-  background: radial-gradient(circle, var(--purple) 0%, transparent 65%);
-  opacity: 0.12;
-  pointer-events: none;
-}
-.cover-badge {
-  font-family: 'DM Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--purple-light);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 80px;
-}
-.cover-badge::before {
-  content: '';
-  display: block;
-  width: 30px; height: 2px;
-  background: var(--purple-light);
-}
-.cover-title {
+.sidenav-brand {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(72px, 10vw, 140px);
-  line-height: 0.9;
-  letter-spacing: -1px;
+  font-size: 26px;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+  display: flex; align-items: center; gap: 8px;
 }
-.cover-title em { font-style: normal; color: var(--purple-light); }
-.cover-sub {
-  font-size: 18px;
-  color: #aaa;
-  margin-top: 28px;
-  max-width: 500px;
-  font-weight: 300;
-}
-.cover-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  border-top: 1px solid #333;
-  padding-top: 28px;
-}
-.cover-targets { display: flex; gap: 12px; flex-wrap: wrap; }
-.target-chip {
-  background: #1a1a1a;
-  border: 1px solid #333;
-  padding: 8px 16px;
-  border-radius: 100px;
-  font-size: 12px;
+.sidenav-brand em { font-style: normal; color: var(--purple-light); }
+.sidenav-sub {
   font-family: 'DM Mono', monospace;
-  letter-spacing: 0.05em;
-  color: #ccc;
-}
-.price-tag { text-align: right; }
-.price-tag .amount {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 52px;
-  line-height: 0.9;
-  color: var(--purple-light);
-}
-.price-tag .label {
   font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #777;
+  margin-bottom: 28px;
+}
+.sidenav-label {
   font-family: 'DM Mono', monospace;
-  letter-spacing: 0.15em;
+  font-size: 10px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: #666;
-  margin-top: 4px;
+  margin: 22px 0 10px;
+  padding-left: 12px;
 }
-.nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 24px;
-  background: rgba(10,10,10,0.9);
-  backdrop-filter: blur(12px);
-  font-size: 13px;
-  font-family: 'DM Mono', monospace;
+.sidenav a {
+  display: flex; align-items: center; gap: 12px;
+  color: #bbb;
+  text-decoration: none;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all .2s;
+  border-left: 3px solid transparent;
 }
-.nav .logo { font-weight: 500; color: var(--paper); }
-.nav a { color: #aaa; text-decoration: none; transition: color .2s; }
-.nav a:hover { color: var(--purple-light); }
-.nav-links { display: flex; gap: 20px; }
-.section {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 100px 40px;
-}
-.section-number {
+.sidenav a:hover { background: #1a1a1a; color: #fff; }
+.sidenav a.active { background: #1a1a1a; color: var(--purple-light); border-left-color: var(--purple); }
+.sidenav a .num {
   font-family: 'DM Mono', monospace;
   font-size: 11px;
-  letter-spacing: 0.2em;
+  color: #666;
+  width: 22px; flex-shrink: 0;
+}
+.sidenav a.active .num { color: var(--purple-light); }
+.sidenav-footer {
+  margin-top: 30px; padding: 16px 12px;
+  border-top: 1px solid #222;
+  font-size: 12px; color: #666;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.05em;
+}
+
+/* ── MAIN ── */
+.main { margin-left: var(--sidebar-w); flex: 1; min-width: 0; }
+
+/* ── TOPBAR (mobile nav trigger + progress) ── */
+.topbar {
+  display: none;
+  position: sticky; top: 0; z-index: 150;
+  background: var(--ink);
+  color: #fff;
+  padding: 14px 20px;
+  align-items: center; justify-content: space-between;
+}
+.topbar-brand { font-family: 'Bebas Neue', sans-serif; font-size: 22px; }
+.topbar-brand em { font-style: normal; color: var(--purple-light); }
+.menu-btn {
+  background: #1a1a1a; border: 1px solid #333;
+  color: #fff; border-radius: 8px;
+  padding: 8px 12px; cursor: pointer;
+  font-size: 16px; line-height: 1;
+}
+.menu-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 190;
+}
+
+/* ── CONTENT ── */
+.content { max-width: 800px; margin: 0 auto; padding: 60px 48px 100px; }
+
+.chapter-hero {
+  padding: 40px 0 48px;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 8px;
+}
+.chapter-hero .kicker {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--purple);
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
-.section-title {
+.chapter-hero h1 {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(42px, 5vw, 64px);
+  font-size: clamp(40px, 6vw, 64px);
   line-height: 1.0;
   letter-spacing: -0.5px;
+  margin-bottom: 16px;
 }
-.rule {
-  border: none;
-  border-top: 1px solid var(--rule);
-  max-width: 1100px;
-  margin: 0 auto;
+.chapter-hero p { color: var(--muted); font-size: 17px; max-width: 620px; }
+
+.chapter {
+  padding: 40px 0;
+  border-bottom: 1px solid var(--rule);
+  scroll-margin-top: 20px;
+}
+.chapter:last-child { border-bottom: none; }
+.chapter .ch-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--purple);
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 14px;
+}
+.chapter .ch-label::before {
+  content: ''; width: 26px; height: 2px; background: var(--purple);
+}
+.chapter h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(30px, 4vw, 42px);
+  line-height: 1.05;
+  letter-spacing: -0.3px;
+  margin-bottom: 18px;
+}
+.chapter h3 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  margin: 26px 0 10px;
+}
+.chapter p { margin-bottom: 16px; color: #3a3a3a; }
+.chapter p strong { color: var(--ink); }
+.chapter ul, .chapter ol { margin: 0 0 18px 22px; color: #3a3a3a; }
+.chapter li { margin-bottom: 8px; }
+
+/* Callout */
+.callout {
+  background: var(--purple-soft);
+  border-left: 4px solid var(--purple);
+  padding: 20px 24px;
+  border-radius: 0 10px 10px 0;
+  margin: 24px 0;
+}
+.callout p { margin: 0; color: #3a3a3a; }
+.callout .co-title { font-weight: 700; color: var(--purple); font-family: 'DM Sans'; margin-bottom: 6px; font-size: 15px; }
+
+/* Card grid */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: 22px;
+}
+.card h4 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+.card p { font-size: 14px; color: var(--muted); margin-bottom: 0; }
+.card .tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--purple);
+  margin-bottom: 8px; display: block;
+}
+
+/* Step list */
+.steps { margin: 24px 0; counter-reset: step; }
+.step { display: flex; gap: 18px; padding: 18px 0; border-bottom: 1px solid var(--rule); }
+.step:last-child { border-bottom: none; }
+.step .step-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 34px; line-height: 1;
+  color: var(--purple-light);
+  min-width: 44px;
+}
+.step h4 { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
+.step p { font-size: 15px; color: var(--muted); margin: 0; }
+
+table.tbl { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; }
+table.tbl th {
+  text-align: left; font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: #888; padding: 10px 12px; border-bottom: 2px solid var(--rule);
+}
+table.tbl td { padding: 12px; border-bottom: 1px solid var(--rule); color: #3a3a3a; }
+table.tbl td.day { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--purple); white-space: nowrap; }
+
+/* Progress bar */
+.progress-wrap { position: sticky; top: 0; z-index: 140; background: var(--paper); }
+.progress-bar { height: 3px; background: var(--purple); width: 0; transition: width .1s; }
+
+/* Prompt cards */
+.prompt {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 18px 20px;
+  margin: 12px 0;
+}
+.prompt code {
+  display: block; background: var(--cream);
+  padding: 14px 16px; border-radius: 8px;
+  font-family: 'DM Mono', monospace;
+  font-size: 13px; color: var(--ink);
+  white-space: pre-wrap; line-height: 1.6;
+  margin-bottom: 8px;
+}
+.prompt .p-tag {
+  font-family: 'DM Mono', monospace; font-size: 10px;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--green); 
+}
+
+@media (max-width: 900px) {
+  .sidenav { transform: translateX(-100%); box-shadow: none; }
+  .sidenav.open { transform: translateX(0); }
+  .menu-overlay.show { display: block; }
+  .topbar { display: flex; }
+  .main { margin-left: 0; }
+  .content { padding: 32px 20px 80px; }
+  .grid-2 { grid-template-columns: 1fr; }
 }
 </style>
 </head>
-<nav class="nav">
-  <span class="logo">AI Income Blueprint</span>
-  <div class="nav-links">
-    <a href="#toc">Contents</a>
-    <a href="#foundation">Foundation</a>
-    <a href="#tracks">Tracks</a>
-    <a href="#tools">Tools</a>
-    <a href="#playbooks">Playbooks</a>
-    <a href="#prompts">Prompts</a>
-  </div>
-</nav>
 <body>
-<div class="cover">
-  <div>
-    <div class="cover-badge">AI Income Blueprint · 2026</div>
-    <h1 class="cover-title">AI<br><em>Income</em><br>Blueprint</h1>
-    <p class="cover-sub">The complete system for generating your first AI income — from choosing your track to scaling past $2,000/month. Built from 18 months of real execution by 1,400+ students.</p>
-  </div>
-  <div class="cover-bottom">
-    <div class="cover-targets">
-      <span class="target-chip">Track A — Autonomous Sales</span>
-      <span class="target-chip">Track B — Service Sales</span>
-      <span class="target-chip">Faceless Content</span>
+<div class="layout">
+  <aside class="sidenav" id="sidenav">
+    <div class="sidenav-brand">AI<em>Income</em> Blueprint</div>
+    <div class="sidenav-sub">Complete Course · 2026</div>
+    <div class="sidenav-label">The Blueprint</div>
+    <a href="#foundation" class="active"><span class="num">01</span> Foundation</a>
+    <a href="#tools"><span class="num">02</span> Tools &amp; Stack</a>
+    <a href="#income"><span class="num">03</span> First $500 Roadmap</a>
+    <a href="#playbooks"><span class="num">04</span> Execution Playbooks</a>
+    <a href="#prompts"><span class="num">05</span> Prompt Vault</a>
+    <a href="#scale"><span class="num">06</span> Scale to $2K/Mo</a>
+    <div class="sidenav-footer">v2.0 · Built from 1,400+ students of real execution</div>
+  </aside>
+
+  <div class="menu-overlay" id="overlay"></div>
+
+  <div class="main">
+    <div class="topbar">
+      <div class="topbar-brand">AI<em>Income</em> Blueprint</div>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
     </div>
-    <div class="price-tag">
-      <div class="amount">$97</div>
-      <div class="label">One-Time · Lifetime Access</div>
+    <div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
+
+    <div class="content">
+
+      <div class="chapter-hero">
+        <div class="kicker">The AI Income Blueprint</div>
+        <h1>Your first AI income path.<br>Mapped day by day.</h1>
+        <p>This is the complete course — two tracks, four playbooks, 50 prompts, and a day-by-day action plan. Work through each chapter in order, or jump to the playbook that matches your current situation.</p>
+      </div>
+
+      <div class="chapter" id="foundation">
+        <div class="ch-label"><span>01</span></div>
+        <h2>Foundation — Pick Your Lane</h2>
+        <p>The single most important decision you'll make isn't which tool to use or what to sell. It's <strong>which track fits your life.</strong> This diagnostic takes 12 minutes and places you in the right income path based on your time, risk tolerance, and goals.</p>
+
+        <h3>Why this matters before anything else</h3>
+        <p>Most people fail at "making money online" not because they're not smart enough or don't work hard enough. They fail because they pick a path that doesn't match their constraints. A single mom with 90 minutes a day should not be chasing the same strategy as a college student with 6 hours. The foundation module solves this before you waste a single hour.</p>
+
+        <div class="callout">
+          <div class="co-title">💡 The Kaya Principle</div>
+          <p>Kaya was a stay-at-home mom with $0 of her own. She had no camera, no following, no tech skills. She had 90 minutes a day, a laptop, and the Blueprint. Month 2: $1,100. Track B, service sales. She didn't need to build a product — she needed to deliver a service using AI. The diagnostic caught this in 12 minutes.</p>
+        </div>
+
+        <h3>The Two Tracks</h3>
+        <div class="grid-2">
+          <div class="card">
+            <span class="tag">Track A</span>
+            <h4>Autonomous Sales</h4>
+            <p>Build a digital product. Set up a faceless content funnel on TikTok or Reels. Let it drive traffic and collect sales on autopilot. <strong>Best for:</strong> people who want income that doesn't trade hours for dollars. No client calls, no networking. Introverts thrive here.</p>
+          </div>
+          <div class="card">
+            <span class="tag">Track B</span>
+            <h4>Service Sales</h4>
+            <p>Use AI to deliver professional services — content, copywriting, automation — to businesses that need them. Charge human rates, deliver in hours with AI. <strong>Best for:</strong> people who want fast cash flow and don't mind a short client conversation. No portfolio needed.</p>
+          </div>
+        </div>
+
+        <h3>The 12-Minute Diagnostic</h3>
+        <p>Answer these three questions honestly. Your answers determine your track, your starting tool stack, and your first-week execution plan:</p>
+        <ol>
+          <li><strong>How much time can you consistently commit?</strong> — Less than 2 hours/day → Track B. 2+ hours/day → Either track works.</li>
+          <li><strong>Do you want money this week or next month?</strong> — This week → Track B (service sales). Next month → Track A (product sales).</li>
+          <li><strong>Do you prefer creating once or selling repeatedly?</strong> — Create once → Track A. Sell repeatedly (client conversations) → Track B.</li>
+        </ol>
+
+        <h3>Your First Week</h3>
+        <p>Once you've picked your lane, here's exactly what the first 7 days look like:</p>
+        <div class="steps">
+          <div class="step"><div class="step-num">1</div><div><h4>Day 1–2: Set up your foundation</h4><p>Create your AI workspace. Set up ChatGPT/Claude, Canva, and your chosen platform. Takes 60 minutes, full walkthrough in Module 2.</p></div></div>
+          <div class="step"><div class="step-num">3</div><div><h4>Day 3–4: Define your offer</h4><p>Use the Offer Builder prompt to create your first product or service package. The prompt handles positioning, pricing, and the "why you" story.</p></div></div>
+          <div class="step"><div class="step-num">5</div><div><h4>Day 5–7: First outreach or first content</h4><p>Track A: Create and schedule 3 content pieces. Track B: Send 10 outreach messages using the cold DMs playbook.</p></div></div>
+        </div>
+      </div>
+
+      <div class="chapter" id="tools">
+        <div class="ch-label"><span>02</span></div>
+        <h2>Tools — The Only Stack You Need</h2>
+        <p>There are hundreds of AI tools. You need exactly <strong>five.</strong> Every tool in this stack is free to start. Paid upgrades only when income is flowing — zero expensive subscriptions upfront.</p>
+
+        <h3>The Core Stack</h3>
+        <table class="tbl">
+          <tr><th>Tool</th><th>What It's For</th><th>Free?</th></tr>
+          <tr><td><strong>ChatGPT</strong></td><td>Content creation, copywriting, strategy, outreach messages</td><td>✅ Free</td></tr>
+          <tr><td><strong>Claude</strong></td><td>Long-form writing, playbook execution, research</td><td>✅ Free</td></tr>
+          <tr><td><strong>Canva</strong></td><td>Thumbnails, social media graphics, video covers</td><td>✅ Free</td></tr>
+          <tr><td><strong>CapCut</strong></td><td>Video editing for faceless content</td><td>✅ Free</td></tr>
+          <tr><td><strong>Gumroad</strong></td><td>Storefront for Track A digital products</td><td>✅ Free</td></tr>
+        </table>
+
+        <h3>Setup Walkthrough</h3>
+        <p>Each tool takes under 15 minutes to set up. Follow along with the Setup Checklist:</p>
+        <ol>
+          <li>Create accounts with your primary email (or a dedicated "business" email)</li>
+          <li>Configure each tool's settings per the Track-specific setup guide below</li>
+          <li>Bookmark the AI prompt templates for each tool (Prompt Vault chapter)</li>
+        </ol>
+
+        <div class="callout">
+          <div class="co-title">⚠️ Save yourself weeks</div>
+          <p>The most common mistake is spending 3 weeks "researching tools." Don't do that. Pick the five tools above, set them up in one sitting, and start executing. By the time you outgrow the free tiers, you'll have income to pay for the upgrades.</p>
+        </div>
+      </div>
+
+      <div class="chapter" id="income">
+        <div class="ch-label"><span>03</span></div>
+        <h2>Your First $500 Roadmap</h2>
+        <p>Day-by-day. Real targets, real timelines. Backed by data from 1,400+ students. No motivational padding — just the map from zero to your first five hundred dollars.</p>
+
+        <h3>Track A: First Sale in 19–24 Days</h3>
+        <table class="tbl">
+          <tr><th>Day</th><th>Action</th><th>Time</th></tr>
+          <tr><td class="day">1</td><td>Pick your product idea using the product validation prompt</td><td>45 min</td></tr>
+          <tr><td class="day">2</td><td>Build your digital product using the Product Builder prompt</td><td>90 min</td></tr>
+          <tr><td class="day">3</td><td>Set up Gumroad storefront, write product page copy</td><td>60 min</td></tr>
+          <tr><td class="day">4</td><td>Create 3 content pieces (TikTok/Reels) using the faceless content playbook</td><td>120 min</td></tr>
+          <tr><td class="day">5</td><td>Post content, optimize for algorithm, engage with comments</td><td>60 min</td></tr>
+          <tr><td class="day">6–10</td><td>Daily posting (1 piece/day), iterate on what works</td><td>30 min/day</td></tr>
+          <tr><td class="day">11–18</td><td>Scale winning content, test 2–3 angles, engage consistently</td><td>45 min/day</td></tr>
+          <tr><td class="day">19–24</td><td><strong>First sale arrives.</strong> Double down on the winning content format.</td><td>—</td></tr>
+        </table>
+
+        <h3>Track B: First Client in 7–11 Days</h3>
+        <table class="tbl">
+          <tr><th>Day</th><th>Action</th><th>Time</th></tr>
+          <tr><td class="day">1</td><td>Define your service offer using the Offer Builder prompt</td><td>45 min</td></tr>
+          <tr><td class="day">2</td><td>Identify target prospects (platform + criteria per playbook)</td><td>60 min</td></tr>
+          <tr><td class="day">3</td><td>Write 50 personalized outreach messages using the outreach prompt</td><td>90 min</td></tr>
+          <tr><td class="day">4</td><td>Send first 25 messages, track responses</td><td>45 min</td></tr>
+          <tr><td class="day">5</td><td>Send remaining 25 messages, follow up on previous</td><td>45 min</td></tr>
+          <tr><td class="day">6–7</td><td>Handle replies, send portfolios, book first calls</td><td>30 min</td></tr>
+          <tr><td class="day">8–11</td><td><strong>First client secured.</strong> Deliver using the fulfillment playbook.</td><td>—</td></tr>
+        </table>
+
+        <div class="callout">
+          <div class="co-title">📊 The data</div>
+          <p>Track A students average 19–24 days to first sale. Track B students average 7–11 days to first client. Based on students who followed the playbook exactly.</p>
+        </div>
+      </div>
+
+      <div class="chapter" id="playbooks">
+        <div class="ch-label"><span>04</span></div>
+        <h2>Execution Playbooks</h2>
+        <p>These aren't general guides. Each playbook targets one specific obstacle with templates, scripts, and timelines that have been stress-tested by real students. Pull out whichever one matches your current bottleneck.</p>
+
+        <div class="grid-2">
+          <div class="card">
+            <span class="tag">Playbook A</span>
+            <h4>Land Your First Service Client in 7 Days</h4>
+            <p>Outreach message templates, positioning framework, a 3-step follow-up sequence, and the exact platforms to find clients who are already looking. <strong>⏱ Avg: First reply in 72 hours</strong></p>
+          </div>
+          <div class="card">
+            <span class="tag">Playbook B</span>
+            <h4>Launch Your Digital Product in 5 Days</h4>
+            <p>Blank page to live storefront. Includes the exact product creation prompt, Gumroad setup checklist, and your first promotional post written and scheduled. <strong>⏱ Avg: Live and selling in 5 days</strong></p>
+          </div>
+          <div class="card">
+            <span class="tag">Playbook C</span>
+            <h4>Build Your Faceless Content Funnel</h4>
+            <p>TikTok and Reels storytelling strategy that converts viewers into buyers — without showing your face, running ads, or having any existing audience. <strong>⏱ Avg: First content posted within 48 hours</strong></p>
+          </div>
+          <div class="card">
+            <span class="tag">Playbook D</span>
+            <h4>Scale from $500 to $2,000/Month</h4>
+            <p>The exact lever sequence to increase volume, raise prices, and add a second income stream — without proportionally increasing the time you spend. <strong>⏱ Avg: $2K/mo by month 3</strong></p>
+          </div>
+        </div>
+
+        <h3>How to Use These Playbooks</h3>
+        <p>You don't need all four at once. Here's the recommended order:</p>
+        <div class="steps">
+          <div class="step"><div class="step-num">1</div><div><h4>Start with A or B</h4><p>Pick the playbook that matches your track. A for service clients, B for product sales. Run it end-to-end before touching the others.</p></div></div>
+          <div class="step"><div class="step-num">2</div><div><h4>Layer in C once you have traction</h4><p>Playbook C (content funnel) amplifies whatever you're already doing. Use it to drive organic traffic without ads.</p></div></div>
+          <div class="step"><div class="step-num">3</div><div><h4>Apply D when you hit $500/month</h4><p>Playbook D is a ceiling-buster. Don't open it until you have proof of concept. Premature scaling is the #1 reason students stall.</p></div></div>
+        </div>
+      </div>
+
+      <div class="chapter" id="prompts">
+        <div class="ch-label"><span>05</span></div>
+        <h2>The Prompt Vault — 50 Ready-to-Use AI Prompts</h2>
+        <p>Copy. Paste. Produce. 50 prompts for client outreach, content creation, service delivery, and product building. Students consistently call this the most-used single asset in the entire blueprint.</p>
+
+        <h3>Sample Prompts</h3>
+
+        <div class="prompt">
+          <span class="p-tag">Client Outreach</span>
+          <code>Write a cold DM to a [gym owner] in [city] offering a service that [specific result]. The tone should be direct and helpful, not salesy. Mention that I've helped similar businesses in [industry] achieve [result]. Keep it under 120 words.</code>
+          <p style="font-size:13px;color:var(--muted);">Replace brackets with your details. Send 50 versions with 5-minute gaps between each.</p>
+        </div>
+
+        <div class="prompt">
+          <span class="p-tag">Product Content</span>
+          <code>Write a 30-second TikTok script promoting a digital product called [product name] that helps [audience] achieve [result]. Hook: open with a relatable pain point. Format: problem → solution → CTA. Tone: conversational, fast-paced. End with a call to action to visit Gumroad.</code>
+        </div>
+
+        <div class="prompt">
+          <span class="p-tag">Service Delivery</span>
+          <code>Create a 7-day content calendar for a [business type] in [city]. Each day should include: a topic, a hook, a CTA, and the AI tool combination used to produce it. Focus on content that drives phone calls and quote requests.</code>
+        </div>
+
+        <div class="callout">
+          <div class="co-title">🔒 Full vault</div>
+          <p>All 50 prompts are included with the Blueprint purchase. Categories: Client Outreach (12), Content Creation (14), Product Development (8), Service Delivery (10), and Scaling & Systems (6).</p>
+        </div>
+      </div>
+
+      <div class="chapter" id="scale">
+        <div class="ch-label"><span>06</span></div>
+        <h2>Scale — $500 → $2,000/Month</h2>
+        <p>Once the first dollar lands, this module shows you how to turn it into a repeatable system — raising prices, adding volume, and stacking a second income stream without doubling your workload. This is where a side hustle becomes an actual business.</p>
+
+        <h3>The Three Levers</h3>
+        <div class="steps">
+          <div class="step"><div class="step-num">1</div><div><h4>Increase Volume</h4><p>Double your outreach (Track B) or content output (Track A). Most students under-leverage this — they get 1 client and stop prospecting. The fastest path to $2K is going from 1 client to 2 clients.</p></div></div>
+          <div class="step"><div class="step-num">2</div><div><h4>Raise Prices</h4><p>With 3+ case studies, increase your package prices by 30–50%. Your first clients got a deal. Your next clients pay full price. Template scripts for the price increase conversation included.</p></div></div>
+          <div class="step"><div class="step-num">3</div><div><h4>Stack a Second Stream</h4><p>Add a complementary income stream. If you're on Track A (products), add a service offer. If you're on Track B (services), launch a product. Two streams = stability and faster growth.</p></div></div>
+        </div>
+
+        <h3>Month-by-Month Target</h3>
+        <table class="tbl">
+          <tr><th>Month</th><th>Income Target</th><th>Primary Action</th></tr>
+          <tr><td class="day">Month 1</td><td>$0–$500</td><td>Pick a track, execute the first playbook, land your first sale or client</td></tr>
+          <tr><td class="day">Month 2</td><td>$500–$1,100</td><td>Increase volume, refine offer, build 2–3 case studies</td></tr>
+          <tr><td class="day">Month 3</td><td>$1,100–$2,000</td><td>Raise prices, add second income stream, systemize delivery</td></tr>
+        </table>
+
+        <div class="callout">
+          <div class="co-title">📈 The $2K pattern</div>
+          <p>Every student who hit $2K/month followed the same pattern: they picked ONE track, executed ONE playbook completely, and only added the second stream AFTER reaching $500 consistently for 3 weeks. Don't skip the sequence.</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
-
-<hr class="rule">
-
-<div class="section" id="toc">
-  <div class="section-number">Table of Contents</div>
-  <h2 class="section-title">What's Inside the Blueprint</h2>
-  <div class="toc-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px;">
-    <div class="toc-item" style="background:var(--cream);padding:24px;border-radius:4px;border-left:3px solid var(--purple);">
-      <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--purple);letter-spacing:0.15em;margin-bottom:4px;">01</div>
-      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:24px;margin-bottom:4px;">Foundation</h3>
-      <p style="font-size:14px;color:var(--muted);">Pick Your Lane — the diagnostic that places you in the right track</p>
-    </div>
-    <div class="toc-item" style="background:var(--cream);padding:24px;border-radius:4px;border-left:3px solid var(--purple);">
-      <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--purple);letter-spacing:0.15em;margin-bottom:4px;">02</div>
-      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:24px;margin-bottom:4px;">Tools</h3>
-      <p style="font-size:14px;color:var(--muted);">The Only Stack You Need — free tools, setup walkthrough</p>
-    </div>
-    <div class="toc-item" style="background:var(--cream);padding:24px;border-radius:4px;border-left:3px solid var(--purple);">
-      <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--purple);letter-spacing:0.15em;margin-bottom:4px;">03</div>
-      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:24px;margin-bottom:4px;">Income</h3>
-      <p style="font-size:14px;color:var(--muted);">Your First $500 Roadmap — day-by-day action plan</p>
-    </div>
-    <div class="toc-item" style="background:var(--cream);padding:24px;border-radius:4px;border-left:3px solid var(--purple);">
-      <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--purple);letter-spacing:0.15em;margin-bottom:4px;">04</div>
-      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:24px;margin-bottom:4px;">Playbooks</h3>
-      <p style="font-size:14px;color:var(--muted);">Four execution playbooks for every scenario</p>
-    </div>
-    <div class="toc-item" style="background:var(--cream);padding:24px;border-radius:4px;border-left:3px solid var(--purple);">
-      <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--purple);letter-spacing:0.15em;margin-bottom:4px;">05</div>
-      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:24px;margin-bottom:4px;">Prompt Vault</h3>
-      <p style="font-size:14px;color:var(--muted);">50 ready-to-use AI prompts for outreach, content, delivery</p>
-    </div>
-    <div class="toc-item" style="background:var(--cream);padding:24px;border-radius:4px;border-left:3px solid var(--purple);">
-      <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--purple);letter-spacing:0.15em;margin-bottom:4px;">06</div>
-      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:24px;margin-bottom:4px;">Scale</h3>
-      <p style="font-size:14px;color:var(--muted);">From $500 to $2,000/month without doubling workload</p>
-    </div>
-  </div>
-</div>
-
-<hr class="rule">
-
+<script>
+const menuBtn = document.getElementById('menuBtn');
+const sidenav = document.getElementById('sidenav');
+const overlay = document.getElementById('overlay');
+const progressBar = document.getElementById('progressBar');
+menuBtn.addEventListener('click', () => { sidenav.classList.toggle('open'); overlay.classList.toggle('show'); });
+overlay.addEventListener('click', () => { sidenav.classList.remove('open'); overlay.classList.remove('show'); });
+const sections = document.querySelectorAll('.chapter');
+const links = document.querySelectorAll('.sidenav a');
+new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      links.forEach(l => l.classList.remove('active'));
+      const link = document.querySelector('.sidenav a[href="#'+entry.target.id+'"]');
+      if (link) link.classList.add('active');
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px' }).observe(sections[0]);
+sections.forEach(s => new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      links.forEach(l => l.classList.remove('active'));
+      const link = document.querySelector('.sidenav a[href="#'+entry.target.id+'"]');
+      if (link) link.classList.add('active');
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px' }).observe(s));
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  progressBar.style.width = progress + '%';
+});
+</script>
 </body>
 </html>
