@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Income Blueprint — Complete Course</title>
-<meta name="description" content="The complete AI Income Blueprint course: two income tracks, day-by-day roadmap, four execution playbooks, and 50 AI prompts. Built for beginners.">
+<meta name="description" content="The complete AI Income Blueprint course: two income tracks, day-by-day roadmap, four execution playbooks, and 300+ AI prompts. Built for beginners.">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -17,8 +17,10 @@
   --purple-soft: #F3EEFB;
   --green: #1a6b3c;
   --green-light: #22c55e;
+  --gold: #D97706;
+  --gold-light: #FDE68A;
+  --red: #DC2626;
   --rule: #e3ddd2;
-  --muted: #6b6range;
   --muted: #6b655a;
   --text: #2a2a2a;
   --sidebar-w: 300px;
@@ -104,7 +106,7 @@ body {
 /* ── MAIN ── */
 .main { margin-left: var(--sidebar-w); flex: 1; min-width: 0; }
 
-/* ── TOPBAR (mobile nav trigger + progress) ── */
+/* ── TOPBAR ── */
 .topbar {
   display: none;
   position: sticky; top: 0; z-index: 150;
@@ -129,7 +131,7 @@ body {
 }
 
 /* ── CONTENT ── */
-.content { max-width: 800px; margin: 0 auto; padding: 60px 48px 100px; }
+.content { max-width: 860px; margin: 0 auto; padding: 60px 48px 100px; }
 
 .chapter-hero {
   padding: 40px 0 48px;
@@ -150,10 +152,10 @@ body {
   letter-spacing: -0.5px;
   margin-bottom: 16px;
 }
-.chapter-hero p { color: var(--muted); font-size: 17px; max-width: 620px; }
+.chapter-hero p { color: var(--muted); font-size: 17px; max-width: 650px; }
 
 .chapter {
-  padding: 40px 0;
+  padding: 48px 0;
   border-bottom: 1px solid var(--rule);
   scroll-margin-top: 20px;
 }
@@ -180,14 +182,71 @@ body {
   font-family: 'DM Sans', sans-serif;
   font-size: 19px;
   font-weight: 700;
-  margin: 26px 0 10px;
+  margin: 28px 0 10px;
+}
+.chapter h4 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  margin: 22px 0 8px;
 }
 .chapter p { margin-bottom: 16px; color: #3a3a3a; }
 .chapter p strong { color: var(--ink); }
 .chapter ul, .chapter ol { margin: 0 0 18px 22px; color: #3a3a3a; }
 .chapter li { margin-bottom: 8px; }
 
-/* Callout */
+/* ── LEARNING OBJECTIVES ── */
+.objectives {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin: 20px 0 28px;
+}
+.objectives h4 {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--purple);
+  margin-bottom: 12px;
+}
+.objectives ul { margin: 0 0 0 20px; }
+.objectives li { margin-bottom: 6px; font-size: 15px; color: #3a3a3a; }
+
+/* ── PROGRESS CHECKBOX ── */
+.progress-check {
+  display: inline-flex; align-items: center; gap: 10px;
+  margin: 18px 0 8px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--muted);
+}
+.progress-check input[type="checkbox"] {
+  appearance: none;
+  width: 20px; height: 20px;
+  border: 2px solid var(--rule);
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+  transition: all .2s;
+}
+.progress-check input[type="checkbox"]:checked {
+  background: var(--purple);
+  border-color: var(--purple);
+}
+.progress-check input[type="checkbox"]:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+}
+.progress-check.completed { color: var(--green); text-decoration: line-through; }
+
+/* ── CALLOUT ── */
 .callout {
   background: var(--purple-soft);
   border-left: 4px solid var(--purple);
@@ -197,14 +256,19 @@ body {
 }
 .callout p { margin: 0; color: #3a3a3a; }
 .callout .co-title { font-weight: 700; color: var(--purple); font-family: 'DM Sans'; margin-bottom: 6px; font-size: 15px; }
+.callout.green { background: #ecfdf5; border-left-color: var(--green); }
+.callout.green .co-title { color: var(--green); }
+.callout.gold { background: #fffbeb; border-left-color: var(--gold); }
+.callout.gold .co-title { color: var(--gold); }
 
-/* Card grid */
+/* ── CARD GRID ── */
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin: 24px 0; }
 .card {
   background: var(--card);
   border: 1px solid var(--rule);
   border-radius: 12px;
-  padding: 22px;
+  padding: 24px;
 }
 .card h4 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
 .card p { font-size: 14px; color: var(--muted); margin-bottom: 0; }
@@ -215,8 +279,15 @@ body {
   color: var(--purple);
   margin-bottom: 8px; display: block;
 }
+.card .big-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 48px;
+  line-height: 1;
+  color: var(--purple-light);
+  margin-bottom: 8px;
+}
 
-/* Step list */
+/* ── STEP LIST ── */
 .steps { margin: 24px 0; counter-reset: step; }
 .step { display: flex; gap: 18px; padding: 18px 0; border-bottom: 1px solid var(--rule); }
 .step:last-child { border-bottom: none; }
@@ -229,6 +300,7 @@ body {
 .step h4 { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
 .step p { font-size: 15px; color: var(--muted); margin: 0; }
 
+/* ── TABLES ── */
 table.tbl { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; }
 table.tbl th {
   text-align: left; font-family: 'DM Mono', monospace;
@@ -238,18 +310,153 @@ table.tbl th {
 table.tbl td { padding: 12px; border-bottom: 1px solid var(--rule); color: #3a3a3a; }
 table.tbl td.day { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--purple); white-space: nowrap; }
 
-/* Progress bar */
+/* ── PROGRESS BAR ── */
 .progress-wrap { position: sticky; top: 0; z-index: 140; background: var(--paper); }
 .progress-bar { height: 3px; background: var(--purple); width: 0; transition: width .1s; }
 
-/* Prompt cards */
+/* ── QUIZ ── */
+.quiz-container {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: 28px;
+  margin: 24px 0;
+}
+.quiz-question {
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--rule);
+}
+.quiz-question:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.quiz-question .q-text {
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+.quiz-question label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background .2s;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+.quiz-question label:hover { background: var(--purple-soft); }
+.quiz-question input[type="radio"] {
+  appearance: none;
+  width: 18px; height: 18px;
+  border: 2px solid var(--rule);
+  border-radius: 50%;
+  flex-shrink: 0;
+  position: relative;
+  transition: all .2s;
+}
+.quiz-question input[type="radio"]:checked {
+  border-color: var(--purple);
+  background: var(--purple);
+}
+.quiz-question input[type="radio"]:checked::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px; height: 6px;
+  background: #fff;
+  border-radius: 50%;
+}
+.quiz-btn {
+  background: var(--purple);
+  color: #fff;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all .2s;
+  margin-top: 12px;
+}
+.quiz-btn:hover { background: #6d28d9; }
+.quiz-result {
+  margin-top: 16px;
+  padding: 16px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  display: none;
+}
+.quiz-result.show { display: block; }
+.quiz-result.track-a { background: #ecfdf5; color: var(--green); border: 1px solid #a7f3d0; }
+.quiz-result.track-b { background: #fffbeb; color: var(--gold); border: 1px solid #fde68a; }
+.quiz-result.track-any { background: var(--purple-soft); color: var(--purple); border: 1px solid #ddd6fe; }
+
+/* ── PROMPT VAULT ── */
+.prompt-vault-controls {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+  align-items: center;
+}
+.prompt-search {
+  flex: 1;
+  min-width: 200px;
+  padding: 12px 16px;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  background: var(--card);
+  outline: none;
+  transition: border .2s;
+}
+.prompt-search:focus { border-color: var(--purple); }
+.prompt-tabs {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.prompt-tab {
+  padding: 8px 16px;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  background: var(--card);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all .2s;
+  color: var(--muted);
+}
+.prompt-tab:hover { border-color: var(--purple); color: var(--purple); }
+.prompt-tab.active {
+  background: var(--purple);
+  color: #fff;
+  border-color: var(--purple);
+}
+.prompt-tab .count {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  opacity: 0.7;
+  margin-left: 4px;
+}
+.prompt-category {
+  display: none;
+}
+.prompt-category.active { display: block; }
 .prompt {
   background: var(--card);
   border: 1px solid var(--rule);
   border-radius: 10px;
   padding: 18px 20px;
   margin: 12px 0;
+  transition: border .2s;
 }
+.prompt:hover { border-color: var(--purple-light); }
 .prompt code {
   display: block; background: var(--cream);
   padding: 14px 16px; border-radius: 8px;
@@ -261,9 +468,167 @@ table.tbl td.day { font-family: 'DM Mono', monospace; font-size: 13px; color: va
 .prompt .p-tag {
   font-family: 'DM Mono', monospace; font-size: 10px;
   letter-spacing: 0.15em; text-transform: uppercase;
-  color: var(--green); 
+  color: var(--green);
+}
+.prompt .p-title {
+  font-weight: 700;
+  font-size: 15px;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+.prompt .p-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: var(--muted);
+}
+.copy-btn {
+  background: var(--purple-soft);
+  border: 1px solid var(--rule);
+  color: var(--purple);
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .2s;
+}
+.copy-btn:hover { background: var(--purple); color: #fff; }
+.copy-btn.copied { background: var(--green); color: #fff; border-color: var(--green); }
+.prompt-count-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 12px;
 }
 
+/* ── TESTIMONIALS ── */
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 24px 0;
+}
+.testimonial {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: 24px;
+}
+.testimonial .quote {
+  font-size: 15px;
+  font-style: italic;
+  color: #3a3a3a;
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+.testimonial .quote::before { content: '"'; }
+.testimonial .quote::after { content: '"'; }
+.testimonial .author {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--purple);
+  letter-spacing: 0.05em;
+}
+.testimonial .author-detail {
+  font-size: 13px;
+  color: var(--muted);
+}
+.results-stat {
+  text-align: center;
+  padding: 32px;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  margin: 24px 0;
+}
+.results-stat .big {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 72px;
+  line-height: 1;
+  color: var(--purple);
+  margin-bottom: 4px;
+}
+.results-stat .stat-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── RESOURCES TABLE ── */
+.resource-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.resource-item:last-child { border-bottom: none; }
+.resource-item .r-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+}
+.resource-item .r-info h4 { font-size: 16px; margin-bottom: 2px; }
+.resource-item .r-info p { font-size: 14px; color: var(--muted); margin: 0; }
+.resource-item .r-dl {
+  margin-left: auto;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--purple);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 6px 14px;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  transition: all .2s;
+  white-space: nowrap;
+}
+.resource-item .r-dl:hover { background: var(--purple); color: #fff; border-color: var(--purple); }
+
+/* ── ACCORDION ── */
+.accordion { margin: 20px 0; }
+.accordion-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 16px 20px;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+  transition: all .2s;
+  text-align: left;
+  margin-bottom: 6px;
+}
+.accordion-btn:hover { border-color: var(--purple-light); }
+.accordion-btn .arrow {
+  transition: transform .2s;
+  font-size: 12px;
+  color: var(--muted);
+}
+.accordion-btn.open .arrow { transform: rotate(180deg); }
+.accordion-body {
+  display: none;
+  padding: 16px 20px;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  margin-top: -6px;
+  margin-bottom: 12px;
+}
+.accordion-body.open { display: block; }
+
+/* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .sidenav { transform: translateX(-100%); box-shadow: none; }
   .sidenav.open { transform: translateX(0); }
@@ -272,6 +637,10 @@ table.tbl td.day { font-family: 'DM Mono', monospace; font-size: 13px; color: va
   .main { margin-left: 0; }
   .content { padding: 32px 20px 80px; }
   .grid-2 { grid-template-columns: 1fr; }
+  .grid-3 { grid-template-columns: 1fr; }
+  .testimonial-grid { grid-template-columns: 1fr; }
+  .prompt-tabs { gap: 4px; }
+  .prompt-tab { font-size: 12px; padding: 6px 12px; }
 }
 </style>
 </head>
@@ -287,7 +656,9 @@ table.tbl td.day { font-family: 'DM Mono', monospace; font-size: 13px; color: va
     <a href="#playbooks"><span class="num">04</span> Execution Playbooks</a>
     <a href="#prompts"><span class="num">05</span> Prompt Vault</a>
     <a href="#scale"><span class="num">06</span> Scale to $2K/Mo</a>
-    <div class="sidenav-footer">v2.0 · Built from 1,400+ students of real execution</div>
+    <a href="#results"><span class="num">07</span> Wall of Proof</a>
+    <a href="#resources"><span class="num">08</span> Resources</a>
+    <div class="sidenav-footer">v3.0 · Built from 1,400+ students of real execution</div>
   </aside>
 
   <div class="menu-overlay" id="overlay"></div>
@@ -304,16 +675,27 @@ table.tbl td.day { font-family: 'DM Mono', monospace; font-size: 13px; color: va
       <div class="chapter-hero">
         <div class="kicker">The AI Income Blueprint</div>
         <h1>Your first AI income path.<br>Mapped day by day.</h1>
-        <p>This is the complete course — two tracks, four playbooks, 50 prompts, and a day-by-day action plan. Work through each chapter in order, or jump to the playbook that matches your current situation.</p>
+        <p>This is the complete course — two tracks, four playbooks, 300+ prompts, and a day-by-day action plan. Work through each chapter in order, or jump to the playbook that matches your current situation.</p>
       </div>
-
       <div class="chapter" id="foundation">
         <div class="ch-label"><span>01</span></div>
         <h2>Foundation — Pick Your Lane</h2>
         <p>The single most important decision you'll make isn't which tool to use or what to sell. It's <strong>which track fits your life.</strong> This diagnostic takes 12 minutes and places you in the right income path based on your time, risk tolerance, and goals.</p>
 
+        <div class="objectives">
+          <h4>Learning Objectives — After this chapter you will be able to…</h4>
+          <ul>
+            <li>Diagnose which of the two income tracks fits your constraints</li>
+            <li>Score yourself on the 12-minute diagnostic and get a track recommendation</li>
+            <li>Explain why "picking a lane" is the #1 predictor of success — not effort</li>
+            <li>Set a realistic mindset that survives the first 30 days</li>
+          </ul>
+        </div>
+
+        <label class="progress-check"><input type="checkbox" data-module="foundation-obj"> Mark Foundation complete</label>
+
         <h3>Why this matters before anything else</h3>
-        <p>Most people fail at "making money online" not because they're not smart enough or don't work hard enough. They fail because they pick a path that doesn't match their constraints. A single mom with 90 minutes a day should not be chasing the same strategy as a college student with 6 hours. The foundation module solves this before you waste a single hour.</p>
+        <p>Most people fail at "making money online" not because they're not smart enough or don't work hard enough. They fail because they <strong>pick a path that doesn't match their constraints</strong>. A single mom with 90 minutes a day should not be chasing the same strategy as a college student with 6 hours. The foundation module solves this before you waste a single hour.</p>
 
         <div class="callout">
           <div class="co-title">💡 The Kaya Principle</div>
@@ -334,13 +716,104 @@ table.tbl td.day { font-family: 'DM Mono', monospace; font-size: 13px; color: va
           </div>
         </div>
 
+        <h3>Track Comparison — No guesswork</h3>
+        <table class="tbl">
+          <tr><th>Factor</th><th>Track A · Autonomous</th><th>Track B · Service</th></tr>
+          <tr><td><strong>Time to first dollar</strong></td><td>19–24 days</td><td>7–11 days</td></tr>
+          <tr><td><strong>Income ceiling / mo</strong></td><td>Unlimited (scales)</td><td>Clients × retainer</td></tr>
+          <tr><td><strong>Client calls</strong></td><td>None</td><td>Short onboarding calls</td></tr>
+          <tr><td><strong>Tech skill needed</strong></td><td>Content creation</td><td>Service delivery</td></tr>
+          <tr><td><strong>Best personality</strong></td><td>Introvert, builder</td><td>Communicator, executor</td></tr>
+          <tr><td><strong>Money now vs later</strong></td><td>Later (build first)</td><td>Now (sell first)</td></tr>
+        </table>
+
         <h3>The 12-Minute Diagnostic</h3>
-        <p>Answer these three questions honestly. Your answers determine your track, your starting tool stack, and your first-week execution plan:</p>
+        <p>Answer these questions honestly. Your answers determine your track, your starting tool stack, and your first-week execution plan. Take the interactive quiz below, or read the logic if you prefer to reason it out.</p>
+
+        <div class="quiz-container">
+          <div class="quiz-question">
+            <div class="q-text">1. How much time can you consistently commit each day?</div>
+            <label><input type="radio" name="q1" value="a"> Under 2 hours</label>
+            <label><input type="radio" name="q1" value="b"> 2–4 hours</label>
+            <label><input type="radio" name="q1" value="c"> 4+ hours</label>
+          </div>
+          <div class="quiz-question">
+            <div class="q-text">2. Do you want money this week or next month?</div>
+            <label><input type="radio" name="q2" value="a"> This week — I need cash flow now</label>
+            <label><input type="radio" name="q2" value="b"> Next month — I can build first</label>
+            <label><input type="radio" name="q2" value="c"> Either — money is money</label>
+          </div>
+          <div class="quiz-question">
+            <div class="q-text">3. Do you prefer creating once or selling repeatedly?</div>
+            <label><input type="radio" name="q3" value="a"> Create once — I want it to work while I sleep</label>
+            <label><input type="radio" name="q3" value="b"> Sell repeatedly — I like client conversations</label>
+            <label><input type="radio" name="q3" value="c"> Don't mind either</label>
+          </div>
+          <div class="quiz-question">
+            <div class="q-text">4. How comfortable are you with short client calls?</div>
+            <label><input type="radio" name="q4" value="a"> Very — talking to people is fine</label>
+            <label><input type="radio" name="q4" value="b"> Okay if scripts are provided</label>
+            <label><input type="radio" name="q4" value="c"> I'd rather avoid calls entirely</label>
+          </div>
+          <button class="quiz-btn" id="quizBtn">Get My Track ▶</button>
+          <div id="quizResult" class="quiz-result"></div>
+        </div>
+
+        <h3>Reading the Diagnostic (understand the "why")</h3>
         <ol>
-          <li><strong>How much time can you consistently commit?</strong> — Less than 2 hours/day → Track B. 2+ hours/day → Either track works.</li>
-          <li><strong>Do you want money this week or next month?</strong> — This week → Track B (service sales). Next month → Track A (product sales).</li>
-          <li><strong>Do you prefer creating once or selling repeatedly?</strong> — Create once → Track A. Sell repeatedly (client conversations) → Track B.</li>
+          <li><strong>Time:</strong> Under 2 hrs/day → lean Track B (higher per-hour-value service work). 2+ hours → either track works.</li>
+          <li><strong>Speed:</strong> Need cash this week → Track B. Can wait a month → Track A.</li>
+          <li><strong>Preference:</strong> Create once → Track A. Client conversations → Track B.</li>
+          <li><strong>Calls:</strong> Avoid calls → Track A. Comfortable + scripts → Track B.</li>
         </ol>
+
+        <h3>Track A — Autonomous Sales Deep Dive</h3>
+        <p>You'll build one digital product, set up a faceless content machine, and let the algorithm do your selling. The beauty: once a product is live, it can sell while you sleep. The cost: a ~3 week ramp before the first sale.</p>
+        <ul>
+          <li><strong>Your stack:</strong> ChatGPT (content) + Canva (thumbs) + CapCut (video) + Gumroad (storefront)</li>
+          <li><strong>Your lever:</strong> content volume × click-through × conversion rate</li>
+          <li><strong>Your risk:</strong> product may need 1–2 pivots before it resonates</li>
+          <li><strong>Your reward:</strong> assets you own forever, no client dependency</li>
+        </ul>
+
+        <h3>Track B — Service Sales Deep Dive</h3>
+        <p>You'll use AI to deliver a professional service to businesses that already need it. Fast cash, human rates, AI speed. The cost: you exchange some time for money until you scale.</p>
+        <ul>
+          <li><strong>Your stack:</strong> ChatGPT (delivery) + Claude (long-form) + Canva (deliverables) + a lead platform</li>
+          <li><strong>Your lever:</strong> outreach volume × reply rate × close rate</li>
+          <li><strong>Your risk:</strong> hard work in the first 2 weeks of outreach</li>
+          <li><strong>Your reward:</strong> income within a week, stackable retainers</li>
+        </ul>
+
+        <h3>The Mindset That Survives 30 Days</h3>
+        <p>Everything below is what separates students who finish from students who quit at day 9. Read this twice.</p>
+        <div class="grid-2">
+          <div class="card">
+            <span class="tag">Rule 1</span>
+            <h4>Results are a lagging indicator</h4>
+            <p>You won't see returns on day 1, 3, or 7. You'll see them on day 12, 19, or 24. Your job in the quiet weeks is not to feel good — it's to execute the exact steps.</p>
+          </div>
+          <div class="card">
+            <span class="tag">Rule 2</span>
+            <h4>Volume beats talent</h4>
+            <p>50 mediocre outreach messages beat 5 "perfect" ones. 30 content pieces beat agonizing over 3. Ship, measure, iterate. Perfectionism is procrastination in a suit.</p>
+          </div>
+          <div class="card">
+            <span class="tag">Rule 3</span>
+            <h4>Follow the playbook, not your mood</h4>
+            <p>When you're unmotivated, that's precisely when the playbook matters most. Decide once, then follow. Motivation is unreliable; systems are not.</p>
+          </div>
+          <div class="card">
+            <span class="tag">Rule 4</span>
+            <h4>One track, fully executed</h4>
+            <p>The #1 reason students stall is switching tracks at day 6. The grass is never greener — it's just under-watered. Commit for 30 days before you re-evaluate.</p>
+          </div>
+        </div>
+
+        <div class="callout green">
+          <div class="co-title">✅ Your Foundation Deliverable</div>
+          <p>By the end of this chapter you should have: (1) your track chosen, (2) your 30-day commitment written down, and (3) your first 7 days blocked in your calendar. Do this before moving on — everything else depends on it.</p>
+        </div>
 
         <h3>Your First Week</h3>
         <p>Once you've picked your lane, here's exactly what the first 7 days look like:</p>
@@ -356,6 +829,18 @@ table.tbl td.day { font-family: 'DM Mono', monospace; font-size: 13px; color: va
         <h2>Tools — The Only Stack You Need</h2>
         <p>There are hundreds of AI tools. You need exactly <strong>five.</strong> Every tool in this stack is free to start. Paid upgrades only when income is flowing — zero expensive subscriptions upfront.</p>
 
+        <div class="objectives">
+          <h4>Learning Objectives — After this chapter you will be able to…</h4>
+          <ul>
+            <li>Set up the complete 5-tool stack in under one sitting</li>
+            <li>Configure exact settings for each tool (not just "create an account")</li>
+            <li>Know precisely when to upgrade free → paid</li>
+            <li>Automate the repetitive parts so you work <em>with</em> the stack, not against it</li>
+          </ul>
+        </div>
+
+        <label class="progress-check"><input type="checkbox" data-module="tools-obj"> Mark Tools complete</label>
+
         <h3>The Core Stack</h3>
         <table class="tbl">
           <tr><th>Tool</th><th>What It's For</th><th>Free?</th></tr>
@@ -366,24 +851,101 @@ table.tbl td.day { font-family: 'DM Mono', monospace; font-size: 13px; color: va
           <tr><td><strong>Gumroad</strong></td><td>Storefront for Track A digital products</td><td>✅ Free</td></tr>
         </table>
 
-        <h3>Setup Walkthrough</h3>
-        <p>Each tool takes under 15 minutes to set up. Follow along with the Setup Checklist:</p>
+        <h3>Free vs Paid — When to Upgrade</h3>
+        <table class="tbl">
+          <tr><th>Tool</th><th>Free tier is enough for…</th><th>Upgrade to paid when…</th><th>Paid cost</th></tr>
+          <tr><td><strong>ChatGPT</strong></td><td>Everything in this course (GPT-4o accessible)</td><td>You need priority access / advanced models daily</td><td>$20/mo</td></tr>
+          <tr><td><strong>Claude</strong></td><td>Long-form strategy &amp; playbook work</td><td>You hit weekly message limits on long projects</td><td>$20/mo</td></tr>
+          <tr><td><strong>Canva</strong></td><td>Thumbnails, covers, social graphics</td><td>You need brand kits + transparent backgrounds daily</td><td>$12.99/mo</td></tr>
+          <tr><td><strong>CapCut</strong></td><td>All faceless video editing</td><td>You need pro effects / cloud storage at scale</td><td>$9.99/mo</td></tr>
+          <tr><td><strong>Gumroad</strong></td><td>Full storefront + checkout forever</td><td>You want to remove the 10% fee with a sub</td><td>$10/mo</td></tr>
+        </table>
+
+        <div class="callout gold">
+          <div class="co-title">💰 My hard rule on upgrades</div>
+          <p>Do not upgrade <em>any</em> tool until you have income. The free tiers cover 100% of this course. Every dollar you spend before your first sale is a dollar of doubt. When month 2 hits and you're printing content, THEN upgrade what's bottlenecking you.</p>
+        </div>
+
+        <h3>Setup Walkthrough — Exact Settings</h3>
+        <p>Each tool takes under 15 minutes to set up. Follow along with the Setup Checklist. Don't skip the settings — they're what separate a smooth workflow from a frustrating one.</p>
+
+        <h4>1. ChatGPT — the workhorse</h4>
         <ol>
-          <li>Create accounts with your primary email (or a dedicated "business" email)</li>
-          <li>Configure each tool's settings per the Track-specific setup guide below</li>
-          <li>Bookmark the AI prompt templates for each tool (Prompt Vault chapter)</li>
+          <li>Create account at chat.openai.com with your business email (or a dedicated email)</li>
+          <li>Settings → Personalization → Custom Instructions: add your niche, audience, and tone</li>
+          <li>Create a folder of saved chats: Outreach / Content / Product / Delivery</li>
+          <li>Bookmark the Prompt Vault below — you'll paste these constantly</li>
+        </ol>
+
+        <h4>2. Claude — the long-form specialist</h4>
+        <ol>
+          <li>Create account at claude.ai</li>
+          <li>Settings → Profile → add a "Project" per client or per product</li>
+          <li>Use Projects to store shared context (your offer, your tone) so every reply is on-brand</li>
+          <li>Use it for anything over ~500 words — strategies, sales pages, playbooks</li>
+        </ol>
+
+        <h4>3. Canva — the designer</h4>
+        <ol>
+          <li>Create account at canva.com</li>
+          <li>Set up a <strong>Brand Kit</strong> (free): your accent color, your font pair (Bebas Neue + DM Sans), your logo style</li>
+          <li>Create a template folder: Thumbnails / Covers / Social posts</li>
+          <li>Make one reusable thumbnail template — then duplicate it for every new post</li>
+        </ol>
+
+        <h4>4. CapCut — the video editor</h4>
+        <ol>
+          <li>Create account at capcut.com (or mobile app)</li>
+          <li>Set default export: 1080×1920 (9:16 vertical) for TikTok/Reels</li>
+          <li>Save auto-captions as your default — they boost retention massively</li>
+          <li>Create a "template" edit once, then swap clips for each new video</li>
+        </ol>
+
+        <h4>5. Gumroad — the storefront</h4>
+        <ol>
+          <li>Create account at gumroad.com (free, they take a cut on sales)</li>
+          <li>Complete your profile + payment details (Payouts tab)</li>
+          <li>Create your first product (you'll do this properly in Playbook B)</li>
+          <li>Set up your checkout page with your brand colors</li>
         </ol>
 
         <div class="callout">
           <div class="co-title">⚠️ Save yourself weeks</div>
           <p>The most common mistake is spending 3 weeks "researching tools." Don't do that. Pick the five tools above, set them up in one sitting, and start executing. By the time you outgrow the free tiers, you'll have income to pay for the upgrades.</p>
         </div>
-      </div>
 
+        <h4>Your Setup Checklist (copy this)</h4>
+        <div class="accordion">
+          <button class="accordion-btn"><span>Setup Checklist — tick each as you go</span><span class="arrow">▾</span></button>
+          <div class="accordion-body">
+            <ul>
+              <li>☐ Business email created</li>
+              <li>☐ ChatGPT account + custom instructions set</li>
+              <li>☐ Claude account + first project created</li>
+              <li>☐ Canva account + brand kit + thumbnail template</li>
+              <li>☐ CapCut account + 9:16 default + captions on</li>
+              <li>☐ Gumroad account + profile + payout set</li>
+              <li>☐ Prompt Vault bookmarked (this page, section 05)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
       <div class="chapter" id="income">
         <div class="ch-label"><span>03</span></div>
         <h2>Your First $500 Roadmap</h2>
         <p>Day-by-day. Real targets, real timelines. Backed by data from 1,400+ students. No motivational padding — just the map from zero to your first five hundred dollars.</p>
+
+        <div class="objectives">
+          <h4>Learning Objectives — After this chapter you will be able to…</h4>
+          <ul>
+            <li>Follow a day-by-day roadmap to your first $500 on either track</li>
+            <li>Understand the weekly milestones and what "good" looks like at each</li>
+            <li>Use real outreach and content templates rather than generic advice</li>
+            <li>Track your progress against the numbers, not your feelings</li>
+          </ul>
+        </div>
+
+        <label class="progress-check"><input type="checkbox" data-module="income-obj"> Mark Roadmap complete</label>
 
         <h3>Track A: First Sale in 19–24 Days</h3>
         <table class="tbl">
@@ -398,6 +960,56 @@ table.tbl td.day { font-family: 'DM Mono', monospace; font-size: 13px; color: va
           <tr><td class="day">19–24</td><td><strong>First sale arrives.</strong> Double down on the winning content format.</td><td>—</td></tr>
         </table>
 
+        <h3>Track A — Weekly Breakdown</h3>
+        <div class="accordion">
+          <button class="accordion-btn"><span>Week 1 (Days 1–7): Foundation &amp; First Content</span><span class="arrow">▾</span></button>
+          <div class="accordion-body">
+            <p><strong>Goal:</strong> Get a live product + first 3 content pieces posted.</p>
+            <ul>
+              <li><strong>Days 1–3:</strong> Validate idea → build product → set up Gumroad. The product is the foundation; don't rush it.</li>
+              <li><strong>Days 4–5:</strong> Create and post your first 3 TikTok/Reels pieces using Playbook C.</li>
+              <li><strong>Days 6–7:</strong> Engage with every comment, reply to DMs, study your analytics. Note which hook got the most views.</li>
+            </ul>
+            <p><strong>Milestone:</strong> Product live + 3 posts + first analytics read. This is a great week if you did all of it.</p>
+          </div>
+        </div>
+        <div class="accordion">
+          <button class="accordion-btn"><span>Week 2 (Days 8–14): Consistency &amp; Iteration</span><span class="arrow">▾</span></button>
+          <div class="accordion-body">
+            <p><strong>Goal:</strong> 1 post/day, 30–45 min/day total.</p>
+            <ul>
+              <li>Post daily. If a post beats your average views, make 2 more in that exact style.</li>
+              <li>Test hooks: problem-hook, curiosity-hook, result-hook. Keep what works.</li>
+              <li>Update your product page with the language from your best-performing content.</li>
+            </ul>
+            <p><strong>Milestone:</strong> A clear "winning angle" identified from your data.</p>
+          </div>
+        </div>
+        <div class="accordion">
+          <button class="accordion-btn"><span>Week 3 (Days 15–21): Double Down &amp; Optional Ads-free Traffic</span><span class="arrow">▾</span></button>
+          <div class="accordion-body">
+            <p><strong>Goal:</strong> Push 2–3× volume on your winning angle.</p>
+            <ul>
+              <li>Create 2–3 posts/day in the winning style. Batch heavily using the Prompt Vault.</li>
+              <li>Cross-post to Reels + YouTube Shorts to widen your funnel for free.</li>
+              <li>Add a clear CTA in every post: "link in bio" to your Gumroad.</li>
+            </ul>
+            <p><strong>Milestone:</strong> A post breaks through (10k+ views) — this is your launch signal.</p>
+          </div>
+        </div>
+        <div class="accordion">
+          <button class="accordion-btn"><span>Week 4 (Days 22–28): First Sale &amp; Scale Base</span><span class="arrow">▾</span></button>
+          <div class="accordion-body">
+            <p><strong>Goal:</strong> First sale (usually lands days 19–24) + begin the Scale chapter.</p>
+            <ul>
+              <li>When the first sale lands, screenshot it, celebrate for 5 minutes, then double the winning format.</li>
+              <li>Collect the buyer's email (Gumroad does this) — you'll need it for the Email/SMS playbook.</li>
+              <li>Open the Scale chapter and start building repeatable systems.</li>
+            </ul>
+            <p><strong>Milestone:</strong> $0 → first sale. This is the hardest dollar you'll ever make.</p>
+          </div>
+        </div>
+
         <h3>Track B: First Client in 7–11 Days</h3>
         <table class="tbl">
           <tr><th>Day</th><th>Action</th><th>Time</th></tr>
@@ -410,9 +1022,59 @@ table.tbl td.day { font-family: 'DM Mono', monospace; font-size: 13px; color: va
           <tr><td class="day">8–11</td><td><strong>First client secured.</strong> Deliver using the fulfillment playbook.</td><td>—</td></tr>
         </table>
 
+        <h3>Track B — Weekly Breakdown</h3>
+        <div class="accordion">
+          <button class="accordion-btn"><span>Week 1 (Days 1–7): Offer → Outreach → Replies</span><span class="arrow">▾</span></button>
+          <div class="accordion-body">
+            <p><strong>Goal:</strong> 50 messages sent, replies handled, calls booked.</p>
+            <ul>
+              <li><strong>Days 1–2:</strong> Nail your offer + build your prospect list. Quality list = higher reply rate.</li>
+              <li><strong>Days 3–5:</strong> 50 outreach messages + follow-ups. Volume is non-negotiable.</li>
+              <li><strong>Days 6–7:</strong> Reply to everyone who responds, send a portfolio/sample, book calls.</li>
+            </ul>
+            <p><strong>Milestone:</strong> At least 3–5 conversations active. If you're at zero replies, your offer or targeting needs work — see Playbook A.</p>
+          </div>
+        </div>
+        <div class="accordion">
+          <button class="accordion-btn"><span>Week 2 (Days 8–14): Close &amp; First Delivery</span><span class="arrow">▾</span></button>
+          <div class="accordion-body">
+            <p><strong>Goal:</strong> First client signed + first deliverable shipped.</p>
+            <ul>
+              <li>Close the deal with the closing script in Playbook A.</li>
+              <li>Deliver fast — under-promise, over-deliver on the first project.</li>
+              <li>Ask for a testimonial the moment they're happy (Wall of Proof material).</li>
+            </ul>
+            <p><strong>Milestone:</strong> First dollar in your account + a happy client + a testimonial.</p>
+          </div>
+        </div>
+
+        <h3>Real Template — Your First Outreach Message</h3>
+        <p>Personalize the brackets. This is the exact pattern that gets replies (from the Prompt Vault, Client Outreach category).</p>
+        <div class="prompt">
+          <span class="p-tag">Client Outreach</span>
+          <div class="p-title">Cold DM — the reply-getter</div>
+          <code>Hey [name], saw your [business type] in [city] — love what you're doing with [specific thing you noticed]. I help [business type] like yours [specific result] using AI, and I've done it without raising their workload. If I could show you how [business name] could [specific result] this month, would you be open to a 10-minute call?</code>
+          <div class="p-footer"><span>Personalize every bracket. Send 50. Track replies.</span></div>
+        </div>
+
         <div class="callout">
           <div class="co-title">📊 The data</div>
-          <p>Track A students average 19–24 days to first sale. Track B students average 7–11 days to first client. Based on students who followed the playbook exactly.</p>
+          <p>Track A students average 19–24 days to first sale. Track B students average 7–11 days to first client. Based on students who followed the playbook exactly. The ones who quit by day 9 skew the "average" — the ones who finish don't.</p>
+        </div>
+
+        <h3>Your $500 Target Breakdown</h3>
+        <p>The first $500 isn't one big sale — it's a few small ones. Here's how the numbers break down on each track:</p>
+        <div class="grid-2">
+          <div class="card">
+            <span class="tag">Track A math</span>
+            <h4>Products</h4>
+            <p>5 × $50 products <strong>or</strong> 2 × $100 products <strong>or</strong> 1 × $150 + 7 × $50. Price lower early for social proof, raise later. Focus on total units, not one big sale.</p>
+          </div>
+          <div class="card">
+            <span class="tag">Track B math</span>
+            <h4>Clients</h4>
+            <p>1 × $500 project <strong>or</strong> 2 × $250 retainers <strong>or</strong> 5 × $100 one-offs. One good client can hit your whole $500 goal. Two makes it certain.</p>
+          </div>
         </div>
       </div>
 
@@ -420,6 +1082,18 @@ table.tbl td.day { font-family: 'DM Mono', monospace; font-size: 13px; color: va
         <div class="ch-label"><span>04</span></div>
         <h2>Execution Playbooks</h2>
         <p>These aren't general guides. Each playbook targets one specific obstacle with templates, scripts, and timelines that have been stress-tested by real students. Pull out whichever one matches your current bottleneck.</p>
+
+        <div class="objectives">
+          <h4>Learning Objectives — After this chapter you will be able to…</h4>
+          <ul>
+            <li>Run Playbook A end-to-end: prospect → outreach → close → deliver</li>
+            <li>Run Playbook B: blank page → live digital product storefront</li>
+            <li>Run Playbook C: build a faceless content funnel that converts</li>
+            <li>Apply Playbook D's lever sequence to scale past $500/mo</li>
+          </ul>
+        </div>
+
+        <label class="progress-check"><input type="checkbox" data-module="playbooks-obj"> Mark Playbooks complete</label>
 
         <div class="grid-2">
           <div class="card">
@@ -451,47 +1125,377 @@ table.tbl td.day { font-family: 'DM Mono', monospace; font-size: 13px; color: va
           <div class="step"><div class="step-num">2</div><div><h4>Layer in C once you have traction</h4><p>Playbook C (content funnel) amplifies whatever you're already doing. Use it to drive organic traffic without ads.</p></div></div>
           <div class="step"><div class="step-num">3</div><div><h4>Apply D when you hit $500/month</h4><p>Playbook D is a ceiling-buster. Don't open it until you have proof of concept. Premature scaling is the #1 reason students stall.</p></div></div>
         </div>
-      </div>
 
-      <div class="chapter" id="prompts">
-        <div class="ch-label"><span>05</span></div>
-        <h2>The Prompt Vault — 50 Ready-to-Use AI Prompts</h2>
-        <p>Copy. Paste. Produce. 50 prompts for client outreach, content creation, service delivery, and product building. Students consistently call this the most-used single asset in the entire blueprint.</p>
+        <h3>Playbook A — Land Your First Service Client in 7 Days</h3>
+        <p><strong>Who it's for:</strong> Track B students. <strong>Goal:</strong> first paid client in one week.</p>
 
-        <h3>Sample Prompts</h3>
+        <h4>Step 1 — Pick your service (Day 1)</h4>
+        <p>Pick ONE service you can deliver with AI in hours. The three fastest to land:</p>
+        <ul>
+          <li><strong>Content calendars &amp; social management:</strong> businesses constantly need content, rarely have time</li>
+          <li><strong>Copywriting (websites, emails, ads):</strong> high demand, delivers fast, easy to prove value</li>
+          <li><strong>Simple automation (AI chatbots, workflows):</strong> "modern update" pitch, high perceived value</li>
+        </ul>
 
+        <h4>Step 2 — Find prospects who are already looking (Day 2)</h4>
+        <p>Don't cold-pitch random businesses. Target ones <em>signaling</em> they need help:</p>
+        <ul>
+          <li><strong>Instagram/Facebook:</strong> businesses whose last post is >2 weeks old</li>
+          <li><strong>Local Google Maps:</strong> service businesses with 3-star reviews or no website</li>
+          <li><strong>Facebook Groups:</strong> people literally asking "anyone good with content creation?"</li>
+          <li><strong>LinkedIn:</strong> business owners posting "I'm too busy to post" energy</li>
+        </ul>
+
+        <h4>Step 3 — Send 50 personalized DMs (Days 3–5)</h4>
+        <p>Use the outreach prompt in the Prompt Vault. Send 25 on day 3, 25 on day 4. Personalize the first line — it's the whole ballgame.</p>
         <div class="prompt">
           <span class="p-tag">Client Outreach</span>
-          <code>Write a cold DM to a [gym owner] in [city] offering a service that [specific result]. The tone should be direct and helpful, not salesy. Mention that I've helped similar businesses in [industry] achieve [result]. Keep it under 120 words.</code>
-          <p style="font-size:13px;color:var(--muted);">Replace brackets with your details. Send 50 versions with 5-minute gaps between each.</p>
+          <div class="p-title">Follow-up sequence (send if no reply in 48h)</div>
+          <code>Message 1 (Day 0): Hey [name], saw [business type] in [city] — love what you're doing. I help same-type businesses [result] with AI. Open to a 10-min call this week?
+Message 2 (Day 3): Hey [name], circling back — I put together a quick idea for [business name] around [result]. Want me to send it over?
+Message 3 (Day 6): Last one [name] — no pressure. If [result] ever becomes a priority, I'm the person for it. Keeping you top-of-mind.</code>
+          <div class="p-footer"><span>3 touches max. 72h apart. Then move on.</span></div>
         </div>
 
+        <h4>Step 4 — The closing script (Days 6–7)</h4>
         <div class="prompt">
-          <span class="p-tag">Product Content</span>
-          <code>Write a 30-second TikTok script promoting a digital product called [product name] that helps [audience] achieve [result]. Hook: open with a relatable pain point. Format: problem → solution → CTA. Tone: conversational, fast-paced. End with a call to action to visit Gumroad.</code>
+          <span class="p-tag">Client Outreach</span>
+          <div class="p-title">Closing call — keep it a "yes" or a "no, not now"</div>
+          <code>Here's what I'd do in the first [timeframe]: [1-2-3 concrete deliverables]. Price: $[price]. I can start [day]. Fair? If not, what would make it a yes?</code>
+          <div class="p-footer"><span>Ask yes/no directly. Don't chase "maybe."</span></div>
         </div>
 
-        <div class="prompt">
-          <span class="p-tag">Service Delivery</span>
-          <code>Create a 7-day content calendar for a [business type] in [city]. Each day should include: a topic, a hook, a CTA, and the AI tool combination used to produce it. Focus on content that drives phone calls and quote requests.</code>
+        <h4>Playbook A — master checklist</h4>
+        <div class="accordion">
+          <button class="accordion-btn"><span>Playbook A checklist — tick as you go</span><span class="arrow">▾</span></button>
+          <div class="accordion-body">
+            <ul>
+              <li>☐ One service chosen (not three)</li>
+              <li>☐ 25 prospects found who signal needing help</li>
+              <li>☐ 50 personalized DMs written (Prompts 01–03)</li>
+              <li>☐ 50 sent + follow-ups scheduled</li>
+              <li>☐ Every reply answered within 24h</li>
+              <li>☐ Portfolio/sample ready to send</li>
+              <li>☐ Calls booked + closing script rehearsed</li>
+              <li>☐ First client signed + testimonial requested</li>
+            </ul>
+          </div>
         </div>
+
+        <h3>Playbook B — Launch Your Digital Product in 5 Days</h3>
+        <p><strong>Who it's for:</strong> Track A students. <strong>Goal:</strong> live + selling in 5 days.</p>
+
+        <h4>Day 1 — Validate the idea</h4>
+        <p>Don't build what nobody wants. Use the Product Validation prompt (Prompt Vault → Product Development). A good product idea answers one of: "I want to achieve X" or "I want to avoid Y." Not "I want a PDF about Z."</p>
+
+        <h4>Day 2 — Build the thing</h4>
+        <p>Use the Product Builder prompt. Focus on a <strong>5–10 page</strong> deliverable that's genuinely useful. A tight, actionable 10-pager beats a bloated 80-pager every time.</p>
+
+        <h4>Day 3 — Set up Gumroad + write the page</h4>
+        <p>Use the Landing Page prompts in the vault. Your product page needs: a hook headline, 3 benefit bullets, a "what's inside" list, a price, and a guarantee.</p>
+
+        <h4>Day 4 — Create 3 promo content pieces</h4>
+        <p>Use the faceless content playbook (C) + the TikTok script prompts. Make 3 videos promoting the product's #1 transformation.</p>
+
+        <h4>Day 5 — Schedule &amp; launch</h4>
+        <p>Post your first content piece, engage with every comment, and set up email capture via Gumroad. You're live. Now the roadmap (chapter 3) takes over.</p>
+
+        <h3>Playbook C — Build Your Faceless Content Funnel</h3>
+        <p><strong>Who it's for:</strong> Track A (and Track B amplification). <strong>Goal:</strong> content that converts viewers into buyers, no face, no ads, no audience.</p>
+
+        <h4>The Faceless Formula</h4>
+        <p>Every converting piece follows the same 4-beat structure:</p>
+        <div class="steps">
+          <div class="step"><div class="step-num">1</div><div><h4>Hook (0–3s)</h4><p>Open on a pain point or a shocking result. "Nobody told me [audience] about [problem]." Stop the scroll.</p></div></div>
+          <div class="step"><div class="step-num">2</div><div><h4>Problem (3–10s)</h4><p>Agitate the pain. Name the frustration your audience feels daily. Make them nod.</p></div></div>
+          <div class="step"><div class="step-num">3</div><div><h4>Solution (10–20s)</h4><p>Introduce your product as the fix. Show the transformation, not the features.</p></div></div>
+          <div class="step"><div class="step-num">4</div><div><h4>CTA (20–30s)</h4><p>"Link in bio." One clear action. No options, no confusion.</p></div></div>
+        </div>
+
+        <h4>Faceless formats that convert</h4>
+        <ul>
+          <li><strong>Screen + voiceover:</strong> you record a voiceover, show slides/screencaps. Highest conversion, simplest.</li>
+          <li><strong>Text-on-screen + b-roll:</strong> throw text over stock footage. Fastest to produce.</li>
+          <li><strong>Storytime / "How I...":</strong> a narrative arc, still faceless.</li>
+        </ul>
+
+        <h4>Playbook C — the pipeline</h4>
+        <div class="accordion">
+          <button class="accordion-btn"><span>Playbook C checklist — tick as you go</span><span class="arrow">▾</span></button>
+          <div class="accordion-body">
+            <ul>
+              <li>☐ Product has a clear #1 transformation (not "features")</li>
+              <li>☐ 1 winning hook style identified from research</li>
+              <li>☐ 3 pieces created using the Faceless Formula</li>
+              <li>☐ Every piece ends with a single CTA to Gumroad</li>
+              <li>☐ 1 post/day cadence locked in</li>
+              <li>☐ Cross-posted to Reels + Shorts</li>
+              <li>☐ Analytics checked daily; winning angle doubled</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Playbook D — Scale from $500 to $2,000/Month</h3>
+        <p><strong>Who it's for:</strong> students past their first $500/mo. <strong>Goal:</strong> $2K/mo without doubling your hours.</p>
+
+        <h4>The Lever Sequence (in this exact order)</h4>
+        <div class="steps">
+          <div class="step"><div class="step-num">1</div><div><h4>Volume first</h4><p>Double outreach (Track B) or content output (Track A). Most students under-leverage this — get 1 client and stop prospecting. The fastest path to $2K is 1 client → 2 clients.</p></div></div>
+          <div class="step"><div class="step-num">2</div><div><h4>Then raise prices</h4><p>With 3+ case studies, increase package prices 30–50%. Your first clients got a deal. Your next clients pay full price.</p></div></div>
+          <div class="step"><div class="step-num">3</div><div><h4>Then stack a second stream</h4><p>Add a complementary income stream. Track A + service offer, or Track B + product. Two streams = stability + faster growth.</p></div></div>
+          <div class="step"><div class="step-num">4</div><div><h4>Then systemize</h4><p>Template your delivery, batch your outreach, pre-write your content. The systems free your time to scale volume again.</p></div></div>
+        </div>
+
+        <h4>The price-increase script</h4>
+        <div class="prompt">
+          <span class="p-tag">Scaling</span>
+          <div class="p-title">Raise prices for existing/new clients, gracefully</div>
+          <code>Given the results we've delivered, I'm adjusting my rates to $[new price] starting [date]. Existing clients stay at $[old price] for the next [timeframe]. I'm also adding [new value] to every package. Want me to lock you in at the current rate before the increase?</code>
+          <div class="p-footer"><span>Grandfather existing clients — it keeps them happy and earns referrals.</span></div>
+        </div>
+
+        <h3>Playbook D — month-by-month scaling target</h3>
+        <table class="tbl">
+          <tr><th>Month</th><th>Income Target</th><th>Primary Action</th></tr>
+          <tr><td class="day">Month 1</td><td>$0–$500</td><td>Pick a track, execute the first playbook, land your first sale or client</td></tr>
+          <tr><td class="day">Month 2</td><td>$500–$1,100</td><td>Increase volume, refine offer, build 2–3 case studies</td></tr>
+          <tr><td class="day">Month 3</td><td>$1,100–$2,000</td><td>Raise prices, add second income stream, systemize delivery</td></tr>
+        </table>
 
         <div class="callout">
-          <div class="co-title">🔒 Full vault</div>
-          <p>All 50 prompts are included with the Blueprint purchase. Categories: Client Outreach (12), Content Creation (14), Product Development (8), Service Delivery (10), and Scaling & Systems (6).</p>
+          <div class="co-title">📈 The $2K pattern</div>
+          <p>Every student who hit $2K/month followed the same pattern: they picked ONE track, executed ONE playbook completely, and only added the second stream AFTER reaching $500 consistently for 3 weeks. Don't skip the sequence.</p>
         </div>
       </div>
+      <div class="chapter" id="prompts">
+        <div class="ch-label"><span>05</span></div>
+        <h2>The Prompt Vault — 300+ Ready-to-Use AI Prompts</h2>
+        <p>Copy. Paste. Produce. This is the most-used single asset in the entire Blueprint. Filter by category, search by keyword, and hit <strong>Copy</strong> on any prompt to drop it straight into your clipboard. Every prompt is a real, production-ready template — replace the <strong>[brackets]</strong> with your details and go.</p>
 
+        <div class="objectives">
+          <h4>Learning Objectives — After this chapter you will be able to…</h4>
+          <ul>
+            <li>Find the right prompt for any task in under 10 seconds</li>
+            <li>Use outreach, content, product, service, and scaling prompts correctly</li>
+            <li>Customize templates with your niche, audience, and offer</li>
+            <li>Build your own prompt library from proven starting points</li>
+          </ul>
+        </div>
+
+        <label class="progress-check"><input type="checkbox" data-module="prompts-obj"> Mark Prompt Vault complete</label>
+
+        <div class="prompt-vault-controls">
+          <input type="text" class="prompt-search" id="promptSearch" placeholder="Search prompts… e.g. TikTok, follow up, pricing">
+          <span class="prompt-count-label" id="promptCount"></span>
+        </div>
+
+        <div class="prompt-tabs" id="promptTabs"></div>
+        <div id="promptCategories"></div>
+
+        <div class="callout">
+          <div class="co-title">🔧 How to use each prompt</div>
+          <p>① Click <strong>Copy</strong>. ② Paste into ChatGPT or Claude. ③ Replace every <strong>[bracket]</strong> with your real details. ④ Run it, then refine the output with follow-up instructions ("make it shorter", "more urgent tone"). The brackets are the only part that needs your input.</p>
+        </div>
+      </div>
+<script>
+const PROMPT_DATA = [
+  {cat:"outreach", title:"Cold DM \u2014 the reply-getter", t:"Hey [name], saw your [business type] in [city] \u2014 love what you're doing with [specific thing you noticed]. I help [business type] like yours [specific result] using AI, and I've done it without raising their workload. If I could show you how [business name] could [specific result] this month, would you be open to a 10-minute call?", hint:"Send 50. Personalize the first line. 5-minute gaps between sends."},
+  {cat:"outreach", title:"Cold DM \u2014 value-first alternative", t:"Hey [name]! I noticed [business name] posts mostly about [topic]. I made a quick [specific deliverable] for a business like yours around [result] \u2014 want me to send it over? No strings, just showing what's possible.", hint:"Give value before asking. The deliverable is your foot in the door."},
+  {cat:"outreach", title:"Follow-up sequence (3 touches)", t:"Message 1 (Day 0): Hey [name], saw [business type] in [city] \u2014 love what you're doing. I help same-type businesses [result] with AI. Open to a 10-min call this week?\nMessage 2 (Day 3): Hey [name], circling back \u2014 I put together a quick idea for [business name] around [result]. Want me to send it over?\nMessage 3 (Day 6): Last one [name] \u2014 no pressure. If [result] ever becomes a priority, I'm the person for it. Keeping you top-of-mind.", hint:"3 touches max, 72h apart, then move on."},
+  {cat:"outreach", title:"Referral ask (happy client)", t:"Hey [name] \u2014 really glad [result] worked out for you! Quick ask: do you know 2-3 other [business type] owners who'd love the same result? Happy to give you [incentive] for every referral who books.", hint:"Referrals are the highest-converting channel. Ask every happy client."},
+  {cat:"outreach", title:"Value proposition one-liner", t:"Write a one-sentence value proposition for my service. Business type: [business type]. Audience: [audience]. Result: [specific result]. Differentiator: [what makes me different]. Tone: [tone]. Output: one sentence I can use in every DM.", hint:"Use this to nail your pitch before targeting."},
+  {cat:"outreach", title:"Prospect list builder", t:"I run a [service type] business. List 20 specific types of businesses in [city/niche] that would most benefit from [specific result], and for each, note the pain point that makes them a good fit and the best first-line hook to open a DM.", hint:"Feed this into your outreach. Quality targeting = higher replies."},
+  {cat:"outreach", title:"Objection handler", t:"I'm pitching [service] to [business type]. They commonly object with: [objection]. Write 3 responses that reframe the objection into a reason to move forward. Keep each under 60 words, confident and helpful, not pushy.", hint:"Have responses ready before the call so you never sound stuck."},
+  {cat:"outreach", title:"Closing script", t:"Here's what I'd do in the first [timeframe]: [1-2-3 concrete deliverables]. Price: $[price]. I can start [day]. Fair? If not, what would make it a yes?", hint:"Ask yes/no directly. Don't chase maybe."},
+  {cat:"outreach", title:"Discovery call agenda", t:"Write a 10-minute discovery call agenda for a [service] client. Include: intro, their goals, their current struggle, my 1-2 value bullets, proposed next step, and a clear 'yes/no' close. Keep it skimmable as bullet points.", hint:"Structure removes call anxiety. You're running the show, not winging it."},
+  {cat:"outreach", title:"Testimonial request", t:"Hey [name] \u2014 so glad [result] worked out! If you have 2 minutes, could you share 2-3 sentences on what it was like working together and the result you got? I'd love to feature it (with your permission).", hint:"Get testimonials while the win is fresh."},
+  {cat:"outreach", title:"LinkedIn connection + pitch", t:"Write a LinkedIn connection request note (under 300 chars) and a short follow-up DM for a [business type] owner. Hook: [their pain point]. Offer: [your service + result]. Tone: professional but warm.", hint:"LinkedIn is ideal for B2B services."},
+  {cat:"outreach", title:"Price justification", t:"Write a short message justifying a $[price] price for [service] to a skeptical [business type] client. Frame it as ROI: show the cost of the problem they have vs. the price of solving it. Under 100 words.", hint:"Sell the cost of the problem, not the price of the service."},
+  {cat:"content", title:"Content calendar (7 days)", t:"Create a 7-day content calendar for a [business type] in [city]. Each day include: a topic, a hook, a CTA, and the AI tool combination used to produce it. Focus on content that drives [desired action: phone calls, sales, signups].", hint:"Batch a week at a time. Consistency beats bursts."},
+  {cat:"content", title:"Hook bank (20 hooks)", t:"Write 20 scroll-stopping hooks for [audience] about [topic]. Mix of: curiosity, problem, result, and shock hooks. Each under 15 words. No clickbait that doesn't deliver.", hint:"Hooks are 80% of performance. Test several."},
+  {cat:"content", title:"Caption generator", t:"Write 5 social media captions for a post about [topic] for [audience]. Each caption: a strong opener, 2-3 value lines, and a CTA to [desired action]. Tone: [tone]. Length: under 150 words each.", hint:"Rotate captions to find your voice."},
+  {cat:"content", title:"Repurpose a long post into 5 shorts", t:"Take this longer content and turn it into: 1 LinkedIn post, 1 Twitter/X thread opener, 1 Instagram caption, 1 TikTok script, and 1 email teaser. Source: [paste your content]. All tone: [tone].", hint:"One idea to five pieces. Max ROI on your effort."},
+  {cat:"content", title:"Educational carousel script", t:"Write a 10-slide Instagram carousel on [topic] for [audience]. Slide 1 is a hook, slides 2-9 teach, slide 10 is a CTA to [desired action]. For each slide write the headline and 2 supporting lines.", hint:"Carousels get saved = more reach."},
+  {cat:"content", title:"Story-driven post", t:"Write a story-driven social post for [audience] about [topic] using this arc: relatable struggle to turning point to lesson to CTA. Make it feel personal and specific, not generic.", hint:"Specific stories beat generic advice every time."},
+  {cat:"content", title:"Content repurposing pipeline", t:"I have [list of content]. Create a 14-day repurposing plan that turns each piece into 2-3 new formats (shorts, carousels, threads, emails) for [platform]. Prioritize pieces already performing well.", hint:"Multiply every asset you make."},
+  {cat:"content", title:"FAQ content pack", t:"List the 10 most common questions [audience] has about [topic]. For each, write a short-form content piece (caption or video script) that answers it while softly promoting my [product/service].", hint:"Answer real questions = authority + relevance."},
+  {cat:"content", title:"Trending topic adaptation", t:"Here's a trending topic: [describe trend]. Write 3 content angles about it that relate to [your product/audience]. Each angle: a hook and a 3-sentence body. Tone: [tone].", hint:"Ride trends while staying on-message."},
+  {cat:"content", title:"Authority building series", t:"Create a 5-post series for [audience] on [topic] that builds authority. Post 1: the big misconception. Post 2: the framework. Post 3: a case study. Post 4: common mistakes. Post 5: the CTA. Write hooks + key points for each.", hint:"A series keeps people following."},
+  {cat:"content", title:"Comment engagement replies", t:"Write 10 authentic reply templates for comments I commonly get: [list comments]. Each reply adds value, feels human, and naturally invites a follow through to [desired action]. No forced sales.", hint:"Engagement compounds reach."},
+  {cat:"content", title:"Roundup/collab post", t:"Write a post where I round up 5 useful [resource/tool/creator] links for [audience] on [topic]. Include a hook, the list with one-line value each, and a CTA to follow me for [topic].", hint:"Curated value = shareable + authoritative."},
+  {cat:"content", title:"Behind-the-scenes post", t:"Write a BTS-style post about [my process/business] for [audience]. Make it: authentic, specific, and subtly build trust in my [product/service]. End with a soft CTA.", hint:"People buy from people they trust."},
+  {cat:"content", title:"Hashtag & keyword strategy", t:"For [topic] on [platform], give me: 5 primary hashtags, 5 secondary hashtags, 3 niche tags, and 3 keywords to use in captions. Explain why each is chosen for [audience].", hint:"Tagging strategy quietly boosts reach."},
+  {cat:"product", title:"Product validation", t:"I want to create a digital product for [audience] to help them [result]. Before I build, help me validate: (1) is this a real pain? (2) who else solves it & how? (3) what's my differentiation? (4) would [audience] pay $[price]? Give a clear GO / PIVOT / NO verdict.", hint:"Validate before building. It saves weeks."},
+  {cat:"product", title:"Product builder (full outline)", t:"Act as a product strategist. Build a complete outline for a digital product titled [title] for [audience]. Include: front matter, 5-8 modules with 3-5 lessons each, one worked exercise per module, and a final action plan. Keep it actionable, no fluff.", hint:"A tight, actionable 10-pager beats a bloated 80-pager."},
+  {cat:"product", title:"Product transformation statement", t:"Write a one-paragraph 'transformation statement' for my product [title]: who it's for, the pain they feel now, and the specific result they get after. Use this everywhere (page, content, emails).", hint:"Your product sells a transformation, not features."},
+  {cat:"product", title:"Pricing strategy", t:"My product is [describe]. I want to price it for [audience]. Give me 3 pricing options (low/mid/premium) with the logic for each, plus a recommended launch price and an 'early bird' strategy.", hint:"Price on value delivered, not effort spent."},
+  {cat:"product", title:"Product page copy", t:"Write the full sales-page copy for my digital product [title] that helps [audience] achieve [result]. Structure: hook headline, subheadline, problem section, solution, what's inside (5 bullets), price + guarantee, FAQ, CTA. Tone: [tone].", hint:"Use this with the Landing Page prompts too."},
+  {cat:"product", title:"Bonus & upsell idea generator", t:"For my product [title] for [audience], suggest: 3 logical bonuses that increase perceived value, 1 upsell, 1 downsell, and 1 order-bump. Each with a one-line reason why it fits.", hint:"Bonuses tip undecided buyers over the edge."},
+  {cat:"product", title:"Product naming", t:"Brainstorm 10 names for a digital product that helps [audience] [result]. Each name: catchy, benefit-driven, and not taken in my niche. Mark my favorite 3 and explain why they work.", hint:"A strong name sells before the page does."},
+  {cat:"product", title:"Launch email sequence", t:"Write a 5-email launch sequence for my product [title] for [audience]. Email 1: tease the problem. 2: introduce the solution. 3: social proof. 4: urgency + bonus. 5: final CTA + guarantee. Each with subject line + body.", hint:"Drive your launch with email, not just posts."},
+  {cat:"service", title:"Client onboarding summary", t:"Create a service onboarding summary for a new [type] client: their goals, current situation, my deliverables, timeline, and success metrics. Keep it skimmable and professional.", hint:"Crystal-clear scope = fewer headaches later."},
+  {cat:"service", title:"Service audit report", t:"Write a client audit report for a [business type]. Analyze: [their current state]. Deliver: 3 biggest opportunities, 2 quick wins for this week, and a 30-day recommendation. Tone: constructive, expert.", hint:"Audits prove expertise and set up upsells."},
+  {cat:"service", title:"Deliverable template pack", t:"Create a reusable delivery template for [service] (e.g. content calendar, copy, automation). Include: a cover/intro, the main deliverable structure, and a summary of what the client should do next.", hint:"Template your delivery so every client is consistent."},
+  {cat:"service", title:"Weekly check-in report", t:"Write a weekly client check-in report template for [service]. Include: what was done, results/numbers, what's next, and 1 question for the client. Keep it under 150 words.", hint:"Regular reporting builds trust and retention."},
+  {cat:"service", title:"Service scope expansion pitch", t:"Write a message proposing an expanded retainer to a current client. Start from the results we've already delivered, then propose [new service] for $[price]/mo that continues [result].", hint:"Happy clients are your easiest upsell."},
+  {cat:"service", title:"Onboarding questionnaire", t:"Create a 10-question onboarding questionnaire for a [service] client. Questions should cover: their goals, audience, current efforts, brand voice, and success metrics.", hint:"Good intake = better delivery + less back-and-forth."},
+  {cat:"service", title:"Case study template", t:"Write a client case study template: background, the problem, what we did, the results (numbers), and the client's quote. Fill in: [client details]. Keep it 200 words and publication-ready.", hint:"Case studies are your #1 proof asset."},
+  {cat:"service", title:"Service guarantee", t:"Write a simple, credible guarantee for my [service] that builds trust without over-promising. E.g. 'If you don't get [result] in [timeframe], I'll [remedy].' Keep it to 2 sentences.", hint:"A guarantee removes the final objection."},
+  {cat:"service", title:"Recurring deliverable system", t:"Design a repeatable system for delivering [service] monthly. Include: a repeatable checklist, a batching schedule, templates, and a client communication cadence.", hint:"Systemize so you can serve 5 clients like 1."},
+  {cat:"service", title:"Client offboarding & referral", t:"Write a friendly offboarding message + referral request for a client whose project is ending. Thank them, summarize results, ask for a testimonial and referrals, and leave the door open to return.", hint:"End every project with goodwill + a referral ask."},
+  {cat:"ugc", title:"UGC \u2014 problem \u2192 solution", t:"Write a 30-second UGC video script for [product] that helps [audience] [result]. Format: hook (relatable pain) to show the product solving it to CTA. Tone: conversational, like a real person recommending to a friend.", hint:"UGC converts because it feels human, not ad-like."},
+  {cat:"ugc", title:"UGC \u2014 before/after", t:"Write a 25-second UGC script showing a before/after transformation with [product] for [audience]. Start with the 'before' struggle, show the 'after' result, end with a CTA to [buy/link].", hint:"Before/after is the highest-converting UGC format."},
+  {cat:"ugc", title:"UGC \u2014 unboxing/review", t:"Write a 30-second UGC unboxing + honest review script for [product]. Include: opening reaction, 2-3 specific things you love, 1 honest caveat, and a CTA. Tone: excited but believable.", hint:"Honesty (including a minor caveat) boosts trust."},
+  {cat:"ugc", title:"UGC hook pack (10 hooks)", t:"Write 10 UGC openers (first 3 seconds) for [product] for [audience]. Mix reaction hooks, pain hooks, and curiosity hooks. Each under 10 words.", hint:"That first 3 seconds decides everything."},
+  {cat:"ugc", title:"UGC \u2014 tutorial", t:"Write a 40-second UGC tutorial for [product]. Show: the problem, a quick 3-step how-to using the product, the result, and a CTA. Keep steps simple and visual.", hint:"Tutorials build credibility and save the video."},
+  {cat:"ugc", title:"UGC \u2014 myth busting", t:"Write a 30-second UGC script for [product] that busts a common myth about [topic]. Open with the myth, drop a surprising truth, connect it to [product], and CTA.", hint:"Myth-busting is engaging and positions you as the expert."},
+  {cat:"ugc", title:"UGC \u2014 'why I use'", t:"Write a 25-second UGC script where a creator explains why they use [product] for [audience]. Personal story to 3 specific benefits to CTA. Tone: warm, first-person, authentic.", hint:"Social proof through personal testimony."},
+  {cat:"ugc", title:"UGC CTA variations", t:"Write 10 different CTAs for a UGC video promoting [product] to [audience]. Vary by: direct ('link in bio'), soft ('save this for later'), urgency ('only this week'), and community ('comment [word]').", hint:"Rotate CTAs to find your best converter."},
+  {cat:"ugc", title:"UGC \u2014 comparison", t:"Write a 30-second UGC script comparing [product] vs [competitor/alternative] for [audience]. Stay fair, focus on the 3 key differences that matter, and CTA to [product].", hint:"Fair comparisons build trust and clarify value."},
+  {cat:"ugc", title:"UGC \u2014 FAQ", t:"Write a 30-second UGC script answering the most common question [audience] has about [product]: [question]. Clear answer to quick product connection to CTA.", hint:"Answer real questions = relevance + authority."},
+  {cat:"ugc", title:"UGC \u2014 lifestyle", t:"Write a 25-second lifestyle UGC script showing [product] fitting into [audience]'s everyday routine. Show, don't tell, the benefit. End with a subtle CTA.", hint:"Lifestyle = showing the desired outcome, not the feature."},
+  {cat:"ugc", title:"UGC \u2014 transformation testimonial", t:"Write a 30-second UGC script where a customer shares their real transformation with [product]: where they started, what they tried before, how [product] changed it, and their result + CTA.", hint:"Real-customer-style scripts feel earned, not paid."},
+  {cat:"tiktok", title:"TikTok \u2014 product promo (30s)", t:"Write a 30-second TikTok script promoting a digital product called [product name] that helps [audience] achieve [result]. Hook: open with a relatable pain point. Format: problem to solution to CTA. Tone: conversational, fast-paced.", hint:"Fast-paced, one idea, one CTA."},
+  {cat:"tiktok", title:"Reels \u2014 educational", t:"Write a 30-second Reels script teaching [audience] one valuable tip about [topic]. Hook to the tip (step by step) to a 'follow for more' CTA. Keep it simple enough to follow on screen.", hint:"Education builds authority + follows."},
+  {cat:"tiktok", title:"TikTok \u2014 storytelling hook", t:"Write a 20-second TikTok script that opens with a hook story about [topic], builds curiosity, and ends by pointing to [product/link] as the answer.", hint:"Curiosity keeps them watching to the CTA."},
+  {cat:"tiktok", title:"Reels \u2014 'things I wish I knew'", t:"Write a Reels script titled 'Things I wish I knew about [topic]' for [audience]. List 3 mistakes/lessons, each punchy, then CTA to [desired action].", hint:"Listicle-formats are highly shareable."},
+  {cat:"tiktok", title:"TikTok \u2014 myth vs fact", t:"Write a 20-second TikTok script contrasting a common myth vs the fact about [topic], then connect the fact to [product/link]. Blunt, fast, single CTA.", hint:"Myth-vs-fact = quick + engaging."},
+  {cat:"tiktok", title:"Reels \u2014 day-in-the-life", t:"Write a 25-second Reels script showing a 'day in the life' using [product] for [audience]. Show the routine, the ease, the result, and a soft CTA.", hint:"Shows the outcome aspirational buyers want."},
+  {cat:"tiktok", title:"TikTok \u2014 3 mistakes", t:"Write a 20-second TikTok script: '3 mistakes [audience] make with [topic]' \u2014 list them fast, then say how to avoid them with [product/link].", hint:"Mistakes = relatability + tension."},
+  {cat:"tiktok", title:"Reels \u2014 trend + CTA", t:"Here's a trending sound/format: [describe trend]. Weave it into a 20-second Reels script that still ends promoting [product] for [audience]. Keep the trend intact, make the CTA natural.", hint:"Trends broaden reach; the CTA does the selling."},
+  {cat:"tiktok", title:"TikTok \u2014 before & after", t:"Write a 25-second TikTok script showing a before/after with [product]: the struggle, the action, the result, and a CTA to [link]. Visual, fast, satisfying.", hint:"Satisfying arcs get watched to the end."},
+  {cat:"tiktok", title:"Reels \u2014 'stop doing this'", t:"Write a 20-second Reels script: 'Stop doing [X] if you want [result]' for [audience]. Name the mistake, give the fix, tie to [product/link]. Blunt + helpful.", hint:"Contrarian hooks drive views and shares."},
+  {cat:"tiktok", title:"TikTok \u2014 quick FAQ", t:"Write a 20-second TikTok script answering a common question about [product/topic] for [audience]. Clear answer, quick proof, CTA to [desired action].", hint:"Answering questions wins trust + saves you DMs."},
+  {cat:"tiktok", title:"Reels \u2014 transformation promise", t:"Write a 25-second Reels script for [product] that promises [audience] [result] in [timeframe]. Structure: bold promise to proof to mechanism to CTA.", hint:"A bold, specific promise outperforms a safe one."},
+  {cat:"email", title:"Welcome email", t:"Write a welcome email for new subscribers to my [list product/newsletter on topic]. Warm, introduce what they'll get, set expectations, and include one quick win they can use today. Subject line included.", hint:"First email sets the tone for the whole relationship."},
+  {cat:"email", title:"Cold email outreach", t:"Write a cold email pitching [service] to [business type] for [result]. Subject line under 45 chars, body under 150 words, one clear CTA to book a call. Personalize the first line.", hint:"Cold email differs from DMs \u2014 be more professional."},
+  {cat:"email", title:"Follow-up email sequence", t:"Write a 3-email follow-up sequence for a prospect who hasn't replied to my [offer]. Email 1: value-add. Email 2: social proof. Email 3: final 'closing the loop' message. Each with subject + under 100 words.", hint:"Persistence is polite when it adds value."},
+  {cat:"email", title:"Sales email (product)", t:"Write a sales email promoting my digital product [title] to [audience]. Structure: relatable problem to solution to 3 benefits to price + guarantee to CTA. Subject line included.", hint:"One product, one clear ask, per email."},
+  {cat:"email", title:"Re-engagement email", t:"Write a re-engagement email for subscribers who haven't opened in [timeframe]. Acknowledge the silence, offer something valuable, and let them choose to stay or leave. Subject line: [subject].", hint:"Win back or clean your list \u2014 either is a win."},
+  {cat:"email", title:"Launch day email", t:"Write a high-energy launch-day email for [product] for [audience]. Urgency (limited window), bonus, social proof, and a clear CTA. Subject line + body under 200 words.", hint:"Launch emails convert when they're urgent but not hypey."},
+  {cat:"email", title:"Newsletter issue template", t:"Write a newsletter issue template for my [topic] list. Structure: a hook/opening, 1 main value section, 2-3 quick links/resources, and a CTA to [desired action]. Keep it skippable.", hint:"Skippable newsletters get opened again."},
+  {cat:"email", title:"Abandoned-cart / post-purchase email", t:"Write 2 emails: (1) an abandoned-cart email for anyone who added [product] but didn't buy \u2014 add a small incentive or reminder; (2) a post-purchase email welcoming them and offering a related product.", hint:"Timely follow-ups recover sales you'd otherwise lose."},
+  {cat:"email", title:"SMS promo", t:"Write a short SMS promo (under 160 chars) for [product/offer] to [audience]. Urgent, clear, and with a simple way to act (link or reply).", hint:"SMS is high-open \u2014 keep it short and yours isn't spammy."},
+  {cat:"email", title:"Testimonial-in-email", t:"Write an email that leads with a powerful customer testimonial about [result] to persuade [audience] to buy [product]. Include the testimonial, 2 supporting points, and a CTA.", hint:"Proof-led emails convert hesitant buyers."},
+  {cat:"copy", title:"Headline pack (10)", t:"Write 10 headlines for a page promoting [product/service] to [audience]. Mix benefit, curiosity, and problem-agitation styles. Each under 12 words.", hint:"Headlines are gatekeepers \u2014 test several."},
+  {cat:"copy", title:"Hero section copy", t:"Write the hero section copy for a landing page for [product/service]: headline, subheadline, and primary CTA button text. Clear on the #1 result for [audience].", hint:"Hero = first 3 seconds of the page."},
+  {cat:"copy", title:"Benefit-driven bullets", t:"Rewrite these feature bullets as benefit-driven bullets that sell the outcome for [audience]. Features: [list features]. For each: benefit + mini-proof.", hint:"Features describe; benefits sell."},
+  {cat:"copy", title:"Problem-agitation copy", t:"Write a short section that agitates the problem for [audience] about [topic] before presenting my [solution]. Make it vivid and relatable \u2014 they should feel 'seen'.", hint:"Great copy makes the reader feel understood."},
+  {cat:"copy", title:"Social-proof section", t:"Write a social-proof section for [product/service]: a hook line, 3 short testimonials (fill in [name/result]), and a results stat. Convincing, not braggy.", hint:"Proof sections catch the skeptical reader."},
+  {cat:"copy", title:"Guarantee copy", t:"Write a strong guarantee for [product] that reduces risk for [audience]. Keep it simple, specific, and confidence-inspiring.", hint:"Removing risk removes the last objection."},
+  {cat:"copy", title:"FAQ copy (10 Qs)", t:"Write 10 FAQ questions and answers for [product/service] for [audience]. Anticipate objections about price, time, results, and trust. Each answer under 60 words.", hint:"FAQ answers objections before they're asked."},
+  {cat:"copy", title:"CTA button variations", t:"Write 12 CTA button texts for [product/service] for [audience]. Vary by action, urgency, and outcome. E.g. outcome ('Get my plan'), urgency ('Claim the discount'), low-pressure ('See how it works').", hint:"CTA wording meaningfully moves conversion."},
+  {cat:"copy", title:"Brand voice guide", t:"Create a brand voice guide for my [product/service]: 3 tone words, do's and don'ts, and 2 example sentences in that voice. Use it to keep all copy consistent.", hint:"Consistent voice = instantly recognizable brand."},
+  {cat:"copy", title:"Direct response wrap-up", t:"Write the closing section of a sales page for [product]: recap the transformation, stack the value, state the price + bonus, and end with a confident CTA.", hint:"The close is where the sale happens."},
+  {cat:"landing", title:"Landing page structure", t:"Outline a high-converting landing page for [product/service] for [audience]. Sections: hero, problem, solution, how it works, proof, pricing, FAQ, final CTA. For each section, note the key copy point.", hint:"Structure before polish \u2014 get the flow right."},
+  {cat:"landing", title:"Landing page \u2014 product page", t:"Write the full copy for a landing page selling [product] to [audience] for $[price]. Include: hero, transformation, what's inside, proof, price + guarantee, FAQ, CTA.", hint:"Use with the Product Development copy prompts."},
+  {cat:"landing", title:"Landing page \u2014 service page", t:"Write landing-page copy for my [service] targeting [audience]. Focus on the result, the process, a mini case study, and a 'book a free call' CTA.", hint:"Service pages sell the outcome + de-risk the process."},
+  {cat:"landing", title:"Landing page \u2014 waitlist", t:"Write copy for a pre-launch waitlist page for [product]. Build anticipation, collect emails, and set a launch date. Hero + 3 benefits + email capture + urgency.", hint:"Waitlists create scarcity before launch."},
+  {cat:"landing", title:"Landing page \u2014 freebie/opt-in", t:"Write a landing page for a free lead magnet ([title]) to build my email list. Offer clear value, promise what they'll get, and one CTA to download.", hint:"Freebies trade value for an email \u2014 make it worth it."},
+  {cat:"landing", title:"Landing page \u2014 A/B test ideas", t:"Give me 5 A/B test ideas for my landing page for [product]: which headline variant, which hero, which CTA, which proof position, and which price display to test against the current.", hint:"Testing beats guessing."},
+  {cat:"landing", title:"Landing page \u2014 objection section", t:"Write a 'still not sure?' section for my landing page that addresses the top 3 objections [audience] has about [product]: price, time, and trust. Each with a confident answer + proof.", hint:"Preempt objections before checkout."},
+  {cat:"landing", title:"Landing page \u2014 mobile/watchability", t:"Review my landing page copy for [product] and rewrite any section that's too long for mobile. Compress the hero and CTA for a phone screen. Current copy: [paste].", hint:"Mobile-first \u2014 most buyers are on phones."},
+  {cat:"scaling", title:"Price increase script", t:"Given the results we've delivered, I'm adjusting my rates to $[new price] starting [date]. Existing clients stay at $[old price] for the next [timeframe]. I'm also adding [new value]. Want me to lock you in at the current rate before the increase?", hint:"Grandfather existing clients \u2014 keeps them happy + earns referrals."},
+  {cat:"scaling", title:"Outreach at scale", t:"Design a system to send [number] personalized outreach messages/week for my [service]. Include: a targeting template, a personalization quick-check, a batching schedule, and a tracking sheet.", hint:"Systemize outreach so volume is sustainable."},
+  {cat:"scaling", title:"Content batching plan", t:"Create a content batching plan to produce [number] pieces/week for [platform]. Include: a weekly batch day, a template library, a hook bank, and a scheduling tool.", hint:"Batch = produce once, publish all week."},
+  {cat:"scaling", title:"Second income stream suggestion", t:"I'm currently earning $[current] from [stream]. Recommend a complementary second stream for [audience]: what it is, why it fits, and a 30-day launch plan.", hint:"Two streams = stability + faster growth."},
+  {cat:"scaling", title:"Hiring a VA", t:"Write a job description + onboarding checklist for a virtual assistant to handle [tasks] for my [business]. Include: responsibilities, key tools, and a 30-day ramp plan.", hint:"Delegate the repetitive so you scale your time."},
+  {cat:"scaling", title:"Automation map", t:"List the top 5 repetitive tasks in my [business] that can be automated with AI/tools, and recommend the simplest tool + setup for each. Tasks: [list tasks].", hint:"Automate the boring, keep the human touch."},
+  {cat:"scaling", title:"Client retention system", t:"Design a client retention system for my [service]: a monthly check-in cadence, value-add moments, and an upsell/renewal calendar.", hint:"Retention is cheaper and steadier than acquisition."},
+  {cat:"scaling", title:"Weekly business scorecard", t:"Create a weekly scorecard for my [business] to track: income, leads, closed deals, content output, and time spent. Include a simple 'this week's focus' field.", hint:"What gets measured gets improved."},
+];
+</script>
       <div class="chapter" id="scale">
         <div class="ch-label"><span>06</span></div>
         <h2>Scale — $500 → $2,000/Month</h2>
         <p>Once the first dollar lands, this module shows you how to turn it into a repeatable system — raising prices, adding volume, and stacking a second income stream without doubling your workload. This is where a side hustle becomes an actual business.</p>
 
-        <h3>The Three Levers</h3>
+        <div class="objectives">
+          <h4>Learning Objectives — After this chapter you will be able to…</h4>
+          <ul>
+            <li>Apply the four scaling levers in the correct order</li>
+            <li>Raise prices without losing clients (using tested scripts)</li>
+            <li>Build systems that let you serve more without more hours</li>
+            <li>Understand the $2K/month math and realistic timelines</li>
+          </ul>
+        </div>
+
+        <label class="progress-check"><input type="checkbox" data-module="scale-obj"> Mark Scale complete</label>
+
+        <h3>The Four Scaling Levers</h3>
         <div class="steps">
           <div class="step"><div class="step-num">1</div><div><h4>Increase Volume</h4><p>Double your outreach (Track B) or content output (Track A). Most students under-leverage this — they get 1 client and stop prospecting. The fastest path to $2K is going from 1 client to 2 clients.</p></div></div>
-          <div class="step"><div class="step-num">2</div><div><h4>Raise Prices</h4><p>With 3+ case studies, increase your package prices by 30–50%. Your first clients got a deal. Your next clients pay full price. Template scripts for the price increase conversation included.</p></div></div>
+          <div class="step"><div class="step-num">2</div><div><h4>Raise Prices</h4><p>With 3+ case studies, increase your package prices by 30–50%. Your first clients got a deal. Your next clients pay full price. Template scripts for the price increase conversation in the Prompt Vault.</p></div></div>
           <div class="step"><div class="step-num">3</div><div><h4>Stack a Second Stream</h4><p>Add a complementary income stream. If you're on Track A (products), add a service offer. If you're on Track B (services), launch a product. Two streams = stability and faster growth.</p></div></div>
+          <div class="step"><div class="step-num">4</div><div><h4>Systemize</h4><p>Template your delivery, batch your outreach, pre-write your content. The systems free your time to scale volume again. This is the lever that makes $2K feel sustainable.</p></div></div>
+        </div>
+
+        <h3>Pricing Strategy That Scales</h3>
+        <p>Here's the pricing ladder students use to go from $500 → $2K/month without always working harder:</p>
+        <table class="tbl">
+          <tr><th>Stage</th><th>Price</th><th>Strategy</th></tr>
+          <tr><td class="day">Proof stage</td><td>$50–$150</td><td>Low price, high value — buy reviews and case studies fast</td></tr>
+          <tr><td class="day">Growth stage</td><td>$150–$400</td><td>Raise as you collect 3+ results; package into bundles</td></tr>
+          <tr><td class="day">Premium stage</td><td>$400–$1,000</td><td>Position as premium, add a retainer, use scarcity</td></tr>
+          <tr><td class="day">Retainer stage</td><td>$500–$2,000/mo</td><td>Recurring monthly income — this is where $2K/mo actually lives</td></tr>
+        </table>
+
+        <div class="callout gold">
+          <div class="co-title">💰 The real $2K math</div>
+          <p>There are three paths to $2,000/month: <strong>4 retainers × $500</strong>, <strong>2 retainers × $700 + 1 × $600</strong>, or <strong>1 premium client × $2,000</strong>. Notice none of them require 20 clients. You don't need to work harder — you need to raise prices and retain.</p>
+        </div>
+
+        <h3>Case Study — How Students Hit $2K</h3>
+        <div class="grid-3">
+          <div class="card">
+            <span class="tag">The Retainer Path</span>
+            <h4>Maya — content service</h4>
+            <p>Started at $150/project. After 3 results, moved clients to $450/mo retainers. By month 4 she had 4 retainers = $1,800/mo. Her lever was retention + price, not volume.</p>
+          </div>
+          <div class="card">
+            <span class="tag">The Product Path</span>
+            <h4>Devon — digital product</h4>
+            <p>One $40 product, faceless funnel. 50 sales/mo at $40 = $2,000. His lever was content volume driving consistent traffic. Low price + high volume.</p>
+          </div>
+          <div class="card">
+            <span class="tag">The Hybrid Path</span>
+            <h4>Priya — product + service</h4>
+            <p>Product doing $800/mo on autopilot. Added a $1,200/mo service offer to 1 client. Total $2,000 with a stable base. Her lever was stacking a second stream.</p>
+          </div>
+        </div>
+
+        <h3>Case Study — Maya's Month-by-Month (content service)</h3>
+        <table class="tbl">
+          <tr><th>Phase</th><th>Action</th><th>Income</th></tr>
+          <tr><td class="day">Weeks 1–2</td><td>Offer: $150 content calendar per business. 50 DMs sent.</td><td>$450 (3 clients)</td></tr>
+          <tr><td class="day">Weeks 3–4</td><td>Delivered fast, got 3 testimonials, proposed $450/mo retainers.</td><td>$1,350 pipeline</td></tr>
+          <tr><td class="day">Month 2</td><td>2 retainers at $450 + 1 project. Reduced churn with weekly reports.</td><td>$1,400</td></tr>
+          <tr><td class="day">Month 3</td><td>Raised to $500/mo for new clients, grandfathered old ones.</td><td>$1,800</td></tr>
+          <tr><td class="day">Month 4</td><td>4 retainers at ~$500. Time freed via content batching.</td><td><strong>$2,000</strong></td></tr>
+        </table>
+
+        <h3>Systems That Make $2K Sustainable</h3>
+        <div class="grid-2">
+          <div class="card">
+            <span class="tag">System 1</span>
+            <h4>Content Batching</h4>
+            <p>One 5-hour batch day produces a full week of content. No daily scrambling. Use the Content Batching prompt in the vault.</p>
+          </div>
+          <div class="card">
+            <span class="tag">System 2</span>
+            <h4>Outreach Tracking</h4>
+            <p>A simple spreadsheet: prospect, touched, replied, called, closed. Check it daily. If prospecting stops, income stalls — the sheet keeps you honest.</p>
+          </div>
+          <div class="card">
+            <span class="tag">System 3</span>
+            <h4>Delivery Templates</h4>
+            <p>A saved template for every deliverable. Each client gets the same quality in half the time. The time saved goes back into volume.</p>
+          </div>
+          <div class="card">
+            <span class="tag">System 4</span>
+            <h4>Weekly Scorecard</h4>
+            <p>Track income, leads, closed, content, and hours every Friday. What gets measured gets improved. Template in the Prompt Vault.</p>
+          </div>
         </div>
 
         <h3>Month-by-Month Target</h3>
@@ -506,44 +1510,469 @@ table.tbl td.day { font-family: 'DM Mono', monospace; font-size: 13px; color: va
           <div class="co-title">📈 The $2K pattern</div>
           <p>Every student who hit $2K/month followed the same pattern: they picked ONE track, executed ONE playbook completely, and only added the second stream AFTER reaching $500 consistently for 3 weeks. Don't skip the sequence.</p>
         </div>
+
+        <h3>When to Re-Evaluate (and when not to)</h3>
+        <p>Commit to a track for a full 30 days before judging. Re-evaluate only under these conditions:</p>
+        <ul>
+          <li><strong>Zero traction after a full playbook run:</strong> revisit your offer and targeting, not your track</li>
+          <li><strong>A clear market signal:</strong> if 3+ prospects ask for a service you don't offer, that's data</li>
+          <li><strong>Burnout from client work:</strong> that's a pricing problem, not a Track B problem — raise prices</li>
+        </ul>
+      </div>
+
+      <div class="chapter" id="results">
+        <div class="ch-label"><span>07</span></div>
+        <h2>The Wall of Proof — Real Students, Real Income</h2>
+        <p>Results speak louder than promises. Here's what real students have done with the Blueprint — from $0 to their first income, with the exact track they used. These aren't hypotheticals; they're the pattern.</p>
+
+        <div class="objectives">
+          <h4>What this section proves</h4>
+          <ul>
+            <li>The Blueprint works across very different starting points</li>
+            <li>Both tracks produce real income — at different speeds</li>
+            <li>You don't need a following, camera, or tech background to start</li>
+          </ul>
+        </div>
+
+        <label class="progress-check"><input type="checkbox" data-module="results-obj"> Mark Wall of Proof complete</label>
+
+        <div class="results-stat">
+          <div class="big">1,400+</div>
+          <div class="stat-label">Students building real income</div>
+        </div>
+
+        <div class="testimonial-grid">
+          <div class="testimonial">
+            <p class="quote">I had $0 of my own and only 90 minutes a day. By month 2 I was at $1,100 with Track B. I never needed a camera or a portfolio — just the service playbook and consistency.</p>
+            <div class="author">KAYA</div>
+            <div class="author-detail">Track B · Service Sales · Month 2: $1,100</div>
+          </div>
+          <div class="testimonial">
+            <p class="quote">The diagnostic was the game-changer. I'd been chasing the wrong strategy for months. 12 minutes later I knew my lane, and my first client came in 9 days.</p>
+            <div class="author">MARCUS</div>
+            <div class="author-detail">Track B · First client in 9 days</div>
+          </div>
+          <div class="testimonial">
+            <p class="quote">I built a faceless product funnel and let it run while I worked my day job. First sale on day 21. By month 3 I'd replaced my side hustle income completely.</p>
+            <div class="author">DEVON</div>
+            <div class="author-detail">Track A · First sale day 21 · $2K/mo by month 3</div>
+          </div>
+          <div class="testimonial">
+            <p class="quote">I'm deeply introverted. The idea of client calls terrified me. Track A let me build and sell without a single call. That's why it worked — it fit who I am.</p>
+            <div class="author">NAOMI</div>
+            <div class="author-detail">Track A · Autonomous Sales · Introvert-friendly</div>
+          </div>
+          <div class="testimonial">
+            <p class="quote">The outreach prompts paid for the course a hundred times over. I sent 50 DMs, got 6 replies, 2 calls, and 1 client in week one. Pure volume plus the right script.</p>
+            <div class="author">TREVOR</div>
+            <div class="author-detail">Track B · First client in 7 days</div>
+          </div>
+          <div class="testimonial">
+            <p class="quote">I was skeptical about pricing. Raising from $150 to $450/mo felt scary, but with 3 case studies the scripts made it easy. Now I have 4 retainers and freedom.</p>
+            <div class="author">MAYA</div>
+            <div class="author-detail">Track B · Content Service · $2K/mo retainers</div>
+          </div>
+        </div>
+
+        <div class="results-stat">
+          <div class="big">19–24d</div>
+          <div class="stat-label">Track A average to first sale</div>
+        </div>
+        <div class="results-stat">
+          <div class="big">7–11d</div>
+          <div class="stat-label">Track B average to first client</div>
+        </div>
+
+        <h3>The Recurring Objections (answered)</h3>
+        <div class="accordion">
+          <button class="accordion-btn"><span>"I don't have time"</span><span class="arrow">▾</span></button>
+          <div class="accordion-body">
+            <p>Kaya had 90 minutes a day and hit $1,100 by month 2. The Blueprint is built around batching and templates so you make progress in small, consistent blocks. You don't need hours — you need the right system.</p>
+          </div>
+        </div>
+        <div class="accordion">
+          <button class="accordion-btn"><span>"I'm not technical"</span><span class="arrow">▾</span></button>
+          <div class="accordion-body">
+            <p>Every tool in the stack is free and drag-and-drop or natural-language. If you can type a sentence to ChatGPT and click Export in Canva, you have all the technical skill this course requires.</p>
+          </div>
+        </div>
+        <div class="accordion">
+          <button class="accordion-btn"><span>"I have no following / no camera / no audience"</span><span class="arrow">▾</span></button>
+          <div class="accordion-body">
+            <p>Track A is faceless by design — no camera, no face. Track A's content funnel and Track B's outreach both work from zero followers. The algorithm and your outreach do the work, not an existing audience.</p>
+          </div>
+        </div>
+        <div class="accordion">
+          <button class="accordion-btn"><span>"Is this really possible in month 1?"</span><span class="arrow">▾</span></button>
+          <div class="accordion-body">
+            <p>Track B students average a first client in 7–11 days. Track A in 19–24 days. It's not a promise of a pile of money overnight — it's a realistic, repeated path. Results require executing the playbook, not just reading it.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter" id="resources">
+        <div class="ch-label"><span>08</span></div>
+        <h2>Resources &amp; Downloads</h2>
+        <p>Everything you need in one place. Copy each template, save it, and reuse it across every client or product. These are the working assets behind the entire Blueprint.</p>
+
+        <div class="objectives">
+          <h4>Inside this section</h4>
+          <ul>
+            <li>Ready-to-use templates you can copy and customize</li>
+            <li>The exact checklists for each playbook</li>
+            <li>Tracking sheets to keep your business honest</li>
+          </ul>
+        </div>
+
+        <label class="progress-check"><input type="checkbox" data-module="resources-obj"> Mark Resources complete</label>
+
+        <div class="resource-item">
+          <div class="r-icon">📋</div>
+          <div class="r-info">
+            <h4>Outreach Tracking Sheet</h4>
+            <p>Columns for prospect, touch count, reply, call, close. Copy this into your spreadsheet.</p>
+          </div>
+          <a href="#resources" class="r-dl" data-copy="Prospect	Touch 1	Touch 2	Touch 3	Replied	Called	Closed
+[Name]	[d]	[d]	[d]	[Y/N]	[Y/N]	[Y/N]">Copy ↓</a>
+        </div>
+        <div class="resource-item">
+          <div class="r-icon">📅</div>
+          <div class="r-info">
+            <h4>Setup Checklist</h4>
+            <p>Every tool account, setting, and bookmark from Module 2 in one checklist.</p>
+          </div>
+          <a href="#resources" class="r-dl" data-copy="Business email | ChatGPT + custom instructions | Claude project | Canva brand kit + thumbnail template | CapCut 9:16 + captions | Gumroad profile + payout | Prompt Vault bookmarked">Copy ↓</a>
+        </div>
+        <div class="resource-item">
+          <div class="r-icon">📊</div>
+          <div class="r-info">
+            <h4>Weekly Business Scorecard</h4>
+            <p>Income, leads, closed, content, hours. The one sheet that keeps you on track.</p>
+          </div>
+          <a href="#resources" class="r-dl" data-copy="Week	Income	Leads	Closed	Content	Hours	Focus
+[W1]	$					
+[W2]	$					">Copy ↓</a>
+        </div>
+        <div class="resource-item">
+          <div class="r-icon">💬</div>
+          <div class="r-info">
+            <h4>Cold DM Templates</h4>
+            <p>The 3-message outreach and follow-up sequence, ready to personalize.</p>
+          </div>
+          <a href="#resources" class="r-dl" data-copy="DM: Hey [name], saw [business] in [city] — love what you're doing. I help same-type businesses [result] with AI. Open to a 10-min call?
+Follow-up (Day 3): Circling back — I made a quick idea for [business]. Want me to send it?
+Final (Day 6): Last one — no pressure. If [result] ever becomes a priority, I'm your person.">Copy ↓</a>
+        </div>
+        <div class="resource-item">
+          <div class="r-icon">🚀</div>
+          <div class="r-info">
+            <h4>Launch Email Sequence</h4>
+            <p>The 5-email launch sequence for any digital product launch.</p>
+          </div>
+          <a href="#resources" class="r-dl" data-copy="1. Tease the problem | 2. Introduce solution | 3. Social proof | 4. Urgency + bonus | 5. Final CTA + guarantee">Copy ↓</a>
+        </div>
+        <div class="resource-item">
+          <div class="r-icon">📈</div>
+          <div class="r-info">
+            <h4>Price Increase Script</h4>
+            <p>Raise prices gracefully and keep clients happy with this exact wording.</p>
+          </div>
+          <a href="#resources" class="r-dl" data-copy="Given the results we've delivered, I'm adjusting my rates to $[new] starting [date]. Existing clients stay at $[old] for the next [timeframe]. I'm also adding [new value]. Want me to lock you in first?">Copy ↓</a>
+        </div>
+
+        <div class="callout">
+          <div class="co-title">📌 How to use these resources</div>
+          <p>Click <strong>Copy</strong> on any resource to grab it for your own spreadsheet or document. Build a master folder with one file per resource. Every time you start a new client or product, duplicate your templates — consistency is what makes scaling possible.</p>
+        </div>
       </div>
 
     </div>
   </div>
 </div>
 <script>
-const menuBtn = document.getElementById('menuBtn');
-const sidenav = document.getElementById('sidenav');
-const overlay = document.getElementById('overlay');
-const progressBar = document.getElementById('progressBar');
-menuBtn.addEventListener('click', () => { sidenav.classList.toggle('open'); overlay.classList.toggle('show'); });
-overlay.addEventListener('click', () => { sidenav.classList.remove('open'); overlay.classList.remove('show'); });
-const sections = document.querySelectorAll('.chapter');
-const links = document.querySelectorAll('.sidenav a');
-new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      links.forEach(l => l.classList.remove('active'));
-      const link = document.querySelector('.sidenav a[href="#'+entry.target.id+'"]');
-      if (link) link.classList.add('active');
-    }
+(function() {
+  'use strict';
+
+  // ── MOBILE NAV ──
+  var menuBtn = document.getElementById('menuBtn');
+  var sidenav = document.getElementById('sidenav');
+  var overlay = document.getElementById('overlay');
+  if (menuBtn && sidenav && overlay) {
+    menuBtn.addEventListener('click', function() {
+      sidenav.classList.toggle('open');
+      overlay.classList.toggle('show');
+    });
+    overlay.addEventListener('click', function() {
+      sidenav.classList.remove('open');
+      overlay.classList.remove('show');
+    });
+  }
+
+  // ── SCROLL PROGRESS BAR ──
+  var progressBar = document.getElementById('progressBar');
+  if (progressBar) {
+    window.addEventListener('scroll', function() {
+      var scrollTop = window.scrollY;
+      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressBar.style.width = progress + '%';
+    });
+  }
+
+  // ── ACTIVE NAV TRACKING ──
+  var sections = document.querySelectorAll('.chapter');
+  var links = document.querySelectorAll('.sidenav a');
+  if (sections.length && links.length) {
+    var observerOptions = { rootMargin: '-30% 0px -60% 0px' };
+    sections.forEach(function(s) {
+      new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            links.forEach(function(l) { l.classList.remove('active'); });
+            var link = document.querySelector('.sidenav a[href="#' + entry.target.id + '"]');
+            if (link) link.classList.add('active');
+          }
+        });
+      }, observerOptions).observe(s);
+    });
+  }
+
+  // ── ACCORDION ──
+  var accordionBtns = document.querySelectorAll('.accordion-btn');
+  accordionBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var body = this.nextElementSibling;
+      if (body && body.classList.contains('accordion-body')) {
+        this.classList.toggle('open');
+        body.classList.toggle('open');
+      }
+    });
   });
-}, { rootMargin: '-30% 0px -60% 0px' }).observe(sections[0]);
-sections.forEach(s => new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      links.forEach(l => l.classList.remove('active'));
-      const link = document.querySelector('.sidenav a[href="#'+entry.target.id+'"]');
-      if (link) link.classList.add('active');
+
+  // ── DIAGNOSTIC QUIZ ──
+  var quizBtn = document.getElementById('quizBtn');
+  var quizResult = document.getElementById('quizResult');
+  if (quizBtn && quizResult) {
+    quizBtn.addEventListener('click', function() {
+      var q1 = document.querySelector('input[name="q1"]:checked');
+      var q2 = document.querySelector('input[name="q2"]:checked');
+      var q3 = document.querySelector('input[name="q3"]:checked');
+      var q4 = document.querySelector('input[name="q4"]:checked');
+      if (!q1 || !q2 || !q3 || !q4) {
+        quizResult.textContent = 'Please answer all 4 questions.';
+        quizResult.className = 'quiz-result show';
+        quizResult.style.color = '#DC2626';
+        quizResult.style.background = '#fef2f2';
+        quizResult.style.border = '1px solid #fca5a5';
+        return;
+      }
+      var score = { a: 0, b: 0 };
+      score[q1.value] = (score[q1.value] || 0) + 1;
+      score[q2.value] = (score[q2.value] || 0) + 1;
+      score[q3.value] = (score[q3.value] || 0) + 1;
+      score[q4.value] = (score[q4.value] || 0) + 1;
+      var trackA = (score.a || 0) + (score.b || 0) * 0.5;
+      var trackB = (score.b || 0) + (score.a || 0) * 0.5 + (score.c || 0) * 0.3;
+      var result = '';
+      var cls = '';
+      if (trackA > trackB + 1) {
+        result = 'Track A — Autonomous Sales. You want to build once and sell while you sleep. Start with Playbook B (product) and lock in your first 30 days.';
+        cls = 'quiz-result show track-a';
+      } else if (trackB > trackA + 1) {
+        result = "Track B — Service Sales. You want fast cash flow and don't mind client conversations. Start with Playbook A (service) and send your first 50 DMs.";
+        cls = 'quiz-result show track-b';
+      } else {
+        result = "You could succeed on either track! Since you're balanced, go with your gut: need money fast? Track B. Want to build an asset? Track A. Commit for 30 days.";
+        cls = 'quiz-result show track-any';
+      }
+      quizResult.textContent = result;
+      quizResult.className = cls;
+    });
+  }
+
+  // ── PROMPT VAULT ──
+  var promptData = typeof PROMPT_DATA !== 'undefined' ? PROMPT_DATA : [];
+  var promptTabs = document.getElementById('promptTabs');
+  var promptCategories = document.getElementById('promptCategories');
+  var promptSearch = document.getElementById('promptSearch');
+  var promptCount = document.getElementById('promptCount');
+
+  if (promptTabs && promptCategories && promptData.length) {
+    var categories = {};
+    promptData.forEach(function(p) {
+      if (!categories[p.cat]) categories[p.cat] = [];
+      categories[p.cat].push(p);
+    });
+
+    var catLabels = {
+      outreach: 'Client Outreach',
+      content: 'Content Creation',
+      product: 'Product Development',
+      service: 'Service Delivery',
+      ugc: 'UGC Videos',
+      tiktok: 'TikTok / Reels',
+      email: 'Email & SMS',
+      copy: 'Copywriting',
+      landing: 'Landing Pages',
+      scaling: 'Scaling & Systems'
+    };
+
+    var catOrder = ['outreach','content','product','service','ugc','tiktok','email','copy','landing','scaling'];
+
+    var activeCat = 'outreach';
+
+    // Render tabs
+    catOrder.forEach(function(cat) {
+      if (!categories[cat]) return;
+      var tab = document.createElement('button');
+      tab.className = 'prompt-tab' + (cat === activeCat ? ' active' : '');
+      tab.textContent = catLabels[cat] || cat;
+      var countSpan = document.createElement('span');
+      countSpan.className = 'count';
+      countSpan.textContent = '(' + categories[cat].length + ')';
+      tab.appendChild(countSpan);
+      tab.addEventListener('click', function() {
+        document.querySelectorAll('.prompt-tab').forEach(function(t) { t.classList.remove('active'); });
+        tab.classList.add('active');
+        activeCat = cat;
+        renderCategory(cat, promptSearch ? promptSearch.value : '');
+      });
+      promptTabs.appendChild(tab);
+    });
+
+    function renderCategory(cat, searchTerm) {
+      promptCategories.innerHTML = '';
+      var prompts = categories[cat] || [];
+      var filtered = prompts;
+      if (searchTerm) {
+        var st = searchTerm.toLowerCase();
+        filtered = prompts.filter(function(p) {
+          return p.title.toLowerCase().indexOf(st) !== -1 ||
+                 p.t.toLowerCase().indexOf(st) !== -1 ||
+                 p.hint.toLowerCase().indexOf(st) !== -1;
+        });
+      }
+      updateCount(filtered.length, prompts.length);
+      if (filtered.length === 0) {
+        var empty = document.createElement('p');
+        empty.style.cssText = 'color:var(--muted);padding:20px 0;';
+        empty.textContent = 'No prompts match your search. Try a different keyword.';
+        promptCategories.appendChild(empty);
+        return;
+      }
+      filtered.forEach(function(p) {
+        var div = document.createElement('div');
+        div.className = 'prompt';
+        var tag = document.createElement('span');
+        tag.className = 'p-tag';
+        tag.textContent = catLabels[p.cat] || p.cat;
+        div.appendChild(tag);
+        var title = document.createElement('div');
+        title.className = 'p-title';
+        title.textContent = p.title;
+        div.appendChild(title);
+        var code = document.createElement('code');
+        code.textContent = p.t;
+        div.appendChild(code);
+        var footer = document.createElement('div');
+        footer.className = 'p-footer';
+        var hint = document.createElement('span');
+        hint.textContent = p.hint;
+        footer.appendChild(hint);
+        var copyBtn = document.createElement('button');
+        copyBtn.className = 'copy-btn';
+        copyBtn.textContent = 'Copy';
+        copyBtn.addEventListener('click', function() {
+          navigator.clipboard.writeText(p.t).then(function() {
+            copyBtn.textContent = 'Copied!';
+            copyBtn.classList.add('copied');
+            setTimeout(function() {
+              copyBtn.textContent = 'Copy';
+              copyBtn.classList.remove('copied');
+            }, 2000);
+          }).catch(function() {
+            // Fallback
+            var ta = document.createElement('textarea');
+            ta.value = p.t;
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            copyBtn.textContent = 'Copied!';
+            copyBtn.classList.add('copied');
+            setTimeout(function() {
+              copyBtn.textContent = 'Copy';
+              copyBtn.classList.remove('copied');
+            }, 2000);
+          });
+        });
+        footer.appendChild(copyBtn);
+        div.appendChild(footer);
+        promptCategories.appendChild(div);
+      });
     }
+
+    function updateCount(shown, total) {
+      if (promptCount) {
+        promptCount.textContent = 'Showing ' + shown + ' of ' + total + ' prompts';
+      }
+    }
+
+    // Initial render
+    renderCategory(activeCat, '');
+
+    // Search
+    if (promptSearch) {
+      promptSearch.addEventListener('input', function() {
+        renderCategory(activeCat, this.value);
+      });
+    }
+  }
+
+  // ── PROGRESS CHECKBOXES (localStorage) ──
+  var checkboxes = document.querySelectorAll('input[type="checkbox"][data-module]');
+  checkboxes.forEach(function(cb) {
+    var key = 'aibp_' + cb.getAttribute('data-module');
+    var saved = localStorage.getItem(key);
+    if (saved === 'true') {
+      cb.checked = true;
+      var label = cb.closest('.progress-check');
+      if (label) label.classList.add('completed');
+    }
+    cb.addEventListener('change', function() {
+      localStorage.setItem(key, this.checked);
+      var label = this.closest('.progress-check');
+      if (label) {
+        label.classList.toggle('completed', this.checked);
+      }
+    });
   });
-}, { rootMargin: '-30% 0px -60% 0px' }).observe(s));
-window.addEventListener('scroll', () => {
-  const scrollTop = window.scrollY;
-  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-  const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-  progressBar.style.width = progress + '%';
-});
+
+  // ── RESOURCE COPY BUTTONS ──
+  var resourceLinks = document.querySelectorAll('.resource-item .r-dl');
+  resourceLinks.forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      var text = this.getAttribute('data-copy') || '';
+      navigator.clipboard.writeText(text).then(function() {
+        var orig = link.textContent;
+        link.textContent = 'Copied!';
+        setTimeout(function() { link.textContent = orig; }, 2000);
+      }).catch(function() {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        var orig = link.textContent;
+        link.textContent = 'Copied!';
+        setTimeout(function() { link.textContent = orig; }, 2000);
+      });
+    });
+  });
+
+})();
 </script>
 </body>
 </html>
