@@ -134,17 +134,34 @@ body {
 
 /* ── CONTENT ── */
 .content { max-width: 980px; margin: 0 auto; padding: 60px 40px 100px; }
-.course-shell { display:grid; grid-template-columns:minmax(0,1fr) 340px; gap:32px; max-width:1400px; margin:0 auto; padding:0 24px 80px; align-items:start; }
+.course-shell { display:grid; grid-template-columns:minmax(0,1fr) 320px; gap:28px; max-width:1380px; margin:0 auto; padding:0 24px 80px; align-items:start; }
 .course-shell .content { max-width:none; margin:0; padding:60px 0 100px; }
-.guide-rail { position:sticky; top:24px; display:flex; flex-direction:column; gap:16px; padding-top:40px; }
+.checklist-page-shell { max-width: 1100px; margin: 0 auto; padding: 60px 40px 100px; }
+.guide-rail { display:none !important; }
 .guide-card { background:linear-gradient(180deg,#ffffff 0%, #faf7ff 100%); border:1px solid rgba(124,58,237,0.14); border-radius:18px; padding:18px 18px 16px; box-shadow:0 18px 40px rgba(124,58,237,0.10); backdrop-filter: blur(8px); }
 .guide-card h4 { margin:0 0 8px; font-size:15px; font-weight:700; }
 .guide-kicker { font-family:'DM Mono', monospace; font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:var(--purple); margin-bottom:10px; opacity:0.9; }
 .guide-copy { font-size:13px; color:var(--muted); line-height:1.6; }
-.guide-hero-stat { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:12px; }
-.guide-hero-stat div { background:#fff; border:1px solid rgba(124,58,237,0.12); border-radius:12px; padding:10px 8px; text-align:center; }
-.guide-hero-stat strong{ display:block; font-size:15px; color:var(--ink); }
-.guide-hero-stat span{ font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; }
+.module-nav { display:flex; flex-direction:column; gap:8px; }
+.module-link { display:flex; justify-content:space-between; gap:10px; text-decoration:none; color:var(--text); border:1px solid var(--rule); padding:10px 12px; border-radius:12px; transition:.2s ease; }
+.module-link:hover, .module-link.active { border-color:var(--purple-light); background:#fbf9ff; transform:translateY(-1px); box-shadow:0 8px 18px rgba(124,58,237,0.08); }
+.module-link strong { font-size:13px; }
+.module-link span { font-size:11px; color:var(--muted); }
+.guide-points { margin:0; padding-left:18px; display:flex; flex-direction:column; gap:8px; color:#4a4a4a; }
+.guide-points li { margin:0; }
+.guide-mini-label { display:inline-flex; align-items:center; gap:8px; font-family:'DM Mono', monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:var(--purple); margin-bottom:10px; }
+.guide-mini-label::before { content:''; width:18px; height:1px; background:currentColor; opacity:0.65; }
+.inline-hidden-progress { display:none !important; }
+.chapter.is-complete h2::after { content:' ✓'; color:var(--green-light); font-size:0.7em; }
+.chapter-target{ scroll-margin-top:24px; }
+.checklist-page-header { padding: 12px 0 28px; border-bottom: 1px solid var(--rule); margin-bottom: 28px; }
+.checklist-page-header h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 6vw, 64px); line-height: 1; letter-spacing: -0.5px; margin-bottom: 12px; }
+.checklist-page-header p { max-width: 760px; color: var(--muted); font-size: 16px; }
+.checklist-workspace { display:grid; grid-template-columns:minmax(0,1.25fr) minmax(280px,0.75fr); gap:24px; align-items:start; }
+.checklist-stack { display:flex; flex-direction:column; gap:18px; }
+.checklist-card { background:linear-gradient(180deg,#ffffff 0%, #faf7ff 100%); border:1px solid rgba(124,58,237,0.14); border-radius:20px; padding:22px; box-shadow:0 18px 40px rgba(124,58,237,0.10); }
+.checklist-card h3 { font-size:20px; margin:0 0 6px; }
+.checklist-card p { color:var(--muted); margin:0 0 14px; }
 .plan-select, .plan-input, .plan-days { width:100%; padding:10px 12px; border:1px solid var(--rule); border-radius:10px; background:#fff; font:inherit; margin-bottom:10px; }
 .plan-row { display:grid; grid-template-columns:1fr 92px; gap:10px; }
 .guide-actions { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
@@ -157,14 +174,10 @@ body {
 .module-check { display:flex; gap:10px; align-items:flex-start; font-size:13px; color:#363636; }
 .module-check input { margin-top:2px; accent-color:var(--purple); width:16px; height:16px; }
 .module-check small { display:block; color:var(--muted); margin-top:2px; line-height:1.45; }
-.module-nav { display:flex; flex-direction:column; gap:8px; }
-.module-link { display:flex; justify-content:space-between; gap:10px; text-decoration:none; color:var(--text); border:1px solid var(--rule); padding:10px 12px; border-radius:12px; transition:.2s ease; }
-.module-link:hover, .module-link.active { border-color:var(--purple-light); background:#fbf9ff; transform:translateY(-1px); box-shadow:0 8px 18px rgba(124,58,237,0.08); }
-.module-link strong { font-size:13px; }
-.module-link span { font-size:11px; color:var(--muted); }
-.inline-hidden-progress { display:none !important; }
-.chapter.is-complete h2::after { content:' ✓'; color:var(--green-light); font-size:0.7em; }
-.chapter-target{ scroll-margin-top:24px; }
+.checklist-summary-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; margin-top:14px; }
+.checklist-summary-grid div { background:#fff; border:1px solid rgba(124,58,237,0.12); border-radius:14px; padding:12px 10px; text-align:center; }
+.checklist-summary-grid strong { display:block; font-size:18px; color:var(--ink); }
+.checklist-summary-grid span { font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; }
 
 .chapter-hero {
   padding: 40px 0 48px;
@@ -670,13 +683,16 @@ table.tbl td.day { font-family: 'DM Mono', monospace; font-size: 13px; color: va
   .main { margin-left: 0; }
   .course-shell { grid-template-columns:1fr; padding:0 14px 56px; }
   .course-shell .content { padding:32px 0 60px; }
-  .guide-rail { position:static; padding-top:0; order:-1; }
+  .checklist-page-shell { padding:32px 20px 72px; }
+  .guide-rail { display:none !important; }
+  .checklist-workspace { grid-template-columns:1fr; }
   .content { padding: 32px 20px 80px; }
   .grid-2 { grid-template-columns: 1fr; }
   .grid-3 { grid-template-columns: 1fr; }
   .testimonial-grid { grid-template-columns: 1fr; }
   .prompt-tabs { gap: 4px; }
   .prompt-tab { font-size: 12px; padding: 6px 12px; }
+  .checklist-summary-grid { grid-template-columns:1fr; }
 }
 </style>
 </head>
@@ -694,6 +710,7 @@ table.tbl td.day { font-family: 'DM Mono', monospace; font-size: 13px; color: va
     <a href="#scale"><span class="num">06</span> Scale to $2K/Mo</a>
     <a href="#results"><span class="num">07</span> Wall of Proof</a>
     <a href="#resources"><span class="num">08</span> Resources</a>
+    <a href="#checklist"><span class="num">09</span> Checklist</a>
     <div class="sidenav-footer">v3.0 · Built from 1,400+ students of real execution</div>
   </aside>
 
@@ -724,8 +741,8 @@ table.tbl td.day { font-family: 'DM Mono', monospace; font-size: 13px; color: va
       </div>
 
       <div class="callout" style="margin-top:22px;">
-        <div class="co-title">Before you move: what makes this page stronger now</div>
-        <p><strong>This course now has three operating layers:</strong> (1) long-form teaching in the main column, (2) a dedicated execution rail with persistent checklist plans, and (3) reusable prompts/resources deeper in the page. Read less. Execute more.</p>
+        <div class="co-title">Before you move: how to use this layout now</div>
+        <p><strong>Main column:</strong> the real lessons and step-by-step content. <strong>Checklist:</strong> now lives on its own page in the nav so execution tracking stays focused instead of crowding the lesson flow.</p>
       </div>
 
       <div class="chapter" id="foundation">
@@ -2000,6 +2017,29 @@ Final (Day 6): Last one — no pressure. If [result] ever becomes a priority, I'
         </div>
       </div>
 
+      <div class="chapter" id="checklist">
+        <div class="ch-label"><span>09</span></div>
+        <h2>Checklist</h2>
+        <p>This page is your execution dashboard. Pick the sprint that matches your goal, track completion module by module, and come back here whenever you want the operational view instead of the lesson view.</p>
+
+        <div class="checklist-page-shell">
+          <div class="checklist-page-header">
+            <div class="kicker">Execution Dashboard</div>
+            <h1>Run the Blueprint<br>like a real plan.</h1>
+            <p>Choose a sprint, save your progress in this browser, and reset anytime. This page pulls the actual module state, so it's the clean place to manage execution without cluttering every lesson section.</p>
+          </div>
+
+          <div class="checklist-workspace">
+            <div class="checklist-stack">
+              <div class="checklist-card" id="planCard"></div>
+              <div class="checklist-card" id="progressCard"></div>
+            </div>
+
+            <aside class="checklist-card" id="modulesCard"></aside>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
@@ -2260,7 +2300,7 @@ Final (Day 6): Last one — no pressure. If [result] ever becomes a priority, I'
   }
 
 
-  // ── COURSE SHELL + RIGHT RAIL ──
+  // ── CHECKLIST PAGE ──
   var planTemplates = {
     '30-day-blueprint': {
       label: '30-Day Blueprint',
@@ -2312,30 +2352,6 @@ Final (Day 6): Last one — no pressure. If [result] ever becomes a priority, I'
   function getActivePlanId() { return localStorage.getItem('aibp_active_plan') || '30-day-blueprint'; }
   function setActivePlanId(id) { localStorage.setItem('aibp_active_plan', id); }
 
-  function buildCourseShell() {
-    var main = document.querySelector('.main');
-    var content = document.querySelector('.content');
-    if (!main || !content || document.querySelector('.course-shell')) return;
-    var shell = document.createElement('div');
-    shell.className = 'course-shell';
-    content.parentNode.insertBefore(shell, content);
-    shell.appendChild(content);
-
-    var rail = document.createElement('aside');
-    rail.className = 'guide-rail';
-    rail.innerHTML =
-      '<div class="guide-card">' +
-        '<div class="guide-kicker">Execution cockpit</div>' +
-        '<h4>Run this course like a plan, not a PDF.</h4>' +
-        '<p class="guide-copy">Your active checklist lives here. Pick a sprint, save progress to this browser, and reset any time.</p>' +
-        '<div class="guide-hero-stat"><div><strong>8</strong><span>Modules</span></div><div><strong>300+</strong><span>Prompts</span></div><div><strong>3</strong><span>Sprints</span></div></div>' +
-      '</div>' +
-      '<div class="guide-card" id="planCard"></div>' +
-      '<div class="guide-card" id="progressCard"></div>' +
-      '<div class="guide-card" id="modulesCard"></div>';
-    shell.appendChild(rail);
-  }
-
   function chapterTitleFor(moduleId) {
     var map = {
       'foundation-obj':'Foundation', 'tools-obj':'Tools & Stack', 'income-obj':'First $500 Roadmap',
@@ -2353,11 +2369,10 @@ Final (Day 6): Last one — no pressure. If [result] ever becomes a priority, I'
   }
 
   function renderRail() {
-    buildCourseShell();
     var planCard = document.getElementById('planCard');
     var progressCard = document.getElementById('progressCard');
     var modulesCard = document.getElementById('modulesCard');
-    if (!planCard || !progressCard || !modulesCard) return;
+    if (!planCard || !progressCard) return;
 
     var store = ensureCustomPlan(getPlanStore());
     var activeId = getActivePlanId();
@@ -2366,6 +2381,8 @@ Final (Day 6): Last one — no pressure. If [result] ever becomes a priority, I'
 
     planCard.innerHTML =
       '<div class="guide-kicker">Checklist plan</div>' +
+      '<h3>Choose your execution sprint</h3>' +
+      '<p>Use this to decide how aggressively you want to run the Blueprint right now.</p>' +
       '<select class="plan-select" id="planSelect">' +
       Object.keys(allPlans).map(function(id){ return '<option value="'+id+'" '+(id===activeId?'selected':'')+'>'+allPlans[id].label+'</option>'; }).join('') +
       '</select>' +
@@ -2385,9 +2402,11 @@ Final (Day 6): Last one — no pressure. If [result] ever becomes a priority, I'
     var pct = total ? Math.round((done/total)*100) : 0;
     progressCard.innerHTML =
       '<div class="guide-kicker">Progress</div>' +
-      '<h4>'+active.label+'</h4>' +
+      '<h3>'+active.label+'</h3>' +
+      '<p>This checklist mirrors the module progress stored on this page.</p>' +
       '<div class="guide-progress"><span style="width:'+pct+'%"></span></div>' +
       '<div class="guide-meta"><span>'+done+' / '+total+' complete</span><span>'+active.days+' day plan</span></div>' +
+      '<div class="checklist-summary-grid"><div><strong>'+done+'</strong><span>Done</span></div><div><strong>'+(total-done)+'</strong><span>Left</span></div><div><strong>'+pct+'%</strong><span>Progress</span></div></div>' +
       '<div class="module-checklist">' +
       active.items.map(function(item){
         var checked = localStorage.getItem('aibp_'+activeId+'_'+item.module) === 'true';
@@ -2403,7 +2422,19 @@ Final (Day 6): Last one — no pressure. If [result] ever becomes a priority, I'
       var title = (ch.querySelector('h2')||{}).textContent || id;
       return '<a class="module-link" href="#'+id+'"><div><strong>'+title+'</strong><span>'+id.replace(/-/g,' ')+'</span></div><span>↗</span></a>';
     }).join('');
-    modulesCard.innerHTML = '<div class="guide-kicker">Jump by section</div><div class="module-nav">'+chapterLinks+'</div>';
+    modulesCard.innerHTML =
+      '<div class="guide-kicker">Side guide</div>' +
+      '<h3>Extra context + section hints</h3>' +
+      '<p>This right side stays lightweight now: quick reminders, orientation, and fast jumps into the course.</p>' +
+      '<div class="guide-mini-label">How to use it</div>' +
+      '<ul class="guide-points">' +
+        '<li>Use <strong>Foundation</strong> first if you're still unsure which track fits your life.</li>' +
+        '<li>Jump into <strong>Playbooks</strong> when you need execution, not theory.</li>' +
+        '<li>Open <strong>Prompt Vault</strong> only when you have a live task to run.</li>' +
+        '<li>Return to <strong>Scale</strong> after your first real traction, not before.</li>' +
+      '</ul>' +
+      '<div class="guide-mini-label" style="margin-top:16px;">Quick jump</div>' +
+      '<div class="module-nav">'+chapterLinks+'</div>';
     setTimeout(setActiveModuleLink, 0);
 
     document.querySelectorAll('.progress-check').forEach(function(el){ el.classList.add('inline-hidden-progress'); });
@@ -2476,10 +2507,10 @@ Final (Day 6): Last one — no pressure. If [result] ever becomes a priority, I'
       localStorage.setItem('aibp_' + activeId + '_' + this.getAttribute('data-module'), this.checked);
       syncInlineChecks();
       renderRail();
-  window.addEventListener('scroll', setActiveModuleLink, { passive: true });
-  setActiveModuleLink();
     });
   });
+  window.addEventListener('scroll', setActiveModuleLink, { passive: true });
+  setActiveModuleLink();
   renderRail();
 
   // ── RESOURCE COPY BUTTONS ──
