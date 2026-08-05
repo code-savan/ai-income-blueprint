@@ -136,11 +136,15 @@ body {
 .content { max-width: 980px; margin: 0 auto; padding: 60px 40px 100px; }
 .course-shell { display:grid; grid-template-columns:minmax(0,1fr) 340px; gap:32px; max-width:1400px; margin:0 auto; padding:0 24px 80px; align-items:start; }
 .course-shell .content { max-width:none; margin:0; padding:60px 0 100px; }
-.guide-rail { position:sticky; top:24px; display:flex; flex-direction:column; gap:16px; padding-top:60px; }
-.guide-card { background:var(--card); border:1px solid var(--rule); border-radius:16px; padding:18px 18px 16px; box-shadow:0 10px 30px rgba(124,58,237,0.08); }
+.guide-rail { position:sticky; top:24px; display:flex; flex-direction:column; gap:16px; padding-top:40px; }
+.guide-card { background:linear-gradient(180deg,#ffffff 0%, #faf7ff 100%); border:1px solid rgba(124,58,237,0.14); border-radius:18px; padding:18px 18px 16px; box-shadow:0 18px 40px rgba(124,58,237,0.10); backdrop-filter: blur(8px); }
 .guide-card h4 { margin:0 0 8px; font-size:15px; font-weight:700; }
-.guide-kicker { font-family:'DM Mono', monospace; font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:var(--purple); margin-bottom:10px; }
+.guide-kicker { font-family:'DM Mono', monospace; font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:var(--purple); margin-bottom:10px; opacity:0.9; }
 .guide-copy { font-size:13px; color:var(--muted); line-height:1.6; }
+.guide-hero-stat { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:12px; }
+.guide-hero-stat div { background:#fff; border:1px solid rgba(124,58,237,0.12); border-radius:12px; padding:10px 8px; text-align:center; }
+.guide-hero-stat strong{ display:block; font-size:15px; color:var(--ink); }
+.guide-hero-stat span{ font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; }
 .plan-select, .plan-input, .plan-days { width:100%; padding:10px 12px; border:1px solid var(--rule); border-radius:10px; background:#fff; font:inherit; margin-bottom:10px; }
 .plan-row { display:grid; grid-template-columns:1fr 92px; gap:10px; }
 .guide-actions { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
@@ -155,11 +159,12 @@ body {
 .module-check small { display:block; color:var(--muted); margin-top:2px; line-height:1.45; }
 .module-nav { display:flex; flex-direction:column; gap:8px; }
 .module-link { display:flex; justify-content:space-between; gap:10px; text-decoration:none; color:var(--text); border:1px solid var(--rule); padding:10px 12px; border-radius:12px; transition:.2s ease; }
-.module-link:hover, .module-link.active { border-color:var(--purple-light); background:#fbf9ff; }
+.module-link:hover, .module-link.active { border-color:var(--purple-light); background:#fbf9ff; transform:translateY(-1px); box-shadow:0 8px 18px rgba(124,58,237,0.08); }
 .module-link strong { font-size:13px; }
 .module-link span { font-size:11px; color:var(--muted); }
 .inline-hidden-progress { display:none !important; }
 .chapter.is-complete h2::after { content:' ✓'; color:var(--green-light); font-size:0.7em; }
+.chapter-target{ scroll-margin-top:24px; }
 
 .chapter-hero {
   padding: 40px 0 48px;
@@ -2323,6 +2328,7 @@ Final (Day 6): Last one — no pressure. If [result] ever becomes a priority, I'
         '<div class="guide-kicker">Execution cockpit</div>' +
         '<h4>Run this course like a plan, not a PDF.</h4>' +
         '<p class="guide-copy">Your active checklist lives here. Pick a sprint, save progress to this browser, and reset any time.</p>' +
+        '<div class="guide-hero-stat"><div><strong>8</strong><span>Modules</span></div><div><strong>300+</strong><span>Prompts</span></div><div><strong>3</strong><span>Sprints</span></div></div>' +
       '</div>' +
       '<div class="guide-card" id="planCard"></div>' +
       '<div class="guide-card" id="progressCard"></div>' +
@@ -2398,6 +2404,7 @@ Final (Day 6): Last one — no pressure. If [result] ever becomes a priority, I'
       return '<a class="module-link" href="#'+id+'"><div><strong>'+title+'</strong><span>'+id.replace(/-/g,' ')+'</span></div><span>↗</span></a>';
     }).join('');
     modulesCard.innerHTML = '<div class="guide-kicker">Jump by section</div><div class="module-nav">'+chapterLinks+'</div>';
+    setTimeout(setActiveModuleLink, 0);
 
     document.querySelectorAll('.progress-check').forEach(function(el){ el.classList.add('inline-hidden-progress'); });
 
@@ -2432,6 +2439,21 @@ Final (Day 6): Last one — no pressure. If [result] ever becomes a priority, I'
     });
   }
 
+
+  function setActiveModuleLink() {
+    var chapters = Array.from(document.querySelectorAll('.chapter[id]'));
+    var links = Array.from(document.querySelectorAll('.module-link'));
+    if (!chapters.length || !links.length) return;
+    var current = chapters[0].id;
+    chapters.forEach(function(ch){
+      var rect = ch.getBoundingClientRect();
+      if (rect.top <= 180 && rect.bottom > 180) current = ch.id;
+    });
+    links.forEach(function(link){
+      link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+    });
+  }
+
   function syncInlineChecks() {
     var activeId = getActivePlanId();
     var active = ensureCustomPlan(getPlanStore())[activeId] || planTemplates[activeId] || planTemplates['30-day-blueprint'];
@@ -2454,6 +2476,8 @@ Final (Day 6): Last one — no pressure. If [result] ever becomes a priority, I'
       localStorage.setItem('aibp_' + activeId + '_' + this.getAttribute('data-module'), this.checked);
       syncInlineChecks();
       renderRail();
+  window.addEventListener('scroll', setActiveModuleLink, { passive: true });
+  setActiveModuleLink();
     });
   });
   renderRail();
