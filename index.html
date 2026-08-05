@@ -1,11 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Income Blueprint</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Income Blueprint — Complete System</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0a0a0a;
+  --paper: #f5f0e8;
+  --cream: #ede8dc;
+  --purple: #7C3AED;
+  --purple-light: #A78BFA;
+  --green: #1a6b3c;
+  --green-light: #22c55e;
+  --rule: #c8c0b0;
+  --muted: #7a7060;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.6;
+}
+.cover {
+  background: var(--ink);
+  color: var(--paper);
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  padding: 60px;
+  position: relative;
+  overflow: hidden;
+}
+.cover::before {
+  content: '';
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, var(--purple) 0%, transparent 65%);
+  opacity: 0.12;
+  pointer-events: none;
+}
+.cover-badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--purple-light);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 80px;
+}
+.cover-badge::before {
+  content: '';
+  display: block;
+  width: 30px; height: 2px;
+  background: var(--purple-light);
+}
+.cover-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(72px, 10vw, 140px);
+  line-height: 0.9;
+  letter-spacing: -1px;
+}
+.cover-title em { font-style: normal; color: var(--purple-light); }
+.cover-sub {
+  font-size: 18px;
+  color: #aaa;
+  margin-top: 28px;
+  max-width: 500px;
+  font-weight: 300;
+}
+.cover-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-top: 1px solid #333;
+  padding-top: 28px;
+}
+.cover-targets { display: flex; gap: 12px; flex-wrap: wrap; }
+.target-chip {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.05em;
+  color: #ccc;
+}
+.price-tag { text-align: right; }
+.price-tag .amount {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 52px;
+  line-height: 0.9;
+  color: var(--purple-light);
+}
+.price-tag .label {
+  font-size: 10px;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #666;
+  margin-top: 4px;
+}
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background: rgba(10,10,10,0.9);
+  backdrop-filter: blur(12px);
+  font-size: 13px;
+  font-family: 'DM Mono', monospace;
+}
+.nav .logo { font-weight: 500; color: var(--paper); }
+.nav a { color: #aaa; text-decoration: none; transition: color .2s; }
+.nav a:hover { color: var(--purple-light); }
+.nav-links { display: flex; gap: 20px; }
+.section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 100px 40px;
+}
+.section-number {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--purple);
+  margin-bottom: 12px;
+}
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(42px, 5vw, 64px);
+  line-height: 1.0;
+  letter-spacing: -0.5px;
+}
+.rule {
+  border: none;
+  border-top: 1px solid var(--rule);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+</style>
 </head>
-<body style="display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;font-family:sans-serif;font-size:2rem;">
-  <h1>AI Income Blueprint</h1>
+<nav class="nav">
+  <span class="logo">AI Income Blueprint</span>
+  <div class="nav-links">
+    <a href="#toc">Contents</a>
+    <a href="#foundation">Foundation</a>
+    <a href="#tracks">Tracks</a>
+    <a href="#tools">Tools</a>
+    <a href="#playbooks">Playbooks</a>
+    <a href="#prompts">Prompts</a>
+  </div>
+</nav>
+<body>
+<div class="cover">
+  <div>
+    <div class="cover-badge">AI Income Blueprint · 2026</div>
+    <h1 class="cover-title">AI<br><em>Income</em><br>Blueprint</h1>
+    <p class="cover-sub">The complete system for generating your first AI income — from choosing your track to scaling past $2,000/month. Built from 18 months of real execution by 1,400+ students.</p>
+  </div>
+  <div class="cover-bottom">
+    <div class="cover-targets">
+      <span class="target-chip">Track A — Autonomous Sales</span>
+      <span class="target-chip">Track B — Service Sales</span>
+      <span class="target-chip">Faceless Content</span>
+    </div>
+    <div class="price-tag">
+      <div class="amount">$97</div>
+      <div class="label">One-Time · Lifetime Access</div>
+    </div>
+  </div>
+</div>
+
+<hr class="rule">
+
+<div class="section" id="toc">
+  <div class="section-number">Table of Contents</div>
+  <h2 class="section-title">What's Inside the Blueprint</h2>
+  <div class="toc-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px;">
+    <div class="toc-item" style="background:var(--cream);padding:24px;border-radius:4px;border-left:3px solid var(--purple);">
+      <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--purple);letter-spacing:0.15em;margin-bottom:4px;">01</div>
+      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:24px;margin-bottom:4px;">Foundation</h3>
+      <p style="font-size:14px;color:var(--muted);">Pick Your Lane — the diagnostic that places you in the right track</p>
+    </div>
+    <div class="toc-item" style="background:var(--cream);padding:24px;border-radius:4px;border-left:3px solid var(--purple);">
+      <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--purple);letter-spacing:0.15em;margin-bottom:4px;">02</div>
+      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:24px;margin-bottom:4px;">Tools</h3>
+      <p style="font-size:14px;color:var(--muted);">The Only Stack You Need — free tools, setup walkthrough</p>
+    </div>
+    <div class="toc-item" style="background:var(--cream);padding:24px;border-radius:4px;border-left:3px solid var(--purple);">
+      <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--purple);letter-spacing:0.15em;margin-bottom:4px;">03</div>
+      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:24px;margin-bottom:4px;">Income</h3>
+      <p style="font-size:14px;color:var(--muted);">Your First $500 Roadmap — day-by-day action plan</p>
+    </div>
+    <div class="toc-item" style="background:var(--cream);padding:24px;border-radius:4px;border-left:3px solid var(--purple);">
+      <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--purple);letter-spacing:0.15em;margin-bottom:4px;">04</div>
+      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:24px;margin-bottom:4px;">Playbooks</h3>
+      <p style="font-size:14px;color:var(--muted);">Four execution playbooks for every scenario</p>
+    </div>
+    <div class="toc-item" style="background:var(--cream);padding:24px;border-radius:4px;border-left:3px solid var(--purple);">
+      <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--purple);letter-spacing:0.15em;margin-bottom:4px;">05</div>
+      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:24px;margin-bottom:4px;">Prompt Vault</h3>
+      <p style="font-size:14px;color:var(--muted);">50 ready-to-use AI prompts for outreach, content, delivery</p>
+    </div>
+    <div class="toc-item" style="background:var(--cream);padding:24px;border-radius:4px;border-left:3px solid var(--purple);">
+      <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--purple);letter-spacing:0.15em;margin-bottom:4px;">06</div>
+      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:24px;margin-bottom:4px;">Scale</h3>
+      <p style="font-size:14px;color:var(--muted);">From $500 to $2,000/month without doubling workload</p>
+    </div>
+  </div>
+</div>
+
+<hr class="rule">
+
 </body>
 </html>
