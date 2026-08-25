@@ -2077,20 +2077,29 @@ Final (Day 6): Last one — no pressure. If [result] ever becomes a priority, I'
 
   // ── ACTIVE NAV TRACKING ──
   var sections = document.querySelectorAll('.chapter');
-  var links = document.querySelectorAll('.sidenav a');
-  if (sections.length && links.length) {
-    var observerOptions = { rootMargin: '-30% 0px -60% 0px' };
+  var navLinks = document.querySelectorAll('.sidenav a');
+  function getNavHref(id) {
+    var a = document.querySelector('.sidenav a[href="#' + id + '"]');
+    if (a) return a;
+    return document.querySelector('.sidenav a[href="index.html#' + id + '"]');
+  }
+  function setActiveNav() {
+    if (!sections.length || !navLinks.length) return;
+    var isChecklistPage = document.body.classList.contains('checklist-only');
+    if (isChecklistPage) return;
+    var current = sections[0].id;
+    var scrollPos = window.scrollY + 140;
     sections.forEach(function(s) {
-      new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (entry.isIntersecting) {
-            links.forEach(function(l) { l.classList.remove('active'); });
-            var link = document.querySelector('.sidenav a[href="#' + entry.target.id + '"]');
-            if (link) link.classList.add('active');
-          }
-        });
-      }, observerOptions).observe(s);
+      if (s.offsetTop <= scrollPos) current = s.id;
     });
+    navLinks.forEach(function(l) { l.classList.remove('active'); });
+    var active = getNavHref(current);
+    if (active) active.classList.add('active');
+  }
+  if (sections.length && navLinks.length) {
+    window.addEventListener('scroll', setActiveNav, { passive: true });
+    window.addEventListener('load', setActiveNav);
+    setActiveNav();
   }
 
   // ── ACCORDION ──

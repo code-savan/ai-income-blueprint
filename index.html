@@ -2051,20 +2051,25 @@ Final (Day 6): Last one — no pressure. If [result] ever becomes a priority, I'
 
   // ── ACTIVE NAV TRACKING ──
   var sections = document.querySelectorAll('.chapter');
-  var links = document.querySelectorAll('.sidenav a');
-  if (sections.length && links.length) {
-    var observerOptions = { rootMargin: '-30% 0px -60% 0px' };
+  var navLinks = document.querySelectorAll('.sidenav a[href^="#"]');
+  function setActiveNav() {
+    if (!sections.length || !navLinks.length) return;
+    var current = sections[0].id;
+    var scrollPos = window.scrollY + 140;
     sections.forEach(function(s) {
-      new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (entry.isIntersecting) {
-            links.forEach(function(l) { l.classList.remove('active'); });
-            var link = document.querySelector('.sidenav a[href="#' + entry.target.id + '"]');
-            if (link) link.classList.add('active');
-          }
-        });
-      }, observerOptions).observe(s);
+      if (s.offsetTop <= scrollPos) current = s.id;
     });
+    navLinks.forEach(function(l) {
+      l.classList.toggle('active', l.getAttribute('href') === '#' + current);
+    });
+  }
+  if (sections.length && navLinks.length) {
+    window.addEventListener('scroll', setActiveNav, { passive: true });
+    window.addEventListener('load', setActiveNav);
+    navLinks.forEach(function(l) {
+      l.addEventListener('click', function() { setTimeout(setActiveNav, 100); });
+    });
+    setActiveNav();
   }
 
   // ── ACCORDION ──
