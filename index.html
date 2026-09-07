@@ -736,7 +736,7 @@ table.tbl td.day { font-family:'IBM Plex Mono',monospace; font-size:13px; color:
           <tr><td><strong>Canva</strong></td><td>Thumbnails, social media graphics, video covers</td><td>✅ Free</td></tr>
           <tr><td><strong>CapCut</strong></td><td>Video editing for faceless content (or VN below)</td><td>✅ Free</td></tr>
           <tr><td><strong>Gumroad</strong></td><td>Storefront — <em>pick 1 of 3</em>: Gumroad / Lemon Squeezy / Whop</td><td>✅ Free</td></tr>
-          <tr><td><strong>Google Flow</strong></td><td>AI-powered image &amp; video generation with a creative agent</td><td>✅ Free (50 credits/day)</td></tr>
+          <tr><td><strong>Google Flow</strong></td><td>AI image &amp; video studio — Nano Banana Pro 2 image gen is effectively unlimited; video + Nano Pro use credits</td><td>✅ Free</td></tr>
         </table>
 
         <h3>Power Add-Ons — Plug In Where You Need Them</h3>
@@ -763,7 +763,7 @@ table.tbl td.day { font-family:'IBM Plex Mono',monospace; font-size:13px; color:
           <tr><td><strong>Gumroad</strong></td><td>Full storefront + checkout forever</td><td>You want to remove the 10% fee with a sub</td><td>$10/mo</td></tr>
           <tr><td><strong>Lemon Squeezy</strong></td><td>Storefront + tax/VAT handled globally</td><td>You want lower fees / advanced affiliate setup</td><td>Fees on sale</td></tr>
           <tr><td><strong>Whop</strong></td><td>Storefront + discovery + community</td><td>You want custom checkout embed + lower fees</td><td>Fees on sale</td></tr>
-          <tr><td><strong>Google Flow</strong></td><td>50 free credits/day — images, videos, custom tools</td><td>You need more than 50 daily credits or 4K upscaling</td><td>From $4.99/mo (Plus)</td></tr>
+          <tr><td><strong>Google Flow</strong></td><td>Nano Banana Pro 2 images unlimited free; 50 daily credits cover video + Nano Pro</td><td>You need >50 video/Nano Pro credits daily or 4K upscaling (bypass: extra Gmail accounts or $1 trial → 1,000 credits first month, then $20/mo)</td><td>$1 trial → $20/mo</td></tr>
         </table>
 
         <div class="callout gold">
@@ -891,13 +891,13 @@ table.tbl td.day { font-family:'IBM Plex Mono',monospace; font-size:13px; color:
         <h4>6. Google Flow — the creative engine</h4>
         <ol>
           <li>Go to <a href="https://labs.google/fx/tools/flow" target="_blank">labs.google/fx/tools/flow</a> and sign in with your Google account</li>
-          <li>You start with <strong>50 free credits per day</strong> — enough for plenty of images and short videos</li>
+          <li>Image generation with <strong>Nano Banana Pro 2 is effectively unlimited</strong> on free — create as many images as you need. Only Nano Pro + video generation consume credits (50/day free). Need more? Use an extra Gmail or grab the <strong>$1 trial → 1,000 credits first month</strong> (then $20/mo) — enough to batch a month of content in one sit.</li>
           <li>Click "Create with Google Flow" to open the workspace and meet your AI agent</li>
           <li>Try the built-in tools: type "Overlays" to add text to a video, or "Image Editor" to tweak a visual</li>
-          <li>Explore the Models carousel to see what Gemini Omni, Veo 3.1, and Nano Banana Pro can do</li>
-          <li>Bookmark the FAQ at <a href="https://labs.google/fx/tools/flow" target="_blank">labs.google/fx/tools/flow</a> for credit limits and model updates</li>
+          <li>Explore the Models carousel to see Veo 3.1, Nano Banana Pro 2, and Gemini Omni</li>
+          <li>Bookmark the FAQ at <a href="https://labs.google/fx/tools/flow" target="_blank">labs.google/fx/tools/flow</a> for credit/model updates</li>
         </ol>
-        <p><strong>Pro tip:</strong> Use Google Flow early in your content pipeline — generate the raw visual assets there, then refine them in Canva or CapCut. The agent understands natural language, so you can say "make a product mockup with a purple gradient background" and it delivers.</p>
+        <p><strong>Pro tip:</strong> Batch all your images first (unlimited with Nano Banana Pro 2), then spend credits only on video. Generate raw visuals in Flow, refine in Canva or CapCut/VN — say "make a product mockup with a purple gradient background" and the agent delivers.</p>
 
         <div class="callout">
           <div class="co-title">⚠️ Save yourself weeks</div>
@@ -1662,14 +1662,14 @@ const PROMPT_DATA = [
       <div class="chapter" id="resources">
         <div class="ch-label"><span>08</span></div>
         <h2>Resources &amp; Downloads</h2>
-        <p>Everything you need in one place. Copy each template, save it, and reuse it across every client or product. These are the working assets behind the entire Blueprint.</p>
+        <p>Everything you need in one place. Download each template (CSV for spreadsheets, TXT for swipes/scripts) — they’re built to be reused for every client or product. These are the working assets behind the entire Blueprint.</p>
 
         <div class="objectives">
           <h4>Inside this section</h4>
           <ul>
-            <li>Ready-to-use templates you can copy and customize</li>
-            <li>The exact checklists for each playbook</li>
-            <li>Tracking sheets to keep your business honest</li>
+            <li>12 downloadable templates — CSV for trackers/scorecards, TXT for swipes/scripts/SOPs</li>
+            <li>All 4 playbook master checklists bundled in one sheet</li>
+            <li>Tracking sheets to keep revenue, leads, content, and hours honest</li>
           </ul>
         </div>
 
@@ -1678,68 +1678,104 @@ const PROMPT_DATA = [
         <div class="resource-item">
           <div class="r-icon">📋</div>
           <div class="r-info">
-            <h4>Outreach Tracking Sheet</h4>
-            <p>Columns for prospect, touch count, reply, call, close. Copy this into your spreadsheet.</p>
+            <h4>Outreach Tracker</h4>
+            <p>Prospect → 3 touches → reply → call → close. CSV with revenue column.</p>
           </div>
-          <a href="#resources" class="r-dl" data-copy="Prospect	Touch 1	Touch 2	Touch 3	Replied	Called	Closed
-[Name]	[d]	[d]	[d]	[Y/N]	[Y/N]	[Y/N]">Copy ↓</a>
+          <a href="#resources" class="r-dl" data-file="outreach-tracker">Download CSV ↓</a>
         </div>
         <div class="resource-item">
-          <div class="r-icon">📅</div>
+          <div class="r-icon">✅</div>
           <div class="r-info">
             <h4>Setup Checklist</h4>
-            <p>Every tool account, setting, and bookmark from Module 2 in one checklist.</p>
+            <p>All 11 tools (ChatGPT/Claude/Manus/Z.ai/Canva/CapCut-or-VN/1 storefront/Flow) — status + links.</p>
           </div>
-          <a href="#resources" class="r-dl" data-copy="Business email | ChatGPT + custom instructions | Claude project | Canva brand kit + thumbnail template | CapCut 9:16 + captions | Gumroad profile + payout | Prompt Vault bookmarked">Copy ↓</a>
+          <a href="#resources" class="r-dl" data-file="setup-checklist">Download CSV ↓</a>
         </div>
         <div class="resource-item">
           <div class="r-icon">📊</div>
           <div class="r-info">
             <h4>Weekly Business Scorecard</h4>
-            <p>Income, leads, closed, content, hours. The one sheet that keeps you on track.</p>
+            <p>Income, leads, closed, content, hours — the one sheet that keeps you honest.</p>
           </div>
-          <a href="#resources" class="r-dl" data-copy="Week	Income	Leads	Closed	Content	Hours	Focus
-[W1]	$					
-[W2]	$					">Copy ↓</a>
+          <a href="#resources" class="r-dl" data-file="weekly-scorecard">Download CSV ↓</a>
+        </div>
+        <div class="resource-item">
+          <div class="r-icon">🎬</div>
+          <div class="r-info">
+            <h4>Daily Content Tracker</h4>
+            <p>Hook type, views, CTR, clicks, sales — daily row for Playbook C. CSV.</p>
+          </div>
+          <a href="#resources" class="r-dl" data-file="daily-tracker">Download CSV ↓</a>
         </div>
         <div class="resource-item">
           <div class="r-icon">💬</div>
           <div class="r-info">
-            <h4>Cold DM Templates</h4>
-            <p>The 3-message outreach and follow-up sequence, ready to personalize.</p>
+            <h4>Cold DM Swipe File</h4>
+            <p>IG/FB, LinkedIn, FB Group + 3-step follow-up — ready to personalize. TXT.</p>
           </div>
-          <a href="#resources" class="r-dl" data-copy="DM: Hey [name], saw [business] in [city] — love what you're doing. I help same-type businesses [result] with AI. Open to a 10-min call?
-Follow-up (Day 3): Circling back — I made a quick idea for [business]. Want me to send it?
-Final (Day 6): Last one — no pressure. If [result] ever becomes a priority, I'm your person.">Copy ↓</a>
-        </div>
-        <div class="resource-item">
-          <div class="r-icon">🚀</div>
-          <div class="r-info">
-            <h4>Launch Email Sequence</h4>
-            <p>The 5-email launch sequence for any digital product launch.</p>
-          </div>
-          <a href="#resources" class="r-dl" data-copy="1. Tease the problem | 2. Introduce solution | 3. Social proof | 4. Urgency + bonus | 5. Final CTA + guarantee">Copy ↓</a>
-        </div>
-        <div class="resource-item">
-          <div class="r-icon">📈</div>
-          <div class="r-info">
-            <h4>Price Increase Script</h4>
-            <p>Raise prices gracefully and keep clients happy with this exact wording.</p>
-          </div>
-          <a href="#resources" class="r-dl" data-copy="Given the results we've delivered, I'm adjusting my rates to $[new] starting [date]. Existing clients stay at $[old] for the next [timeframe]. I'm also adding [new value]. Want me to lock you in first?">Copy ↓</a>
+          <a href="#resources" class="r-dl" data-file="cold-dm">Download TXT ↓</a>
         </div>
         <div class="resource-item">
           <div class="r-icon">📄</div>
           <div class="r-info">
-            <h4>Download PDF Summary</h4>
-            <p>Export the entire Blueprint as a PDF — course overview, track recommendations, and key modules.</p>
+            <h4>Landing Page Copy Template</h4>
+            <p>Headline → 3 bullets → what's inside → price → guarantee. Works on Gumroad/Lemon/Whop. TXT.</p>
           </div>
-          <button class="r-dl" id="pdfDownloadBtn" style="background:var(--card);border:1px solid var(--rule);color:var(--purple);padding:6px 14px;border-radius:6px;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap;" onmouseover="this.style.background='var(--purple)';this.style.color='#fff'" onmouseout="this.style.background='var(--card)';this.style.color='var(--purple)'">Download PDF ↓</button>
+          <a href="#resources" class="r-dl" data-file="landing-copy">Download TXT ↓</a>
         </div>
+        <div class="resource-item">
+          <div class="r-icon">🧪</div>
+          <div class="r-info">
+            <h4>Product Validation Worksheet</h4>
+            <p>X/Y test, scoring 1-10, 2 sharper alternatives. Fill before you build. TXT.</p>
+          </div>
+          <a href="#resources" class="r-dl" data-file="validation-worksheet">Download TXT ↓</a>
+        </div>
+        <div class="resource-item">
+          <div class="r-icon">🎥</div>
+          <div class="r-info">
+            <h4>Faceless Script Pack — 7 Scripts</h4>
+            <p>Hook/Problem/Solution/CTA 30s formula, 3 problem / 2 curiosity / 2 result hooks. TXT.</p>
+          </div>
+          <a href="#resources" class="r-dl" data-file="faceless-scripts">Download TXT ↓</a>
+        </div>
+        <div class="resource-item">
+          <div class="r-icon">📝</div>
+          <div class="r-info">
+            <h4>Client Onboarding Questionnaire</h4>
+            <p>10 questions — goals, audience, voice, success metrics. Send before kickoff. TXT.</p>
+          </div>
+          <a href="#resources" class="r-dl" data-file="onboarding-q">Download TXT ↓</a>
+        </div>
+        <div class="resource-item">
+          <div class="r-icon">⚙️</div>
+          <div class="r-info">
+            <h4>Service Delivery SOP</h4>
+            <p>Pre-work → delivery → QA → Loom handoff → testimonial ask. Repeatable. TXT.</p>
+          </div>
+          <a href="#resources" class="r-dl" data-file="delivery-sop">Download TXT ↓</a>
+        </div>
+        <div class="resource-item">
+          <div class="r-icon">💰</div>
+          <div class="r-info">
+            <h4>Pricing Ladder</h4>
+            <p>Proof → Growth → Premium → Retainer stages with price ranges. CSV.</p>
+          </div>
+          <a href="#resources" class="r-dl" data-file="pricing-sheet">Download CSV ↓</a>
+        </div>
+        <div class="resource-item">
+          <div class="r-icon">📚</div>
+          <div class="r-info">
+            <h4>Playbook Checklists Bundle</h4>
+            <p>All 4 playbook master checklists in one sheet — A/B/C/D steps tick-by-tick. CSV.</p>
+          </div>
+          <a href="#resources" class="r-dl" data-file="playbook-checklists">Download CSV ↓</a>
+        </div>
+
 
         <div class="callout">
           <div class="co-title">📌 How to use these resources</div>
-          <p>Click <strong>Copy</strong> on any resource to grab it for your own spreadsheet or document. Build a master folder with one file per resource. Every time you start a new client or product, duplicate your templates — consistency is what makes scaling possible.</p>
+          <p>Click <strong>Download</strong> — CSV files open directly in Sheets/Excel, TXT files are ready to paste into ChatGPT, Manus, or Z.ai. Build a master folder with all 12 files. Every time you start a new client or product, duplicate the template — consistency is what makes scaling possible.</p>
         </div>
       </div>
     </div>
@@ -2182,143 +2218,33 @@ Final (Day 6): Last one — no pressure. If [result] ever becomes a priority, I'
   setActiveModuleLink();
   renderRail();
 
-  // ── RESOURCE COPY BUTTONS ──
-  var resourceLinks = document.querySelectorAll('.resource-item .r-dl');
-  resourceLinks.forEach(function(link) {
-    link.addEventListener('click', function(e) {
+  // ── RESOURCE DOWNLOADS ──
+  var resourceFiles = {
+    'outreach-tracker': { name:'Outreach_Tracker.csv', type:'text/csv', content: 'Prospect,Platform,Signal Noticed,Touch 1 Date,Touch 2 Date,Touch 3 Date,Replied?,Called?,Closed?,Revenue,Notes\n"Example Cafe",Instagram,"No posts 3 weeks",2026-09-01,2026-09-04,2026-09-07,No,No,No,,Personalize first line\n,,, , , , , , , ,\n,,, , , , , , , ,\n' },
+    'setup-checklist': { name:'Setup_Checklist.csv', type:'text/csv', content: 'Task,Status,Tool,Link,Done Date\nBusiness email,☐,Gmail/Outlook,, \nChatGPT + custom instructions,☐,ChatGPT,chat.openai.com, \nClaude project,☐,Claude,claude.ai, \nManus — one skill tested,☐,Manus,manus.im, \nZ.ai Agent Mode task,☐,Z.ai,chat.z.ai, \nCanva brand kit + thumbnail,☐,Canva,canva.com, \nCapCut OR VN 9:16 + captions,☐,CapCut/VN,capcut.com / vlognow.me, \nONE storefront verified + payout,☐,Gumroad/Lemon/Whop,, \nGoogle Flow agent session,☐,Google Flow,labs.google/fx/tools/flow, \nPrompt Vault bookmarked,☐,Prompt Vault,#prompts, \n' },
+    'weekly-scorecard': { name:'Weekly_Scorecard.csv', type:'text/csv', content: 'Week,Income,Leads Contacted,Closed,Content Pieces,Hrs Worked,Focus Next Week,Blockers\nW1,0,0,0,0,0,, \nW2,0,0,0,0,0,, \nW3,0,0,0,0,0,, \nW4,0,0,0,0,0,, \n' },
+    'daily-tracker': { name:'Daily_Content_Tracker.csv', type:'text/csv', content: 'Date,Hook Type,Script Title,Views,CTR%,Link Clicks,Sales,Notes\n2026-09-01,Problem, , , , , ,\n2026-09-02,Curiosity, , , , , ,\n2026-09-03,Result, , , , , ,\n' },
+    'cold-dm': { name:'Cold_DM_Templates.txt', type:'text/plain', content: 'COLD DM — REPLY-GETTER (IG/FB)\nHey [name] — saw [business name] in [city] and love [specific thing you noticed]. I help [business type] like yours [specific result] using AI — takes hours, not weeks. Worth a quick 10-min call this week?\n\nLINKEDIN — CONNECTION + PITCH\nConnection: Hi [name] — came across your post about [topic] and it resonated. I work with [business type] owners on [specific result]. Would love to connect.\nAfter accept: Thanks for connecting, [name]. Quick one — I help owners like you [specific result] using AI, without adding to your plate. If [pain] is on your radar, open to a 10-min call?\n\nFOLLOW-UP SEQUENCE (3 touches, 72h apart)\nM1 Day 0: Hey [name], saw [business type] in [city] — love what you do. I help same-type businesses [result] with AI. Open to a 10-min call?\nM2 Day 3: Hey [name], circling back — I put together a quick idea for [business name] around [result]. Want me to send it?\nM3 Day 6: Last one [name] — no pressure. If [result] ever becomes priority, I’m your person.\n' },
+    'landing-copy': { name:'Landing_Page_Copy_Template.txt', type:'text/plain', content: 'LANDING PAGE COPY TEMPLATE — for Gumroad / Lemon Squeezy / Whop\n\n1. HOOK HEADLINE (under 10 words, outcome first):\n[Headline]\n\n2. THREE BENEFIT BULLETS (verb-led):\n- [Verb + specific result]\n- [Verb + specific result]\n- [Verb + specific result]\n\n3. WHAT’S INSIDE (bullets per section/asset):\n- [Section 1]\n- [Section 2]\n- [Section 3]\n\n4. PRICE POSITIONING:\nAt $[price], you trade [page count/time] for [specific result] — not a file, a result.\n\n5. GUARANTEE:\nNot useful in 10 minutes? Full refund, no questions.\n\nPaste into your storefront description field.\n' },
+    'validation-worksheet': { name:'Product_Validation_Worksheet.txt', type:'text/plain', content: 'PRODUCT VALIDATION WORKSHEET — score 1-10\n\nIdea: [one sentence]\nQ1: Does it answer "I want to achieve X" or "avoid Y" for a specific person? [ ]\nQ2: Who exactly is it for? (one sentence, situation not demographic):\nQ3: What do they do instead now and why does it fall short?\nQ4: Sellable name + one-line promise:\nQ5: Would a stranger stop scrolling for this? Score 1-10: [ ] — why?\nIf under 7, write 2 sharper alternatives:\nAlt 1: \nAlt 2: \n' },
+    'faceless-scripts': { name:'Faceless_Script_Pack.txt', type:'text/plain', content: 'FACELESS CONTENT — 7-SCRIPT PACK (Faceless Formula: Hook 0-3s / Problem 3-10s / Solution 10-20s / CTA 20-30s)\n\nSCRIPT 1 — Problem hook:\n[0-3s] Nobody told [audience] this about [problem].\n[3-10s] Name the pain they feel weekly.\n[10-20s] That’s why I built [product] — [result] in [timeframe].\n[20-30s] Link in bio — $[price].\n\nRepeat x7: 3 problem / 2 curiosity / 2 result hooks. Same product + CTA, vary wording. Record 1080x1920, auto-captions, cross-post Reels/Shorts.\n' },
+    'onboarding-q': { name:'Client_Onboarding_Questionnaire.txt', type:'text/plain', content: 'CLIENT ONBOARDING — 10 QUESTIONS\n1. What’s the #1 goal for the next 30 days?\n2. Who is your exact audience (situation, not demographic)?\n3. What are you doing now for [content/copy/automation] and where does it fail?\n4. Brand voice: 3 adjectives + one brand you sound like?\n5. Top 3 competitors + what you dislike about them?\n6. What does success look like in numbers (leads, sales, followers)?\n7. Assets you already have (logo, photos, past posts)?\n8. Tools you use (IG, website, email, CRM)?\n9. Who approves the work and how fast?\n10. Red lines — what should we never say/post?\n' },
+    'delivery-sop': { name:'Service_Delivery_SOP.txt', type:'text/plain', content: 'SERVICE DELIVERY SOP — repeatable for every client\n\nPRE-WORK: intake questionnaire received → position line written → delivery template duplicated\nDELIVERY: 1) Research (30m) 2) Draft with ChatGPT/Claude 3) Design in Canva 4) QA checklist (accuracy, branding, proofread)\nTOUCHPOINTS: Day 0 kickoff → mid-point Loom → delivery → 24h follow-up\nHANDOFF: Loom walkthrough + 3-bullet “what to do next” + ask for testimonial + referral\n' },
+    'pricing-sheet': { name:'Pricing_Ladder.csv', type:'text/csv', content: 'Stage,Price Range,Strategy,When to use\nProof,$50-$150,Low price buy reviews,0-5 sales\nGrowth,$150-$400,Raise with 3+ case studies,3+ results\nPremium,$400-$1000,Bundle + scarcity,Consistent demand\nRetainer,$500-$2000/mo,Recurring monthly,$500/mo stable\n' },
+    'playbook-checklists': { name:'Playbook_Checklists.csv', type:'text/csv', content: 'Playbook,Step,Done?\nPlaybook A — Service,One service chosen (not three),\nA,25 prospects signaled,\nA,50 DMs sent + follow-ups scheduled,\nA,Every reply <24h,\nA,Closing script + deposit ask rehearsed,\nA,First client signed + testimonial,\nPlaybook B — Product,Idea validated score 7+,\nB,Product built 5-10 pages,\nB,ONE storefront verified (Gumroad/Lemon/Whop),\nB,Product page live,\nB,3 promo pieces 1080x1920 captions,\nB,Posted/scheduled,\nPlaybook C — Funnel,Transformation line done,\nC,Format chosen,\nC,3 pieces Faceless Formula 3 hooks,\nC,Batch 5h/7 scripts,\nC,Analytics daily double down,\nPlaybook D — Scale,$500/mo 2-3 weeks consistent,\nD,Volume doubled,\nD,Prices raised 30-50%,\nD,Second stream launched,\nD,Systems + scorecard weekly,\n' }
+  };
+  document.querySelectorAll('.resource-item .r-dl').forEach(function(link){
+    link.addEventListener('click', function(e){
       e.preventDefault();
-      var text = this.getAttribute('data-copy') || '';
-      navigator.clipboard.writeText(text).then(function() {
-        var orig = link.textContent;
-        link.textContent = 'Copied!';
-        setTimeout(function() { link.textContent = orig; }, 2000);
-      }).catch(function() {
-        var ta = document.createElement('textarea');
-        ta.value = text;
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand('copy');
-        document.body.removeChild(ta);
-        var orig = link.textContent;
-        link.textContent = 'Copied!';
-        setTimeout(function() { link.textContent = orig; }, 2000);
-      });
+      var key = this.getAttribute('data-file');
+      var file = resourceFiles[key];
+      if(!file){ var t=this.getAttribute('data-copy')||''; if(t){ var b=new Blob([t],{type:'text/plain'}); var u=URL.createObjectURL(b); var a=document.createElement('a'); a.href=u; a.download=(this.textContent.trim().replace(/[^a-z0-9]/gi,'_')+'.txt'); document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(u);} return;}
+      var blob = new Blob([file.content], {type:file.type});
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a'); a.href=url; a.download=file.name; document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+      var orig=this.textContent; this.textContent='Downloaded!'; var self=this; setTimeout(function(){ self.textContent=orig; },1800);
     });
   });
-
-  // ── PDF DOWNLOAD ──
-  var pdfDownloadBtn = document.getElementById('pdfDownloadBtn');
-  if (pdfDownloadBtn) {
-    pdfDownloadBtn.addEventListener('click', function() {
-      var libsReady = (typeof html2canvas === 'function') && (typeof window.jspdf !== 'undefined');
-      if (!libsReady) {
-        pdfDownloadBtn.textContent = 'Loading PDF library…';
-        var checkLoaded = setInterval(function() {
-          if ((typeof html2canvas === 'function') && (typeof window.jspdf !== 'undefined')) {
-            clearInterval(checkLoaded);
-            pdfDownloadBtn.textContent = 'Download PDF ↓';
-            generatePDF();
-          }
-        }, 300);
-        setTimeout(function() { clearInterval(checkLoaded); }, 20000);
-        return;
-      }
-      generatePDF();
-    });
-
-    function generatePDF() {
-      var btnText = pdfDownloadBtn.textContent;
-      pdfDownloadBtn.textContent = 'Generating PDF…';
-      pdfDownloadBtn.disabled = true;
-
-      var captureEl = document.querySelector('.content');
-      if (!captureEl) {
-        pdfDownloadBtn.textContent = 'Download PDF ↓';
-        pdfDownloadBtn.disabled = false;
-        return;
-      }
-
-      // Build a clean, printable summary node appended off-screen for capture
-      var summary = document.createElement('div');
-      summary.style.cssText = 'position:absolute;left:-9999px;top:0;width:794px;background:#ffffff;color:#111;font-family:Helvetica,Arial,sans-serif;padding:40px 48px;';
-      var getTrackRecommendation = function() {
-        var result = document.getElementById('quizResult');
-        if (result && result.className.indexOf('track-a') !== -1) return 'Track A — Autonomous Sales';
-        if (result && result.className.indexOf('track-b') !== -1) return 'Track B — Service Sales';
-        return 'Balanced — your choice (see diagnostic)';
-      };
-      summary.innerHTML =
-        '<div style="border-bottom:4px solid #7C3AED;padding-bottom:16px;margin-bottom:24px;">' +
-          '<div style="font-size:28px;font-weight:bold;color:#0a0a0a;">AI INCOME BLUEPRINT</div>' +
-          '<div style="font-size:14px;color:#6b655a;margin-top:4px;">Complete Course Summary &mdash; Two Income Tracks, Four Playbooks, 300+ Prompts</div>' +
-        '</div>' +
-        '<div style="margin-bottom:20px;">' +
-          '<div style="font-size:13px;font-weight:bold;color:#7C3AED;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Your Track Recommendation</div>' +
-          '<div style="font-size:18px;font-weight:bold;color:#0a0a0a;">' + getTrackRecommendation() + '</div>' +
-        '</div>' +
-        '<div style="margin-bottom:20px;">' +
-          '<div style="font-size:13px;font-weight:bold;color:#7C3AED;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">The Two Tracks</div>' +
-          '<div style="font-size:14px;line-height:1.6;color:#333;">' +
-            '<strong>Track A — Autonomous Sales:</strong> Build a digital product, run a faceless content funnel, let it sell on autopilot. No client calls. First sale in 19&ndash;24 days.<br/><br/>' +
-            '<strong>Track B — Service Sales:</strong> Use AI to deliver professional services to businesses. Fast cash flow, human rates. First client in 7&ndash;11 days.' +
-          '</div>' +
-        '</div>' +
-        '<div style="margin-bottom:20px;">' +
-          '<div style="font-size:13px;font-weight:bold;color:#7C3AED;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Key Modules</div>' +
-          '<div style="font-size:14px;line-height:1.7;color:#333;">' +
-            '01 &mdash; Foundation: Pick your lane with the 12-minute diagnostic<br/>' +
-            '02 &mdash; Tools: The only 6-tool stack you need (all free to start)<br/>' +
-            '03 &mdash; First $500 Roadmap: Day-by-day plan for both tracks<br/>' +
-            '04 &mdash; Execution Playbooks: A=Service, B=Product, C=Content Funnel, D=Scale<br/>' +
-            '05 &mdash; Prompt Vault: 300+ ready-to-use AI prompts<br/>' +
-            '06 &mdash; Scale to $2K/Month: Lever sequence, pricing, systems<br/>' +
-            '07 &mdash; Wall of Proof: Real student results<br/>' +
-            '08 &mdash; Resources: Templates, checklists &amp; tracking sheets' +
-          '</div>' +
-        '</div>' +
-        '<div style="margin-bottom:20px;background:#F3EEFB;padding:16px;border-radius:8px;">' +
-          '<div style="font-size:13px;font-weight:bold;color:#7C3AED;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Your First 7 Days</div>' +
-          '<div style="font-size:14px;line-height:1.7;color:#333;">' +
-            'Day 1&ndash;2: Set up your AI workspace (ChatGPT, Claude, Canva, CapCut, Gumroad, Google Flow).<br/>' +
-            'Day 3&ndash;4: Define your offer with the Offer Builder prompt.<br/>' +
-            'Day 5&ndash;7: Track A &mdash; post 3 content pieces. Track B &mdash; send 10 outreach messages.' +
-          '</div>' +
-        '</div>' +
-        '<div style="font-size:12px;color:#6b655a;border-top:1px solid #e3ddd2;padding-top:12px;">AI Income Blueprint v3.0 &middot; Built from the execution of 1,400+ students &middot; Generated ' + new Date().toLocaleDateString() + '</div>';
-
-      document.body.appendChild(summary);
-
-      var scrollY = window.scrollY;
-      html2canvas(summary, { backgroundColor: '#ffffff', scale: 2, useCORS: true }).then(function(canvas) {
-        document.body.removeChild(summary);
-        var imgData = canvas.toDataURL('image/jpeg', 0.95);
-        var pdf = new window.jspdf.jsPDF({ orientation: 'portrait', unit: 'px', format: [794, 1123] });
-        var pageWidth = pdf.internal.pageSize.getWidth();
-        var pageHeight = pdf.internal.pageSize.getHeight();
-        var imgWidth = pageWidth;
-        var imgHeight = (canvas.height * imgWidth) / canvas.width;
-        var heightLeft = imgHeight;
-        var position = 0;
-        pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
-        heightLeft -= pageHeight;
-        while (heightLeft > 0) {
-          position = heightLeft - imgHeight;
-          pdf.addPage();
-          pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
-          heightLeft -= pageHeight;
-        }
-        pdf.save('AI-Income-Blueprint-Summary.pdf');
-        pdfDownloadBtn.textContent = 'Download PDF ↓';
-        pdfDownloadBtn.disabled = false;
-        window.scrollTo(0, scrollY);
-      }).catch(function(err) {
-        document.body.removeChild(summary);
-        pdfDownloadBtn.textContent = 'Download PDF ↓';
-        pdfDownloadBtn.disabled = false;
-        alert('Sorry, PDF generation failed. Please try again.');
-      });
-    }
-  }
 
 })();
 </script>
