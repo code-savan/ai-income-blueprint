@@ -2,16 +2,15 @@ export async function onRequest(context) {
   const url = new URL(context.request.url);
   const path = url.pathname;
 
-  const publicPaths = ['/', '/index.html', '/quiz.html', '/login', '/login.html', '/auth', '/api', '/_next', '/favicon.ico'];
+  const publicPaths = ['/login', '/login.html', '/set-password', '/set-password.html', '/auth', '/api', '/favicon.ico'];
   const isPublic = publicPaths.some(p => path === p || path.startsWith(p + '/')) ||
                    path.startsWith('/api/') ||
                    path.startsWith('/auth/') ||
                    path === '/login.html' ||
-                   path.includes('.css') || path.includes('.js') || path.includes('.svg') || path.includes('.png') || path.includes('.jpg') || path.includes('.webp');
+                   path === '/set-password.html' ||
+                   path.includes('.css') || path.includes('.js') || path.includes('.svg') || path.includes('.png') || path.includes('.jpg') || path.includes('.jpeg') || path.includes('.webp') || path.includes('.woff');
 
-  const gated = path === '/checklist.html' || path.startsWith('/playbooks/') || path === '/checklist';
-
-  if (!gated) {
+  if (isPublic) {
     return context.next();
   }
 
