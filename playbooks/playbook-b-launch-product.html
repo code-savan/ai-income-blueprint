@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Playbook B — Launch Your Digital Product in 5 Days | AI Income Blueprint</title>
+<meta name="description" content="Blank page to live storefront: the exact product creation prompt, the Gumroad setup checklist, and your first promotional post written and ready to schedule.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAF8F2;
+    --paper-raised:#FFFFFF;
+    --ink:#1E1A16;
+    --ink-soft:#5B5449;
+    --ink-faint:#948C7C;
+    --line:#E3DCC9;
+    --signal:#1F5C4D;
+    --signal-soft:#E5EFEB;
+    --alert:#9C3B2E;
+    --alert-soft:#F3E7E4;
+    --gold:#8A6A1E;
+    --gold-soft:#F1EADA;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans',sans-serif;font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased;}
+  ::selection{background:var(--signal-soft);color:var(--signal);}
+  a{color:var(--signal);}
+  h1,h2,h3{font-family:'Big Shoulders Display',sans-serif;font-weight:800;line-height:0.96;letter-spacing:-0.01em;margin:0;color:var(--ink);}
+  p{margin:0 0 1em;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  .wrap{max-width:880px;margin:0 auto;padding:0 24px;}
+  .prose{max-width:660px;}
+  .utility{border-bottom:1px solid var(--line);background:var(--paper);position:sticky;top:0;z-index:30;}
+  .utility .wrap{display:flex;align-items:center;justify-content:space-between;height:52px;}
+  .back-link{font-family:'IBM Plex Mono',monospace;font-size:12.5px;text-decoration:none;color:var(--ink-soft);display:flex;align-items:center;gap:6px;}
+  .back-link:hover{color:var(--ink);}
+  .util-tag{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;color:var(--ink-faint);}
+  .dossier{padding:56px 0 32px;border-bottom:1px solid var(--line);}
+  .stamp-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px;}
+  .stamp{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.06em;text-transform:uppercase;padding:5px 10px;border:1.5px dashed var(--signal);color:var(--signal);transform:rotate(-1.2deg);display:inline-block;background:var(--signal-soft);}
+  .stamp.alert{border-color:var(--alert);color:var(--alert);background:var(--alert-soft);transform:rotate(0.8deg);}
+  h1.title{font-size:clamp(2.6rem,6vw,4.2rem);margin-bottom:18px;}
+  .dek{font-size:1.15rem;color:var(--ink-soft);max-width:600px;margin-bottom:28px;}
+  .meta-strip{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);}
+  .meta-cell{padding:14px 18px;border-right:1px solid var(--line);}
+  .meta-cell:last-child{border-right:none;}
+  .meta-label{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:4px;}
+  .meta-value{font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:1.35rem;}
+  .brief{padding:36px 0;border-bottom:1px solid var(--line);}
+  .brief p{color:var(--ink-soft);font-size:1.02rem;}
+  .brief strong{color:var(--ink);}
+  .daynav{position:sticky;top:52px;z-index:20;background:var(--paper);border-bottom:1px solid var(--line);overflow-x:auto;white-space:nowrap;}
+  .daynav .wrap{display:flex;gap:6px;padding-top:10px;padding-bottom:10px;}
+  .daynav a{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.04em;text-decoration:none;color:var(--ink-soft);padding:6px 12px;border:1px solid var(--line);flex:0 0 auto;}
+  .daynav a:hover{border-color:var(--signal);color:var(--signal);}
+  .day{padding:52px 0;border-bottom:1px solid var(--line);}
+  .day:last-of-type{border-bottom:none;}
+  .day-head{display:flex;align-items:baseline;gap:18px;margin-bottom:20px;}
+  .day-num{font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:3rem;color:var(--line);line-height:1;}
+  .day h2{font-size:clamp(1.5rem,3.4vw,2.1rem);}
+  .day-sub{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--signal);letter-spacing:0.04em;margin-bottom:6px;display:block;}
+  .day-body{margin-top:18px;}
+  .day-body p{color:var(--ink-soft);}
+  .day-body ul,.day-body ol{padding-left:1.2em;color:var(--ink-soft);margin:0 0 1em;}
+  .day-body li{margin-bottom:6px;}
+  .callout-note{font-size:0.92rem;color:var(--ink-soft);border-left:2px solid var(--gold);background:var(--gold-soft);padding:10px 14px;margin:18px 0;}
+  .callout-note strong{color:var(--ink);}
+  .card-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0;}
+  .card-grid.four{grid-template-columns:repeat(2,1fr);}
+  .card{background:var(--paper-raised);border:1px solid var(--line);padding:18px 18px 16px;}
+  .card h4{font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:1.15rem;margin-bottom:8px;}
+  .card p{font-size:0.93rem;color:var(--ink-soft);margin-bottom:8px;}
+  .card .search-tip{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--signal);background:var(--signal-soft);padding:6px 8px;display:inline-block;margin-top:4px;}
+  .doc{background:var(--paper-raised);border:1px solid var(--line);box-shadow:5px 5px 0 var(--line);margin:22px 0;}
+  .doc-bar{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-bottom:1px dashed var(--line);}
+  .doc-tag{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-faint);}
+  .copy-btn{font-family:'IBM Plex Mono',monospace;font-size:11.5px;background:var(--ink);color:var(--paper);border:none;padding:6px 12px;cursor:pointer;letter-spacing:0.03em;transition:background .15s;}
+  .copy-btn:hover{background:var(--signal);}
+  .copy-btn:focus-visible{outline:2px solid var(--signal);outline-offset:2px;}
+  .copy-btn.copied{background:var(--signal);}
+  .doc-body{padding:16px;}
+  .doc-body pre{font-family:'IBM Plex Mono',monospace;font-size:13.5px;line-height:1.7;white-space:pre-wrap;word-wrap:break-word;margin:0;color:var(--ink);}
+  .doc-foot{padding:10px 16px;border-top:1px dashed var(--line);font-size:12px;color:var(--ink-faint);font-style:italic;}
+  .doc-multi .doc-body pre{margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--line);}
+  .doc-multi .doc-body pre:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none;}
+  .doc-multi .msg-label{display:block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--signal);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:5px;}
+  .track-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:0.88rem;}
+  .track-table th,.track-table td{border:1px solid var(--line);padding:8px 10px;text-align:left;}
+  .track-table th{background:var(--paper-raised);font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.05em;text-transform:uppercase;color:var(--ink-faint);font-weight:500;}
+  .checklist-block{padding:52px 0;}
+  .checklist-card{background:var(--paper-raised);border:1px solid var(--line);box-shadow:6px 6px 0 var(--gold-soft);padding:28px 26px 24px;}
+  .checklist-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:10px;}
+  .checklist-top h3{font-size:1.5rem;}
+  .progress-pill{font-family:'IBM Plex Mono',monospace;font-size:12px;background:var(--signal-soft);color:var(--signal);padding:5px 10px;}
+  .check-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);}
+  .check-item:last-child{border-bottom:none;}
+  .check-item input{margin-top:4px;width:16px;height:16px;accent-color:var(--signal);flex:0 0 auto;}
+  .check-item label{font-size:0.95rem;color:var(--ink-soft);cursor:pointer;}
+  .check-item input:checked + label{color:var(--ink-faint);text-decoration:line-through;}
+  footer{padding:44px 0 60px;}
+  .foot-nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;border-top:1px solid var(--line);padding-top:26px;}
+  .foot-nav a{font-family:'IBM Plex Mono',monospace;font-size:12.5px;text-decoration:none;color:var(--ink-soft);}
+  .foot-nav a:hover{color:var(--signal);}
+  .foot-next{font-size:0.9rem;color:var(--ink-faint);}
+  @media (max-width:640px){
+    .meta-strip{grid-template-columns:1fr;}
+    .meta-cell{border-right:none;border-bottom:1px solid var(--line);}
+    .meta-cell:last-child{border-bottom:none;}
+    .card-grid{grid-template-columns:1fr;}
+    .day-num{font-size:2.2rem;}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}*{transition:none !important;}}
+</style>
+</head>
+<body>
+
+<div class="utility">
+  <div class="wrap">
+    <a class="back-link" href="../index.html#playbooks">&larr; Back to the Blueprint</a>
+    <span class="util-tag">04 · EXECUTION PLAYBOOKS</span>
+  </div>
+</div>
+
+<header class="dossier">
+  <div class="wrap">
+    <div class="stamp-row">
+      <span class="stamp">Playbook B</span>
+      <span class="stamp">Track A · Autonomous Sales</span>
+      <span class="stamp alert">5-day sprint</span>
+    </div>
+    <h1 class="title">Launch your digital product in 5 days</h1>
+    <p class="dek">Blank page to live storefront — the exact product creation prompt, the Gumroad setup checklist, and your first promotional post written and ready to schedule.</p>
+    <div class="meta-strip">
+      <div class="meta-cell"><div class="meta-label">Goal</div><div class="meta-value">Live storefront</div></div>
+      <div class="meta-cell"><div class="meta-label">Avg. time to live</div><div class="meta-value">5 days</div></div>
+      <div class="meta-cell"><div class="meta-label">Built for</div><div class="meta-value">Track A students</div></div>
+    </div>
+  </div>
+</header>
+
+<section class="brief">
+  <div class="wrap prose">
+    <p><strong>What this playbook assumes:</strong> you've run the diagnostic and landed on Track A — you want an asset that sells while you sleep, not client calls. No audience, no camera, no existing following required.</p>
+    <p>The trap on Track A isn't building the product — it's spending three weeks "getting it right" before anyone's seen it. This playbook is built to force a live storefront by day 5, because <strong>a live product with zero sales teaches you more than a perfect product still in drafts.</strong> First sale typically lands 19–24 days after launch — this playbook only covers getting to live; the roadmap module covers what happens after.</p>
+  </div>
+</section>
+
+<nav class="daynav">
+  <div class="wrap">
+    <a href="#day-1">Day 1</a>
+    <a href="#day-2">Day 2</a>
+    <a href="#day-3">Day 3</a>
+    <a href="#day-4">Day 4</a>
+    <a href="#day-5">Day 5</a>
+    <a href="#checklist">Checklist</a>
+  </div>
+</nav>
+
+<main>
+
+  <!-- DAY 1 -->
+  <section class="day" id="day-1">
+    <div class="wrap">
+      <div class="day-head">
+        <span class="day-num">01</span>
+        <div><span class="day-sub">45 min</span><h2>Validate the idea before you build anything</h2></div>
+      </div>
+      <div class="day-body prose">
+        <p>Don't build what nobody wants. A good product idea answers one of two questions for a specific person: <strong>"I want to achieve X"</strong> or <strong>"I want to avoid Y."</strong> "I want a PDF about productivity" answers neither — it's a topic, not a transformation. Run your idea through the prompt below before you write a single page.</p>
+      </div>
+      <div class="doc">
+        <div class="doc-bar"><span class="doc-tag">Product validation prompt</span><button class="copy-btn" data-copy="t-validate">Copy</button></div>
+        <div class="doc-body"><pre id="t-validate">I have a product idea: [describe your idea in one sentence].
+
+Test it against these questions and be honest, not encouraging:
+1. Does this answer "I want to achieve X" or "I want to avoid Y" for a specific person — not a general topic?
+2. Who exactly is this for? Describe them in one sentence — their situation, not just a demographic.
+3. What do they currently do instead of buying something like this? Why does that fall short?
+4. Give this idea a specific, sellable name and a one-line promise.
+5. Score this idea 1-10 on "would a stranger stop scrolling for this" and explain the score.
+
+If the score is under 7, suggest 2 sharper alternatives using the same topic.</pre></div>
+        <div class="doc-foot">Paste into ChatGPT or Claude. Don't skip the "score under 7" step — a sharper idea now saves a wasted build tomorrow.</div>
+      </div>
+      <div class="callout-note"><strong>Rule for today:</strong> pick a narrow, specific idea over a broad, impressive-sounding one. "A 7-day content calendar for hair salons" outsells "the ultimate social media guide" every time — narrow means the buyer instantly knows it's for them.</div>
+    </div>
+  </section>
+
+  <!-- DAY 2 -->
+  <section class="day" id="day-2">
+    <div class="wrap">
+      <div class="day-head">
+        <span class="day-num">02</span>
+        <div><span class="day-sub">90 min</span><h2>Build the thing — 5 to 10 pages, genuinely useful</h2></div>
+      </div>
+      <div class="day-body prose">
+        <p>A tight, actionable 10-pager beats a bloated 80-pager every time — length signals effort, not value, and buyers judge digital products on whether they got a fast result, not a big file. Pick the format that fits your idea best:</p>
+      </div>
+      <div class="card-grid four">
+        <div class="card"><h4>PDF guide</h4><p>A focused walkthrough with clear steps. Fastest to produce, works for almost any "how to" idea.</p></div>
+        <div class="card"><h4>Template or swipe file pack</h4><p>Fill-in-the-blank assets — captions, email scripts, contracts. Buyers want to copy, not learn.</p></div>
+        <div class="card"><h4>Mini-course (5-part email or video)</h4><p>A short sequence delivered over days. Higher perceived value, slightly more setup.</p></div>
+        <div class="card"><h4>Checklist or framework bundle</h4><p>A structured system — steps, checkboxes, a decision framework. Feels actionable in under a minute of skimming.</p></div>
+      </div>
+      <div class="doc">
+        <div class="doc-bar"><span class="doc-tag">Product builder prompt</span><button class="copy-btn" data-copy="t-build">Copy</button></div>
+        <div class="doc-body"><pre id="t-build">Build a [format: PDF guide / template pack / mini-course / checklist bundle] called "[working title]" that helps [specific person] achieve [specific result].
+
+Structure it as:
+1. A short intro (3-4 sentences) naming the problem and promising the specific outcome
+2. [5-8] sections, each with a clear header and 2-4 actionable paragraphs or a fill-in template
+3. One "quick win" the reader can act on in under 10 minutes, positioned early
+4. A closing checklist summarizing every action step in the product
+
+Keep total length to 5-10 pages. Write in plain, direct language — no filler, no generic advice a reader could get from a free blog post. Every section should feel like it was built specifically for [specific person], not for a general audience.</pre></div>
+        <div class="doc-foot">Run this once for a full draft, then a second pass asking Claude or ChatGPT to "cut anything that doesn't change what the reader does next."</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DAY 3 -->
+  <section class="day" id="day-3">
+    <div class="wrap">
+      <div class="day-head">
+        <span class="day-num">03</span>
+        <div><span class="day-sub">60 min</span><h2>Set up Gumroad and write the product page</h2></div>
+      </div>
+      <div class="day-body prose">
+        <p>Your product page needs exactly five things: a hook headline, three benefit bullets, a "what's inside" list, a price, and a guarantee. Nothing else moves the needle at this stage — resist adding testimonials or an FAQ section before you have either.</p>
+      </div>
+      <div class="doc">
+        <div class="doc-bar"><span class="doc-tag">Landing page prompt</span><button class="copy-btn" data-copy="t-landing">Copy</button></div>
+        <div class="doc-body"><pre id="t-landing">Write Gumroad product page copy for "[product name]" — [one-line description of what it is and who it's for].
+
+Give me:
+1. A hook headline (under 10 words) that leads with the outcome, not the format
+2. 3 benefit bullets, each starting with a verb, each tied to a specific result
+3. A "what's inside" list (bullet per section/asset in the product)
+4. One sentence positioning the price as a fair trade for the result, not the page count
+5. A simple guarantee line (e.g. "not useful in 10 minutes? full refund, no questions")
+
+Tone: direct, confident, zero hype words like "ultimate" or "game-changing."</pre></div>
+        <div class="doc-foot">Paste the output straight into your Gumroad product description field.</div>
+      </div>
+      <div class="callout-note"><strong>Pricing:</strong> price low for your first sales — $[30]–$[50] — to earn reviews and social proof fast. Raise it once you have 5+ sales or a testimonial. Your first $500 usually comes from 5 × $50 products, 2 × $100 products, or one $150 product plus 7 × $50 — total units matter more than one big win.</p>
+      </div>
+
+      <h3 style="font-size:1.2rem;margin:28px 0 14px;">Gumroad setup checklist</h3>
+      <table class="track-table">
+        <thead><tr><th>Step</th><th>What to do</th></tr></thead>
+        <tbody>
+          <tr><td>Account</td><td>Create at gumroad.com with your business email; verify it before uploading anything.</td></tr>
+          <tr><td>Payouts</td><td>Go to Settings → Payouts and confirm the current option for your country. Gumroad has extended payout support to more countries over time — if PayPal isn't reliable for you, a USD-holding account service is a common workaround creators outside the US use to receive funds without dropped or delayed payouts. Confirm this before you rely on it for income.</td></tr>
+          <tr><td>Product</td><td>Create your product, upload the file from Day 2, and paste in the landing page copy above.</td></tr>
+          <tr><td>Price &amp; guarantee</td><td>Set your launch price (see pricing note above) and add the refund policy to the page.</td></tr>
+          <tr><td>Checkout branding</td><td>Match your checkout colors to your brand kit so the buying moment feels consistent with your content.</td></tr>
+          <tr><td>Email capture</td><td>Confirm receipt emails are on — every buyer's email lands in your Gumroad audience automatically, which is your list for future launches.</td></tr>
+        </tbody>
+      </table>
+      <div class="callout-note"><strong>Why this matters:</strong> payout coverage and fees change country by country and over time — this is worth 10 minutes of verification now rather than discovering a payout problem after your first sale.</div>
+    </div>
+  </section>
+
+  <!-- DAY 4 -->
+  <section class="day" id="day-4">
+    <div class="wrap">
+      <div class="day-head">
+        <span class="day-num">04</span>
+        <div><span class="day-sub">120 min</span><h2>Create 3 promo pieces around the #1 transformation</h2></div>
+      </div>
+      <div class="day-body prose">
+        <p>Pick the single biggest transformation your product delivers — not a feature list, one outcome — and build all three pieces around it. Playbook C covers the full faceless content system; here's a fast version to get your first post live today.</p>
+      </div>
+      <div class="doc">
+        <div class="doc-bar"><span class="doc-tag">30-second promo script</span><button class="copy-btn" data-copy="t-script">Copy</button></div>
+        <div class="doc-body"><pre id="t-script">[0-3s] Hook: "Nobody told [audience] this about [problem]."
+[3-10s] Problem: name the frustration in one line your audience feels weekly.
+[10-20s] Solution: "That's exactly why I built [product name] — [specific result] in [timeframe]."
+[20-30s] CTA: "Link in bio — it's $[price]."</pre></div>
+        <div class="doc-foot">Record as screen + voiceover using Google Omni Flash, or text-on-screen over b-roll in CapCut. Export 1080×1920 with captions on.</div>
+      </div>
+      <div class="callout-note"><strong>Do this 3 times</strong> with 3 different hooks — a problem-hook, a curiosity-hook, and a result-hook — using the same product and CTA. You won't know which angle lands until you post; that's the point of shipping 3, not 1.</div>
+    </div>
+  </section>
+
+  <!-- DAY 5 -->
+  <section class="day" id="day-5">
+    <div class="wrap">
+      <div class="day-head">
+        <span class="day-num">05</span>
+        <div><span class="day-sub">60 min</span><h2>Schedule and launch</h2></div>
+      </div>
+      <div class="day-body prose">
+        <p>Post piece one today. Schedule pieces two and three for the next two days rather than posting all three at once — a live storefront needs sustained signal, not a single burst.</p>
+      </div>
+      <table class="track-table">
+        <thead><tr><th>Post</th><th>When</th><th>Action after posting</th></tr></thead>
+        <tbody>
+          <tr><td>Piece 1 — problem-hook</td><td>Today</td><td>Reply to every comment within the first hour; that window is when the algorithm decides reach.</td></tr>
+          <tr><td>Piece 2 — curiosity-hook</td><td>Tomorrow</td><td>Cross-post to Reels and Shorts using the same file.</td></tr>
+          <tr><td>Piece 3 — result-hook</td><td>Day after</td><td>Check analytics on piece 1 — note which hook got the most watch-through.</td></tr>
+        </tbody>
+      </table>
+      <div class="callout-note"><strong>You're live.</strong> From here, the First $500 Roadmap module takes over — daily posting, iterating on your winning hook, and scaling toward your first sale, which typically lands day 19–24.</div>
+    </div>
+  </section>
+
+  <!-- CHECKLIST -->
+  <section class="checklist-block" id="checklist">
+    <div class="wrap">
+      <div class="checklist-card">
+        <div class="checklist-top"><h3>Playbook B — master checklist</h3><span class="progress-pill" id="progress-pill">0 / 11 complete</span></div>
+        <div class="check-item"><input type="checkbox" id="c1"><label for="c1">Idea validated against the X/Y test — scored 7+</label></div>
+        <div class="check-item"><input type="checkbox" id="c2"><label for="c2">Product format chosen (PDF, template pack, mini-course, or bundle)</label></div>
+        <div class="check-item"><input type="checkbox" id="c3"><label for="c3">Product built — 5 to 10 pages, one clear transformation</label></div>
+        <div class="check-item"><input type="checkbox" id="c4"><label for="c4">Gumroad account created and payout method confirmed</label></div>
+        <div class="check-item"><input type="checkbox" id="c5"><label for="c5">Product page live — headline, 3 bullets, what's inside, price, guarantee</label></div>
+        <div class="check-item"><input type="checkbox" id="c6"><label for="c6">Launch price set (low, for early social proof)</label></div>
+        <div class="check-item"><input type="checkbox" id="c7"><label for="c7">3 promo pieces scripted around the #1 transformation</label></div>
+        <div class="check-item"><input type="checkbox" id="c8"><label for="c8">3 pieces recorded and exported 1080×1920 with captions</label></div>
+        <div class="check-item"><input type="checkbox" id="c9"><label for="c9">Piece 1 posted, pieces 2-3 scheduled</label></div>
+        <div class="check-item"><input type="checkbox" id="c10"><label for="c10">Email capture confirmed on in Gumroad</label></div>
+        <div class="check-item"><input type="checkbox" id="c11"><label for="c11">Storefront link tested end-to-end as a buyer would see it</label></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-nav">
+      <a href="../index.html#playbooks">&larr; All playbooks</a>
+      <span class="foot-next">Next: <strong>Playbook C</strong> builds out the full faceless content funnel behind Day 4's promo pieces — then <strong>Playbook D</strong> when you're past your first $500.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.copy-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var key = btn.getAttribute('data-copy');
+      var el = document.getElementById(key);
+      var text = el ? el.textContent : '';
+      var done = function(){
+        var original = btn.textContent;
+        btn.textContent = 'Copied';
+        btn.classList.add('copied');
+        setTimeout(function(){ btn.textContent = original; btn.classList.remove('copied'); }, 1400);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(function(){ fallbackCopy(text); done(); });
+      } else { fallbackCopy(text); done(); }
+    });
+  });
+  function fallbackCopy(text){
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); } catch(e) {}
+    document.body.removeChild(ta);
+  }
+  var boxes = document.querySelectorAll('.check-item input[type="checkbox"]');
+  var pill = document.getElementById('progress-pill');
+  function updateProgress(){
+    var checked = Array.prototype.filter.call(boxes, function(b){return b.checked;}).length;
+    pill.textContent = checked + ' / ' + boxes.length + ' complete';
+  }
+  boxes.forEach(function(b){ b.addEventListener('change', updateProgress); });
+</script>
+
+</body>
+</html>

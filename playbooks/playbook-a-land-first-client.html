@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Playbook A — Land Your First Service Client in 7 Days | AI Income Blueprint</title>
+<meta name="description" content="The full execution playbook: positioning framework, exact platforms to find ready buyers, outreach templates, and the 3-step follow-up sequence that gets replies.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAF8F2;
+    --paper-raised:#FFFFFF;
+    --ink:#1E1A16;
+    --ink-soft:#5B5449;
+    --ink-faint:#948C7C;
+    --line:#E3DCC9;
+    --signal:#1D3F72;
+    --signal-soft:#E8EEF5;
+    --alert:#9C3B2E;
+    --alert-soft:#F3E7E4;
+    --gold:#8A6A1E;
+    --gold-soft:#F1EADA;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans',sans-serif;
+    font-size:16.5px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--signal-soft);color:var(--signal);}
+  a{color:var(--signal);}
+  h1,h2,h3{
+    font-family:'Big Shoulders Display',sans-serif;
+    font-weight:800;
+    line-height:0.96;
+    letter-spacing:-0.01em;
+    margin:0;
+    color:var(--ink);
+  }
+  p{margin:0 0 1em;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  .wrap{max-width:880px;margin:0 auto;padding:0 24px;}
+  .prose{max-width:660px;}
+
+  /* utility bar */
+  .utility{
+    border-bottom:1px solid var(--line);
+    background:var(--paper);
+    position:sticky;top:0;z-index:30;
+  }
+  .utility .wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    height:52px;
+  }
+  .back-link{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    text-decoration:none;
+    color:var(--ink-soft);
+    display:flex;align-items:center;gap:6px;
+  }
+  .back-link:hover{color:var(--ink);}
+  .util-tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.08em;
+    color:var(--ink-faint);
+  }
+
+  /* hero / dossier header */
+  .dossier{padding:56px 0 32px;border-bottom:1px solid var(--line);}
+  .stamp-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px;}
+  .stamp{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    padding:5px 10px;
+    border:1.5px dashed var(--signal);
+    color:var(--signal);
+    transform:rotate(-1.2deg);
+    display:inline-block;
+    background:var(--signal-soft);
+  }
+  .stamp.alert{border-color:var(--alert);color:var(--alert);background:var(--alert-soft);transform:rotate(0.8deg);}
+  h1.title{font-size:clamp(2.6rem,6vw,4.2rem);margin-bottom:18px;}
+  .dek{font-size:1.15rem;color:var(--ink-soft);max-width:600px;margin-bottom:28px;}
+  .meta-strip{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    border:1px solid var(--line);
+  }
+  .meta-cell{padding:14px 18px;border-right:1px solid var(--line);}
+  .meta-cell:last-child{border-right:none;}
+  .meta-label{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:4px;}
+  .meta-value{font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:1.35rem;}
+
+  /* mission brief */
+  .brief{padding:36px 0;border-bottom:1px solid var(--line);}
+  .brief p{color:var(--ink-soft);font-size:1.02rem;}
+  .brief strong{color:var(--ink);}
+
+  /* day nav */
+  .daynav{
+    position:sticky;top:52px;z-index:20;
+    background:var(--paper);
+    border-bottom:1px solid var(--line);
+    overflow-x:auto;
+    white-space:nowrap;
+  }
+  .daynav .wrap{display:flex;gap:6px;padding-top:10px;padding-bottom:10px;}
+  .daynav a{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;letter-spacing:0.04em;
+    text-decoration:none;color:var(--ink-soft);
+    padding:6px 12px;border:1px solid var(--line);
+    flex:0 0 auto;
+  }
+  .daynav a:hover{border-color:var(--signal);color:var(--signal);}
+
+  /* day sections */
+  .day{padding:52px 0;border-bottom:1px solid var(--line);}
+  .day:last-of-type{border-bottom:none;}
+  .day-head{display:flex;align-items:baseline;gap:18px;margin-bottom:20px;}
+  .day-num{
+    font-family:'Big Shoulders Display',sans-serif;
+    font-weight:900;font-size:3rem;color:var(--line);
+    line-height:1;
+  }
+  .day h2{font-size:clamp(1.5rem,3.4vw,2.1rem);}
+  .day-sub{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--signal);letter-spacing:0.04em;margin-bottom:6px;display:block;}
+  .day-body{margin-top:18px;}
+  .day-body p{color:var(--ink-soft);}
+  .day-body ul,.day-body ol{padding-left:1.2em;color:var(--ink-soft);margin:0 0 1em;}
+  .day-body li{margin-bottom:6px;}
+  .callout-note{
+    font-size:0.92rem;color:var(--ink-soft);
+    border-left:2px solid var(--gold);
+    background:var(--gold-soft);
+    padding:10px 14px;margin:18px 0;
+  }
+  .callout-note strong{color:var(--ink);}
+
+  /* option / platform cards */
+  .card-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0;}
+  .card{
+    background:var(--paper-raised);
+    border:1px solid var(--line);
+    padding:18px 18px 16px;
+  }
+  .card h4{font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:1.15rem;margin-bottom:8px;}
+  .card p{font-size:0.93rem;color:var(--ink-soft);margin-bottom:8px;}
+  .card .search-tip{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;color:var(--signal);
+    background:var(--signal-soft);
+    padding:6px 8px;display:inline-block;
+    margin-top:4px;
+  }
+
+  /* template / dossier blocks */
+  .doc{
+    background:var(--paper-raised);
+    border:1px solid var(--line);
+    box-shadow:5px 5px 0 var(--line);
+    margin:22px 0;
+  }
+  .doc-bar{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:10px 16px;border-bottom:1px dashed var(--line);
+  }
+  .doc-tag{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-faint);}
+  .copy-btn{
+    font-family:'IBM Plex Mono',monospace;font-size:11.5px;
+    background:var(--ink);color:var(--paper);
+    border:none;padding:6px 12px;cursor:pointer;
+    letter-spacing:0.03em;
+    transition:background .15s;
+  }
+  .copy-btn:hover{background:var(--signal);}
+  .copy-btn:focus-visible{outline:2px solid var(--signal);outline-offset:2px;}
+  .copy-btn.copied{background:var(--signal);}
+  .doc-body{padding:16px;}
+  .doc-body pre{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13.5px;line-height:1.7;
+    white-space:pre-wrap;word-wrap:break-word;
+    margin:0;color:var(--ink);
+  }
+  .doc-foot{
+    padding:10px 16px;border-top:1px dashed var(--line);
+    font-size:12px;color:var(--ink-faint);font-style:italic;
+  }
+  .doc-multi .doc-body pre{margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--line);}
+  .doc-multi .doc-body pre:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none;}
+  .doc-multi .msg-label{display:block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--signal);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:5px;}
+
+  /* objection grid */
+  .obj-list{display:flex;flex-direction:column;gap:0;margin:20px 0;border-top:1px solid var(--line);}
+  .obj{padding:16px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr 1.4fr;gap:20px;}
+  .obj-q{font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:1.05rem;padding-top:2px;}
+  .obj-a{font-size:0.93rem;color:var(--ink-soft);font-style:italic;}
+  .obj-a::before{content:"“";}
+  .obj-a::after{content:"”";}
+
+  /* tracking table */
+  .track-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:0.88rem;}
+  .track-table th,.track-table td{border:1px solid var(--line);padding:8px 10px;text-align:left;}
+  .track-table th{background:var(--paper-raised);font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.05em;text-transform:uppercase;color:var(--ink-faint);font-weight:500;}
+
+  /* checklist */
+  .checklist-block{padding:52px 0;}
+  .checklist-card{
+    background:var(--paper-raised);
+    border:1px solid var(--line);
+    box-shadow:6px 6px 0 var(--gold-soft);
+    padding:28px 26px 24px;
+  }
+  .checklist-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:10px;}
+  .checklist-top h3{font-size:1.5rem;}
+  .progress-pill{
+    font-family:'IBM Plex Mono',monospace;font-size:12px;
+    background:var(--signal-soft);color:var(--signal);
+    padding:5px 10px;
+  }
+  .check-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);}
+  .check-item:last-child{border-bottom:none;}
+  .check-item input{margin-top:4px;width:16px;height:16px;accent-color:var(--signal);flex:0 0 auto;}
+  .check-item label{font-size:0.95rem;color:var(--ink-soft);cursor:pointer;}
+  .check-item input:checked + label{color:var(--ink-faint);text-decoration:line-through;}
+
+  /* footer */
+  footer{padding:44px 0 60px;}
+  .foot-nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;border-top:1px solid var(--line);padding-top:26px;}
+  .foot-nav a{font-family:'IBM Plex Mono',monospace;font-size:12.5px;text-decoration:none;color:var(--ink-soft);}
+  .foot-nav a:hover{color:var(--signal);}
+  .foot-next{font-size:0.9rem;color:var(--ink-faint);}
+
+  @media (max-width:640px){
+    .meta-strip{grid-template-columns:1fr;}
+    .meta-cell{border-right:none;border-bottom:1px solid var(--line);}
+    .meta-cell:last-child{border-bottom:none;}
+    .card-grid{grid-template-columns:1fr;}
+    .obj{grid-template-columns:1fr;gap:6px;}
+    .day-num{font-size:2.2rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<div class="utility">
+  <div class="wrap">
+    <a class="back-link" href="../index.html#playbooks">&larr; Back to the Blueprint</a>
+    <span class="util-tag">04 · EXECUTION PLAYBOOKS</span>
+  </div>
+</div>
+
+<header class="dossier">
+  <div class="wrap">
+    <div class="stamp-row">
+      <span class="stamp">Playbook A</span>
+      <span class="stamp">Track B · Service Sales</span>
+      <span class="stamp alert">7-day sprint</span>
+    </div>
+    <h1 class="title">Land your first service client in 7 days</h1>
+    <p class="dek">A positioning framework, the exact platforms where buyers are already signaling they need help, outreach templates that get replies, and a 3-step follow-up sequence — run start to finish, in order.</p>
+    <div class="meta-strip">
+      <div class="meta-cell">
+        <div class="meta-label">Goal</div>
+        <div class="meta-value">First paid client</div>
+      </div>
+      <div class="meta-cell">
+        <div class="meta-label">Avg. time to reply</div>
+        <div class="meta-value">72 hours</div>
+      </div>
+      <div class="meta-cell">
+        <div class="meta-label">Built for</div>
+        <div class="meta-value">Track B students</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="brief">
+  <div class="wrap prose">
+    <p><strong>What this playbook assumes:</strong> you've run the 12-minute diagnostic and landed on Track B — you want cash flow this week, not a build-it-and-wait product. No portfolio, no following, no camera required.</p>
+    <p>The failure pattern isn't lack of skill — it's outreach that goes to the wrong 50 businesses, with a message that reads like a template. This playbook fixes both: who you target, and what you say. <strong>Most students who follow it exactly close their first client between day 7 and day 11</strong> — some faster. If you're past day 7 and still mid-conversation, that's normal. Keep running the follow-up sequence; don't restart with a new pitch.</p>
+  </div>
+</section>
+
+<nav class="daynav">
+  <div class="wrap">
+    <a href="#day-1">Day 1</a>
+    <a href="#day-2">Day 2</a>
+    <a href="#day-3">Day 3</a>
+    <a href="#day-4">Day 4</a>
+    <a href="#day-5">Day 5</a>
+    <a href="#day-6">Day 6</a>
+    <a href="#day-7">Day 7</a>
+    <a href="#checklist">Checklist</a>
+  </div>
+</nav>
+
+<main>
+
+  <!-- DAY 1 -->
+  <section class="day" id="day-1">
+    <div class="wrap">
+      <div class="day-head">
+        <span class="day-num">01</span>
+        <div>
+          <span class="day-sub">45–60 min</span>
+          <h2>Pick your service, then build your positioning line</h2>
+        </div>
+      </div>
+      <div class="day-body prose">
+        <p>Pick <strong>one</strong> service. Not three. A prospect who sees "content, copywriting, or automation — whichever you need" reads a generalist, and generalists get ignored. The three fastest to sell and deliver with AI:</p>
+      </div>
+      <div class="card-grid">
+        <div class="card">
+          <h4>Content calendars &amp; social management</h4>
+          <p>Every local business needs a posting rhythm and almost none have time for it. Deliverable: a month of captions, hooks, and a posting schedule.</p>
+        </div>
+        <div class="card">
+          <h4>Copywriting — sites, emails, ads</h4>
+          <p>High demand, fast to produce, easy to show before/after. Deliverable: a rewritten homepage, a 5-email sequence, or 3 ad variants.</p>
+        </div>
+        <div class="card">
+          <h4>Simple automation — chatbots, workflows</h4>
+          <p>Sells on the "modern upgrade" pitch and carries the highest perceived value for the least of your time. Deliverable: a WhatsApp/website FAQ bot or a lead-capture workflow.</p>
+        </div>
+      </div>
+      <div class="day-body prose">
+        <p>Once you've picked one, write your <strong>positioning line</strong> — the sentence that does the selling before you've said anything else. Every template below is built around this one line, so get it right first.</p>
+      </div>
+      <div class="doc">
+        <div class="doc-bar"><span class="doc-tag">Positioning formula</span></div>
+        <div class="doc-body">
+          <pre>I help [specific business type] get [specific, measurable result] without [the pain they currently have] — using AI, delivered in [fast timeframe].</pre>
+        </div>
+        <div class="doc-foot">Fill every bracket with something specific enough that it could only describe this one line of work — not "I help businesses grow."</div>
+      </div>
+      <div class="card-grid">
+        <div class="card">
+          <h4>Content example</h4>
+          <p style="font-style:italic;">"I help hair &amp; beauty spas stay booked with daily social posts, without their owner touching a caption — a month of content, delivered in 48 hours."</p>
+        </div>
+        <div class="card">
+          <h4>Copywriting example</h4>
+          <p style="font-style:italic;">"I help law consultancies turn website visitors into consultation bookings, without hiring a copywriter on retainer — new homepage copy in 3 days."</p>
+        </div>
+      </div>
+      <div class="callout-note"><strong>Why this matters:</strong> everything downstream — your DM, your objection answers, your closing price — is just this sentence restated in a different format. Weak positioning makes every later step harder than it needs to be.</div>
+    </div>
+  </section>
+
+  <!-- DAY 2 -->
+  <section class="day" id="day-2">
+    <div class="wrap">
+      <div class="day-head">
+        <span class="day-num">02</span>
+        <div>
+          <span class="day-sub">60–75 min</span>
+          <h2>Build a list of prospects who are already looking</h2>
+        </div>
+      </div>
+      <div class="day-body prose">
+        <p>Don't cold-pitch random businesses — target the ones actively <strong>signaling</strong> they need help. Reply rates on a signaled prospect run several times higher than a cold blast to an unremarkable business. Build a list of 40–50 prospects across these four sources so day 3–5 outreach never runs dry.</p>
+      </div>
+      <div class="card-grid">
+        <div class="card">
+          <h4>Instagram &amp; Facebook</h4>
+          <p>Search your niche + city. Open each profile and check the last post date. Anything older than 2 weeks is a signal — they've stopped, or never had a system.</p>
+          <span class="search-tip">search: "[niche] [city]" → sort by last active</span>
+        </div>
+        <div class="card">
+          <h4>Google Maps</h4>
+          <p>Search the service type in your target city. Prioritize listings with 3-star-or-lower reviews, no website link, or a Facebook page as their only web presence.</p>
+          <span class="search-tip">search: "[service] near [city]" → filter: no website</span>
+        </div>
+        <div class="card">
+          <h4>Facebook Groups</h4>
+          <p>Join 3–5 local business or entrepreneur groups. Use the group's search bar for phrases like "anyone good with content" or "need a copywriter." These are people asking to be sold to.</p>
+          <span class="search-tip">group search: "recommend" · "anyone know a good"</span>
+        </div>
+        <div class="card">
+          <h4>LinkedIn</h4>
+          <p>Search job titles — Owner, Founder, Managing Director — plus your city. Filter for posts with "too busy to post," "wearing every hat," or similar overwhelm language.</p>
+          <span class="search-tip">search: "founder" OR "owner" + "[city]"</span>
+        </div>
+      </div>
+      <div class="day-body prose">
+        <p>Log every prospect in a simple sheet as you find them — name, platform, the specific thing you noticed about them (you'll need it for personalization), and a blank column for touch dates. You'll fill in the rest starting day 3.</p>
+      </div>
+      <table class="track-table">
+        <thead><tr><th>Prospect</th><th>Platform</th><th>Signal noticed</th><th>Touch 1</th><th>Touch 2</th><th>Touch 3</th><th>Replied</th><th>Closed</th></tr></thead>
+        <tbody>
+          <tr><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- DAY 3 -->
+  <section class="day" id="day-3">
+    <div class="wrap">
+      <div class="day-head">
+        <span class="day-num">03</span>
+        <div>
+          <span class="day-sub">90 min</span>
+          <h2>Write and send your first 25 messages</h2>
+        </div>
+      </div>
+      <div class="day-body prose">
+        <p>Personalize the first line of every message — it's the whole ballgame. A generic opener gets skimmed and ignored; a specific one gets a reply because it proves you actually looked. Use the platform variant that matches where you found each prospect.</p>
+      </div>
+
+      <div class="doc">
+        <div class="doc-bar"><span class="doc-tag">Template · Instagram / Facebook DM</span><button class="copy-btn" data-copy="t-ig">Copy</button></div>
+        <div class="doc-body"><pre id="t-ig">Hey [name] — saw [business name] in [city] and love [specific thing you noticed]. I help [business type] like yours [specific result] using AI — takes hours, not weeks. Worth a quick 10-min call this week to see if it's a fit?</pre></div>
+        <div class="doc-foot">Best on Instagram and Facebook. Keep it casual — match the platform's tone.</div>
+      </div>
+
+      <div class="doc doc-multi">
+        <div class="doc-bar"><span class="doc-tag">Template · LinkedIn</span><button class="copy-btn" data-copy="t-li">Copy</button></div>
+        <div class="doc-body">
+          <span class="msg-label">Connection note</span>
+          <pre id="t-li">Hi [name] — came across your post about [topic] and it resonated. I work with [business type] owners on [specific result]. Would love to connect.</pre>
+          <span class="msg-label">Message after they accept</span>
+          <pre>Thanks for connecting, [name]. Quick one — I help business owners like you [specific result] using AI, without adding to your plate. If [specific pain] is on your radar, open to a 10-min call this week?</pre>
+        </div>
+        <div class="doc-foot">Two-step: connect first, pitch after acceptance. Pitching in the connection note itself kills reply rate.</div>
+      </div>
+
+      <div class="doc doc-multi">
+        <div class="doc-bar"><span class="doc-tag">Template · Facebook Group</span><button class="copy-btn" data-copy="t-fb">Copy</button></div>
+        <div class="doc-body">
+          <span class="msg-label">Public comment on their post</span>
+          <pre id="t-fb">This is exactly what I help [business type] owners with — happy to share a couple of quick ideas if useful, no pitch, just DM me!</pre>
+          <span class="msg-label">DM once they respond</span>
+          <pre>Hey [name], following up from the group — here's what I'd try first for [business name]: [one free, specific tip]. If you'd rather I just handle it, I do this for [business type] using AI — happy to hop on a quick call.</pre>
+        </div>
+        <div class="doc-foot">Leading with a public, no-pitch comment builds trust before the DM ever lands.</div>
+      </div>
+
+      <div class="callout-note"><strong>Rule for today:</strong> send 25, not "as many as feel comfortable." Volume is what makes tomorrow's numbers work — 25 sent, roughly 3–5 replies, 1–2 calls, is a normal, healthy ratio at this stage.</div>
+    </div>
+  </section>
+
+  <!-- DAY 4 -->
+  <section class="day" id="day-4">
+    <div class="wrap">
+      <div class="day-head">
+        <span class="day-num">04</span>
+        <div>
+          <span class="day-sub">45–60 min</span>
+          <h2>Send the remaining 25</h2>
+        </div>
+      </div>
+      <div class="day-body prose">
+        <p>Same templates, same personalization standard, next 25 prospects from your list. Don't slow down to "perfect" a message — a well-personalized first line sent today beats a flawless one sent next week. If you're getting zero replies from yesterday's batch, don't panic yet: day 0 sends typically don't get answered until the 48-hour mark.</p>
+        <p>Check in on yesterday's 25. Anyone who replied gets answered today, not tomorrow — response speed is itself a proof point ("this person is fast and easy to work with").</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DAY 5 -->
+  <section class="day" id="day-5">
+    <div class="wrap">
+      <div class="day-head">
+        <span class="day-num">05</span>
+        <div>
+          <span class="day-sub">30–45 min</span>
+          <h2>First follow-up touch, all replies answered</h2>
+        </div>
+      </div>
+      <div class="day-body prose">
+        <p>This is where most students quietly quit — and it's exactly where the money is. A prospect who didn't reply on day 3 isn't a no; they're busy. The 3-step sequence below runs on a fixed clock, spaced roughly 72 hours apart, and stops at message 3. No exceptions, no "just one more."</p>
+      </div>
+      <div class="doc doc-multi">
+        <div class="doc-bar"><span class="doc-tag">3-step follow-up sequence</span><button class="copy-btn" data-copy="t-follow">Copy all</button></div>
+        <div class="doc-body">
+          <span class="msg-label">Message 1 · Day 0 (your original send)</span>
+          <pre id="t-follow">Hey [name], saw [business type] in [city] — love what you're doing. I help same-type businesses [result] with AI. Open to a 10-min call this week?</pre>
+          <span class="msg-label">Message 2 · Day 3, if no reply</span>
+          <pre>Hey [name], circling back — I put together a quick idea for [business name] around [result]. Want me to send it over?</pre>
+          <span class="msg-label">Message 3 · Day 6, if still no reply</span>
+          <pre>Last one [name] — no pressure. If [result] ever becomes a priority, I'm the person for it. Keeping you top-of-mind.</pre>
+        </div>
+        <div class="doc-foot">3 touches maximum, ~72 hours apart. After message 3, move on — mark them "dormant" and revisit in a month, not this week.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DAY 6 -->
+  <section class="day" id="day-6">
+    <div class="wrap">
+      <div class="day-head">
+        <span class="day-num">06</span>
+        <div>
+          <span class="day-sub">30–45 min</span>
+          <h2>Handle replies, send proof, book calls</h2>
+        </div>
+      </div>
+      <div class="day-body prose">
+        <p>Every reply gets an answer inside 24 hours — slower than that and the conversation goes cold. If you don't have a portfolio, that's fine: send one worked example built specifically for them (a sample caption week, a rewritten homepage paragraph, a mock workflow diagram). A tailored sample beats a generic portfolio every time.</p>
+        <p>Most replies aren't a "yes" — they're an objection wearing a question's clothing. Answer directly, don't over-explain.</p>
+      </div>
+      <div class="obj-list">
+        <div class="obj"><div class="obj-q">"What's this cost?"</div><div class="obj-a">Depends on scope — most [service] packages start at $[price]. Want me to put together a specific quote for [business name] based on what you need?</div></div>
+        <div class="obj"><div class="obj-q">"I need to think about it."</div><div class="obj-a">Totally fair. What's the main thing you're weighing — price, timing, or whether it'll actually work for [business name]? Happy to address it directly.</div></div>
+        <div class="obj"><div class="obj-q">"Not right now."</div><div class="obj-a">No pressure — I'll check back in a bit. If [result] becomes a priority, I'm here.</div></div>
+        <div class="obj"><div class="obj-q">"I already have someone."</div><div class="obj-a">Good to hear you've got it covered. If it's ever not delivering [result], happy to be a backup — no hard feelings either way.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DAY 7 -->
+  <section class="day" id="day-7">
+    <div class="wrap">
+      <div class="day-head">
+        <span class="day-num">07</span>
+        <div>
+          <span class="day-sub">Calls as booked</span>
+          <h2>Close</h2>
+        </div>
+      </div>
+      <div class="day-body prose">
+        <p>Keep the call to ten minutes. Ask about their current situation for two of them, then move straight into the script — don't let it drift into an unstructured chat. Ask for a yes or a no directly; "let me think about it" from a call that already covered price and scope is usually just a soft no you haven't heard yet.</p>
+      </div>
+      <div class="doc">
+        <div class="doc-bar"><span class="doc-tag">Closing script</span><button class="copy-btn" data-copy="t-close">Copy</button></div>
+        <div class="doc-body"><pre id="t-close">Here's what I'd do in the first [timeframe]: [1–2–3 concrete deliverables]. Price is $[price]. I can start [day]. Fair? If not, what would make it a yes?</pre></div>
+        <div class="doc-foot">Ask yes/no directly. Don't chase "maybe" past this point.</div>
+      </div>
+      <div class="doc">
+        <div class="doc-bar"><span class="doc-tag">Deposit ask</span><button class="copy-btn" data-copy="t-deposit">Copy</button></div>
+        <div class="doc-body"><pre id="t-deposit">I ask for 50% upfront to lock the start date, with the balance due on delivery. I can send the invoice or payment link right now — want me to?</pre></div>
+        <div class="doc-foot">Get this in the same conversation as the yes. A verbal yes with no deposit is still a maybe.</div>
+      </div>
+      <div class="callout-note"><strong>The moment it lands:</strong> deliver fast, under-promise and over-deliver on this first project, and ask for a testimonial the instant they're happy — before the next client conversation, not after. That testimonial is what makes client two easier than client one.</div>
+    </div>
+  </section>
+
+  <!-- CHECKLIST -->
+  <section class="checklist-block" id="checklist">
+    <div class="wrap">
+      <div class="checklist-card">
+        <div class="checklist-top">
+          <h3>Playbook A — master checklist</h3>
+          <span class="progress-pill" id="progress-pill">0 / 12 complete</span>
+        </div>
+        <div class="check-item"><input type="checkbox" id="c1"><label for="c1">One service chosen — not three</label></div>
+        <div class="check-item"><input type="checkbox" id="c2"><label for="c2">Positioning line written and specific</label></div>
+        <div class="check-item"><input type="checkbox" id="c3"><label for="c3">40–50 prospects found across all 4 platforms</label></div>
+        <div class="check-item"><input type="checkbox" id="c4"><label for="c4">Tracking sheet set up with touch-date columns</label></div>
+        <div class="check-item"><input type="checkbox" id="c5"><label for="c5">First 25 personalized DMs sent (day 3)</label></div>
+        <div class="check-item"><input type="checkbox" id="c6"><label for="c6">Remaining 25 sent (day 4)</label></div>
+        <div class="check-item"><input type="checkbox" id="c7"><label for="c7">Follow-up sequence scheduled for every non-reply</label></div>
+        <div class="check-item"><input type="checkbox" id="c8"><label for="c8">Every reply answered within 24 hours</label></div>
+        <div class="check-item"><input type="checkbox" id="c9"><label for="c9">Tailored sample or proof ready to send</label></div>
+        <div class="check-item"><input type="checkbox" id="c10"><label for="c10">Objection answers rehearsed out loud once</label></div>
+        <div class="check-item"><input type="checkbox" id="c11"><label for="c11">Calls booked, closing script + deposit ask ready</label></div>
+        <div class="check-item"><input type="checkbox" id="c12"><label for="c12">First client signed and testimonial requested</label></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-nav">
+      <a href="../index.html#playbooks">&larr; All playbooks</a>
+      <span class="foot-next">Once you're past your first client, layer in <strong>Playbook C</strong> to bring in inbound replies without paid ads — then <strong>Playbook D</strong> when you hit $500/month.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // copy-to-clipboard
+  document.querySelectorAll('.copy-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var key = btn.getAttribute('data-copy');
+      var text = '';
+      if (key === 't-follow') {
+        text = document.querySelectorAll('#day-5 pre');
+        text = Array.prototype.map.call(text, function(el){return el.textContent;}).join('\n\n');
+      } else {
+        var el = document.getElementById(key);
+        text = el ? el.textContent : '';
+      }
+      var done = function(){
+        var original = btn.textContent;
+        btn.textContent = 'Copied';
+        btn.classList.add('copied');
+        setTimeout(function(){ btn.textContent = original; btn.classList.remove('copied'); }, 1400);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(function(){
+          fallbackCopy(text); done();
+        });
+      } else {
+        fallbackCopy(text); done();
+      }
+    });
+  });
+  function fallbackCopy(text){
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); } catch(e) {}
+    document.body.removeChild(ta);
+  }
+
+  // checklist progress
+  var boxes = document.querySelectorAll('.check-item input[type="checkbox"]');
+  var pill = document.getElementById('progress-pill');
+  function updateProgress(){
+    var checked = Array.prototype.filter.call(boxes, function(b){return b.checked;}).length;
+    pill.textContent = checked + ' / ' + boxes.length + ' complete';
+  }
+  boxes.forEach(function(b){ b.addEventListener('change', updateProgress); });
+</script>
+
+</body>
+</html>

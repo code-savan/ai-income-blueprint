@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Playbook C — Build Your Faceless Content Funnel | AI Income Blueprint</title>
+<meta name="description" content="TikTok and Reels storytelling that converts viewers into buyers — no face, no ads, no existing audience. The Faceless Formula, batching system, and analytics loop.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAF8F2;
+    --paper-raised:#FFFFFF;
+    --ink:#1E1A16;
+    --ink-soft:#5B5449;
+    --ink-faint:#948C7C;
+    --line:#E3DCC9;
+    --signal:#7A2E63;
+    --signal-soft:#F1E6ED;
+    --alert:#9C3B2E;
+    --alert-soft:#F3E7E4;
+    --gold:#8A6A1E;
+    --gold-soft:#F1EADA;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans',sans-serif;font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased;}
+  ::selection{background:var(--signal-soft);color:var(--signal);}
+  a{color:var(--signal);}
+  h1,h2,h3{font-family:'Big Shoulders Display',sans-serif;font-weight:800;line-height:0.96;letter-spacing:-0.01em;margin:0;color:var(--ink);}
+  p{margin:0 0 1em;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  .wrap{max-width:880px;margin:0 auto;padding:0 24px;}
+  .prose{max-width:660px;}
+  .utility{border-bottom:1px solid var(--line);background:var(--paper);position:sticky;top:0;z-index:30;}
+  .utility .wrap{display:flex;align-items:center;justify-content:space-between;height:52px;}
+  .back-link{font-family:'IBM Plex Mono',monospace;font-size:12.5px;text-decoration:none;color:var(--ink-soft);display:flex;align-items:center;gap:6px;}
+  .back-link:hover{color:var(--ink);}
+  .util-tag{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;color:var(--ink-faint);}
+  .dossier{padding:56px 0 32px;border-bottom:1px solid var(--line);}
+  .stamp-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px;}
+  .stamp{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.06em;text-transform:uppercase;padding:5px 10px;border:1.5px dashed var(--signal);color:var(--signal);transform:rotate(-1.2deg);display:inline-block;background:var(--signal-soft);}
+  .stamp.alert{border-color:var(--alert);color:var(--alert);background:var(--alert-soft);transform:rotate(0.8deg);}
+  h1.title{font-size:clamp(2.6rem,6vw,4.2rem);margin-bottom:18px;}
+  .dek{font-size:1.15rem;color:var(--ink-soft);max-width:600px;margin-bottom:28px;}
+  .meta-strip{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);}
+  .meta-cell{padding:14px 18px;border-right:1px solid var(--line);}
+  .meta-cell:last-child{border-right:none;}
+  .meta-label{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:4px;}
+  .meta-value{font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:1.35rem;}
+  .brief{padding:36px 0;border-bottom:1px solid var(--line);}
+  .brief p{color:var(--ink-soft);font-size:1.02rem;}
+  .brief strong{color:var(--ink);}
+  .daynav{position:sticky;top:52px;z-index:20;background:var(--paper);border-bottom:1px solid var(--line);overflow-x:auto;white-space:nowrap;}
+  .daynav .wrap{display:flex;gap:6px;padding-top:10px;padding-bottom:10px;}
+  .daynav a{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.04em;text-decoration:none;color:var(--ink-soft);padding:6px 12px;border:1px solid var(--line);flex:0 0 auto;}
+  .daynav a:hover{border-color:var(--signal);color:var(--signal);}
+  .day{padding:52px 0;border-bottom:1px solid var(--line);}
+  .day:last-of-type{border-bottom:none;}
+  .day-head{display:flex;align-items:baseline;gap:18px;margin-bottom:20px;}
+  .day-num{font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:3rem;color:var(--line);line-height:1;}
+  .day h2{font-size:clamp(1.5rem,3.4vw,2.1rem);}
+  .day-sub{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--signal);letter-spacing:0.04em;margin-bottom:6px;display:block;}
+  .day-body{margin-top:18px;}
+  .day-body p{color:var(--ink-soft);}
+  .day-body ul,.day-body ol{padding-left:1.2em;color:var(--ink-soft);margin:0 0 1em;}
+  .day-body li{margin-bottom:6px;}
+  .callout-note{font-size:0.92rem;color:var(--ink-soft);border-left:2px solid var(--gold);background:var(--gold-soft);padding:10px 14px;margin:18px 0;}
+  .callout-note strong{color:var(--ink);}
+  .card-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0;}
+  .card-grid.three{grid-template-columns:repeat(3,1fr);}
+  .card{background:var(--paper-raised);border:1px solid var(--line);padding:18px 18px 16px;}
+  .card h4{font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:1.15rem;margin-bottom:8px;}
+  .card p{font-size:0.93rem;color:var(--ink-soft);margin-bottom:8px;}
+  .card .search-tip{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--signal);background:var(--signal-soft);padding:6px 8px;display:inline-block;margin-top:4px;}
+  .beat-row{display:flex;flex-direction:column;gap:0;margin:22px 0;border-top:1px solid var(--line);}
+  .beat{display:grid;grid-template-columns:120px 1fr;gap:18px;padding:14px 0;border-bottom:1px solid var(--line);align-items:start;}
+  .beat-time{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--signal);background:var(--signal-soft);padding:4px 8px;display:inline-block;height:fit-content;}
+  .beat-body h4{font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:1.1rem;margin-bottom:4px;}
+  .beat-body p{font-size:0.92rem;color:var(--ink-soft);margin:0;}
+  .doc{background:var(--paper-raised);border:1px solid var(--line);box-shadow:5px 5px 0 var(--line);margin:22px 0;}
+  .doc-bar{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-bottom:1px dashed var(--line);}
+  .doc-tag{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-faint);}
+  .copy-btn{font-family:'IBM Plex Mono',monospace;font-size:11.5px;background:var(--ink);color:var(--paper);border:none;padding:6px 12px;cursor:pointer;letter-spacing:0.03em;transition:background .15s;}
+  .copy-btn:hover{background:var(--signal);}
+  .copy-btn:focus-visible{outline:2px solid var(--signal);outline-offset:2px;}
+  .copy-btn.copied{background:var(--signal);}
+  .doc-body{padding:16px;}
+  .doc-body pre{font-family:'IBM Plex Mono',monospace;font-size:13.5px;line-height:1.7;white-space:pre-wrap;word-wrap:break-word;margin:0;color:var(--ink);}
+  .doc-foot{padding:10px 16px;border-top:1px dashed var(--line);font-size:12px;color:var(--ink-faint);font-style:italic;}
+  .doc-multi .doc-body pre{margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--line);}
+  .doc-multi .doc-body pre:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none;}
+  .doc-multi .msg-label{display:block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--signal);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:5px;}
+  .track-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:0.88rem;}
+  .track-table th,.track-table td{border:1px solid var(--line);padding:8px 10px;text-align:left;}
+  .track-table th{background:var(--paper-raised);font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.05em;text-transform:uppercase;color:var(--ink-faint);font-weight:500;}
+  .checklist-block{padding:52px 0;}
+  .checklist-card{background:var(--paper-raised);border:1px solid var(--line);box-shadow:6px 6px 0 var(--gold-soft);padding:28px 26px 24px;}
+  .checklist-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:10px;}
+  .checklist-top h3{font-size:1.5rem;}
+  .progress-pill{font-family:'IBM Plex Mono',monospace;font-size:12px;background:var(--signal-soft);color:var(--signal);padding:5px 10px;}
+  .check-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);}
+  .check-item:last-child{border-bottom:none;}
+  .check-item input{margin-top:4px;width:16px;height:16px;accent-color:var(--signal);flex:0 0 auto;}
+  .check-item label{font-size:0.95rem;color:var(--ink-soft);cursor:pointer;}
+  .check-item input:checked + label{color:var(--ink-faint);text-decoration:line-through;}
+  footer{padding:44px 0 60px;}
+  .foot-nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;border-top:1px solid var(--line);padding-top:26px;}
+  .foot-nav a{font-family:'IBM Plex Mono',monospace;font-size:12.5px;text-decoration:none;color:var(--ink-soft);}
+  .foot-nav a:hover{color:var(--signal);}
+  .foot-next{font-size:0.9rem;color:var(--ink-faint);}
+  @media (max-width:640px){
+    .meta-strip{grid-template-columns:1fr;}
+    .meta-cell{border-right:none;border-bottom:1px solid var(--line);}
+    .meta-cell:last-child{border-bottom:none;}
+    .card-grid,.card-grid.three{grid-template-columns:1fr;}
+    .day-num{font-size:2.2rem;}
+    .beat{grid-template-columns:1fr;}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}*{transition:none !important;}}
+</style>
+</head>
+<body>
+
+<div class="utility">
+  <div class="wrap">
+    <a class="back-link" href="../index.html#playbooks">&larr; Back to the Blueprint</a>
+    <span class="util-tag">04 · EXECUTION PLAYBOOKS</span>
+  </div>
+</div>
+
+<header class="dossier">
+  <div class="wrap">
+    <div class="stamp-row">
+      <span class="stamp">Playbook C</span>
+      <span class="stamp">Track A · plus Track B amplification</span>
+      <span class="stamp alert">Ongoing system</span>
+    </div>
+    <h1 class="title">Build your faceless content funnel</h1>
+    <p class="dek">TikTok and Reels storytelling that converts viewers into buyers — no face, no ads, no existing audience. The exact 4-beat formula, the batching system, and the loop that finds your winning angle.</p>
+    <div class="meta-strip">
+      <div class="meta-cell"><div class="meta-label">Goal</div><div class="meta-value">Converting content</div></div>
+      <div class="meta-cell"><div class="meta-label">Avg. first post</div><div class="meta-value">Within 48h</div></div>
+      <div class="meta-cell"><div class="meta-label">Built for</div><div class="meta-value">Track A + amplify B</div></div>
+    </div>
+  </div>
+</header>
+
+<section class="brief">
+  <div class="wrap prose">
+    <p><strong>What this playbook assumes:</strong> you have something to promote — a Track A product from Playbook B, or a Track B service you're using this to generate inbound replies for instead of cold outreach alone.</p>
+    <p>This isn't a virality playbook. It's a <strong>conversion</strong> playbook — a content piece that gets 500 views and 3 clicks beats one that gets 50,000 views and 2 clicks. Every step below optimizes for the click, not the view count.</p>
+  </div>
+</section>
+
+<nav class="daynav">
+  <div class="wrap">
+    <a href="#step-1">Step 1</a>
+    <a href="#step-2">Step 2</a>
+    <a href="#step-3">Step 3</a>
+    <a href="#step-4">Step 4</a>
+    <a href="#step-5">Step 5</a>
+    <a href="#step-6">Step 6</a>
+    <a href="#checklist">Checklist</a>
+  </div>
+</nav>
+
+<main>
+
+  <!-- STEP 1 -->
+  <section class="day" id="step-1">
+    <div class="wrap">
+      <div class="day-head">
+        <span class="day-num">01</span>
+        <div><span class="day-sub">Before you film anything</span><h2>Nail your #1 transformation, not your features</h2></div>
+      </div>
+      <div class="day-body prose">
+        <p>A features list ("10 templates, 5 checklists, lifetime access") makes a viewer think. A transformation ("stop staring at a blank caption box every Sunday night") makes them feel something in under 2 seconds — and 2 seconds is your entire hook window. Write your transformation as a single before-and-after sentence before moving to Step 2.</p>
+      </div>
+      <div class="doc">
+        <div class="doc-bar"><span class="doc-tag">Transformation line</span></div>
+        <div class="doc-body"><pre>Before: [specific frustration, in the audience's own words]
+After: [specific, felt outcome — not a feature]</pre></div>
+        <div class="doc-foot">Example — Before: "Scrambling for a caption at 11pm." After: "A month of posts done before Monday."</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 2 -->
+  <section class="day" id="step-2">
+    <div class="wrap">
+      <div class="day-head">
+        <span class="day-num">02</span>
+        <div><span class="day-sub">Pick one to start</span><h2>Choose your faceless format</h2></div>
+      </div>
+      <div class="card-grid three">
+        <div class="card"><h4>Screen + voiceover</h4><p>Record a voiceover, show slides or screencaps underneath. Highest conversion, simplest to produce — this is the default if you're unsure.</p></div>
+        <div class="card"><h4>Text-on-screen + b-roll</h4><p>Text overlaid on stock or generated footage. Fastest to produce, works well when you're batching high volume.</p></div>
+        <div class="card"><h4>Storytime / "How I..."</h4><p>A narrative arc — still faceless, still voiceover-driven, but framed as a personal account rather than a direct pitch.</p></div>
+      </div>
+      <div class="callout-note"><strong>Tool note:</strong> generate the raw visual assets in Google Flow, then refine in Canva or CapCut. Set CapCut's default export to 1080×1920 with auto-captions on — captions boost retention on nearly every faceless format.</div>
+    </div>
+  </section>
+
+  <!-- STEP 3 -->
+  <section class="day" id="step-3">
+    <div class="wrap">
+      <div class="day-head">
+        <span class="day-num">03</span>
+        <div><span class="day-sub">The core formula</span><h2>The Faceless Formula — 4 beats, every time</h2></div>
+      </div>
+      <div class="day-body prose"><p>Every converting piece follows the same structure. Deviating from it is the most common reason a piece gets views but no clicks.</p></div>
+      <div class="beat-row">
+        <div class="beat"><span class="beat-time">0–3s</span><div class="beat-body"><h4>Hook</h4><p>Open on the pain point or a shocking result. "Nobody told [audience] this about [problem]." Stop the scroll before anything else happens.</p></div></div>
+        <div class="beat"><span class="beat-time">3–10s</span><div class="beat-body"><h4>Problem</h4><p>Agitate the pain. Name the frustration your audience feels daily, specifically enough that they nod without thinking.</p></div></div>
+        <div class="beat"><span class="beat-time">10–20s</span><div class="beat-body"><h4>Solution</h4><p>Introduce your product or service as the fix. Show the transformation from Step 1 — not a feature tour.</p></div></div>
+        <div class="beat"><span class="beat-time">20–30s</span><div class="beat-body"><h4>CTA</h4><p>"Link in bio." One clear action. No options, no second CTA, no confusion about what to do next.</p></div></div>
+      </div>
+      <div class="doc doc-multi">
+        <div class="doc-bar"><span class="doc-tag">Two full example scripts</span><button class="copy-btn" data-copy="t-scripts">Copy both</button></div>
+        <div class="doc-body">
+          <span class="msg-label">Script A — product promo (problem-hook)</span>
+          <pre id="t-scripts">Nobody told small business owners this about social media: posting inconsistently is worse than not posting at all.
+Every gap in your feed tells new visitors you might have closed down.
+That's exactly why I built the 7-Day Content Calendar — a month of ready captions in one file, no more Sunday-night scrambling.
+Link in bio — it's $37.</pre>
+          <span class="msg-label">Script B — service promo (curiosity-hook)</span>
+          <pre>I found the fastest way to double a local business's social engagement — and it takes them zero extra minutes a week.
+Most owners are either posting nothing, or posting whatever they can grab five minutes before close.
+I use AI to write a month of on-brand content in a single afternoon, then hand it over ready to post.
+DM me "CONTENT" and I'll show you exactly how it works.</pre>
+        </div>
+        <div class="doc-foot">Notice both follow the identical 4-beat timing — only the words change.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 4 -->
+  <section class="day" id="step-4">
+    <div class="wrap">
+      <div class="day-head">
+        <span class="day-num">04</span>
+        <div><span class="day-sub">Test before you commit</span><h2>Run 3 hook styles, not 1</h2></div>
+      </div>
+      <div class="day-body prose"><p>You won't know your winning angle until the data tells you. Make your first 3 pieces with the same solution and CTA, but 3 different hook styles:</p></div>
+      <div class="card-grid three">
+        <div class="card"><h4>Problem-hook</h4><p>"Nobody told [audience] this about [problem]." Leads with the pain directly.</p></div>
+        <div class="card"><h4>Curiosity-hook</h4><p>"I found the fastest way to [result] — and it takes zero extra effort." Leads with an open loop.</p></div>
+        <div class="card"><h4>Result-hook</h4><p>"[Specific number/result] in [timeframe], here's exactly how." Leads with proof.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 5 -->
+  <section class="day" id="step-5">
+    <div class="wrap">
+      <div class="day-head">
+        <span class="day-num">05</span>
+        <div><span class="day-sub">One session, one week of output</span><h2>Batch it — don't create daily</h2></div>
+      </div>
+      <div class="day-body prose"><p>One 5-hour batch day produces a full week of content. Daily scrambling is where consistency dies — batching removes the daily decision entirely.</p></div>
+      <div class="doc">
+        <div class="doc-bar"><span class="doc-tag">Content batching prompt</span><button class="copy-btn" data-copy="t-batch">Copy</button></div>
+        <div class="doc-body"><pre id="t-batch">I'm promoting [product/service] to [specific audience]. The #1 transformation is: [before] → [after].
+
+Write 7 scripts using the Faceless Formula (hook / problem / solution / CTA, 30 seconds total):
+- 3 using a problem-hook
+- 2 using a curiosity-hook
+- 2 using a result-hook
+
+Vary the specific wording of each hook so none feel repeated. Keep the solution and CTA beats consistent across all 7. Format each as a 4-line script labeled by beat.</pre></div>
+        <div class="doc-foot">One prompt run, one batch day of filming, one week of scheduled posts.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 6 -->
+  <section class="day" id="step-6">
+    <div class="wrap">
+      <div class="day-head">
+        <span class="day-num">06</span>
+        <div><span class="day-sub">Daily, 10 minutes</span><h2>Check analytics, double down on what works</h2></div>
+      </div>
+      <div class="day-body prose">
+        <p>Post daily and check performance every day — not weekly. If a post beats your average views, make 2 more in that exact style before moving on to a new idea. Cross-post every winning piece to Reels and Shorts using the same file; it costs nothing and widens your funnel for free.</p>
+      </div>
+      <div class="callout-note"><strong>The loop:</strong> post → check which hook style outperformed → make 2 more in that style → repeat. Students who hit a breakout post (10k+ views) almost always found it by doubling down on data, not by guessing a new angle each day.</div>
+    </div>
+  </section>
+
+  <!-- CHECKLIST -->
+  <section class="checklist-block" id="checklist">
+    <div class="wrap">
+      <div class="checklist-card">
+        <div class="checklist-top"><h3>Playbook C — the pipeline checklist</h3><span class="progress-pill" id="progress-pill">0 / 9 complete</span></div>
+        <div class="check-item"><input type="checkbox" id="c1"><label for="c1">Product/service has a clear #1 transformation, not a feature list</label></div>
+        <div class="check-item"><input type="checkbox" id="c2"><label for="c2">Faceless format chosen — screen+voiceover, text+b-roll, or storytime</label></div>
+        <div class="check-item"><input type="checkbox" id="c3"><label for="c3">3 pieces created using the Faceless Formula, 3 different hook styles</label></div>
+        <div class="check-item"><input type="checkbox" id="c4"><label for="c4">Every piece ends with a single, clear CTA</label></div>
+        <div class="check-item"><input type="checkbox" id="c5"><label for="c5">Exported at 1080×1920 with captions on</label></div>
+        <div class="check-item"><input type="checkbox" id="c6"><label for="c6">1 post/day cadence locked into a calendar</label></div>
+        <div class="check-item"><input type="checkbox" id="c7"><label for="c7">Batch day scheduled — 5 hours, 7 scripts, one sitting</label></div>
+        <div class="check-item"><input type="checkbox" id="c8"><label for="c8">Cross-posted to Reels + Shorts on every winning piece</label></div>
+        <div class="check-item"><input type="checkbox" id="c9"><label for="c9">Analytics checked daily; winning hook style doubled</label></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-nav">
+      <a href="../index.html#playbooks">&larr; All playbooks</a>
+      <span class="foot-next">Once this funnel is consistently converting, open <strong>Playbook D</strong> — the lever sequence for scaling past $500/month.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.copy-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var key = btn.getAttribute('data-copy');
+      var text = '';
+      if (key === 't-scripts') {
+        var pres = document.querySelectorAll('#step-3 .doc-multi pre');
+        text = Array.prototype.map.call(pres, function(el){return el.textContent;}).join('\n\n---\n\n');
+      } else {
+        var el = document.getElementById(key);
+        text = el ? el.textContent : '';
+      }
+      var done = function(){
+        var original = btn.textContent;
+        btn.textContent = 'Copied';
+        btn.classList.add('copied');
+        setTimeout(function(){ btn.textContent = original; btn.classList.remove('copied'); }, 1400);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(function(){ fallbackCopy(text); done(); });
+      } else { fallbackCopy(text); done(); }
+    });
+  });
+  function fallbackCopy(text){
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); } catch(e) {}
+    document.body.removeChild(ta);
+  }
+  var boxes = document.querySelectorAll('.check-item input[type="checkbox"]');
+  var pill = document.getElementById('progress-pill');
+  function updateProgress(){
+    var checked = Array.prototype.filter.call(boxes, function(b){return b.checked;}).length;
+    pill.textContent = checked + ' / ' + boxes.length + ' complete';
+  }
+  boxes.forEach(function(b){ b.addEventListener('change', updateProgress); });
+</script>
+
+</body>
+</html>
