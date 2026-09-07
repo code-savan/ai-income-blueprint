@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find Your Track — AI Income Blueprint</title>
+<meta name="description" content="12-minute diagnostic — find whether Track A (Autonomous Sales) or Track B (Service Sales) fits your life. One question at a time.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper:#FAF8F2;
+  --paper-raised:#FFFFFF;
+  --cream:#efece4;
+  --card:#FFFFFF;
+  --ink:#1E1A16;
+  --ink-soft:#5B5449;
+  --ink-faint:#948C7C;
+  --line:#E3DCC9;
+  --text:#1E1A16;
+  --muted:#5B5449;
+  --rule:#E3DCC9;
+  --purple:#7C3AED;
+  --purple-light:#A78BFA;
+  --purple-soft:#F3EEFB;
+  --signal:#7C3AED;
+  --signal-soft:#F3EEFB;
+  --green:#1a6b3c;
+  --green-light:#22c55e;
+  --gold:#D97706;
+  --gold-light:#FDE68A;
+  --gold-soft:#F1EADA;
+  --red:#9C3B2E;
+  --red-soft:#F3E7E4;
+  --sidebar-w:300px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family:'IBM Plex Sans',sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 16.5px;
+  line-height: 1.65;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--signal-soft);color:var(--signal);}
+a{color:var(--signal);}
+h1,h2,h3{font-family:'Big Shoulders Display',sans-serif;font-weight:800;line-height:0.96;letter-spacing:-0.01em;color:var(--ink);}
+.mono{font-family:'IBM Plex Mono',monospace;}
+
+/* ── LAYOUT ── */
+.layout { display: flex; min-height: 100vh; }
+.sidenav {
+  width: var(--sidebar-w);
+  position: fixed;
+  top: 0; bottom: 0; left: 0;
+  background: var(--ink);
+  color: #fff;
+  padding: 28px 20px;
+  overflow-y: auto;
+  z-index: 200;
+  transition: transform 0.3s ease;
+}
+.sidenav-brand {
+  font-family:'Big Shoulders Display',sans-serif;
+  font-size:26px; font-weight:800; letter-spacing:-0.01em;
+  margin-bottom:8px; display:flex; align-items:center; gap:8px;
+}
+.sidenav-brand em { font-style:normal; color:var(--purple-light); }
+.sidenav-sub {
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px; letter-spacing:0.18em; text-transform:uppercase;
+  color:#777; margin-bottom:28px;
+}
+.sidenav-label {
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px; letter-spacing:0.18em; text-transform:uppercase;
+  color:#666; margin:22px 0 10px; padding-left:12px;
+}
+.sidenav a {
+  display:flex; align-items:center; gap:12px;
+  color:#bbb; text-decoration:none;
+  padding:10px 12px; border-radius:8px;
+  font-family:'IBM Plex Sans',sans-serif; font-size:14px; font-weight:500;
+  transition:all .2s; border-left:3px solid transparent;
+}
+.sidenav a:hover { background:#1a1a1a; color:#fff; }
+.sidenav a.active { background:#1a1a1a; color:var(--purple-light); border-left-color:var(--purple); }
+.sidenav a .num {
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px; color:#666; width:22px; flex-shrink:0;
+}
+.sidenav a.active .num { color:var(--purple-light); }
+.sidenav-footer {
+  margin-top:30px; padding:16px 12px;
+  border-top:1px solid #222; font-size:12px; color:#666;
+  font-family:'IBM Plex Mono',monospace; letter-spacing:0.05em;
+}
+.main { margin-left: var(--sidebar-w); flex: 1; min-width: 0; }
+.topbar {
+  display: none;
+  position: sticky; top: 0; z-index: 150;
+  background: var(--ink);
+  color: #fff;
+  padding: 14px 20px;
+  align-items: center; justify-content: space-between;
+}
+.topbar-brand { font-family:'Big Shoulders Display',sans-serif; font-size:22px; font-weight:800; }
+.topbar-brand em { font-style:normal; color:var(--purple-light); }
+.menu-btn {
+  background: #1a1a1a; border: 1px solid #333;
+  color: #fff; border-radius: 8px;
+  padding: 8px 12px; cursor: pointer;
+  font-size: 16px; line-height: 1;
+}
+.menu-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 190;
+}
+.progress-wrap { position:sticky; top:0; z-index:140; background:var(--paper); border-bottom:1px solid var(--line); }
+.progress-bar { height:3px; background:var(--signal); width:0; transition:width .1s; }
+
+/* ── QUIZ PAGE ── */
+.quiz-shell { max-width:720px; margin:0 auto; padding:48px 24px 80px; }
+.quiz-kicker { font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--signal); margin-bottom:12px; }
+.quiz-shell h1 { font-size:clamp(36px,5vw,52px); margin-bottom:10px; }
+.quiz-shell .dek { color:var(--ink-soft); font-size:17px; max-width:600px; margin-bottom:32px; }
+.quiz-progress { display:flex; align-items:center; gap:14px; margin-bottom:28px; }
+.quiz-progress-track { flex:1; height:8px; background:var(--line); overflow:hidden; }
+.quiz-progress-fill { height:100%; background:var(--signal); width:0%; transition:width .4s ease; }
+.quiz-progress-label { font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-faint); white-space:nowrap; letter-spacing:0.06em; }
+.quiz-card {
+  background:var(--paper-raised);
+  border:1px solid var(--line);
+  box-shadow:6px 6px 0 var(--line);
+  padding:32px;
+}
+.quiz-q-text { font-family:'Big Shoulders Display',sans-serif; font-size:22px; font-weight:800; line-height:1.1; margin-bottom:18px; }
+.quiz-q-sub { font-size:13px; color:var(--ink-faint); margin-bottom:18px; font-family:'IBM Plex Mono',monospace; }
+.quiz-options { display:flex; flex-direction:column; gap:10px; }
+.quiz-option {
+  display:flex; align-items:center; gap:12px;
+  padding:14px 16px; border:1px solid var(--line);
+  background:var(--paper-raised); cursor:pointer; transition:all .15s;
+  font-size:15px; color:var(--ink-soft);
+}
+.quiz-option:hover { border-color:var(--signal); background:var(--signal-soft); }
+.quiz-option.selected { border-color:var(--signal); background:var(--signal); color:#fff; }
+.quiz-option input { appearance:none; width:18px; height:18px; border:2px solid var(--line); border-radius:50%; flex-shrink:0; position:relative; }
+.quiz-option.selected input { border-color:#fff; background:#fff; }
+.quiz-option.selected input::after { content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:8px; height:8px; background:var(--signal); border-radius:50%; }
+.quiz-option input:checked { border-color:var(--signal); background:var(--signal); }
+.quiz-nav { display:flex; justify-content:space-between; gap:12px; margin-top:22px; }
+.q-btn {
+  font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.06em; text-transform:uppercase; font-weight:600;
+  padding:12px 20px; border:1px solid var(--line); cursor:pointer; transition:all .15s;
+}
+.q-btn-back { background:var(--paper-raised); color:var(--ink-soft); }
+.q-btn-back:hover { border-color:var(--ink); color:var(--ink); }
+.q-btn-back:disabled { opacity:0.35; pointer-events:none; }
+.q-btn-next { background:var(--ink); color:var(--paper); border-color:var(--ink); }
+.q-btn-next:hover { background:var(--signal); border-color:var(--signal); }
+.q-btn-next:disabled { opacity:0.35; pointer-events:none; }
+.quiz-result {
+  display:none; margin-top:28px; padding:28px; border:1px solid var(--line);
+  background:var(--paper-raised); box-shadow:6px 6px 0 var(--line);
+}
+.quiz-result.show { display:block; }
+.quiz-result h3 { font-size:24px; margin-bottom:10px; }
+.quiz-result p { color:var(--ink-soft); margin-bottom:10px; font-size:15px; }
+.quiz-result .cta-row { display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; }
+.quiz-result .cta-row a {
+  display:inline-flex; align-items:center; gap:6px;
+  padding:10px 18px; font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:600; text-decoration:none;
+  border:1px solid var(--line); transition:all .15s;
+}
+.cta-primary { background:var(--signal); color:#fff; border-color:var(--signal); }
+.cta-primary:hover { background:var(--ink); border-color:var(--ink); }
+.cta-ghost { background:var(--paper-raised); color:var(--ink); }
+.cta-ghost:hover { border-color:var(--signal); color:var(--signal); }
+.quiz-result.track-a { border-left:4px solid var(--green); }
+.quiz-result.track-b { border-left:4px solid var(--gold); }
+.quiz-result.track-any { border-left:4px solid var(--signal); }
+
+@media (max-width: 900px) {
+  .sidenav { transform: translateX(-100%); box-shadow: none; }
+  .sidenav.open { transform: translateX(0); }
+  .menu-overlay.show { display: block; }
+  .topbar { display: flex; }
+  .main { margin-left: 0; }
+  .quiz-shell { padding:32px 20px 60px; }
+  .quiz-card { padding:22px; }
+}
+</style>
+</head>
+<body>
+<div class="layout">
+  <aside class="sidenav" id="sidenav">
+    <div class="sidenav-brand">AI<em>Income</em> Blueprint</div>
+    <div class="sidenav-sub">Complete Course · 2026</div>
+    <div class="sidenav-label">The Blueprint</div>
+    <a href="index.html#foundation"><span class="num">01</span> Foundation</a>
+    <a href="index.html#tools"><span class="num">02</span> Tools &amp; Stack</a>
+    <a href="index.html#income"><span class="num">03</span> First $500 Roadmap</a>
+    <a href="index.html#playbooks"><span class="num">04</span> Execution Playbooks</a>
+    <a href="index.html#prompts"><span class="num">05</span> Prompt Vault</a>
+    <a href="index.html#scale"><span class="num">06</span> Scale to $2K/Mo</a>
+    <a href="index.html#results"><span class="num">07</span> Wall of Proof</a>
+    <a href="index.html#resources"><span class="num">08</span> Resources</a>
+    <a href="checklist.html"><span class="num">09</span> Checklist</a>
+    <a href="quiz.html" class="active"><span class="num">◆</span> Get My Track</a>
+    <div class="sidenav-footer">v3.0 · Built from 1,400+ students of real execution</div>
+  </aside>
+
+  <div class="menu-overlay" id="overlay"></div>
+
+  <div class="main">
+    <div class="topbar">
+      <div class="topbar-brand">AI<em>Income</em> Blueprint</div>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+    </div>
+    <div class="progress-wrap"><div class="progress-bar" id="topProgress"></div></div>
+
+    <div class="quiz-shell">
+      <div class="quiz-kicker">Diagnostic · 10 questions · 3 minutes</div>
+      <h1>Find your track.</h1>
+      <p class="dek">The Blueprint only works if you run the <strong>right</strong> track for your life. Answer honestly — one question at a time — and we’ll place you in Track A or Track B with your exact next 7 days.</p>
+
+      <div class="quiz-progress">
+        <div class="quiz-progress-track"><div class="quiz-progress-fill" id="quizFill"></div></div>
+        <div class="quiz-progress-label" id="quizLabel">1 / 10</div>
+      </div>
+
+      <div class="quiz-card" id="quizCard"></div>
+      <div class="quiz-result" id="quizResult"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var menuBtn = document.getElementById('menuBtn');
+  var sidenav = document.getElementById('sidenav');
+  var overlay = document.getElementById('overlay');
+  if(menuBtn && sidenav && overlay){
+    menuBtn.addEventListener('click', function(){ sidenav.classList.toggle('open'); overlay.classList.toggle('show'); });
+    overlay.addEventListener('click', function(){ sidenav.classList.remove('open'); overlay.classList.remove('show'); });
+  }
+  var topProgress = document.getElementById('topProgress');
+  if(topProgress){
+    window.addEventListener('scroll', function(){
+      var st = window.scrollY;
+      var dh = document.documentElement.scrollHeight - window.innerHeight;
+      var p = dh>0 ? (st/dh)*100 : 0;
+      topProgress.style.width = p+'%';
+    });
+  }
+
+  var questions = [
+    { id:'q1', text:'How much focused time can you actually protect every day?', sub:'Not ideal time — real, phone-off time.', opts:[
+      {v:'a', label:'Under 90 minutes — I steal time between other things', score:{a:0,b:3}},
+      {v:'b', label:'2–3 hours — I can block evenings consistently', score:{a:1,b:1}},
+      {v:'c', label:'4+ hours — I control my days', score:{a:3,b:0}}
+    ]},
+    { id:'q2', text:'If you had to choose, you want money…', sub:'This decides your tolerance for the quiet weeks.', opts:[
+      {v:'a', label:'This week — I need to see cash move now', score:{a:0,b:3}},
+      {v:'b', label:'Next month is fine — I’d rather build an asset', score:{a:3,b:0}},
+      {v:'c', label:'Either — I care more about the right fit', score:{a:1,b:1}}
+    ]},
+    { id:'q3', text:'Which sentence feels more like YOU?', sub:'No wrong answer — just your wiring.', opts:[
+      {v:'a', label:'“I love making things that work while I sleep” — builder', score:{a:3,b:0}},
+      {v:'b', label:'“I love getting a yes from a real person” — closer', score:{a:0,b:3}},
+      {v:'c', label:'Both sound good, depends on the day', score:{a:1,b:1}}
+    ]},
+    { id:'q4', text:'How do you feel about short calls with strangers who might pay you?', sub:'Track B lives here. Track A avoids it entirely.', opts:[
+      {v:'a', label:'Great — give me a script and I’m gone', score:{a:0,b:3}},
+      {v:'b', label:'Okay if I have a template, but not my favorite', score:{a:1,b:2}},
+      {v:'c', label:'I’d rather never get on a call', score:{a:3,b:0}}
+    ]},
+    { id:'q5', text:'A prospect doesn’t reply for 48 hours. You…', sub:'This is the lagging-indicator test — results come on day 12, 19, 24.', opts:[
+      {v:'a', label:'Follow up politely and keep your rhythm — it’s normal', score:{a:1,b:2}},
+      {v:'b', label:'Feel deflated and want to switch tactics', score:{a:1,b:1}},
+      {v:'c', label:'Hate waiting — I need faster feedback loops', score:{a:0,b:3}}
+    ]},
+    { id:'q6', text:'What drains you faster?', sub:'Energy source predicts consistency.', opts:[
+      {v:'a', label:'Hours of talking and selling', score:{a:3,b:0}},
+      {v:'b', label:'Hours alone making content no one sees yet', score:{a:0,b:3}},
+      {v:'c', label:'Both are fine in short bursts', score:{a:1,b:1}}
+    ]},
+    { id:'q7', text:'Risk-wise, you prefer…', sub:'Track A = 3 quiet weeks before first sale. Track B = fast cash, daily outreach.', opts:[
+      {v:'a', label:'Bet 3 weeks building, then own an asset forever', score:{a:3,b:0}},
+      {v:'b', label:'Get a small win this week, even if I trade time', score:{a:0,b:3}},
+      {v:'c', label:'I want proof either way before I commit', score:{a:1,b:1}}
+    ]},
+    { id:'q8', text:'Your superpower today is closer to…', sub:'We amplify what you already have with AI.', opts:[
+      {v:'a', label:'Writing, making, designing — I love crafting', score:{a:3,b:0}},
+      {v:'b', label:'Organizing, persuading, following up', score:{a:0,b:3}},
+      {v:'c', label:'A bit of both — I’m still discovering', score:{a:1,b:1}}
+    ]},
+    { id:'q9', text:'When you picture $2K/month, you see…', sub:'This reveals which lever excites you.', opts:[
+      {v:'a', label:'A product + content funnel selling while I sleep — no clients', score:{a:3,b:0}},
+      {v:'b', label:'3-4 retainers stacking — real clients, real calls', score:{a:0,b:3}},
+      {v:'c', label:'Either — as long as it’s real and repeatable', score:{a:1,b:1}}
+    ]},
+    { id:'q10', text:'How do you want to spend the next 7 days?', sub:'Your answer writes day 1 of your roadmap.', opts:[
+      {v:'a', label:'Build once: product, storefront, 3 posts — patiently', score:{a:3,b:0}},
+      {v:'b', label:'Sell fast: pick an offer, find 50 prospects, send DMs', score:{a:0,b:3}},
+      {v:'c', label:'Whichever the diagnostic says — I’ll commit 30 days', score:{a:1,b:1}}
+    ]}
+  ];
+
+  var params = new URLSearchParams(window.location.search);
+  var intro = {};
+  if(params.get('q1')) intro.q1 = params.get('q1');
+  if(params.get('q2')) intro.q2 = params.get('q2');
+  if(params.get('q3')) intro.q3 = params.get('q3');
+
+  var answers = {};
+  if(intro.q1) answers.q1 = intro.q1;
+  if(intro.q2) answers.q2 = intro.q2;
+  if(intro.q3) answers.q3 = intro.q3;
+
+  var idx = 0;
+  if(intro.q1 && intro.q2 && intro.q3) idx = 3;
+
+  var card = document.getElementById('quizCard');
+  var fill = document.getElementById('quizFill');
+  var label = document.getElementById('quizLabel');
+  var resultEl = document.getElementById('quizResult');
+
+  function render(){
+    var total = questions.length;
+    var pct = Math.round(((idx+1)/total)*100);
+    fill.style.width = pct+'%';
+    label.textContent = (idx+1)+' / '+total;
+    if(idx >= total){ showResult(); return; }
+    var q = questions[idx];
+    var hasAnswer = answers[q.id];
+    var html = '<div class="quiz-q-sub">'+q.sub+'</div>';
+    html += '<div class="quiz-q-text">'+(idx+1)+'. '+q.text+'</div>';
+    html += '<div class="quiz-options">';
+    q.opts.forEach(function(o){
+      var sel = hasAnswer===o.v ? ' selected' : '';
+      html += '<label class="quiz-option'+sel+'" data-v="'+o.v+'"><input type="radio" name="'+q.id+'" value="'+o.v+'" '+(hasAnswer===o.v?'checked':'')+'><span>'+o.label+'</span></label>';
+    });
+    html += '</div>';
+    html += '<div class="quiz-nav">';
+    html += '<button class="q-btn q-btn-back" id="qBack" '+(idx===0?'disabled':'')+'>← Back</button>';
+    var nextDisabled = hasAnswer ? '' : 'disabled';
+    html += '<button class="q-btn q-btn-next" id="qNext" '+nextDisabled+'>'+(idx===total-1?'See my track →':'Next →')+'</button>';
+    html += '</div>';
+    card.innerHTML = html;
+    card.querySelectorAll('.quiz-option').forEach(function(el){
+      el.addEventListener('click', function(){
+        var v = el.getAttribute('data-v');
+        answers[q.id] = v;
+        card.querySelectorAll('.quiz-option').forEach(function(x){ x.classList.remove('selected'); });
+        el.classList.add('selected');
+        el.querySelector('input').checked = true;
+        document.getElementById('qNext').disabled = false;
+      });
+    });
+    document.getElementById('qBack').addEventListener('click', function(){
+      if(idx>0){ idx--; render(); }
+    });
+    document.getElementById('qNext').addEventListener('click', function(){
+      if(!answers[q.id]) return;
+      idx++;
+      if(idx < total) render(); else showResult();
+    });
+  }
+
+  function showResult(){
+    var trackA=0, trackB=0;
+    questions.forEach(function(q){
+      var v = answers[q.id];
+      if(!v) return;
+      var opt = q.opts.find(function(o){ return o.v===v; });
+      if(opt && opt.score){ trackA += opt.score.a; trackB += opt.score.b; }
+    });
+    card.style.display='none';
+    document.querySelector('.quiz-progress').style.display='none';
+    fill.style.width='100%';
+    label.textContent = 'Done';
+    var cls='', html='';
+    if(trackA > trackB){
+      cls='quiz-result show track-a';
+      html = '<h3>🎯 Your track: Track A — Autonomous Sales</h3>';
+      html += '<p>You scored <strong>'+trackA+' vs '+trackB+'</strong> for Track A. <strong>Why this fits:</strong> you lit up on “build once, sell while you sleep,” longer time blocks, and avoiding calls. That wiring matches the Blueprint’s autonomous lever: <em>content volume × click-through × conversion</em> — not outreach volume.</p>';
+      html += '<p><strong>What to expect:</strong> ~19–24 days to first sale (quiet weeks are normal — results are a lagging indicator). You’ll live in Playbook B (product in 5 days) + Playbook C (faceless funnel). Stack: ChatGPT + Canva + CapCut + Gumroad on free tiers.</p>';
+      html += '<p><strong>Risk / reward:</strong> Risk is 1–2 pivots before the product resonates. Reward is an asset you own forever, no client dependency. The Kaya principle applies — 90 min/day, zero following, just the system.</p>';
+      html += '<div class="cta-row"><a class="cta-primary" href="playbooks/playbook-b-launch-product.html">Start Playbook B →</a><a class="cta-ghost" href="index.html#playbooks">See all playbooks</a><a class="cta-ghost" href="index.html#foundation">Back to Blueprint</a></div>';
+    } else if(trackB > trackA){
+      cls='quiz-result show track-b';
+      html = '<h3>🎯 Your track: Track B — Service Sales</h3>';
+      html += '<p>You scored <strong>'+trackB+' vs '+trackA+'</strong> for Track B. <strong>Why this fits:</strong> you want cash this week, you’re okay (even good) on calls, and you prefer getting a “yes” to building alone. That matches the service lever: <em>outreach volume × reply rate × close rate</em>.</p>';
+      html += '<p><strong>What to expect:</strong> first client in 7–11 days if you send 50 personalized DMs in days 3–5 and run the 3-step follow-up. You’ll live in Playbook A. Stack: ChatGPT + Claude + Canva on free tiers. Volume beats talent here.</p>';
+      html += '<p><strong>Risk / reward:</strong> Risk is grind in the first two weeks of targeting the right 50 (signaled prospects, not random businesses). Reward is human-rate cash in days, stackable retainers. One track, fully executed for 30 days — no switching at day 6.</p>';
+      html += '<div class="cta-row"><a class="cta-primary" href="playbooks/playbook-a-land-first-client.html">Start Playbook A →</a><a class="cta-ghost" href="index.html#playbooks">See all playbooks</a><a class="cta-ghost" href="index.html#foundation">Back to Blueprint</a></div>';
+    } else {
+      cls='quiz-result show track-any';
+      html = '<h3>⚖️ You could win on either track</h3>';
+      html += '<p>You landed <strong>'+trackA+' each</strong> — genuinely balanced. <strong>Why we push you to pick anyway:</strong> the #1 predictor in 1,400 students isn’t talent or hours — it’s picking a lane and executing it without switching.</p>';
+      html += '<p><strong>How to choose:</strong> Need money fast? → <strong>Track B (Playbook A, 7-day sprint)</strong>. Want a long-term asset that sells while you sleep? → <strong>Track A (Playbook B + C)</strong>. Either way, commit 30 days. The quiet weeks are the test — follow the playbook, not your mood.</p>';
+      html += '<div class="cta-row"><a class="cta-primary" href="index.html#playbooks">Compare playbooks</a><a class="cta-ghost" href="playbooks/playbook-a-land-first-client.html">Explore Track B</a><a class="cta-ghost" href="playbooks/playbook-b-launch-product.html">Explore Track A</a></div>';
+    }
+    resultEl.className = cls;
+    resultEl.innerHTML = html;
+    resultEl.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  render();
+})();
+</script>
+</body>
+</html>

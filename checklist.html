@@ -5,37 +5,52 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Income Blueprint — Checklist Dashboard</title>
 <meta name="description" content="The complete AI Income Blueprint course: two income tracks, day-by-day roadmap, four execution playbooks, and 300+ AI prompts. Built for beginners.">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <style>
 :root {
-  --ink: #0a0a0a;
-  --paper: #f8f6f2;
-  --cream: #efece4;
-  --card: #ffffff;
-  --purple: #7C3AED;
-  --purple-light: #A78BFA;
-  --purple-soft: #F3EEFB;
-  --green: #1a6b3c;
-  --green-light: #22c55e;
-  --gold: #D97706;
-  --gold-light: #FDE68A;
-  --red: #DC2626;
-  --rule: #e3ddd2;
-  --muted: #6b655a;
-  --text: #2a2a2a;
-  --sidebar-w: 300px;
+  --paper:#FAF8F2;
+  --paper-raised:#FFFFFF;
+  --cream:#efece4;
+  --card:#FFFFFF;
+  --ink:#1E1A16;
+  --ink-soft:#5B5449;
+  --ink-faint:#948C7C;
+  --line:#E3DCC9;
+  --text:#1E1A16;
+  --muted:#5B5449;
+  --rule:#E3DCC9;
+  --purple:#7C3AED;
+  --purple-light:#A78BFA;
+  --purple-soft:#F3EEFB;
+  --signal:#7C3AED;
+  --signal-soft:#F3EEFB;
+  --green:#1a6b3c;
+  --green-light:#22c55e;
+  --gold:#D97706;
+  --gold-light:#FDE68A;
+  --gold-soft:#F1EADA;
+  --red:#9C3B2E;
+  --red-soft:#F3E7E4;
+  --sidebar-w:300px;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'DM Sans', sans-serif;
+  font-family:'IBM Plex Sans',sans-serif;
   background: var(--paper);
-  color: var(--text);
-  font-size: 16px;
-  line-height: 1.7;
+  color: var(--ink);
+  font-size: 16.5px;
+  line-height: 1.65;
+  -webkit-font-smoothing:antialiased;
 }
+::selection{background:var(--signal-soft);color:var(--signal);}
+a{color:var(--signal);}
+h1,h2,h3{font-family:'Big Shoulders Display',sans-serif;font-weight:800;line-height:0.96;letter-spacing:-0.01em;color:var(--ink);}
+.mono{font-family:'IBM Plex Mono',monospace;}
 
 /* ── LAYOUT ── */
 .layout { display: flex; min-height: 100vh; }
@@ -53,55 +68,39 @@ body {
   transition: transform 0.3s ease;
 }
 .sidenav-brand {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 26px;
-  letter-spacing: 0.5px;
-  margin-bottom: 8px;
-  display: flex; align-items: center; gap: 8px;
+  font-family:'Big Shoulders Display',sans-serif;
+  font-size:26px; font-weight:800; letter-spacing:-0.01em;
+  margin-bottom:8px; display:flex; align-items:center; gap:8px;
 }
-.sidenav-brand em { font-style: normal; color: var(--purple-light); }
+.sidenav-brand em { font-style:normal; color:var(--purple-light); }
 .sidenav-sub {
-  font-family: 'DM Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #777;
-  margin-bottom: 28px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px; letter-spacing:0.18em; text-transform:uppercase;
+  color:#777; margin-bottom:28px;
 }
 .sidenav-label {
-  font-family: 'DM Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #666;
-  margin: 22px 0 10px;
-  padding-left: 12px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px; letter-spacing:0.18em; text-transform:uppercase;
+  color:#666; margin:22px 0 10px; padding-left:12px;
 }
 .sidenav a {
-  display: flex; align-items: center; gap: 12px;
-  color: #bbb;
-  text-decoration: none;
-  padding: 10px 12px;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 500;
-  transition: all .2s;
-  border-left: 3px solid transparent;
+  display:flex; align-items:center; gap:12px;
+  color:#bbb; text-decoration:none;
+  padding:10px 12px; border-radius:8px;
+  font-family:'IBM Plex Sans',sans-serif; font-size:14px; font-weight:500;
+  transition:all .2s; border-left:3px solid transparent;
 }
-.sidenav a:hover { background: #1a1a1a; color: #fff; }
-.sidenav a.active { background: #1a1a1a; color: var(--purple-light); border-left-color: var(--purple); }
+.sidenav a:hover { background:#1a1a1a; color:#fff; }
+.sidenav a.active { background:#1a1a1a; color:var(--purple-light); border-left-color:var(--purple); }
 .sidenav a .num {
-  font-family: 'DM Mono', monospace;
-  font-size: 11px;
-  color: #666;
-  width: 22px; flex-shrink: 0;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px; color:#666; width:22px; flex-shrink:0;
 }
-.sidenav a.active .num { color: var(--purple-light); }
+.sidenav a.active .num { color:var(--purple-light); }
 .sidenav-footer {
-  margin-top: 30px; padding: 16px 12px;
-  border-top: 1px solid #222;
-  font-size: 12px; color: #666;
-  font-family: 'DM Mono', monospace;
+  margin-top:30px; padding:16px 12px;
+  border-top:1px solid #222; font-size:12px; color:#666;
+  font-family:'IBM Plex Mono',monospace;
   letter-spacing: 0.05em;
 }
 
@@ -117,7 +116,7 @@ body {
   padding: 14px 20px;
   align-items: center; justify-content: space-between;
 }
-.topbar-brand { font-family: 'Bebas Neue', sans-serif; font-size: 22px; }
+.topbar-brand { font-family:'Big Shoulders Display',sans-serif; font-size:22px; font-weight:800; }
 .topbar-brand em { font-style: normal; color: var(--purple-light); }
 .menu-btn {
   background: #1a1a1a; border: 1px solid #333;
@@ -138,20 +137,20 @@ body {
 .course-shell .content { max-width:none; margin:0; padding:60px 0 100px; }
 .checklist-page-shell { max-width: 1100px; margin: 0 auto; padding: 60px 40px 100px; }
 .guide-rail { display:none !important; }
-.guide-kicker { font-family:'DM Mono', monospace; font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:var(--purple); margin-bottom:10px; opacity:0.9; }
+.guide-kicker { font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:var(--signal); margin-bottom:10px; opacity:0.9; }
 .module-nav { display:flex; flex-direction:column; gap:8px; }
-.module-link { display:flex; justify-content:space-between; align-items:center; gap:12px; text-decoration:none; color:var(--text); border:1px solid var(--rule); padding:12px 14px; border-radius:14px; transition:.2s ease; }
-.module-link:hover, .module-link.active { border-color:var(--purple-light); background:#fbf9ff; transform:translateY(-1px); box-shadow:0 8px 18px rgba(124,58,237,0.08); }
-.module-link strong { font-size:13px; line-height:1.4; }
-.module-link span { font-size:11px; color:var(--muted); }
-.guide-points { margin:0; padding-left:18px; display:flex; flex-direction:column; gap:8px; color:#4a4a4a; }
+.module-link { display:flex; justify-content:space-between; gap:10px; text-decoration:none; color:var(--ink); border:1px solid var(--line); padding:10px 12px; transition:.2s ease; background:var(--paper-raised); }
+.module-link:hover, .module-link.active { border-color:var(--signal); color:var(--signal); background:var(--signal-soft); }
+.module-link strong { font-size:13px; font-family:'IBM Plex Sans',sans-serif; }
+.module-link span { font-size:11px; color:var(--ink-faint); }
+.guide-points { margin:0; padding-left:18px; display:flex; flex-direction:column; gap:8px; color:var(--ink-soft); }
 .guide-points li { margin:0; line-height:1.55; }
-.guide-mini-label { display:inline-flex; align-items:center; gap:8px; font-family:'DM Mono', monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:var(--purple); margin-bottom:10px; }
+.guide-mini-label { display:inline-flex; align-items:center; gap:8px; font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:var(--signal); margin-bottom:10px; }
 .guide-mini-label::before { content:''; width:18px; height:1px; background:currentColor; opacity:0.65; }
 
 /* ── CHECKLIST PAGE ── */
 .checklist-page-header { padding: 0 0 32px; margin-bottom: 8px; }
-.checklist-page-header h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(42px, 6vw, 68px); line-height: 0.95; letter-spacing: -0.5px; margin-bottom: 14px; }
+.checklist-page-header h1 { font-family: 'Big Shoulders Display', sans-serif; font-size: clamp(42px, 6vw, 68px); line-height: 0.95; letter-spacing: -0.5px; margin-bottom: 14px; }
 .checklist-page-header h1 span { color: var(--purple); }
 .checklist-page-header p { max-width: 720px; color: var(--muted); font-size: 17px; line-height: 1.6; }
 .checklist-workspace { display:flex; flex-direction:column; gap:28px; }
@@ -171,7 +170,7 @@ body {
 .checklist-meta-card:nth-child(2) .meta-icon { background:#ecfdf5; color:var(--green); }
 .checklist-meta-card:nth-child(3) .meta-icon { background:#fffbeb; color:var(--gold); }
 .checklist-meta-card strong { display:block; font-size:22px; line-height:1; color:var(--ink); }
-.checklist-meta-card span { font-family:'DM Mono', monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); }
+.checklist-meta-card span { font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); }
 
 .checklist-table-wrap {
   background:var(--card);
@@ -186,7 +185,7 @@ table.checklist-table {
 table.checklist-table thead th {
   background:var(--purple);
   color:#fff;
-  font-family:'DM Mono', monospace;
+  font-family:'IBM Plex Mono', monospace;
   font-size:11px; letter-spacing:0.12em; text-transform:uppercase;
   padding:16px 22px;
   text-align:left;
@@ -211,7 +210,7 @@ table.checklist-table .step-num {
   display:inline-flex; align-items:center; justify-content:center;
   width:36px; height:36px; border-radius:10px;
   background:var(--purple-soft); color:var(--purple);
-  font-family:'DM Mono', monospace; font-size:13px; font-weight:700;
+  font-family:'IBM Plex Mono', monospace; font-size:13px; font-weight:700;
 }
 table.checklist-table tbody td:nth-child(2) {
   font-weight:700; font-size:15px; color:var(--ink);
@@ -220,7 +219,7 @@ table.checklist-table tbody td:nth-child(3) {
   color:#4a4a4a; font-size:14px; max-width:420px;
 }
 table.checklist-table .step-tag {
-  display:inline-block; font-family:'DM Mono', monospace; font-size:10px;
+  display:inline-block; font-family:'IBM Plex Mono', monospace; font-size:10px;
   letter-spacing:0.08em; text-transform:uppercase; color:var(--purple);
   background:var(--purple-soft); padding:3px 8px; border-radius:6px; margin-bottom:4px;
 }
@@ -246,7 +245,7 @@ table.checklist-table .step-tag {
   backdrop-filter:blur(8px); transition:all .2s;
 }
 .jump-pill:hover { background:#fff; color:var(--purple); transform:translateY(-2px); box-shadow:0 8px 20px rgba(0,0,0,0.15); }
-.jump-pill .jp-num { font-family:'DM Mono', monospace; font-size:10px; opacity:0.85; background:rgba(255,255,255,0.2); padding:2px 7px; border-radius:99px; }
+.jump-pill .jp-num { font-family:'IBM Plex Mono', monospace; font-size:10px; opacity:0.85; background:rgba(255,255,255,0.2); padding:2px 7px; border-radius:99px; }
 .jump-pill:hover .jp-num { background:var(--purple-soft); color:var(--purple); }
 
 .checklist-howto {
@@ -255,14 +254,14 @@ table.checklist-table .step-tag {
 }
 .checklist-howto::before { content:''; position:absolute; left:0; top:0; bottom:0; width:4px; background:linear-gradient(180deg, var(--purple), var(--purple-light)); }
 .checklist-howto h4 { font-size:14px; font-weight:700; color:var(--ink); margin-bottom:20px; display:flex; align-items:center; gap:10px; }
-.checklist-howto h4 em { font-style:normal; background:var(--purple); color:#fff; font-family:'DM Mono', monospace; font-size:10px; padding:3px 8px; border-radius:6px; letter-spacing:0.06em; }
+.checklist-howto h4 em { font-style:normal; background:var(--purple); color:#fff; font-family:'IBM Plex Mono', monospace; font-size:10px; padding:3px 8px; border-radius:6px; letter-spacing:0.06em; }
 .howto-steps { display:flex; flex-direction:column; gap:16px; }
 .howto-step { display:flex; gap:16px; align-items:flex-start; }
 .howto-step .hs-num {
   flex-shrink:0; width:36px; height:36px; border-radius:10px;
   background:var(--purple-soft); color:var(--purple);
   display:flex; align-items:center; justify-content:center;
-  font-family:'DM Mono', monospace; font-size:12px; font-weight:700;
+  font-family:'IBM Plex Mono', monospace; font-size:12px; font-weight:700;
 }
 .howto-step .hs-body strong { display:block; font-size:14px; color:var(--ink); margin-bottom:2px; }
 .howto-step .hs-body span { font-size:13px; color:var(--muted); line-height:1.5; }
@@ -278,499 +277,313 @@ table.checklist-table .step-tag {
 }
 
 .chapter-hero {
-  padding: 40px 0 48px;
-  border-bottom: 1px solid var(--rule);
+  padding: 56px 0 32px;
+  border-bottom: 1px solid var(--line);
   margin-bottom: 8px;
 }
 .chapter-hero .kicker {
-  font-family: 'DM Mono', monospace;
-  font-size: 11px; letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--purple);
-  margin-bottom: 14px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px; letter-spacing:0.2em; text-transform:uppercase;
+  color:var(--signal); margin-bottom:14px;
 }
 .chapter-hero h1 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(40px, 6vw, 64px);
-  line-height: 1.0;
-  letter-spacing: -0.5px;
-  margin-bottom: 16px;
+  font-family:'Big Shoulders Display',sans-serif;
+  font-size:clamp(40px,6vw,64px); line-height:0.96; letter-spacing:-0.01em;
+  margin-bottom:16px;
 }
-.chapter-hero p { color: var(--muted); font-size: 17px; max-width: 650px; }
+.chapter-hero p { color:var(--ink-soft); font-size:17px; max-width:650px; }
 
 .chapter {
-  padding: 48px 0;
-  border-bottom: 1px solid var(--rule);
+  padding: 52px 0;
+  border-bottom: 1px solid var(--line);
   scroll-margin-top: 20px;
 }
 .chapter:last-child { border-bottom: none; }
 .chapter .ch-label {
-  font-family: 'DM Mono', monospace;
-  font-size: 11px; letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--purple);
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 14px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px; letter-spacing:0.2em; text-transform:uppercase;
+  color:var(--signal); display:flex; align-items:center; gap:10px; margin-bottom:14px;
 }
 .chapter .ch-label::before {
-  content: ''; width: 26px; height: 2px; background: var(--purple);
+  content:''; width:26px; height:2px; background:var(--signal);
 }
 .chapter h2 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(30px, 4vw, 42px);
-  line-height: 1.05;
-  letter-spacing: -0.3px;
-  margin-bottom: 18px;
+  font-family:'Big Shoulders Display',sans-serif;
+  font-size:clamp(30px,4vw,42px); line-height:0.96; letter-spacing:-0.01em;
+  margin-bottom:18px;
 }
 .chapter h3 {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 19px;
-  font-weight: 700;
-  margin: 28px 0 10px;
+  font-family:'Big Shoulders Display',sans-serif;
+  font-size:19px; font-weight:700; margin:28px 0 10px;
 }
 .chapter h4 {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 17px;
-  font-weight: 700;
-  margin: 22px 0 8px;
+  font-family:'Big Shoulders Display',sans-serif;
+  font-size:17px; font-weight:700; margin:22px 0 8px;
 }
-.chapter p { margin-bottom: 16px; color: #3a3a3a; }
-.chapter p strong { color: var(--ink); }
-.chapter ul, .chapter ol { margin: 0 0 18px 22px; color: #3a3a3a; }
-.chapter li { margin-bottom: 8px; }
+.chapter p { margin-bottom:16px; color:var(--ink-soft); }
+.chapter p strong { color:var(--ink); }
+.chapter ul, .chapter ol { margin:0 0 18px 22px; color:var(--ink-soft); }
+.chapter li { margin-bottom:8px; }
 
 /* ── LEARNING OBJECTIVES ── */
 .objectives {
-  background: var(--card);
-  border: 1px solid var(--rule);
-  border-radius: 12px;
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
   padding: 20px 24px;
   margin: 20px 0 28px;
 }
 .objectives h4 {
-  font-family: 'DM Mono', monospace;
-  font-size: 10px; letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--purple);
-  margin-bottom: 12px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px; letter-spacing:0.18em; text-transform:uppercase;
+  color:var(--signal); margin-bottom:12px;
 }
-.objectives ul { margin: 0 0 0 20px; }
-.objectives li { margin-bottom: 6px; font-size: 15px; color: #3a3a3a; }
+.objectives ul { margin:0 0 0 20px; }
+.objectives li { margin-bottom:6px; font-size:15px; color:var(--ink-soft); }
 
 /* ── PROGRESS CHECKBOX ── */
 .progress-check {
-  display: inline-flex; align-items: center; gap: 10px;
-  margin: 18px 0 8px;
-  cursor: pointer;
-  font-size: 14px;
-  color: var(--muted);
+  display:inline-flex; align-items:center; gap:10px;
+  margin:18px 0 8px; cursor:pointer;
+  font-family:'IBM Plex Sans',sans-serif; font-size:14px; color:var(--ink-soft);
 }
 .progress-check input[type="checkbox"] {
-  appearance: none;
-  width: 20px; height: 20px;
-  border: 2px solid var(--rule);
-  border-radius: 4px;
-  cursor: pointer;
-  position: relative;
-  flex-shrink: 0;
-  transition: all .2s;
+  appearance:none; width:20px; height:20px;
+  border:2px solid var(--line); cursor:pointer; position:relative; flex-shrink:0; transition:all .2s;
 }
 .progress-check input[type="checkbox"]:checked {
-  background: var(--purple);
-  border-color: var(--purple);
+  background:var(--signal); border-color:var(--signal);
 }
 .progress-check input[type="checkbox"]:checked::after {
-  content: '✓';
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  color: #fff;
-  font-size: 13px;
-  font-weight: 700;
+  content:'✓'; position:absolute; top:50%; left:50%;
+  transform:translate(-50%,-50%); color:#fff; font-size:13px; font-weight:700;
 }
-.progress-check.completed { color: var(--green); text-decoration: line-through; }
+.progress-check.completed { color:var(--green); text-decoration:line-through; }
 
 /* ── CALLOUT ── */
 .callout {
-  background: var(--purple-soft);
-  border-left: 4px solid var(--purple);
-  padding: 20px 24px;
-  border-radius: 0 10px 10px 0;
-  margin: 24px 0;
+  background:var(--signal-soft);
+  border-left:2px solid var(--signal);
+  padding:20px 24px; margin:24px 0;
 }
-.callout p { margin: 0; color: #3a3a3a; }
-.callout .co-title { font-weight: 700; color: var(--purple); font-family: 'DM Sans'; margin-bottom: 6px; font-size: 15px; }
-.callout.green { background: #ecfdf5; border-left-color: var(--green); }
-.callout.green .co-title { color: var(--green); }
-.callout.gold { background: #fffbeb; border-left-color: var(--gold); }
-.callout.gold .co-title { color: var(--gold); }
+.callout p { margin:0; color:var(--ink-soft); }
+.callout .co-title { font-weight:700; color:var(--signal); font-family:'IBM Plex Sans',sans-serif; margin-bottom:6px; font-size:15px; }
+.callout.green { background:#ecfdf5; border-left-color:var(--green); }
+.callout.green .co-title { color:var(--green); }
+.callout.gold { background:#fffbeb; border-left-color:var(--gold); }
+.callout.gold .co-title { color:var(--gold); }
 
 /* ── CARD GRID ── */
-.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
-.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin: 24px 0; }
+.grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:20px 0; }
+.grid-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; margin:20px 0; }
 .card {
-  background: var(--card);
-  border: 1px solid var(--rule);
-  border-radius: 12px;
-  padding: 24px;
+  background:var(--paper-raised);
+  border:1px solid var(--line);
+  padding:18px 18px 16px;
 }
-.card h4 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
-.card p { font-size: 14px; color: var(--muted); margin-bottom: 0; }
+.card h4 { font-family:'Big Shoulders Display',sans-serif; font-size:17px; font-weight:700; margin-bottom:8px; }
+.card p { font-size:14px; color:var(--ink-soft); margin-bottom:0; }
 .card .tag {
-  font-family: 'DM Mono', monospace;
-  font-size: 10px; letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--purple);
-  margin-bottom: 8px; display: block;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px; letter-spacing:0.15em; text-transform:uppercase;
+  color:var(--signal); margin-bottom:8px; display:block;
 }
 .card .big-num {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 48px;
-  line-height: 1;
-  color: var(--purple-light);
-  margin-bottom: 8px;
+  font-family:'Big Shoulders Display',sans-serif;
+  font-size:48px; line-height:1; color:var(--purple-light); margin-bottom:8px;
 }
 
 /* ── STEP LIST ── */
-.steps { margin: 24px 0; counter-reset: step; }
-.step { display: flex; gap: 18px; padding: 18px 0; border-bottom: 1px solid var(--rule); }
-.step:last-child { border-bottom: none; }
+.steps { margin:20px 0; counter-reset:step; border-top:1px solid var(--line); }
+.step { display:flex; gap:18px; padding:18px 0; border-bottom:1px solid var(--line); }
+.step:last-child { border-bottom:none; }
 .step .step-num {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 34px; line-height: 1;
-  color: var(--purple-light);
-  min-width: 44px;
+  font-family:'Big Shoulders Display',sans-serif;
+  font-size:34px; line-height:1; color:var(--line); min-width:44px; font-weight:900;
 }
-.step h4 { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
-.step p { font-size: 15px; color: var(--muted); margin: 0; }
+.step h4 { font-family:'Big Shoulders Display',sans-serif; font-size:17px; font-weight:700; margin-bottom:4px; }
+.step p { font-size:15px; color:var(--ink-soft); margin:0; }
 
 /* ── TABLES ── */
-table.tbl { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; }
+table.tbl { width:100%; border-collapse:collapse; margin:20px 0; font-size:14px; }
 table.tbl th {
-  text-align: left; font-family: 'DM Mono', monospace;
-  font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
-  color: #888; padding: 10px 12px; border-bottom: 2px solid var(--rule);
+  text-align:left; font-family:'IBM Plex Mono',monospace;
+  font-size:10px; letter-spacing:0.15em; text-transform:uppercase;
+  color:var(--ink-faint); padding:10px 12px; border-bottom:2px solid var(--line); background:var(--paper-raised);
 }
-table.tbl td { padding: 12px; border-bottom: 1px solid var(--rule); color: #3a3a3a; }
-table.tbl td.day { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--purple); white-space: nowrap; }
+table.tbl td { padding:12px; border-bottom:1px solid var(--line); color:var(--ink-soft); }
+table.tbl td.day { font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--signal); white-space:nowrap; }
 
 /* ── PROGRESS BAR ── */
-.progress-wrap { position: sticky; top: 0; z-index: 140; background: var(--paper); }
-.progress-bar { height: 3px; background: var(--purple); width: 0; transition: width .1s; }
+.progress-wrap { position:sticky; top:0; z-index:140; background:var(--paper); border-bottom:1px solid var(--line); }
+.progress-bar { height:3px; background:var(--signal); width:0; transition:width .1s; }
 
 /* ── QUIZ ── */
 .quiz-container {
-  background: var(--card);
-  border: 1px solid var(--rule);
-  border-radius: 12px;
-  padding: 28px;
-  margin: 24px 0;
+  background:var(--paper-raised);
+  border:1px solid var(--line);
+  padding:28px; margin:24px 0;
 }
 .quiz-question {
-  margin-bottom: 24px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid var(--rule);
+  margin-bottom:24px; padding-bottom:20px; border-bottom:1px solid var(--line);
 }
-.quiz-question:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-.quiz-question .q-text {
-  font-weight: 700;
-  font-size: 16px;
-  margin-bottom: 12px;
-}
+.quiz-question:last-child { border-bottom:none; margin-bottom:0; padding-bottom:0; }
+.quiz-question .q-text { font-family:'IBM Plex Sans',sans-serif; font-weight:700; font-size:16px; margin-bottom:12px; }
 .quiz-question label {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 14px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background .2s;
-  font-size: 15px;
-  margin-bottom: 4px;
+  display:flex; align-items:center; gap:10px;
+  padding:10px 14px; cursor:pointer; transition:background .2s;
+  font-size:15px; margin-bottom:4px; color:var(--ink-soft);
 }
-.quiz-question label:hover { background: var(--purple-soft); }
+.quiz-question label:hover { background:var(--signal-soft); }
 .quiz-question input[type="radio"] {
-  appearance: none;
-  width: 18px; height: 18px;
-  border: 2px solid var(--rule);
-  border-radius: 50%;
-  flex-shrink: 0;
-  position: relative;
-  transition: all .2s;
+  appearance:none; width:18px; height:18px;
+  border:2px solid var(--line); border-radius:50%;
+  flex-shrink:0; position:relative; transition:all .2s;
 }
-.quiz-question input[type="radio"]:checked {
-  border-color: var(--purple);
-  background: var(--purple);
-}
+.quiz-question input[type="radio"]:checked { border-color:var(--signal); background:var(--signal); }
 .quiz-question input[type="radio"]:checked::after {
-  content: '';
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 6px; height: 6px;
-  background: #fff;
-  border-radius: 50%;
+  content:''; position:absolute; top:50%; left:50%;
+  transform:translate(-50%,-50%); width:6px; height:6px; background:#fff; border-radius:50%;
 }
 .quiz-btn {
-  background: var(--purple);
-  color: #fff;
-  border: none;
-  padding: 12px 28px;
-  border-radius: 8px;
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 600;
-  font-size: 15px;
-  cursor: pointer;
-  transition: all .2s;
-  margin-top: 12px;
+  background:var(--ink); color:var(--paper);
+  border:none; padding:12px 28px;
+  font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:13px; letter-spacing:0.04em;
+  cursor:pointer; transition:all .2s; margin-top:12px;
 }
-.quiz-btn:hover { background: #6d28d9; }
+.quiz-btn:hover { background:var(--signal); }
 .quiz-result {
-  margin-top: 16px;
-  padding: 16px 20px;
-  border-radius: 8px;
-  font-weight: 600;
-  display: none;
+  margin-top:16px; padding:16px 20px; font-weight:600; display:none;
+  font-family:'IBM Plex Sans',sans-serif;
 }
-.quiz-result.show { display: block; }
-.quiz-result.track-a { background: #ecfdf5; color: var(--green); border: 1px solid #a7f3d0; }
-.quiz-result.track-b { background: #fffbeb; color: var(--gold); border: 1px solid #fde68a; }
-.quiz-result.track-any { background: var(--purple-soft); color: var(--purple); border: 1px solid #ddd6fe; }
+.quiz-result.show { display:block; }
+.quiz-result.track-a { background:#ecfdf5; color:var(--green); border:1px solid #a7f3d0; }
+.quiz-result.track-b { background:#fffbeb; color:var(--gold); border:1px solid #fde68a; }
+.quiz-result.track-any { background:var(--signal-soft); color:var(--signal); border:1px solid #ddd6fe; }
 
 /* ── PROMPT VAULT ── */
 .prompt-vault-controls {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin: 20px 0;
-  align-items: center;
+  display:flex; gap:12px; flex-wrap:wrap; margin:20px 0; align-items:center;
 }
 .prompt-search {
-  flex: 1;
-  min-width: 200px;
-  padding: 12px 16px;
-  border: 1px solid var(--rule);
-  border-radius: 8px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 15px;
-  background: var(--card);
-  outline: none;
-  transition: border .2s;
+  flex:1; min-width:200px; padding:12px 16px;
+  border:1px solid var(--line);
+  font-family:'IBM Plex Sans',sans-serif; font-size:15px;
+  background:var(--paper-raised); outline:none; transition:border .2s;
 }
-.prompt-search:focus { border-color: var(--purple); }
+.prompt-search:focus { border-color:var(--signal); }
 .prompt-tabs {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
+  display:flex; gap:6px; flex-wrap:wrap; margin-bottom:20px;
 }
 .prompt-tab {
-  padding: 8px 16px;
-  border: 1px solid var(--rule);
-  border-radius: 8px;
-  background: var(--card);
-  font-family: 'DM Sans', sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all .2s;
-  color: var(--muted);
+  padding:8px 16px; border:1px solid var(--line);
+  background:var(--paper-raised);
+  font-family:'IBM Plex Sans',sans-serif; font-size:13px; font-weight:500;
+  cursor:pointer; transition:all .2s; color:var(--ink-soft);
 }
-.prompt-tab:hover { border-color: var(--purple); color: var(--purple); }
+.prompt-tab:hover { border-color:var(--signal); color:var(--signal); }
 .prompt-tab.active {
-  background: var(--purple);
-  color: #fff;
-  border-color: var(--purple);
+  background:var(--signal); color:#fff; border-color:var(--signal);
 }
 .prompt-tab .count {
-  font-family: 'DM Mono', monospace;
-  font-size: 10px;
-  opacity: 0.7;
-  margin-left: 4px;
+  font-family:'IBM Plex Mono',monospace; font-size:10px; opacity:0.7; margin-left:4px;
 }
-.prompt-category {
-  display: none;
-}
-.prompt-category.active { display: block; }
+.prompt-category { display:none; }
+.prompt-category.active { display:block; }
 .prompt {
-  background: var(--card);
-  border: 1px solid var(--rule);
-  border-radius: 10px;
-  padding: 18px 20px;
-  margin: 12px 0;
-  transition: border .2s;
+  background:var(--paper-raised);
+  border:1px solid var(--line);
+  box-shadow:5px 5px 0 var(--line);
+  padding:18px 20px; margin:18px 0; transition:border .2s;
 }
-.prompt:hover { border-color: var(--purple-light); }
+.prompt:hover { border-color:var(--signal); }
 .prompt code {
-  display: block; background: var(--cream);
-  padding: 14px 16px; border-radius: 8px;
-  font-family: 'DM Mono', monospace;
-  font-size: 13px; color: var(--ink);
-  white-space: pre-wrap; line-height: 1.6;
-  margin-bottom: 8px;
+  display:block; background:var(--cream);
+  padding:14px 16px; font-family:'IBM Plex Mono',monospace;
+  font-size:13px; color:var(--ink); white-space:pre-wrap; line-height:1.6; margin-bottom:8px;
 }
 .prompt .p-tag {
-  font-family: 'DM Mono', monospace; font-size: 10px;
-  letter-spacing: 0.15em; text-transform: uppercase;
-  color: var(--green);
+  font-family:'IBM Plex Mono',monospace; font-size:10px;
+  letter-spacing:0.15em; text-transform:uppercase; color:var(--green);
 }
-.prompt .p-title {
-  font-weight: 700;
-  font-size: 15px;
-  margin-bottom: 8px;
-  color: var(--ink);
-}
+.prompt .p-title { font-family:'IBM Plex Sans',sans-serif; font-weight:700; font-size:15px; margin-bottom:8px; color:var(--ink); }
 .prompt .p-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 13px;
-  color: var(--muted);
+  display:flex; justify-content:space-between; align-items:center;
+  font-family:'IBM Plex Sans',sans-serif; font-size:13px; color:var(--ink-faint);
 }
 .copy-btn {
-  background: var(--purple-soft);
-  border: 1px solid var(--rule);
-  color: var(--purple);
-  padding: 6px 14px;
-  border-radius: 6px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all .2s;
+  background:var(--ink); color:var(--paper);
+  border:none; padding:6px 14px;
+  font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:600;
+  cursor:pointer; transition:all .2s;
 }
-.copy-btn:hover { background: var(--purple); color: #fff; }
-.copy-btn.copied { background: var(--green); color: #fff; border-color: var(--green); }
+.copy-btn:hover { background:var(--signal); color:#fff; }
+.copy-btn.copied { background:var(--green); color:#fff; }
 .prompt-count-label {
-  font-family: 'DM Mono', monospace;
-  font-size: 12px;
-  color: var(--muted);
-  margin-bottom: 12px;
+  font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--ink-faint); margin-bottom:12px;
 }
 
 /* ── TESTIMONIALS ── */
 .testimonial-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin: 24px 0;
+  display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:20px 0;
 }
 .testimonial {
-  background: var(--card);
-  border: 1px solid var(--rule);
-  border-radius: 12px;
-  padding: 24px;
+  background:var(--paper-raised);
+  border:1px solid var(--line);
+  padding:24px;
 }
 .testimonial .quote {
-  font-size: 15px;
-  font-style: italic;
-  color: #3a3a3a;
-  margin-bottom: 12px;
-  line-height: 1.6;
+  font-size:15px; font-style:italic; color:var(--ink-soft); margin-bottom:12px; line-height:1.6;
 }
-.testimonial .quote::before { content: '"'; }
-.testimonial .quote::after { content: '"'; }
+.testimonial .quote::before { content:'"'; }
+.testimonial .quote::after { content:'"'; }
 .testimonial .author {
-  font-family: 'DM Mono', monospace;
-  font-size: 11px;
-  color: var(--purple);
-  letter-spacing: 0.05em;
+  font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--signal); letter-spacing:0.05em;
 }
-.testimonial .author-detail {
-  font-size: 13px;
-  color: var(--muted);
-}
+.testimonial .author-detail { font-size:13px; color:var(--ink-faint); }
 .results-stat {
-  text-align: center;
-  padding: 32px;
-  background: var(--card);
-  border: 1px solid var(--rule);
-  border-radius: 12px;
-  margin: 24px 0;
+  text-align:center; padding:32px;
+  background:var(--paper-raised); border:1px solid var(--line); margin:24px 0;
 }
 .results-stat .big {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 72px;
-  line-height: 1;
-  color: var(--purple);
-  margin-bottom: 4px;
+  font-family:'Big Shoulders Display',sans-serif;
+  font-size:72px; line-height:1; color:var(--signal); margin-bottom:4px; font-weight:900;
 }
 .results-stat .stat-label {
-  font-family: 'DM Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--muted);
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--ink-faint);
 }
 
 /* ── RESOURCES TABLE ── */
 .resource-item {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 16px 0;
-  border-bottom: 1px solid var(--rule);
+  display:flex; align-items:center; gap:16px; padding:16px 0; border-bottom:1px solid var(--line);
 }
-.resource-item:last-child { border-bottom: none; }
-.resource-item .r-icon {
-  font-size: 28px;
-  flex-shrink: 0;
-}
-.resource-item .r-info h4 { font-size: 16px; margin-bottom: 2px; }
-.resource-item .r-info p { font-size: 14px; color: var(--muted); margin: 0; }
+.resource-item:last-child { border-bottom:none; }
+.resource-item .r-icon { font-size:28px; flex-shrink:0; }
+.resource-item .r-info h4 { font-family:'Big Shoulders Display',sans-serif; font-size:16px; margin-bottom:2px; }
+.resource-item .r-info p { font-size:14px; color:var(--ink-faint); margin:0; }
 .resource-item .r-dl {
-  margin-left: auto;
-  font-family: 'DM Mono', monospace;
-  font-size: 11px;
-  color: var(--purple);
-  text-decoration: none;
-  font-weight: 600;
-  padding: 6px 14px;
-  border: 1px solid var(--rule);
-  border-radius: 6px;
-  transition: all .2s;
-  white-space: nowrap;
+  margin-left:auto; font-family:'IBM Plex Mono',monospace; font-size:11px;
+  color:var(--signal); text-decoration:none; font-weight:600;
+  padding:6px 14px; border:1px solid var(--line); transition:all .2s; white-space:nowrap;
 }
-.resource-item .r-dl:hover { background: var(--purple); color: #fff; border-color: var(--purple); }
+.resource-item .r-dl:hover { background:var(--signal); color:#fff; border-color:var(--signal); }
 
 /* ── ACCORDION ── */
-.accordion { margin: 20px 0; }
+.accordion { margin:20px 0; }
 .accordion-btn {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 16px 20px;
-  background: var(--card);
-  border: 1px solid var(--rule);
-  border-radius: 10px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--ink);
-  cursor: pointer;
-  transition: all .2s;
-  text-align: left;
-  margin-bottom: 6px;
+  display:flex; justify-content:space-between; align-items:center; width:100%;
+  padding:16px 20px; background:var(--paper-raised); border:1px solid var(--line);
+  font-family:'IBM Plex Sans',sans-serif; font-size:16px; font-weight:600; color:var(--ink);
+  cursor:pointer; transition:all .2s; text-align:left; margin-bottom:6px;
 }
-.accordion-btn:hover { border-color: var(--purple-light); }
-.accordion-btn .arrow {
-  transition: transform .2s;
-  font-size: 12px;
-  color: var(--muted);
-}
-.accordion-btn.open .arrow { transform: rotate(180deg); }
+.accordion-btn:hover { border-color:var(--signal); }
+.accordion-btn .arrow { transition:transform .2s; font-size:12px; color:var(--ink-faint); }
+.accordion-btn.open .arrow { transform:rotate(180deg); }
 .accordion-body {
-  display: none;
-  padding: 16px 20px;
-  background: var(--card);
-  border: 1px solid var(--rule);
-  border-top: none;
-  border-radius: 0 0 10px 10px;
-  margin-top: -6px;
-  margin-bottom: 12px;
+  display:none; padding:16px 20px; background:var(--paper-raised);
+  border:1px solid var(--line); border-top:none; margin-top:-6px; margin-bottom:12px;
 }
-.accordion-body.open { display: block; }
+.accordion-body.open { display:block; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
@@ -878,36 +691,30 @@ body.checklist-only .checklist-page-shell { max-width:1200px; margin:0 auto; pad
           <tr><td><strong>Money now vs later</strong></td><td>Later (build first)</td><td>Now (sell first)</td></tr>
         </table>
 
-        <h3>The 12-Minute Diagnostic</h3>
-        <p>Answer these questions honestly. Your answers determine your track, your starting tool stack, and your first-week execution plan. Take the interactive quiz below, or read the logic if you prefer to reason it out.</p>
+        <h3>The 12-Minute Diagnostic — 3 quick bait questions</h3>
+        <p>Three fast, honest questions — then we’ll run the full 10-question diagnostic on the next page (one at a time, with your progress tracked) to place you in Track A or B. Be impulsive — gut answers win here.</p>
 
-        <div class="quiz-container">
+        <div class="quiz-container" id="introQuiz">
           <div class="quiz-question">
-            <div class="q-text">1. How much time can you consistently commit each day?</div>
-            <label><input type="radio" name="q1" value="a"> Under 2 hours</label>
-            <label><input type="radio" name="q1" value="b"> 2–4 hours</label>
-            <label><input type="radio" name="q1" value="c"> 4+ hours</label>
+            <div class="q-text">1. Be honest — why do you actually want AI income?</div>
+            <label><input type="radio" name="iq1" value="a"> I need cash THIS WEEK — bills don’t wait</label>
+            <label><input type="radio" name="iq1" value="b"> I want to build something that pays while I sleep</label>
+            <label><input type="radio" name="iq1" value="c"> Both — money now AND an asset later</label>
           </div>
           <div class="quiz-question">
-            <div class="q-text">2. Do you want money this week or next month?</div>
-            <label><input type="radio" name="q2" value="a"> This week — I need cash flow now</label>
-            <label><input type="radio" name="q2" value="b"> Next month — I can build first</label>
-            <label><input type="radio" name="q2" value="c"> Either — money is money</label>
+            <div class="q-text">2. How do you honestly feel about talking to strangers who might pay you?</div>
+            <label><input type="radio" name="iq2" value="a"> Love it — give me a script and I’m gone</label>
+            <label><input type="radio" name="iq2" value="b"> I’d rather never have to — no calls, ever</label>
+            <label><input type="radio" name="iq2" value="c"> Okay if I have a template to follow</label>
           </div>
           <div class="quiz-question">
-            <div class="q-text">3. Do you prefer creating once or selling repeatedly?</div>
-            <label><input type="radio" name="q3" value="a"> Create once — I want it to work while I sleep</label>
-            <label><input type="radio" name="q3" value="b"> Sell repeatedly — I like client conversations</label>
-            <label><input type="radio" name="q3" value="c"> Don't mind either</label>
+            <div class="q-text">3. What feels more like YOU?</div>
+            <label><input type="radio" name="iq3" value="a"> Builder — I love making things in my corner</label>
+            <label><input type="radio" name="iq3" value="b"> Closer — I love hearing someone say “yes”</label>
+            <label><input type="radio" name="iq3" value="c"> Still figuring it out — that’s why I’m here</label>
           </div>
-          <div class="quiz-question">
-            <div class="q-text">4. How comfortable are you with short client calls?</div>
-            <label><input type="radio" name="q4" value="a"> Very — talking to people is fine</label>
-            <label><input type="radio" name="q4" value="b"> Okay if scripts are provided</label>
-            <label><input type="radio" name="q4" value="c"> I'd rather avoid calls entirely</label>
-          </div>
-          <button class="quiz-btn" id="quizBtn">Get My Track ▶</button>
-          <div id="quizResult" class="quiz-result"></div>
+          <button class="quiz-btn" id="introQuizBtn">Get My Track →</button>
+          <div id="introQuizResult" class="quiz-result"></div>
         </div>
 
         <h3>Reading the Diagnostic (understand the "why")</h3>
@@ -994,25 +801,37 @@ body.checklist-only .checklist-page-shell { max-width:1200px; margin:0 auto; pad
         <div class="objectives">
           <h4>Learning Objectives — After this chapter you will be able to…</h4>
           <ul>
-            <li>Set up the complete 6-tool stack in under one sitting</li>
+            <li>Set up the complete core stack + pick ONE storefront and ONE editor in under one sitting</li>
             <li>Configure exact settings for each tool (not just "create an account")</li>
-            <li>Know precisely when to upgrade free → paid</li>
+            <li>Know precisely when to upgrade free → paid — and when VN/Lemon/Whop keeps you free</li>
             <li>Automate the repetitive parts so you work <em>with</em> the stack, not against it</li>
-            <li>Generate images, videos, and custom tools with Google Flow's AI agent</li>
+            <li>Generate images, videos, and custom tools with Google Flow + Manus / Z.ai agents</li>
           </ul>
         </div>
 
         <label class="progress-check"><input type="checkbox" data-module="tools-obj"> Mark Tools complete</label>
 
         <h3>The Core Stack</h3>
+        <p>Start with 6 essentials. Then add the power upgrades below — they plug in exactly where the core stack lives, so you never rebuild your workflow.</p>
         <table class="tbl">
           <tr><th>Tool</th><th>What It's For</th><th>Free?</th></tr>
           <tr><td><strong>ChatGPT</strong></td><td>Content creation, copywriting, strategy, outreach messages</td><td>✅ Free</td></tr>
           <tr><td><strong>Claude</strong></td><td>Long-form writing, playbook execution, research</td><td>✅ Free</td></tr>
           <tr><td><strong>Canva</strong></td><td>Thumbnails, social media graphics, video covers</td><td>✅ Free</td></tr>
-          <tr><td><strong>CapCut</strong></td><td>Video editing for faceless content</td><td>✅ Free</td></tr>
-          <tr><td><strong>Gumroad</strong></td><td>Storefront for Track A digital products</td><td>✅ Free</td></tr>
+          <tr><td><strong>CapCut</strong></td><td>Video editing for faceless content (or VN below)</td><td>✅ Free</td></tr>
+          <tr><td><strong>Gumroad</strong></td><td>Storefront — <em>pick 1 of 3</em>: Gumroad / Lemon Squeezy / Whop</td><td>✅ Free</td></tr>
           <tr><td><strong>Google Flow</strong></td><td>AI-powered image &amp; video generation with a creative agent</td><td>✅ Free (50 credits/day)</td></tr>
+        </table>
+
+        <h3>Power Add-Ons — Plug In Where You Need Them</h3>
+        <p>Use these <em>in addition</em> to the core — pick one storefront and one editor to start, verify it, then sell. Don’t activate all three stores at once.</p>
+        <table class="tbl">
+          <tr><th>Tool</th><th>What It Adds</th><th>Free?</th></tr>
+          <tr><td><strong><a href="https://manus.im/" target="_blank">Manus</a></strong></td><td>Agent with skills — slides, websites, design, games, Wide Research, browser operator, Slack/mail. Generous free plan.</td><td>✅ Free generous</td></tr>
+          <tr><td><strong><a href="https://chat.z.ai/" target="_blank">Z.ai — GLM-5.3 Flash</a></strong></td><td>Agent mode: creates PDFs, full faceless scripts + guides, advanced research. Excellent for prompts & content.</td><td>✅ Free</td></tr>
+          <tr><td><strong><a href="https://www.lemonsqueezy.com/" target="_blank">Lemon Squeezy</a></strong></td><td>Gumroad alternative — merchant of record (tax, fraud, VAT handled), subscriptions, 135+ countries.</td><td>✅ Free to start (fees on sale)</td></tr>
+          <tr><td><strong><a href="https://whop.com/" target="_blank">Whop</a></strong></td><td>Best storefront — discovery, checkout, community, courses/services/physical all-in-one. $4.6B+ paid out.</td><td>✅ Free to start (fees on sale)</td></tr>
+          <tr><td><strong><a href="https://vlognow.me/" target="_blank">VN (VlogNow)</a></strong></td><td>CapCut alternative — pro timeline, auto-captions, no watermark, truly free on iOS/Android/Desktop/Web.</td><td>✅ Free — no watermark</td></tr>
         </table>
 
         <h3>Free vs Paid — When to Upgrade</h3>
@@ -1020,9 +839,14 @@ body.checklist-only .checklist-page-shell { max-width:1200px; margin:0 auto; pad
           <tr><th>Tool</th><th>Free tier is enough for…</th><th>Upgrade to paid when…</th><th>Paid cost</th></tr>
           <tr><td><strong>ChatGPT</strong></td><td>Everything in this course (GPT-4o accessible)</td><td>You need priority access / advanced models daily</td><td>$20/mo</td></tr>
           <tr><td><strong>Claude</strong></td><td>Long-form strategy &amp; playbook work</td><td>You hit weekly message limits on long projects</td><td>$20/mo</td></tr>
+          <tr><td><strong>Manus</strong></td><td>Wide Research, slides, sites, browser tasks</td><td>You hit monthly skill/task limits on heavy use</td><td>Free → Paid tiers</td></tr>
+          <tr><td><strong>Z.ai (GLM)</strong></td><td>Agent PDFs, research, faceless scripts, guides</td><td>You need Flash heavy throughput / team</td><td>Free → Paid</td></tr>
           <tr><td><strong>Canva</strong></td><td>Thumbnails, covers, social graphics</td><td>You need brand kits + transparent backgrounds daily</td><td>$12.99/mo</td></tr>
           <tr><td><strong>CapCut</strong></td><td>All faceless video editing</td><td>You need pro effects / cloud storage at scale</td><td>$9.99/mo</td></tr>
+          <tr><td><strong>VN</strong></td><td>All faceless editing, multi-track, captions — no watermark</td><td>You want premium templates/stock — rarely needed</td><td>Free</td></tr>
           <tr><td><strong>Gumroad</strong></td><td>Full storefront + checkout forever</td><td>You want to remove the 10% fee with a sub</td><td>$10/mo</td></tr>
+          <tr><td><strong>Lemon Squeezy</strong></td><td>Storefront + tax/VAT handled globally</td><td>You want lower fees / advanced affiliate setup</td><td>Fees on sale</td></tr>
+          <tr><td><strong>Whop</strong></td><td>Storefront + discovery + community</td><td>You want custom checkout embed + lower fees</td><td>Fees on sale</td></tr>
           <tr><td><strong>Google Flow</strong></td><td>50 free credits/day — images, videos, custom tools</td><td>You need more than 50 daily credits or 4K upscaling</td><td>From $4.99/mo (Plus)</td></tr>
         </table>
 
@@ -1050,6 +874,22 @@ body.checklist-only .checklist-page-shell { max-width:1200px; margin:0 auto; pad
           <li>Use it for anything over ~500 words — strategies, sales pages, playbooks</li>
         </ol>
 
+        <h4>2b. Manus — the agent with skills (free, generous)</h4>
+        <ol>
+          <li>Go to <a href="https://manus.im/" target="_blank">manus.im</a> → Sign up (free) → open Web App. It’s generous on free — you get skills immediately.</li>
+          <li>Try one skill: top bar → “Create slides” or “Build website” or “Wide Research.” Type: “Research 10 profitable digital product ideas for [your niche] and turn the best into a 8-slide deck.”</li>
+          <li>Enable the superpowers: Features → Manus browser operator (let it click for you) + Slack/Mail Manus if you use them.</li>
+          <li>Use it when ChatGPT/Claude stalls: Manus excels at multi-step tasks — “take my outline and build a landing page draft + images.”</li>
+        </ol>
+
+        <h4>2c. Z.ai (GLM-5.3 Flash) — the research + PDF agent</h4>
+        <ol>
+          <li>Go to <a href="https://chat.z.ai/" target="_blank">chat.z.ai</a> → Sign in → switch to Agent Mode, model GLM-5.3-Flash.</li>
+          <li>Try: “Agent mode — create a 6-page PDF guide for [your product] with cover, table of contents, and 3 chapters. Export as PDF.” It builds the file for you.</li>
+          <li>Second test: “Create a full faceless script pack for TikTok — 5 hooks + 5 30s scripts for [your product] — and give me research sources.” It’s excellent at guides + research vs. ChatGPT alone.</li>
+          <li>Bookmark Z.ai for every time you need a finished asset (PDF, deck, script pack) not just text.</li>
+        </ol>
+
         <h4>3. Canva — the designer</h4>
         <ol>
           <li>Create account at canva.com</li>
@@ -1060,18 +900,43 @@ body.checklist-only .checklist-page-shell { max-width:1200px; margin:0 auto; pad
 
         <h4>4. CapCut — the video editor</h4>
         <ol>
-          <li>Create account at capcut.com (or mobile app)</li>
+          <li>Create account at capcut.com (or mobile app) — <em>or</em> pick VN below as your free no-watermark alternative</li>
           <li>Set default export: 1080×1920 (9:16 vertical) for TikTok/Reels</li>
           <li>Save auto-captions as your default — they boost retention massively</li>
           <li>Create a "template" edit once, then swap clips for each new video</li>
         </ol>
 
-        <h4>5. Gumroad — the storefront</h4>
+        <h4>4b. VN — the free everywhere editor (pick CapCut OR VN)</h4>
         <ol>
-          <li>Create account at gumroad.com (free, they take a cut on sales)</li>
-          <li>Complete your profile + payment details (Payouts tab)</li>
+          <li>Go to <a href="https://vlognow.me/" target="_blank">vlognow.me</a> → Download — available on iOS, Android, Desktop, Web (no watermark, unlike CapCut pro)</li>
+          <li>Import your first clip → Timeline → Text → Auto Captions → pick a clean style and save as default</li>
+          <li>Set export: 1080×1920, 30fps, High quality. VN keeps exports free — no forced watermark.</li>
+          <li>Save a project as Template → Duplicate for each new faceless video.</li>
+        </ol>
+
+        <h4>5. Gumroad — the storefront (pick ONE of 3)</h4>
+        <p style="font-size:13px;color:var(--ink-faint);margin:-6px 0 8px;"><strong>Choose one to start:</strong> Gumroad (simplest) / Lemon Squeezy (tax handled) / Whop (discovery + community). Verify ONE account, then sell. Don’t run all three at once.</p>
+        <ol>
+          <li>Create account at gumroad.com (free, they take a cut) — <strong>or</strong> use Lemon Squeezy / Whop below</li>
+          <li>Complete your profile + payment details (Payouts tab) and verify your payout method</li>
           <li>Create your first product (you'll do this properly in Playbook B)</li>
           <li>Set up your checkout page with your brand colors</li>
+        </ol>
+
+        <h4>5b. Lemon Squeezy — merchant-of-record alternative</h4>
+        <ol>
+          <li>Go to <a href="https://app.lemonsqueezy.com/register" target="_blank">lemonsqueezy.com</a> → Get started → verify email → complete Store + Payouts (Payouts → connect bank/PayPal, verify ID/address)</li>
+          <li>Store → Products → Create product → Digital product → add name, price, files → Save</li>
+          <li>Checkout → customize with your purple/brand colors → copy Hosted checkout or Overlay embed link</li>
+          <li>Tax is auto-handled (MoR for 135+ countries) — no extra VAT setup. Test with a $1 test product, then refund.</li>
+        </ol>
+
+        <h4>5c. Whop — the best all-in-one (recommended if you want discovery)</h4>
+        <ol>
+          <li>Go to <a href="https://whop.com/" target="_blank">whop.com</a> → Get Started → create your whop (store) → verify email + payout (Wallet → Payouts → connect bank)</li>
+          <li>Dashboard → Create product → choose type: Digital product / Course / Community → add price + delivery files/links → Publish</li>
+          <li>Checkout → share hosted link or embed <code>@whop/checkout</code> on your site; enable Discover so buyers can find you on Whop marketplace</li>
+          <li>Whop handles checkout, delivery, affiliates, and community — verify one paid test purchase, then go live.</li>
         </ol>
 
         <h3>Introducing Google Flow — Your AI Creative Studio</h3>
@@ -1131,9 +996,11 @@ body.checklist-only .checklist-page-shell { max-width:1200px; margin:0 auto; pad
               <li>☐ Business email created</li>
               <li>☐ ChatGPT account + custom instructions set</li>
               <li>☐ Claude account + first project created</li>
+              <li>☐ Manus account — explore one skill (slides / Wide Research)</li>
+              <li>☐ Z.ai (chat.z.ai) — run one Agent Mode task (PDF or research)</li>
               <li>☐ Canva account + brand kit + thumbnail template</li>
-              <li>☐ CapCut account + 9:16 default + captions on</li>
-              <li>☐ Gumroad account + profile + payout set</li>
+              <li>☐ CapCut <em>or</em> VN — 9:16 default + auto-captions saved</li>
+              <li>☐ ONE storefront picked + verified: Gumroad / Lemon Squeezy / Whop + payout verified</li>
               <li>☐ Google Flow account + first agent session explored</li>
               <li>☐ Prompt Vault bookmarked (this page, section 05)</li>
             </ul>
@@ -2091,7 +1958,7 @@ Final (Day 6): Last one — no pressure. If [result] ever becomes a priority, I'
             <h4>Download PDF Summary</h4>
             <p>Export the entire Blueprint as a PDF — course overview, track recommendations, and key modules.</p>
           </div>
-          <button class="r-dl" id="pdfDownloadBtn" style="background:var(--card);border:1px solid var(--rule);color:var(--purple);padding:6px 14px;border-radius:6px;font-family:'DM Mono',monospace;font-size:11px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap;" onmouseover="this.style.background='var(--purple)';this.style.color='#fff'" onmouseout="this.style.background='var(--card)';this.style.color='var(--purple)'">Download PDF ↓</button>
+          <button class="r-dl" id="pdfDownloadBtn" style="background:var(--card);border:1px solid var(--rule);color:var(--purple);padding:6px 14px;border-radius:6px;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap;" onmouseover="this.style.background='var(--purple)';this.style.color='#fff'" onmouseout="this.style.background='var(--card)';this.style.color='var(--purple)'">Download PDF ↓</button>
         </div>
 
         <div class="callout">
@@ -2218,59 +2085,21 @@ Final (Day 6): Last one — no pressure. If [result] ever becomes a priority, I'
   });
 
   // ── DIAGNOSTIC QUIZ ──
-  var quizBtn = document.getElementById('quizBtn');
-  var quizResult = document.getElementById('quizResult');
-  if (quizBtn && quizResult) {
-    // Weighted scoring system: each answer adds to Track A or Track B score
-    // Q1: Time commitment
-    // Q2: Speed of money needed
-    // Q3: Create vs sell preference
-    // Q4: Comfort with client calls
-    var scoreMap = {
-      q1: { a: {a:0, b:3}, b: {a:1, b:1}, c: {a:3, b:0} },
-      q2: { a: {a:0, b:3}, b: {a:3, b:0}, c: {a:1, b:1} },
-      q3: { a: {a:3, b:0}, b: {a:0, b:3}, c: {a:1, b:1} },
-      q4: { a: {a:0, b:3}, b: {a:1, b:2}, c: {a:3, b:0} }
-    };
-    quizBtn.addEventListener('click', function() {
-      var q1 = document.querySelector('input[name="q1"]:checked');
-      var q2 = document.querySelector('input[name="q2"]:checked');
-      var q3 = document.querySelector('input[name="q3"]:checked');
-      var q4 = document.querySelector('input[name="q4"]:checked');
-      if (!q1 || !q2 || !q3 || !q4) {
-        quizResult.innerHTML = '⚠️ Please answer all 4 questions before getting your track recommendation.';
-        quizResult.className = 'quiz-result show';
-        quizResult.style.cssText = 'color:#DC2626;background:#fef2f2;border:1px solid #fca5a5;';
+  var introQuizBtn = document.getElementById('introQuizBtn');
+  var introQuizResult = document.getElementById('introQuizResult');
+  if (introQuizBtn && introQuizResult) {
+    introQuizBtn.addEventListener('click', function() {
+      var iq1 = document.querySelector('input[name="iq1"]:checked');
+      var iq2 = document.querySelector('input[name="iq2"]:checked');
+      var iq3 = document.querySelector('input[name="iq3"]:checked');
+      if (!iq1 || !iq2 || !iq3) {
+        introQuizResult.innerHTML = '⚠️ Answer all 3 to unlock your full diagnostic — it’s 10 questions, one at a time.';
+        introQuizResult.className = 'quiz-result show';
+        introQuizResult.style.cssText = 'color:#9C3B2E;background:#F3E7E4;border:1px solid #E3DCC9;';
         return;
       }
-      var trackA = 0, trackB = 0;
-      if (scoreMap.q1[q1.value]) { trackA += scoreMap.q1[q1.value].a; trackB += scoreMap.q1[q1.value].b; }
-      if (scoreMap.q2[q2.value]) { trackA += scoreMap.q2[q2.value].a; trackB += scoreMap.q2[q2.value].b; }
-      if (scoreMap.q3[q3.value]) { trackA += scoreMap.q3[q3.value].a; trackB += scoreMap.q3[q3.value].b; }
-      if (scoreMap.q4[q4.value]) { trackA += scoreMap.q4[q4.value].a; trackB += scoreMap.q4[q4.value].b; }
-      var result = '';
-      var cls = '';
-      quizResult.style.cssText = '';
-      if (trackA > trackB) {
-        var diff = trackA - trackB;
-        result = '<div style="font-size:18px;font-weight:700;margin-bottom:6px;">🎯 Your Track: <strong>Track A — Autonomous Sales</strong></div>';
-        result += '<div style="margin-bottom:8px;">You scored <strong>' + trackA + ' vs ' + trackB + '</strong> for Track A. You want to build once and sell while you sleep. No client calls, no networking — just a product and a content funnel.</div>';
-        result += '<div style="font-size:14px;opacity:0.9;">▶ Start with <strong>Playbook B (Product)</strong> and <strong>Playbook C (Faceless Content)</strong>. Your first 30 days: build your product, set up your funnel, and let the algorithm do the selling.</div>';
-        cls = 'quiz-result show track-a';
-      } else if (trackB > trackA) {
-        var diff = trackB - trackA;
-        result = '<div style="font-size:18px;font-weight:700;margin-bottom:6px;">🎯 Your Track: <strong>Track B — Service Sales</strong></div>';
-        result += '<div style="margin-bottom:8px;">You scored <strong>' + trackB + ' vs ' + trackA + '</strong> for Track B. You want fast cash flow and are comfortable with client conversations. Use AI to deliver professional services at human rates.</div>';
-        result += '<div style="font-size:14px;opacity:0.9;">▶ Start with <strong>Playbook A (Service)</strong>. Your first 7 days: define your offer, find 50 prospects, and send personalized outreach. First client within 7-11 days.</div>';
-        cls = 'quiz-result show track-b';
-      } else {
-        result = '<div style="font-size:18px;font-weight:700;margin-bottom:6px;">⚖️ You Could Succeed on Either Track!</div>';
-        result += '<div style="margin-bottom:8px;">You scored evenly: <strong>' + trackA + ' each</strong>. Since you\u2019re balanced, go with your gut: need money fast? <strong>Track B</strong>. Want to build a long-term asset? <strong>Track A</strong>.</div>';
-        result += '<div style="font-size:14px;opacity:0.9;">💡 Commit for 30 days. You can always switch — but don\u2019t switch before day 30.</div>';
-        cls = 'quiz-result show track-any';
-      }
-      quizResult.innerHTML = result;
-      quizResult.className = cls;
+      var qs = 'q1='+encodeURIComponent(iq1.value)+'&q2='+encodeURIComponent(iq2.value)+'&q3='+encodeURIComponent(iq3.value);
+      window.location.href = 'quiz.html?'+qs;
     });
   }
 
