@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Log in — Zero to Paid with AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#FAF8F2;--ink:#1E1A16;--line:#E3DCC9;--purple:#7C3AED;--purple-soft:#F3EEFB;}
+*{box-sizing:border-box;margin:0;padding:0;}body{font-family:'IBM Plex Sans',sans-serif;background:var(--paper);color:var(--ink);display:flex;min-height:100vh;align-items:center;justify-content:center;padding:24px;}
+.card{background:#fff;border:1px solid var(--line);padding:36px;max-width:420px;width:100%;box-shadow:6px 6px 0 var(--line);}
+h1{font-family:'Big Shoulders Display',sans-serif;font-size:32px;margin-bottom:8px;}p{color:#5B5449;font-size:14px;margin-bottom:18px;}
+label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#948C7C;display:block;margin:14px 0 6px;}
+input{width:100%;padding:12px 14px;border:1px solid var(--line);font-family:inherit;font-size:15px;}
+button{width:100%;margin-top:18px;background:var(--ink);color:#fff;border:none;padding:12px;font-family:'IBM Plex Mono',monospace;font-weight:600;letter-spacing:.04em;cursor:pointer;}
+button:hover{background:var(--purple);}a{font-size:13px;color:var(--purple);display:inline-block;margin-top:12px;}
+.msg{margin-top:12px;font-size:13px;display:none;padding:10px;border:1px solid var(--line);}
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>Log in</h1>
+  <p>Access your Blueprint — checklist progress is saved to your account.</p>
+  <label>Email</label>
+  <input id="email" type="email" placeholder="you@example.com">
+  <label>Password</label>
+  <input id="password" type="password" placeholder="••••••••">
+  <button id="loginBtn">Log in →</button>
+  <a href="#" id="magicBtn">Send magic link instead</a>
+  <div id="msg" class="msg"></div>
+  <p style="margin-top:18px;font-size:12px;color:#948C7C;">No account? It’s created automatically when you pay via Whop — check your email for the set-password link.</p>
+</div>
+<script>
+document.getElementById('loginBtn').addEventListener('click', async () => {
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value;
+  const msg = document.getElementById('msg');
+  msg.style.display='none';
+  if(!email || !password){ msg.textContent='Enter email + password'; msg.style.display='block'; return; }
+  // Simple: try magic link flow instead of password check (password check via verify? For now use magic)
+  // For password login, we need an endpoint — use magic link as fallback
+  const hash = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(password));
+  const h = [...new Uint8Array(hash)].map(b=>b.toString(16).padStart(2,'0')).join('');
+  const res = await fetch('/api/auth/login', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({email, password_hash: h}) });
+  const data = await res.json().catch(()=>({}));
+  if(res.ok){ location.href='/checklist.html'; } else { msg.textContent=data.error||'Invalid login — try magic link'; msg.style.display='block'; }
+});
+document.getElementById('magicBtn').addEventListener('click', async (e)=>{
+  e.preventDefault();
+  const email = document.getElementById('email').value.trim();
+  const msg = document.getElementById('msg');
+  if(!email){ msg.textContent='Enter your email first'; msg.style.display='block'; return; }
+  const res = await fetch('/api/auth/magic-link', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({email})});
+  const data = await res.json().catch(()=>({}));
+  msg.textContent = res.ok ? 'Magic link sent — check inbox (and spam)' : (data.error||'Failed');
+  msg.style.display='block';
+});
+</script>
+</body>
+</html>

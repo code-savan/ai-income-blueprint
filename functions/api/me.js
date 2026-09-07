@@ -1,0 +1,13 @@
+export async function onRequestGet(context) {
+  const cookie = context.request.headers.get('Cookie') || '';
+  const m = cookie.match(/__session=([^;]+)/);
+  if (!m) return new Response(JSON.stringify({ loggedIn: false }), { status: 401, headers: { 'Content-Type':'application/json' } });
+  const userId = await context.env.SESSIONS.get('sess:' + m[1]);
+  if (!userId) return new Response(JSON.stringify({ loggedIn: false }), { status: 401, headers: { 'Content-Type':'application/json' } });
+  const user = await context.env.DB.prepare(`SELECT email FROM users WHERE id = ?`).bind(userId).first();
+  return new Response(JSON.stringify({ loggedIn: true, email: user ? user.email : null }), { headers: { 'Content-Type':'application/json' } });
+}
+export async function onRequest(context) {
+  if (context.request.method === 'GET') return onRequestGet(context);
+  return new Response('Method not allowed', { status: 405 });
+}
