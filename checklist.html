@@ -269,6 +269,45 @@ table.checklist-table .step-tag {
 .checklist-bottom-grid {
   display:grid; grid-template-columns: 1.15fr 0.85fr; gap:20px; margin-top:4px;
 }
+.journal-guide{background:var(--paper-raised);border:1px solid var(--line);border-left:3px solid var(--purple);padding:18px 20px;margin-bottom:20px;}
+.journal-guide h4{font-family:'Big Shoulders Display',sans-serif;font-size:15px;margin-bottom:6px;display:flex;align-items:center;gap:8px;}
+.journal-guide p{font-size:13px;color:var(--ink-soft);line-height:1.6;margin:0;}
+.journal-guide ul{margin:8px 0 0 18px;font-size:12px;color:var(--ink-soft);}
+.journal-guide li{margin-bottom:4px;}
+.journal-track-picker{display:flex;flex-wrap:wrap;gap:10px;align-items:center;background:var(--paper-raised);border:1px solid var(--line);padding:16px 18px;margin-bottom:20px;}
+.journal-track-picker span{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);}
+.journal-track-picker button{font-family:'IBM Plex Mono',monospace;font-size:12px;padding:8px 14px;border:1px solid var(--line);background:#fff;cursor:pointer;transition:.15s;}
+.journal-track-picker button.active,.journal-track-picker button:hover{background:var(--purple);color:#fff;border-color:var(--purple);}
+.journal-checklist{background:var(--paper-raised);border:1px solid var(--line);overflow:hidden;margin-bottom:28px;}
+.journal-checklist-head{padding:16px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+.journal-checklist-head h3{font-family:'Big Shoulders Display',sans-serif;font-size:18px;}
+.journal-task{display:flex;gap:12px;padding:14px 20px;border-bottom:1px solid var(--line);align-items:flex-start;transition:.15s;}
+.journal-task:hover{background:#faf8ff;}
+.journal-task.done{opacity:.6;background:#f9fafb;}
+.journal-task.done .task-title{text-decoration:line-through;color:var(--ink-faint);}
+.journal-task input[type="checkbox"]{margin-top:4px;width:18px;height:18px;accent-color:var(--purple);flex-shrink:0;}
+.journal-task-main{flex:1;min-width:0;}
+.task-title{font-weight:600;font-size:14px;color:var(--ink);}
+.task-detail{font-size:12px;color:var(--ink-soft);margin-top:2px;}
+.task-note{width:100%;margin-top:8px;padding:8px 10px;border:1px solid var(--line);font-family:inherit;font-size:13px;resize:vertical;min-height:36px;}
+.task-note:focus{outline:none;border-color:var(--purple);box-shadow:0 0 0 3px var(--purple-soft);}
+.task-actions{display:flex;gap:6px;flex-shrink:0;}
+.task-actions button{font-family:'IBM Plex Mono',monospace;font-size:10px;padding:6px 10px;border:1px solid var(--line);background:#fff;cursor:pointer;}
+.task-actions button:hover{border-color:var(--red);color:var(--red);}
+.journal-sheets{background:var(--paper-raised);border:1px solid var(--line);overflow:hidden;margin-bottom:28px;}
+.sheet-tabs{display:flex;gap:6px;padding:12px 16px;border-bottom:1px solid var(--line);background:#faf8ff;flex-wrap:wrap;}
+.sheet-tab{font-family:'IBM Plex Mono',monospace;font-size:11px;padding:8px 14px;border:1px solid var(--line);background:#fff;cursor:pointer;transition:.15s;}
+.sheet-tab.active{background:var(--purple);color:#fff;border-color:var(--purple);}
+.sheet-wrap{overflow-x:auto;}
+.sheet-table{width:100%;border-collapse:collapse;min-width:600px;}
+.sheet-table th{background:var(--ink);color:#fff;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:10px 8px;text-align:left;white-space:nowrap;}
+.sheet-table td{border:1px solid var(--line);padding:0;}
+.sheet-table td input{width:100%;border:none;padding:8px 8px;font-family:inherit;font-size:13px;background:transparent;}
+.sheet-table td input:focus{outline:none;background:var(--purple-soft);}
+.sheet-add{padding:12px 16px;border-top:1px solid var(--line);display:flex;gap:10px;align-items:center;}
+.sheet-add button{font-family:'IBM Plex Mono',monospace;font-size:11px;padding:8px 14px;border:1px solid var(--purple);background:var(--purple);color:#fff;cursor:pointer;}
+.sheet-add button:hover{background:var(--ink);border-color:var(--ink);}
+.sheet-add span{font-size:11px;color:var(--ink-faint);}
 @media (max-width: 700px) {
   .checklist-bottom-grid { grid-template-columns:1fr; }
   .checklist-meta-row { grid-template-columns:1fr 1fr 1fr; }
@@ -2020,24 +2059,59 @@ const PROMPT_DATA = [
           <div class="checklist-page-header">
             <div class="kicker">Execution Dashboard</div>
             <h1>Run the Blueprint<br><span>like a real plan.</span></h1>
-            <p>Pick the sprint that matches your goal. Every step is sequenced — start at the top and work down. Your focus, not your speed, is what matters.</p>
+            <p>Your interactive journal — track progress, keep notes, and work your sheets. Pick a track, tick tasks, and fill your tables. Everything saves instantly to your account.</p>
           </div>
 
           <div class="checklist-workspace">
 
+            <div class="journal-guide">
+              <h4>📓 How to use this journal</h4>
+              <p>This page is your private workspace — not a static checklist. <strong>Pick a track</strong> below to generate your full step-by-step checklist. <strong>Tick</strong> tasks as you go, <strong>add notes</strong> in each row, and <strong>fill your sheets</strong> (Outreach, Weekly, Daily) — they start with 50 rows and you can add more. All changes save in real time to your account.</p>
+              <ul>
+                <li><strong>Checklist:</strong> Generated for your track (A = service, B = product). Tick, add note, add custom tasks, delete.</li>
+                <li><strong>Sheets:</strong> Editable tables — click any cell to type. Add rows at bottom. Data mirrors your Resource CSVs but stays live here.</li>
+                <li><strong>Progress ring:</strong> Top-right avatar ring fills purple as you complete modules + journal tasks.</li>
+              </ul>
+            </div>
+
+            <div class="journal-track-picker" id="trackPicker">
+              <span>Active track:</span>
+              <button data-track="30-day-blueprint" class="active">30-Day Blueprint</button>
+              <button data-track="track-a">Track A — Product</button>
+              <button data-track="track-b">Track B — Service</button>
+              <button id="generateTrackBtn" style="margin-left:auto;background:var(--ink);color:#fff;">Generate checklist →</button>
+            </div>
+
             <div class="checklist-meta-row" id="progressCard"></div>
 
-            <div class="checklist-table-wrap">
-              <table class="checklist-table">
-                <thead>
-                  <tr>
-                    <th>Step</th>
-                    <th>Focus</th>
-                    <th>What to do</th>
-                  </tr>
-                </thead>
-                <tbody id="checklistTableBody"></tbody>
-              </table>
+            <div class="journal-checklist">
+              <div class="journal-checklist-head">
+                <h3 id="checklistTitle">Your Checklist</h3>
+                <span id="checklistCount" style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-faint);">0 tasks</span>
+              </div>
+              <div id="journalChecklist"></div>
+              <div style="padding:12px 20px;border-top:1px solid var(--line);display:flex;gap:10px;">
+                <input id="newTaskTitle" type="text" placeholder="Add custom task — e.g. Record Loom for client" style="flex:1;padding:10px 12px;border:1px solid var(--line);font-family:inherit;font-size:13px;">
+                <button id="addTaskBtn" style="padding:10px 16px;background:var(--purple);color:#fff;border:1px solid var(--purple);font-family:'IBM Plex Mono',monospace;font-size:11px;cursor:pointer;">Add task +</button>
+              </div>
+            </div>
+
+            <div class="journal-sheets">
+              <div class="sheet-tabs" id="sheetTabs">
+                <button class="sheet-tab active" data-sheet="outreach">Outreach Tracker</button>
+                <button class="sheet-tab" data-sheet="weekly">Weekly Scorecard</button>
+                <button class="sheet-tab" data-sheet="daily">Daily Content Tracker</button>
+              </div>
+              <div class="sheet-wrap">
+                <table class="sheet-table" id="sheetTable">
+                  <thead id="sheetHead"></thead>
+                  <tbody id="sheetBody"></tbody>
+                </table>
+              </div>
+              <div class="sheet-add">
+                <button id="addRowBtn">+ Add row</button>
+                <span>50 rows to start — add more as needed. Click any cell to edit, saves automatically.</span>
+              </div>
             </div>
 
             <div class="checklist-bottom-grid">
@@ -2060,9 +2134,6 @@ const PROMPT_DATA = [
         </div>
       </div>
 
-    </div>
-  </div>
-</div>
 <script>
 (function() {
   'use strict';
@@ -2291,166 +2362,164 @@ const PROMPT_DATA = [
   }
 
 
-  // ── CHECKLIST PAGE ──
-  var planTemplates = {
-    '30-day-blueprint': {
-      label: '30-Day Blueprint',
-      days: 30,
-      items: [
-        { module: 'foundation-obj', text: 'Choose your track and block your first 7 days', note: 'Foundation before tools. No skipping.' },
-        { module: 'tools-obj', text: 'Set up the 6-tool stack', note: 'ChatGPT, Claude, Canva, CapCut, Gumroad, Flow.' },
-        { module: 'income-obj', text: 'Commit to the first $500 roadmap', note: 'Know the day-by-day target for your track.' },
-        { module: 'playbooks-obj', text: 'Pick your first execution playbook', note: 'A = service, B = product, C = content funnel, D = scale.' },
-        { module: 'prompts-obj', text: 'Bookmark the Prompt Vault and pull 10 working prompts', note: 'Use prompts immediately, do not just read them.' },
-        { module: 'scale-obj', text: 'Map your $500 → $2K path', note: 'Raising prices and stacking systems starts here.' },
-        { module: 'results-obj', text: 'Study the Wall of Proof', note: 'Pattern recognition builds belief and speed.' },
-        { module: 'resources-obj', text: 'Copy the templates + trackers', note: 'Leave with reusable operating assets.' }
-      ]
-    },
-    '14-day-launch': {
-      label: '14-Day Launch Sprint',
-      days: 14,
-      items: [
-        { module: 'foundation-obj', text: 'Pick a track in one sitting', note: '12-minute diagnostic, no overthinking.' },
-        { module: 'tools-obj', text: 'Set up only the essential stack', note: 'Tool accounts + one working workflow.' },
-        { module: 'income-obj', text: 'Follow the first 14 days of the roadmap', note: 'Compress attention into execution.' },
-        { module: 'playbooks-obj', text: 'Complete one playbook end-to-end', note: 'Choose one path and finish it.' },
-        { module: 'prompts-obj', text: 'Pull prompts for your active track', note: 'Not all 300. Only what you need now.' },
-        { module: 'resources-obj', text: 'Set up your tracker + weekly review', note: 'Measure movement fast.' }
-      ]
-    },
-    '7-day-cashflow': {
-      label: '7-Day Cashflow Sprint',
-      days: 7,
-      items: [
-        { module: 'foundation-obj', text: 'Bias to Track B unless your diagnostic strongly says otherwise', note: 'This sprint is for speed.' },
-        { module: 'tools-obj', text: 'Set up outreach + delivery tools only', note: 'Ignore non-essentials.' },
-        { module: 'playbooks-obj', text: 'Run Playbook A in full', note: 'Offers, leads, outreach, follow-up.' },
-        { module: 'prompts-obj', text: 'Use outreach prompts daily', note: 'Copy, personalize, send.' },
-        { module: 'results-obj', text: 'Review proof before every outreach block', note: 'Stay emotionally anchored.' }
-      ]
-    }
-  };
+// ── JOURNAL SUITE (new) ──
+var activeTrack = '30-day-blueprint';
+var currentSheet = 'outreach';
 
-  function getPlanStore() {
-    try {
-      return JSON.parse(localStorage.getItem('aibp_plan_store') || '{}');
-    } catch (e) {
-      return {};
-    }
+function journalFetchChecklist(track){
+  return fetch('/api/journal/checklist' + (track ? '?track=' + encodeURIComponent(track) : ''), { credentials:'include' }).then(r=>r.json());
+}
+function journalRenderTasks(data){
+  const tasks = data.tasks || [];
+  const container = document.getElementById('journalChecklist');
+  const countEl = document.getElementById('checklistCount');
+  const titleEl = document.getElementById('checklistTitle');
+  if(!container) return;
+  const done = tasks.filter(t=>t.done).length;
+  if(countEl) countEl.textContent = done + ' / ' + tasks.length + ' done';
+  if(titleEl) titleEl.textContent = 'Your Checklist — ' + (activeTrack === 'track-a' ? 'Track A' : activeTrack === 'track-b' ? 'Track B' : '30-Day Blueprint');
+  const meta = document.getElementById('progressCard');
+  if(meta){
+    const pct = tasks.length ? Math.round((done/tasks.length)*100) : 0;
+    meta.innerHTML = '<div class="checklist-meta-card"><div class="meta-icon">◈</div><div><strong>'+tasks.length+'</strong><span>Tasks</span></div></div>' +
+                     '<div class="checklist-meta-card"><div class="meta-icon">◐</div><div><strong>'+pct+'%</strong><span>Done</span></div></div>' +
+                     '<div class="checklist-meta-card"><div class="meta-icon">✦</div><div><strong>'+done+'/'+tasks.length+'</strong><span>Completed</span></div></div>';
+    // also update header ring
+    const ev = new CustomEvent('journalProgress', { detail: { pct, done, total: tasks.length }});
+    window.dispatchEvent(ev);
   }
-  function setPlanStore(obj) { localStorage.setItem('aibp_plan_store', JSON.stringify(obj)); }
-  function getActivePlanId() { return localStorage.getItem('aibp_active_plan') || '30-day-blueprint'; }
-  function setActivePlanId(id) { localStorage.setItem('aibp_active_plan', id); }
-
-  function chapterTitleFor(moduleId) {
-    var map = {
-      'foundation-obj':'Foundation', 'tools-obj':'Tools & Stack', 'income-obj':'First $500 Roadmap',
-      'playbooks-obj':'Execution Playbooks', 'prompts-obj':'Prompt Vault', 'scale-obj':'Scale to $2K/Mo',
-      'results-obj':'Wall of Proof', 'resources-obj':'Resources'
-    };
-    return map[moduleId] || moduleId;
-  }
-
-  function ensureCustomPlan(store) {
-    if (!store['custom']) {
-      store['custom'] = { label: 'Custom Plan', days: 21, items: JSON.parse(JSON.stringify(planTemplates['30-day-blueprint'].items)) };
-    }
-    return store;
-  }
-
-  function getActivePlan() {
-    var store = ensureCustomPlan(getPlanStore());
-    var activeId = getActivePlanId();
-    var active = store[activeId] || planTemplates[activeId] || planTemplates['30-day-blueprint'];
-    if (!store[activeId] && planTemplates[activeId]) {
-      store[activeId] = JSON.parse(JSON.stringify(planTemplates[activeId]));
-      setPlanStore(store);
-      active = store[activeId];
-    }
-    return { store: store, activeId: activeId, active: active };
-  }
-
-  function renderRail() {
-    var progressCard = document.getElementById('progressCard');
-    var tbody = document.getElementById('checklistTableBody');
-    if (!progressCard || !tbody) return;
-
-    var active = planTemplates['30-day-blueprint'];
-
-    progressCard.innerHTML =
-      '<div class="checklist-meta-card"><div class="meta-icon">◈</div><div><strong>'+active.items.length+'</strong><span>Steps</span></div></div>' +
-      '<div class="checklist-meta-card"><div class="meta-icon">◐</div><div><strong>'+active.days+' days</strong><span>Duration</span></div></div>' +
-      '<div class="checklist-meta-card"><div class="meta-icon">✦</div><div><strong>'+active.label+'</strong><span>Active Sprint</span></div></div>';
-
-    tbody.innerHTML = active.items.map(function(item, idx){
-      return '<tr>' +
-        '<td><span class="step-num">'+String(idx+1).padStart(2,'0')+'</span></td>' +
-        '<td><span class="step-tag">'+chapterTitleFor(item.module)+'</span><br>'+item.text+'</td>' +
-        '<td>'+item.note+'</td>' +
-        '</tr>';
-    }).join('');
-
-    var moduleNav = document.getElementById('moduleNav');
-    if (moduleNav) {
-      var navItems = [
-        {id:'foundation', num:'01', title:'Foundation'},
-        {id:'tools', num:'02', title:'Tools & Stack'},
-        {id:'income', num:'03', title:'First $500'},
-        {id:'playbooks', num:'04', title:'Playbooks'},
-        {id:'prompts', num:'05', title:'Prompt Vault'},
-        {id:'scale', num:'06', title:'Scale to $2K'},
-        {id:'results', num:'07', title:'Wall of Proof'},
-        {id:'resources', num:'08', title:'Resources'}
-      ];
-      moduleNav.innerHTML = navItems.map(function(ch){
-        return '<a class="jump-pill" href="index.html#'+ch.id+'"><span class="jp-num">'+ch.num+'</span> '+ch.title+' <span>↗</span></a>';
-      }).join('');
-    }
-  }
-
-
-  function setActiveModuleLink() {
-    var chapters = Array.from(document.querySelectorAll('.chapter[id]'));
-    var links = Array.from(document.querySelectorAll('.module-link'));
-    if (!chapters.length || !links.length) return;
-    var current = chapters[0].id;
-    chapters.forEach(function(ch){
-      var rect = ch.getBoundingClientRect();
-      if (rect.top <= 180 && rect.bottom > 180) current = ch.id;
-    });
-    links.forEach(function(link){
-      link.classList.toggle('active', link.getAttribute('href') === '#' + current);
-    });
-  }
-
-  function syncInlineChecks() {
-    var activeId = getActivePlanId();
-    var active = ensureCustomPlan(getPlanStore())[activeId] || planTemplates[activeId] || planTemplates['30-day-blueprint'];
-    document.querySelectorAll('input[type="checkbox"][data-module]').forEach(function(cb) {
-      var key = 'aibp_'+activeId+'_'+cb.getAttribute('data-module');
-      var saved = localStorage.getItem(key) === 'true';
-      cb.checked = saved;
-      var label = cb.closest('.progress-check');
-      if (label) label.classList.toggle('completed', saved);
-      var chapter = cb.closest('.chapter');
-      if (chapter) chapter.classList.toggle('is-complete', saved);
-    });
-  }
-
-  // ── PROGRESS CHECKBOXES (localStorage) ──
-  syncInlineChecks();
-  document.querySelectorAll('input[type="checkbox"][data-module]').forEach(function(cb) {
-    cb.addEventListener('change', function() {
-      var activeId = getActivePlanId();
-      localStorage.setItem('aibp_' + activeId + '_' + this.getAttribute('data-module'), this.checked);
-      syncInlineChecks();
-      renderRail();
+  container.innerHTML = tasks.map(t=> `
+    <div class="journal-task ${t.done?'done':''}" data-id="${t.id}">
+      <input type="checkbox" ${t.done?'checked':''} data-id="${t.id}">
+      <div class="journal-task-main">
+        <div class="task-title">${t.title}</div>
+        <div class="task-detail">${t.detail||''}</div>
+        <textarea class="task-note" data-id="${t.id}" placeholder="Add note — what you did, link, result...">${(t.note||'').replace(/</g,'&lt;')}</textarea>
+      </div>
+      <div class="task-actions"><button data-delete="${t.id}" title="Delete">×</button></div>
+    </div>
+  `).join('');
+  container.querySelectorAll('input[type="checkbox"]').forEach(cb=>{
+    cb.addEventListener('change', async ()=>{
+      await fetch('/api/journal/checklist', { method:'POST', headers:{'Content-Type':'application/json'}, credentials:'include', body: JSON.stringify({ action:'toggle', id: cb.dataset.id, done: cb.checked }) });
+      const taskEl = cb.closest('.journal-task');
+      if(taskEl) taskEl.classList.toggle('done', cb.checked);
+      // update count
+      const all = container.querySelectorAll('input[type="checkbox"]');
+      const d = Array.from(all).filter(x=>x.checked).length;
+      if(countEl) countEl.textContent = d + ' / ' + all.length + ' done';
+      if(meta){
+        const pct2 = all.length ? Math.round((d/all.length)*100) : 0;
+        meta.querySelectorAll('.checklist-meta-card strong')[1].textContent = pct2+'%';
+        meta.querySelectorAll('.checklist-meta-card strong')[2].textContent = d+'/'+all.length;
+      }
     });
   });
-  window.addEventListener('scroll', setActiveModuleLink, { passive: true });
-  setActiveModuleLink();
-  renderRail();
+  container.querySelectorAll('.task-note').forEach(ta=>{
+    let tmr;
+    ta.addEventListener('input', ()=>{
+      clearTimeout(tmr);
+      tmr = setTimeout(async ()=>{
+        await fetch('/api/journal/checklist', { method:'POST', headers:{'Content-Type':'application/json'}, credentials:'include', body: JSON.stringify({ action:'note', id: ta.dataset.id, note: ta.value }) });
+      }, 600);
+    });
+  });
+  container.querySelectorAll('[data-delete]').forEach(btn=>{
+    btn.addEventListener('click', async ()=>{
+      if(!confirm('Delete this task?')) return;
+      await fetch('/api/journal/checklist', { method:'POST', headers:{'Content-Type':'application/json'}, credentials:'include', body: JSON.stringify({ action:'delete', id: btn.dataset.delete }) });
+      journalLoad();
+    });
+  });
+}
+async function journalLoad(){
+  const data = await journalFetchChecklist(activeTrack);
+  journalRenderTasks(data);
+}
+async function journalGenerate(){
+  const res = await fetch('/api/journal/checklist', { method:'POST', headers:{'Content-Type':'application/json'}, credentials:'include', body: JSON.stringify({ action:'generate', track: activeTrack }) });
+  const data = await res.json().catch(()=>({}));
+  if(data.tasks) journalRenderTasks(data);
+  else journalLoad();
+}
+// Sheet handling
+async function sheetLoad(type){
+  currentSheet = type;
+  document.querySelectorAll('.sheet-tab').forEach(b=> b.classList.toggle('active', b.dataset.sheet===type));
+  const res = await fetch('/api/journal/sheets?type=' + encodeURIComponent(type), { credentials:'include' });
+  const data = await res.json().catch(()=>({}));
+  const cols = data.columns || [];
+  const rows = data.rows || [];
+  const head = document.getElementById('sheetHead');
+  const body = document.getElementById('sheetBody');
+  if(!head || !body) return;
+  head.innerHTML = '<tr>' + cols.map(c=>'<th>'+c+'</th>').join('') + '</tr>';
+  body.innerHTML = rows.map((r, idx)=> '<tr>' + cols.map(c=> '<td><input data-col="'+c+'" data-idx="'+idx+'" value="'+String(r[c]||'').replace(/"/g,'&quot;')+'"></td>').join('') + '</tr>').join('');
+  body.querySelectorAll('input').forEach(inp=>{
+    let tmr;
+    inp.addEventListener('input', ()=>{
+      clearTimeout(tmr);
+      tmr = setTimeout(async ()=>{
+        const idx = parseInt(inp.dataset.idx,10);
+        const col = inp.dataset.col;
+        // collect row data
+        const tr = inp.closest('tr');
+        const inputs = tr.querySelectorAll('input');
+        const obj = {};
+        inputs.forEach(i=> obj[i.dataset.col] = i.value);
+        await fetch('/api/journal/sheets', { method:'POST', headers:{'Content-Type':'application/json'}, credentials:'include', body: JSON.stringify({ type, row_idx: idx, data: obj }) });
+      }, 500);
+    });
+  });
+}
+// Init
+document.querySelectorAll('#trackPicker button[data-track]').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('#trackPicker button[data-track]').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    activeTrack = btn.dataset.track;
+    journalLoad();
+  });
+});
+const genBtn = document.getElementById('generateTrackBtn');
+if(genBtn) genBtn.addEventListener('click', journalGenerate);
+const addTaskBtn = document.getElementById('addTaskBtn');
+if(addTaskBtn) addTaskBtn.addEventListener('click', async ()=>{
+  const inp = document.getElementById('newTaskTitle');
+  const title = inp.value.trim();
+  if(!title) return;
+  await fetch('/api/journal/checklist', { method:'POST', headers:{'Content-Type':'application/json'}, credentials:'include', body: JSON.stringify({ action:'add', track: activeTrack, title, detail: '' }) });
+  inp.value='';
+  journalLoad();
+});
+document.querySelectorAll('.sheet-tab').forEach(btn=>{
+  btn.addEventListener('click', ()=> sheetLoad(btn.dataset.sheet));
+});
+const addRowBtn = document.getElementById('addRowBtn');
+if(addRowBtn) addRowBtn.addEventListener('click', async ()=>{
+  await fetch('/api/journal/sheets', { method:'POST', headers:{'Content-Type':'application/json'}, credentials:'include', body: JSON.stringify({ type: currentSheet, action:'add-row' }) });
+  sheetLoad(currentSheet);
+});
+// Module nav for quick jump
+(function(){
+  const nav = document.getElementById('moduleNav');
+  if(nav){
+    const items = [
+      {id:'foundation', num:'01', title:'Foundation'},
+      {id:'tools', num:'02', title:'Tools & Stack'},
+      {id:'income', num:'03', title:'First $500'},
+      {id:'playbooks', num:'04', title:'Playbooks'},
+      {id:'prompts', num:'05', title:'Prompt Vault'},
+      {id:'scale', num:'06', title:'Scale to $2K'},
+      {id:'results', num:'07', title:'Wall of Proof'},
+      {id:'resources', num:'08', title:'Resources'}
+    ];
+    nav.innerHTML = items.map(ch=> '<a class="jump-pill" href="index.html#'+ch.id+'"><span class="jp-num">'+ch.num+'</span> '+ch.title+' <span>↗</span></a>').join('');
+  }
+})();
+journalLoad();
+sheetLoad(currentSheet);
+
 
   // ── RESOURCE DOWNLOADS ──
   var resourceFiles = {
@@ -2482,5 +2551,6 @@ const PROMPT_DATA = [
 
 })();
 </script>
+<script src="/js/header.js"></script>
 </body>
 </html>

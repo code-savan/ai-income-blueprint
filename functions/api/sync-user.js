@@ -13,9 +13,15 @@ export async function onRequestPost(context) {
   const DB = context.env.DB;
   const SESSIONS = context.env.SESSIONS;
 
+  const AVATARS = [
+    "https://avatars.githubusercontent.com/u/583231?v=4","https://avatars.githubusercontent.com/u/1?v=4","https://avatars.githubusercontent.com/u/2?v=4","https://avatars.githubusercontent.com/u/3?v=4","https://avatars.githubusercontent.com/u/4?v=4","https://avatars.githubusercontent.com/u/5?v=4","https://avatars.githubusercontent.com/u/6?v=4","https://avatars.githubusercontent.com/u/7?v=4","https://avatars.githubusercontent.com/u/8?v=4","https://avatars.githubusercontent.com/u/16?v=4","https://avatars.githubusercontent.com/u/17?v=4","https://avatars.githubusercontent.com/u/9919?v=4","https://avatars.githubusercontent.com/u/1342004?v=4","https://avatars.githubusercontent.com/u/810438?v=4","https://avatars.githubusercontent.com/u/317150?v=4","https://avatars.githubusercontent.com/u/819532?v=4","https://avatars.githubusercontent.com/u/739?v=4","https://avatars.githubusercontent.com/u/69631?v=4","https://avatars.githubusercontent.com/u/17230847?v=4","https://avatars.githubusercontent.com/u/343222?v=4","https://avatars.githubusercontent.com/u/133415?v=4","https://avatars.githubusercontent.com/u/41898282?v=4","https://avatars.githubusercontent.com/u/1024025?v=4","https://avatars.githubusercontent.com/u/1581276?v=4","https://avatars.githubusercontent.com/u/462774?v=4","https://avatars.githubusercontent.com/u/657054?v=4","https://avatars.githubusercontent.com/u/2053850?v=4","https://avatars.githubusercontent.com/u/1434242?v=4","https://avatars.githubusercontent.com/u/12?v=4","https://avatars.githubusercontent.com/u/30?v=4"
+  ];
+  const avatar = AVATARS[Math.floor(Math.random()*AVATARS.length)];
   const id = crypto.randomUUID();
-  await DB.prepare(`INSERT OR IGNORE INTO users (id, email, whop_receipt_id) VALUES (?, ?, ?)`).bind(id, email, receipt).run();
+  await DB.prepare(`INSERT OR IGNORE INTO users (id, email, whop_receipt_id, avatar_url, name) VALUES (?, ?, ?, ?, ?)`).bind(id, email, receipt, avatar, '').run();
   if (receipt) await DB.prepare(`UPDATE users SET whop_receipt_id = ? WHERE email = ?`).bind(receipt, email).run();
+  // ensure avatar for older users that predate avatar column
+  await DB.prepare(`UPDATE users SET avatar_url = ? WHERE email = ? AND (avatar_url IS NULL OR avatar_url = '')`).bind(avatar, email).run();
   let user = await DB.prepare(`SELECT id, email, password_hash FROM users WHERE email = ?`).bind(email).first();
   if (!user) return new Response('DB error', { status: 500 });
 

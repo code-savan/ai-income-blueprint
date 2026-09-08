@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile — Zero to Paid with AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#FAF8F2;--paper-raised:#fff;--ink:#1E1A16;--ink-soft:#5B5449;--ink-faint:#948C7C;--line:#E3DCC9;--purple:#7C3AED;--purple-soft:#F3EEFB;--green:#1a6b3c;}
+*{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}
+body{font-family:'IBM Plex Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;}
+.layout{display:flex;min-height:100vh;}
+.sidenav{width:300px;position:fixed;top:0;bottom:0;left:0;background:var(--ink);color:#fff;padding:28px 20px;overflow-y:auto;z-index:200;transition:transform .3s;}
+.sidenav-brand{font-family:'Big Shoulders Display',sans-serif;font-size:26px;font-weight:800;letter-spacing:-.01em;margin-bottom:8px;display:flex;gap:8px;}
+.sidenav-brand em{font-style:normal;color:#A78BFA;}
+.sidenav-sub{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#777;margin-bottom:28px;}
+.sidenav-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#666;margin:22px 0 10px;padding-left:12px;}
+.sidenav a{display:flex;align-items:center;gap:12px;color:#bbb;text-decoration:none;padding:10px 12px;border-radius:8px;font-size:14px;font-weight:500;transition:.2s;border-left:3px solid transparent;}
+.sidenav a:hover{background:#1a1a1a;color:#fff;}
+.sidenav a.active{background:#1a1a1a;color:#A78BFA;border-left-color:var(--purple);}
+.sidenav a .num{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#666;width:22px;flex-shrink:0;}
+.sidenav-footer{margin-top:30px;padding:16px 12px;border-top:1px solid #222;font-size:12px;color:#666;font-family:'IBM Plex Mono',monospace;}
+.main{margin-left:300px;flex:1;min-width:0;}
+.topbar{display:none;position:sticky;top:0;z-index:150;background:var(--ink);color:#fff;padding:14px 20px;align-items:center;justify-content:space-between;}
+.topbar-brand{font-family:'Big Shoulders Display',sans-serif;font-size:22px;font-weight:800;}
+.topbar-brand em{font-style:normal;color:#A78BFA;}
+.menu-btn{background:#1a1a1a;border:1px solid #333;color:#fff;border-radius:8px;padding:8px 12px;cursor:pointer;}
+.menu-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:190;}
+.content{max-width:720px;margin:0 auto;padding:40px 24px 80px;}
+.card{background:var(--paper-raised);border:1px solid var(--line);padding:28px;box-shadow:6px 6px 0 var(--line);}
+.card h2{font-family:'Big Shoulders Display',sans-serif;font-size:22px;margin-bottom:6px;}
+.card p{color:var(--ink-soft);font-size:14px;margin-bottom:14px;}
+.field{margin:16px 0;}
+.field label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);display:block;margin-bottom:6px;}
+.field input{width:100%;padding:12px 14px;border:1px solid var(--line);font-family:inherit;font-size:15px;background:#fff;}
+.field input[disabled]{background:var(--paper);color:var(--ink-faint);}
+.btn{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;padding:12px 18px;border:1px solid var(--ink);cursor:pointer;transition:.15s;}
+.btn-primary{background:var(--ink);color:#fff;}
+.btn-primary:hover{background:var(--purple);border-color:var(--purple);}
+.btn-ghost{background:#fff;color:var(--ink);}
+.btn-ghost:hover{border-color:var(--purple);color:var(--purple);}
+.btn-danger{background:#fff;color:#9C3B2E;border-color:#E3DCC9;}
+.btn-danger:hover{background:#F3E7E4;border-color:#9C3B2E;}
+.profile-hero{display:flex;gap:20px;align-items:center;margin-bottom:22px;}
+.avatar-wrap{position:relative;width:84px;height:84px;flex-shrink:0;}
+.avatar-wrap svg{position:absolute;inset:0;width:84px;height:84px;transform:rotate(-90deg);}
+.avatar-wrap circle{fill:none;stroke-width:4;stroke-linecap:round;}
+.avatar-wrap .bg{stroke:#E5E7EB;}
+.avatar-wrap .fg{stroke:var(--purple);transition:stroke-dashoffset .6s ease;}
+.avatar-wrap img{position:absolute;inset:6px;width:72px;height:72px;border-radius:50%;object-fit:cover;background:#fff;border:2px solid #fff;}
+.profile-meta h1{font-family:'Big Shoulders Display',sans-serif;font-size:28px;line-height:1;}
+.profile-meta p{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-faint);margin-top:4px;}
+.progress-row{display:flex;gap:10px;align-items:center;margin:14px 0 6px;}
+.progress-track{flex:1;height:8px;background:var(--line);overflow:hidden;}
+.progress-fill{height:100%;background:var(--purple);width:0%;transition:width .4s;}
+.progress-label{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-faint);}
+.notice{margin-top:12px;padding:10px 12px;font-size:13px;border:1px solid var(--line);display:none;}
+.notice.show{display:block;}
+.notice.ok{background:#ecfdf5;color:#1a6b3c;border-color:#a7f3d0;}
+.notice.err{background:#fef2f2;color:#9C3B2E;border-color:#fca5a5;}
+@media(max-width:900px){.sidenav{transform:translateX(-100%);}.sidenav.open{transform:translateX(0);} .menu-overlay.show{display:block;} .topbar{display:flex;} .main{margin-left:0;} .content{padding:32px 16px 60px;}}
+</style>
+</head>
+<body>
+<div class="layout">
+  <aside class="sidenav" id="sidenav">
+    <div class="sidenav-brand">AI<em>Income</em> Blueprint</div>
+    <div class="sidenav-sub">Complete Course · 2026</div>
+    <div class="sidenav-label">The Blueprint</div>
+    <a href="index.html#foundation"><span class="num">01</span> Foundation</a>
+    <a href="index.html#tools"><span class="num">02</span> Tools &amp; Stack</a>
+    <a href="index.html#income"><span class="num">03</span> First $500 Roadmap</a>
+    <a href="index.html#playbooks"><span class="num">04</span> Execution Playbooks</a>
+    <a href="index.html#prompts"><span class="num">05</span> Prompt Vault</a>
+    <a href="index.html#scale"><span class="num">06</span> Scale to $2K/Mo</a>
+    <a href="index.html#results"><span class="num">07</span> Wall of Proof</a>
+    <a href="index.html#resources"><span class="num">08</span> Resources</a>
+    <a href="checklist.html"><span class="num">09</span> Checklist</a>
+    <a href="profile.html" class="active"><span class="num">◆</span> Profile</a>
+    <div class="sidenav-footer">v3.0 · Built from 1,400+ students</div>
+  </aside>
+  <div class="menu-overlay" id="overlay"></div>
+  <div class="main">
+    <div class="topbar"><div class="topbar-brand">AI<em>Income</em> Blueprint</div><button class="menu-btn" id="menuBtn">☰</button></div>
+    <!-- app-header injected via js/header.js -->
+    <div class="content">
+      <div class="card">
+        <div class="profile-hero">
+          <div class="avatar-wrap" id="avatarWrap" title="Blueprint progress">
+            <svg viewBox="0 0 84 84"><circle class="bg" cx="42" cy="42" r="36"/><circle class="fg" id="profileProgress" cx="42" cy="42" r="36" stroke-dasharray="226.19" stroke-dashoffset="226.19"/></svg>
+            <img id="avatarImg" src="" alt="avatar">
+          </div>
+          <div class="profile-meta">
+            <h1 id="displayName">—</h1>
+            <p id="displayEmail">—</p>
+            <p id="memberSince" style="font-size:11px;color:#948C7C;"></p>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Display name</label>
+          <input id="nameInput" type="text" placeholder="Add your name (e.g. Alex)" maxlength="40">
+          <p style="font-size:11px;color:#948C7C;margin-top:6px;">Name is empty at first — add it here. Avatar is assigned randomly and can’t be changed.</p>
+        </div>
+        <div class="field">
+          <label>Email (can’t be changed)</label>
+          <input id="emailInput" type="text" disabled>
+        </div>
+        <div class="field">
+          <label>Avatar</label>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <img id="avatarPreview" src="" alt="avatar" style="width:44px;height:44px;border-radius:50%;border:1px solid var(--line);">
+            <span style="font-size:12px;color:var(--ink-faint);">Random GitHub avatar — pale grey ring fills purple as you complete the blueprint.</span>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:10px;margin-top:18px;">
+          <button class="btn btn-primary" id="saveNameBtn">Save name →</button>
+          <button class="btn btn-ghost" id="refreshBtn">Refresh</button>
+        </div>
+        <div id="saveMsg" class="notice"></div>
+
+        <div style="margin-top:28px;border-top:1px solid var(--line);padding-top:18px;">
+          <h2 style="font-size:16px;margin-bottom:8px;">Progress</h2>
+          <div class="progress-row"><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div><span class="progress-label" id="progressLabel">0%</span></div>
+          <p id="progressText" style="font-size:13px;color:var(--ink-soft);"></p>
+          <p style="font-size:12px;color:var(--ink-faint);margin-top:6px;">Ring around your avatar fills as you tick modules + journal tasks.</p>
+        </div>
+
+        <div style="margin-top:28px;border-top:1px solid var(--line);padding-top:18px;">
+          <h2 style="font-size:16px;margin-bottom:8px;">Session</h2>
+          <p style="font-size:13px;color:var(--ink-soft);">You’ll be logged out automatically after 3 days. Log out manually here:</p>
+          <button class="btn btn-danger" id="logoutBtn" style="margin-top:10px;">Log out →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/js/header.js"></script>
+<script>
+(function(){
+  const menuBtn=document.getElementById('menuBtn'), sidenav=document.getElementById('sidenav'), overlay=document.getElementById('overlay');
+  if(menuBtn){ menuBtn.addEventListener('click',()=>{sidenav.classList.toggle('open');overlay.classList.toggle('show');}); overlay.addEventListener('click',()=>{sidenav.classList.remove('open');overlay.classList.remove('show');});}
+
+  const nameInput=document.getElementById('nameInput'), emailInput=document.getElementById('emailInput'), avatarImg=document.getElementById('avatarImg'), avatarPreview=document.getElementById('avatarPreview'), displayName=document.getElementById('displayName'), displayEmail=document.getElementById('displayEmail'), memberSince=document.getElementById('memberSince'), progressFill=document.getElementById('progressFill'), progressLabel=document.getElementById('progressLabel'), progressText=document.getElementById('progressText'), saveMsg=document.getElementById('saveMsg');
+  const circ=2*Math.PI*36;
+  function setRing(pct){
+    const off=circ - (pct/100)*circ;
+    document.getElementById('profileProgress').style.strokeDashoffset=String(off);
+  }
+  async function load(){
+    try{
+      const r=await fetch('/api/profile',{credentials:'include'});
+      if(!r.ok){ location.href='/login.html'; return;}
+      const data=await r.json();
+      nameInput.value=data.name||'';
+      emailInput.value=data.email||'';
+      avatarImg.src=data.avatar_url||'';
+      avatarPreview.src=data.avatar_url||'';
+      displayName.textContent=data.name||data.email.split('@')[0]||'—';
+      displayEmail.textContent=data.email||'—';
+      if(data.created_at){ const d=new Date(data.created_at); memberSince.textContent='Member since '+d.toLocaleDateString(); }
+      const pct=data.progress?data.progress.pct:0;
+      progressFill.style.width=pct+'%';
+      progressLabel.textContent=pct+'%';
+      progressText.textContent=(data.progress?data.progress.done:0)+' / '+(data.progress?data.progress.total:0)+' modules complete';
+      setRing(pct);
+    }catch(e){ setRing(0); }
+  }
+  load();
+  document.getElementById('saveNameBtn').addEventListener('click', async()=>{
+    const name=nameInput.value.trim();
+    saveMsg.className='notice'; saveMsg.style.display='none';
+    const r=await fetch('/api/profile',{method:'POST',headers:{'Content-Type':'application/json'},credentials:'include',body:JSON.stringify({name})});
+    const data=await r.json().catch(()=>({}));
+    if(r.ok){
+      saveMsg.textContent='Saved ✓'; saveMsg.className='notice show ok';
+      displayName.textContent=name||emailInput.value.split('@')[0];
+      // update header instantly
+      window.dispatchEvent(new CustomEvent('profileUpdated', { detail: { name, avatar_url: data.avatar_url } }));
+    }
+    else{ saveMsg.textContent=data.error||'Failed to save'; saveMsg.className='notice show err';}
+    saveMsg.style.display='block';
+  });
+  document.getElementById('refreshBtn').addEventListener('click', load);
+  document.getElementById('logoutBtn').addEventListener('click', async()=>{
+    try{ await fetch('/api/auth/logout',{method:'POST',credentials:'include'});}catch{}
+    location.href='/login.html';
+  });
+})();
+</script>
+</body>
+</html>

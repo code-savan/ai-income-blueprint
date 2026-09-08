@@ -12,8 +12,8 @@ export async function onRequestGet(context) {
 
   await DB.prepare(`UPDATE login_tokens SET used = 1 WHERE token_hash = ?`).bind(hash).run();
   const sess = crypto.randomUUID();
-  await SESSIONS.put('sess:' + sess, row.user_id, { expirationTtl: 60*60*24*30 });
-  try { await SESSIONS.put('usess:' + row.user_id + ':' + sess, '1', { expirationTtl: 60*60*24*30 }); } catch {}
+  await SESSIONS.put('sess:' + sess, row.user_id, { expirationTtl: 60*60*24*3 });
+  try { await SESSIONS.put('usess:' + row.user_id + ':' + sess, '1', { expirationTtl: 60*60*24*3 }); } catch {}
 
   // If user has no password yet, send to set-password, else to app
   const user = await DB.prepare(`SELECT password_hash FROM users WHERE id = ?`).bind(row.user_id).first();
@@ -22,7 +22,7 @@ export async function onRequestGet(context) {
 
   const headers = new Headers();
   headers.set('Location', redirect);
-  headers.set('Set-Cookie', `__session=${sess}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${60*60*24*30}`);
+  headers.set('Set-Cookie', `__session=${sess}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${60*60*24*3}`);
   return new Response(null, { status: 302, headers });
 }
 export async function onRequest(context) {
