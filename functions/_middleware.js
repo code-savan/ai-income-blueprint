@@ -26,6 +26,13 @@ export async function onRequest(context) {
   if (!userId) {
     return Response.redirect(new URL('/login.html', url.origin).toString(), 302);
   }
+  // Revoked users have no row: reject even if a session key survived
+  let exists = null;
+  try { exists = await context.env.DB.prepare(`SELECT id FROM users WHERE id = ?`).bind(userId).first(); } catch {}
+  if (!exists) {
+    try { await context.env.SESSIONS.delete('sess:' + token); } catch {}
+    return Response.redirect(new URL('/login.html', url.origin).toString(), 302);
+  }
 
   return context.next();
 }

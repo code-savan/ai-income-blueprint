@@ -5,7 +5,11 @@ export async function onRequestGet(context) {
   const userId = await context.env.SESSIONS.get('sess:' + m[1]);
   if (!userId) return new Response(JSON.stringify({ loggedIn: false }), { status: 401, headers: { 'Content-Type':'application/json' } });
   const user = await context.env.DB.prepare(`SELECT email FROM users WHERE id = ?`).bind(userId).first();
-  return new Response(JSON.stringify({ loggedIn: true, email: user ? user.email : null }), { headers: { 'Content-Type':'application/json' } });
+  if (!user) {
+    try { await context.env.SESSIONS.delete('sess:' + m[1]); } catch {}
+    return new Response(JSON.stringify({ loggedIn: false }), { status: 401, headers: { 'Content-Type':'application/json' } });
+  }
+  return new Response(JSON.stringify({ loggedIn: true, email: user.email }), { headers: { 'Content-Type':'application/json' } });
 }
 export async function onRequest(context) {
   if (context.request.method === 'GET') return onRequestGet(context);

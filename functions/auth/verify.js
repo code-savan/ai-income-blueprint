@@ -13,6 +13,7 @@ export async function onRequestGet(context) {
   await DB.prepare(`UPDATE login_tokens SET used = 1 WHERE token_hash = ?`).bind(hash).run();
   const sess = crypto.randomUUID();
   await SESSIONS.put('sess:' + sess, row.user_id, { expirationTtl: 60*60*24*30 });
+  try { await SESSIONS.put('usess:' + row.user_id + ':' + sess, '1', { expirationTtl: 60*60*24*30 }); } catch {}
 
   // If user has no password yet, send to set-password, else to app
   const user = await DB.prepare(`SELECT password_hash FROM users WHERE id = ?`).bind(row.user_id).first();

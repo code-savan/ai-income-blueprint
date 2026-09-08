@@ -10,6 +10,7 @@ export async function onRequestPost(context) {
   }
   const sess = crypto.randomUUID();
   await context.env.SESSIONS.put('sess:' + sess, user.id, { expirationTtl: 60*60*24*30 });
+  try { await context.env.SESSIONS.put('usess:' + user.id + ':' + sess, '1', { expirationTtl: 60*60*24*30 }); } catch {}
   const headers = new Headers({ 'Content-Type':'application/json' });
   headers.set('Set-Cookie', `__session=${sess}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${60*60*24*30}`);
   return new Response(JSON.stringify({ ok: true }), { headers });

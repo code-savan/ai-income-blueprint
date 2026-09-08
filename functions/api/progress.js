@@ -4,6 +4,10 @@ export async function onRequestGet(context) {
   if (!m) return new Response('Unauthorized', { status: 401 });
   const userId = await context.env.SESSIONS.get('sess:' + m[1]);
   if (!userId) return new Response('Unauthorized', { status: 401 });
+  try {
+    const u = await context.env.DB.prepare(`SELECT id FROM users WHERE id = ?`).bind(userId).first();
+    if (!u) { try { await context.env.SESSIONS.delete('sess:' + m[1]); } catch {} return new Response('Unauthorized', { status: 401 }); }
+  } catch {}
   const rows = await context.env.DB.prepare(`SELECT module, done FROM progress WHERE user_id = ?`).bind(userId).all();
   const map = {};
   for (const r of rows.results) map[r.module] = !!r.done;
@@ -15,6 +19,10 @@ export async function onRequestPost(context) {
   if (!m) return new Response('Unauthorized', { status: 401 });
   const userId = await context.env.SESSIONS.get('sess:' + m[1]);
   if (!userId) return new Response('Unauthorized', { status: 401 });
+  try {
+    const u = await context.env.DB.prepare(`SELECT id FROM users WHERE id = ?`).bind(userId).first();
+    if (!u) { try { await context.env.SESSIONS.delete('sess:' + m[1]); } catch {} return new Response('Unauthorized', { status: 401 }); }
+  } catch {}
   let body;
   try { body = await context.request.json(); } catch { return new Response('Invalid JSON', { status: 400 }); }
   const mod = body.module;
