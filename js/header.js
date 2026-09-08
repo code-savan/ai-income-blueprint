@@ -16,8 +16,8 @@
   .avatar-ring .bg{stroke:#E5E7EB;}
   .avatar-ring .fg{stroke:#7C3AED;transition:stroke-dashoffset .6s ease;}
   .avatar-ring img{position:absolute;inset:3px;width:34px;height:34px;border-radius:50%;object-fit:cover;background:#fff;}
-  .header-logout{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;background:var(--ink);color:#fff;border:1px solid var(--ink);padding:7px 12px;cursor:pointer;}
-  .header-logout:hover{background:var(--paper);color:var(--ink);}
+  .sidenav-logout{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;background:#1a1a1a;color:#bbb;border:1px solid #222;padding:10px 12px;cursor:pointer;width:100%;margin-top:12px;text-align:left;display:flex;align-items:center;gap:8px;}
+  .sidenav-logout:hover{background:#222;color:#fff;border-color:#333;}
   .header-profile-link{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit;}
   @media(max-width:900px){.app-header-right{ gap:8px;} .app-header-user{display:none;} .avatar-ring{width:34px;height:34px;} .avatar-ring img{width:28px;height:28px;inset:3px;} .avatar-ring svg{width:34px;height:34px;}}
   `;
@@ -43,7 +43,6 @@
             <img id="headerAvatar" src="" alt="avatar">
           </div>
         </a>
-        <button class="header-logout" id="headerLogout">Log out</button>
       </div>
     </div>
   `;
@@ -104,7 +103,10 @@
   });
 
   document.addEventListener('click', async (e)=>{
-    if(e.target && e.target.id === 'headerLogout'){
+    const t = e.target.closest ? e.target.closest('#sidenavLogout, #headerLogout') : null;
+    const id = t ? t.id : (e.target && e.target.id);
+    if(id === 'sidenavLogout' || id === 'headerLogout'){
+      e.preventDefault();
       try{ await fetch('/api/auth/logout', { method:'POST', credentials:'include' }); }catch{}
       location.href = '/login.html';
     }

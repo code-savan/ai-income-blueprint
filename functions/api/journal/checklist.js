@@ -51,13 +51,12 @@ export async function onRequestGet(context){
   // If no tasks yet, generate default
   let rows = await DB.prepare(`SELECT * FROM checklist_tasks WHERE user_id = ? ${track? 'AND track = ?' : ''} ORDER BY sort_order`).bind(userId, ...(track?[track]:[])).all();
   if(!rows.results.length){
-    // generate default 30-day if none at all
     const genTrack = track || '30-day-blueprint';
     const templates = TRACK_TEMPLATES[genTrack] || TRACK_TEMPLATES['30-day-blueprint'];
     for(let i=0;i<templates.length;i++){
       const t = templates[i];
       const id = crypto.randomUUID();
-      await DB.prepare(`INSERT INTO checklist_tasks (id, user_id, track, title, detail, sort_order, done, note) VALUES (?, ?, ?, ?, ?, ?, 0, '')`).bind(id, userId, genTrack, t.title, t.detail, i).run();
+      await DB.prepare(`INSERT INTO checklist_tasks (id, user_id, track, title, detail, sort_order, done, note, is_custom) VALUES (?, ?, ?, ?, ?, ?, 0, '', 0)`).bind(id, userId, genTrack, t.title, t.detail, i).run();
     }
     rows = await DB.prepare(`SELECT * FROM checklist_tasks WHERE user_id = ? AND track = ? ORDER BY sort_order`).bind(userId, genTrack).all();
   }
@@ -81,12 +80,16 @@ export async function onRequestPost(context){
   }
   if(body.action === 'add' && body.title){
     const id = crypto.randomUUID();
-    const cnt = await DB.prepare(`SELECT COUNT(*) as c FROM checklist_tasks WHERE user_id = ? AND track = ?`).bind(userId, body.track || 'custom').first();
+    const track = body.track || '30-day-blueprint';
+    const cnt = await DB.prepare(`SELECT COUNT(*) as c FROM checklist_tasks WHERE user_id = ? AND track = ?`).bind(userId, track).first();
     const order = cnt ? cnt.c : 0;
-    await DB.prepare(`INSERT INTO checklist_tasks (id, user_id, track, title, detail, sort_order, done, note) VALUES (?, ?, ?, ?, ?, ?, 0, '')`).bind(id, userId, body.track || 'custom', body.title, body.detail || '', order).run();
+    await DB.prepare(`INSERT INTO checklist_tasks (id, user_id, track, title, detail, sort_order, done, note, is_custom) VALUES (?, ?, ?, ?, ?, ?, 0, '', 1)`).bind(id, userId, track, body.title, body.detail || '', order).run();
     return new Response(JSON.stringify({ ok: true, id }));
   }
   if(body.action === 'delete' && body.id){
+    // only removable if is_custom = 1
+    const row = await DB.prepare(`SELECT is_custom FROM checklist_tasks WHERE id = ? AND user_id = ?`).bind(body.id, userId).first();
+    if(!row || !row.is_custom) return new Response(JSON.stringify({ error: 'Cannot delete default task' }), { status: 403 });
     await DB.prepare(`DELETE FROM checklist_tasks WHERE id = ? AND user_id = ?`).bind(body.id, userId).run();
     return new Response(JSON.stringify({ ok: true }));
   }
@@ -98,7 +101,7 @@ export async function onRequestPost(context){
     for(let i=0;i<templates.length;i++){
       const t = templates[i];
       const id = crypto.randomUUID();
-      await DB.prepare(`INSERT INTO checklist_tasks (id, user_id, track, title, detail, sort_order, done, note) VALUES (?, ?, ?, ?, ?, ?, 0, '')`).bind(id, userId, track, t.title, t.detail, i).run();
+      await DB.prepare(`INSERT INTO checklist_tasks (id, user_id, track, title, detail, sort_order, done, note, is_custom) VALUES (?, ?, ?, ?, ?, ?, 0, '', 0)`).bind(id, userId, track, t.title, t.detail, i).run();
     }
     const rows = await DB.prepare(`SELECT * FROM checklist_tasks WHERE user_id = ? AND track = ? ORDER BY sort_order`).bind(userId, track).all();
     return new Response(JSON.stringify({ tasks: rows.results }), { headers: { 'Content-Type':'application/json' } });

@@ -300,7 +300,10 @@ table.checklist-table .step-tag {
 .sheet-tab.active{background:var(--purple);color:#fff;border-color:var(--purple);}
 .sheet-wrap{overflow-x:auto;}
 .sheet-table{width:100%;border-collapse:collapse;min-width:600px;}
-.sheet-table th{background:var(--ink);color:#fff;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:10px 8px;text-align:left;white-space:nowrap;}
+.sheet-table th{background:var(--ink);color:#fff;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:10px 8px;text-align:left;white-space:nowrap;position:relative;user-select:none;cursor:grab;}
+.sheet-table th.dragging{opacity:.4;}
+.sheet-table th .col-resizer{position:absolute;right:0;top:0;bottom:0;width:10px;cursor:col-resize;z-index:1;}
+.sheet-table th .col-resizer:hover{background:rgba(124,58,237,0.18);}
 .sheet-table td{border:1px solid var(--line);padding:0;}
 .sheet-table td input{width:100%;border:none;padding:8px 8px;font-family:inherit;font-size:13px;background:transparent;}
 .sheet-table td input:focus{outline:none;background:var(--purple-soft);}
@@ -666,7 +669,9 @@ body.checklist-only .checklist-page-shell { max-width:1200px; margin:0 auto; pad
     <a href="index.html#results"><span class="num">07</span> Wall of Proof</a>
     <a href="index.html#resources"><span class="num">08</span> Resources</a>
     <a href="checklist.html" class="active"><span class="num">09</span> Checklist</a>
+    <a href="profile.html"><span class="num">◆</span> Profile</a>
     <div class="sidenav-footer">v3.0 · Built from 1,400+ students of real execution</div>
+    <button class="sidenav-logout" id="sidenavLogout">↳ Log out</button>
   </aside>
 
   <div class="menu-overlay" id="overlay"></div>
@@ -2079,7 +2084,6 @@ const PROMPT_DATA = [
               <button data-track="30-day-blueprint" class="active">30-Day Blueprint</button>
               <button data-track="track-a">Track A — Product</button>
               <button data-track="track-b">Track B — Service</button>
-              <button id="generateTrackBtn" style="margin-left:auto;background:var(--ink);color:#fff;">Generate checklist →</button>
             </div>
 
             <div class="checklist-meta-row" id="progressCard"></div>
@@ -2090,9 +2094,10 @@ const PROMPT_DATA = [
                 <span id="checklistCount" style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-faint);">0 tasks</span>
               </div>
               <div id="journalChecklist"></div>
-              <div style="padding:12px 20px;border-top:1px solid var(--line);display:flex;gap:10px;">
-                <input id="newTaskTitle" type="text" placeholder="Add custom task — e.g. Record Loom for client" style="flex:1;padding:10px 12px;border:1px solid var(--line);font-family:inherit;font-size:13px;">
-                <button id="addTaskBtn" style="padding:10px 16px;background:var(--purple);color:#fff;border:1px solid var(--purple);font-family:'IBM Plex Mono',monospace;font-size:11px;cursor:pointer;">Add task +</button>
+              <div style="padding:12px 20px;border-top:1px solid var(--line);display:flex;gap:10px;flex-wrap:wrap;">
+                <input id="newTaskTitle" type="text" placeholder="Task title — e.g. Record Loom for client" style="flex:1 1 200px;padding:10px 12px;border:1px solid var(--line);font-family:inherit;font-size:13px;">
+                <input id="newTaskDesc" type="text" placeholder="Description (optional) — e.g. 2-min walkthrough" style="flex:1 1 260px;padding:10px 12px;border:1px solid var(--line);font-family:inherit;font-size:13px;">
+                <button id="addTaskBtn" style="padding:10px 16px;background:var(--purple);color:#fff;border:1px solid var(--purple);font-family:'IBM Plex Mono',monospace;font-size:11px;cursor:pointer;white-space:nowrap;">Add task +</button>
               </div>
             </div>
 
@@ -2394,11 +2399,33 @@ function journalRenderTasks(data){
       <div class="journal-task-main">
         <div class="task-title">${t.title}</div>
         <div class="task-detail">${t.detail||''}</div>
-        <textarea class="task-note" data-id="${t.id}" placeholder="Add note — what you did, link, result...">${(t.note||'').replace(/</g,'&lt;')}</textarea>
+        <textarea class="task-note" data-id="${t.id}" placeholder="Add note — what you did, link, result..." rows="1">${(t.note||'').replace(/</g,'&lt;')}</textarea>
       </div>
-      <div class="task-actions"><button data-delete="${t.id}" title="Delete">×</button></div>
+      <div class="task-actions">${t.is_custom ? `<button data-delete="${t.id}" title="Delete">×</button>` : ''}</div>
     </div>
   `).join('');
+  function autoExpand(ta){
+    const wasManual = parseInt(ta.style.height||0) > 108;
+    ta.style.height = 'auto';
+    const max = 108;
+    const h = ta.scrollHeight;
+    if(h > max){
+      if(wasManual && ta.offsetHeight > max){
+        ta.style.height = h + 'px';
+        ta.style.overflowY = 'auto';
+      } else {
+        ta.style.height = max + 'px';
+        ta.style.overflowY = 'auto';
+      }
+    } else {
+      ta.style.height = h + 'px';
+      ta.style.overflowY = 'hidden';
+    }
+  }
+  container.querySelectorAll('.task-note').forEach(ta=>{
+    autoExpand(ta);
+    ta.style.resize = 'vertical';
+  });
   container.querySelectorAll('input[type="checkbox"]').forEach(cb=>{
     cb.addEventListener('change', async ()=>{
       await fetch('/api/journal/checklist', { method:'POST', headers:{'Content-Type':'application/json'}, credentials:'include', body: JSON.stringify({ action:'toggle', id: cb.dataset.id, done: cb.checked }) });
@@ -2418,6 +2445,7 @@ function journalRenderTasks(data){
   container.querySelectorAll('.task-note').forEach(ta=>{
     let tmr;
     ta.addEventListener('input', ()=>{
+      autoExpand(ta);
       clearTimeout(tmr);
       tmr = setTimeout(async ()=>{
         await fetch('/api/journal/checklist', { method:'POST', headers:{'Content-Type':'application/json'}, credentials:'include', body: JSON.stringify({ action:'note', id: ta.dataset.id, note: ta.value }) });
@@ -2448,27 +2476,100 @@ async function sheetLoad(type){
   document.querySelectorAll('.sheet-tab').forEach(b=> b.classList.toggle('active', b.dataset.sheet===type));
   const res = await fetch('/api/journal/sheets?type=' + encodeURIComponent(type), { credentials:'include' });
   const data = await res.json().catch(()=>({}));
-  const cols = data.columns || [];
+  let cols = data.columns || [];
   const rows = data.rows || [];
+  const widths = data.widths || {};
+  const dropdowns = data.dropdowns || {};
   const head = document.getElementById('sheetHead');
   const body = document.getElementById('sheetBody');
   if(!head || !body) return;
-  head.innerHTML = '<tr>' + cols.map(c=>'<th>'+c+'</th>').join('') + '</tr>';
-  body.innerHTML = rows.map((r, idx)=> '<tr>' + cols.map(c=> '<td><input data-col="'+c+'" data-idx="'+idx+'" value="'+String(r[c]||'').replace(/"/g,'&quot;')+'"></td>').join('') + '</tr>').join('');
+  // Build header with resizer and draggable
+  head.innerHTML = '<tr>' + cols.map(c=>{
+    const w = widths[c] ? ` style="width:${widths[c]};min-width:${widths[c]}"` : '';
+    return `<th draggable="true" data-col="${c}"${w}>${c}<span class="col-resizer" data-col="${c}"></span></th>`;
+  }).join('') + '</tr>';
+  // Ensure datalists for dropdowns
+  let dlContainer = document.getElementById('sheetDatalists');
+  if(!dlContainer){ dlContainer = document.createElement('div'); dlContainer.id='sheetDatalists'; document.body.appendChild(dlContainer); }
+  dlContainer.innerHTML = '';
+  Object.entries(dropdowns).forEach(([col, opts])=>{
+    const dl = document.createElement('datalist'); dl.id='dl-'+col.replace(/[^a-z0-9]/gi,'-');
+    opts.forEach(o=>{ const opt=document.createElement('option'); opt.value=o; dl.appendChild(opt); });
+    dlContainer.appendChild(dl);
+  });
+  body.innerHTML = rows.map((r, idx)=> '<tr>' + cols.map(c=> {
+    const val = String(r[c]||'').replace(/"/g,'&quot;');
+    const hasDl = dropdowns[c] ? ` list="dl-${c.replace(/[^a-z0-9]/gi,'-')}"` : '';
+    const w = widths[c] ? ` style="width:${widths[c]}"` : '';
+    return `<td${w}><input data-col="${c}" data-idx="${idx}" value="${val}"${hasDl}></td>`;
+  }).join('') + '</tr>').join('');
+  // Input save handler
   body.querySelectorAll('input').forEach(inp=>{
     let tmr;
     inp.addEventListener('input', ()=>{
       clearTimeout(tmr);
       tmr = setTimeout(async ()=>{
         const idx = parseInt(inp.dataset.idx,10);
-        const col = inp.dataset.col;
-        // collect row data
         const tr = inp.closest('tr');
-        const inputs = tr.querySelectorAll('input');
         const obj = {};
-        inputs.forEach(i=> obj[i.dataset.col] = i.value);
+        tr.querySelectorAll('input').forEach(i=> obj[i.dataset.col] = i.value);
         await fetch('/api/journal/sheets', { method:'POST', headers:{'Content-Type':'application/json'}, credentials:'include', body: JSON.stringify({ type, row_idx: idx, data: obj }) });
       }, 500);
+    });
+  });
+  // Resizer
+  head.querySelectorAll('.col-resizer').forEach(resizer=>{
+    resizer.addEventListener('mousedown', (e)=>{
+      e.preventDefault();
+      const th = resizer.parentElement;
+      const col = th.dataset.col;
+      const startX = e.clientX;
+      const startW = th.offsetWidth;
+      function onMove(ev){
+        const diff = ev.clientX - startX;
+        const newW = Math.max(60, startW + diff) + 'px';
+        th.style.width = newW;
+        th.style.minWidth = newW;
+        // also set all cells in column
+        const idx = Array.from(head.querySelectorAll('th')).indexOf(th);
+        body.querySelectorAll('tr').forEach(tr=>{
+          const td = tr.children[idx];
+          if(td) { td.style.width = newW; td.style.minWidth = newW; if(td.firstChild) td.firstChild.style.width = '100%'; }
+        });
+      }
+      function onUp(ev){
+        document.removeEventListener('mousemove', onMove);
+        document.removeEventListener('mouseup', onUp);
+        const finalW = th.style.width;
+        fetch('/api/journal/sheets', { method:'POST', headers:{'Content-Type':'application/json'}, credentials:'include', body: JSON.stringify({ type, action:'resize-column', column: col, width: finalW }) });
+      }
+      document.addEventListener('mousemove', onMove);
+      document.addEventListener('mouseup', onUp);
+    });
+  });
+  // Reorder via drag
+  let dragCol = null;
+  head.querySelectorAll('th').forEach(th=>{
+    th.addEventListener('dragstart', (e)=>{
+      dragCol = th.dataset.col;
+      th.classList.add('dragging');
+      e.dataTransfer.effectAllowed = 'move';
+    });
+    th.addEventListener('dragend', ()=> th.classList.remove('dragging'));
+    th.addEventListener('dragover', (e)=>{ e.preventDefault(); });
+    th.addEventListener('drop', async (e)=>{
+      e.preventDefault();
+      const targetCol = th.dataset.col;
+      if(!dragCol || dragCol===targetCol) return;
+      const fromIdx = cols.indexOf(dragCol);
+      const toIdx = cols.indexOf(targetCol);
+      if(fromIdx===-1||toIdx===-1) return;
+      const newCols = [...cols];
+      newCols.splice(fromIdx,1);
+      newCols.splice(toIdx,0,dragCol);
+      // persist
+      await fetch('/api/journal/sheets', { method:'POST', headers:{'Content-Type':'application/json'}, credentials:'include', body: JSON.stringify({ type, action:'reorder-columns', columns: newCols }) });
+      sheetLoad(type);
     });
   });
 }
@@ -2485,11 +2586,13 @@ const genBtn = document.getElementById('generateTrackBtn');
 if(genBtn) genBtn.addEventListener('click', journalGenerate);
 const addTaskBtn = document.getElementById('addTaskBtn');
 if(addTaskBtn) addTaskBtn.addEventListener('click', async ()=>{
-  const inp = document.getElementById('newTaskTitle');
-  const title = inp.value.trim();
+  const titleEl = document.getElementById('newTaskTitle');
+  const descEl = document.getElementById('newTaskDesc');
+  const title = titleEl.value.trim();
+  const detail = descEl ? descEl.value.trim() : '';
   if(!title) return;
-  await fetch('/api/journal/checklist', { method:'POST', headers:{'Content-Type':'application/json'}, credentials:'include', body: JSON.stringify({ action:'add', track: activeTrack, title, detail: '' }) });
-  inp.value='';
+  await fetch('/api/journal/checklist', { method:'POST', headers:{'Content-Type':'application/json'}, credentials:'include', body: JSON.stringify({ action:'add', track: activeTrack, title, detail }) });
+  titleEl.value=''; if(descEl) descEl.value='';
   journalLoad();
 });
 document.querySelectorAll('.sheet-tab').forEach(btn=>{
