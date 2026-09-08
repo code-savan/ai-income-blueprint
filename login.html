@@ -14,6 +14,10 @@
 h1{font-family:'Big Shoulders Display',sans-serif;font-size:32px;margin-bottom:8px;}p{color:#5B5449;font-size:14px;margin-bottom:18px;}
 label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#948C7C;display:block;margin:14px 0 6px;}
 input{width:100%;padding:12px 14px;border:1px solid var(--line);font-family:inherit;font-size:15px;}
+input[type="password"]{padding-right:44px;}
+.pw-wrap{position:relative;}
+.eye-btn{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:#948C7C;font-size:16px;line-height:1;padding:6px;display:flex;align-items:center;}
+.eye-btn:hover{color:var(--ink);}
 button{width:100%;margin-top:18px;background:var(--ink);color:#fff;border:none;padding:12px;font-family:'IBM Plex Mono',monospace;font-weight:600;letter-spacing:.04em;cursor:pointer;}
 button:hover{background:var(--purple);}a{font-size:13px;color:var(--purple);display:inline-block;margin-top:12px;}
 .msg{margin-top:12px;font-size:13px;display:none;padding:10px;border:1px solid var(--line);}
@@ -26,7 +30,10 @@ button:hover{background:var(--purple);}a{font-size:13px;color:var(--purple);disp
   <label>Email</label>
   <input id="email" type="email" placeholder="you@example.com">
   <label>Password</label>
-  <input id="password" type="password" placeholder="••••••••">
+  <div class="pw-wrap">
+    <input id="password" type="password" placeholder="••••••••">
+    <button type="button" class="eye-btn" data-target="password" aria-label="Show password">👁️</button>
+  </div>
   <button id="loginBtn">Log in →</button>
   <a href="#" id="magicBtn">Send magic link instead</a>
   <div id="msg" class="msg"></div>
@@ -56,6 +63,16 @@ document.getElementById('magicBtn').addEventListener('click', async (e)=>{
   const data = await res.json().catch(()=>({}));
   msg.textContent = res.ok ? 'Magic link sent — check inbox (and spam)' : (data.error||'Failed');
   msg.style.display='block';
+});
+document.querySelectorAll('.eye-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const input = document.getElementById(btn.dataset.target);
+    if(!input) return;
+    const show = input.type === 'password';
+    input.type = show ? 'text' : 'password';
+    btn.textContent = show ? '🙈' : '👁️';
+    btn.setAttribute('aria-label', show ? 'Hide password' : 'Show password');
+  });
 });
 </script>
 </body>
