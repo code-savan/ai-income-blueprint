@@ -30,13 +30,14 @@ export async function onRequestPost(context) {
   const finalUrl = `${origin}/auth/verify?token=${raw}`;
   const loginUrl = `${origin}/login.html`;
 
-  // Send via MailChannels (no key, works on CF) — onboarding / access mail
+  // Send onboarding mail — try MailChannels (no key, CF) then Resend fallback if RESEND_API_KEY is set
   const subject = hasPassword ? 'Your Blueprint magic link — log in' : 'Your Blueprint login — set your password';
   const html = hasPassword
     ? `<p>Thanks for joining Zero to Paid with AI.</p><p>Your purchase is confirmed — click to log in:</p><p><a href="${finalUrl}" style="background:#7C3AED;color:#fff;padding:12px 20px;text-decoration:none;display:inline-block;">Log in to Blueprint →</a></p><p>Or go to <a href="${loginUrl}">${loginUrl}</a> and use your existing password, or request a new magic link.</p><p>Link expires in 24h. If you didn't pay, ignore this email.</p><p>— zerotopaidwithai.com</p>`
     : `<p>Thanks for joining Zero to Paid with AI.</p><p>Your purchase is confirmed — click to set your password and open the Blueprint:</p><p><a href="${finalUrl}" style="background:#7C3AED;color:#fff;padding:12px 20px;text-decoration:none;display:inline-block;">Set password & open Blueprint →</a></p><p>After this, you can always log in at <a href="${loginUrl}">${loginUrl}</a> with email + password, or request a magic link.</p><p>Link expires in 24h. If you didn't pay, ignore this email.</p><p>— zerotopaidwithai.com</p>`;
+  let mailStatus = 'pending';
   try {
-    await fetch('https://api.mailchannels.net/tx/v1/send', {
+    const mcRes = await fetch('https://api.mailchannels.net/tx/v1/send', {
       method: 'POST',
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify({
@@ -46,9 +47,23 @@ export async function onRequestPost(context) {
         content: [{ type: 'text/html', value: html }]
       })
     });
-  } catch(e) { console.error('MailChannels failed', e); }
+    mailStatus = `mailchannels:${mcRes.status}`;
+    if (!mcRes.ok) {
+      const txt = await mcRes.text().catch(()=> '');
+      console.error('MailChannels failed', mcRes.status, txt);
+      // Fallback to Resend if configured
+      if (context.env.RESEND_API_KEY) {
+        const rRes = await fetch('https://api.resend.com/emails', {
+          method: 'POST',
+          headers: { 'Authorization': `Bearer ${context.env.RESEND_API_KEY}`, 'Content-Type':'application/json' },
+          body: JSON.stringify({ from: 'noreply@zerotopaidwithai.com', to: email, subject, html })
+        });
+        mailStatus += `|resend:${rRes.status}`;
+      }
+    }
+  } catch(e) { console.error('MailChannels failed', e); mailStatus = 'error:' + (e.message || String(e)); }
 
-  return new Response(JSON.stringify({ ok: true, email, verifyUrl: finalUrl }), { headers: { 'Content-Type':'application/json' } });
+  return new Response(JSON.stringify({ ok: true, email, verifyUrl: finalUrl, hasPassword, mailStatus }), { headers: { 'Content-Type':'application/json' } });
 }
 export async function onRequest(context) {
   if (context.request.method === 'POST') return onRequestPost(context);
