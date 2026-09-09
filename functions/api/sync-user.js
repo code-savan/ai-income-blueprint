@@ -1,7 +1,9 @@
+import { logAuth, getIp } from '../_lib/authLog.js';
 export async function onRequestPost(context) {
   const secret = context.request.headers.get('X-Forward-Secret') || '';
   const expected = context.env.FORWARD_SECRET;
   if (expected && secret !== expected) {
+    await logAuth(context.env.DB, { email: null, event: 'whop_sync_unauthorized', ip: getIp(context.request) });
     return new Response('Unauthorized', { status: 401 });
   }
   let body;
@@ -99,6 +101,7 @@ export async function onRequestPost(context) {
       }
     }
   } catch(e) { console.error('MailChannels failed', e); mailStatus = 'error:' + (e.message || String(e)); }
+  await logAuth(context.env.DB, { user_id: user.id, email, event: 'whop_sync', ip: getIp(context.request) });
 
   return new Response(JSON.stringify({ ok: true, email, verifyUrl: finalUrl, hasPassword, mailStatus }), { headers: { 'Content-Type':'application/json' } });
 }

@@ -1,3 +1,4 @@
+import { logAuth, getIp } from '../../_lib/authLog.js';
 export async function onRequestPost(context) {
   let body;
   try { body = await context.request.json(); } catch { return new Response('Invalid JSON', { status: 400 }); }
@@ -6,9 +7,10 @@ export async function onRequestPost(context) {
   const DB = context.env.DB;
   const user = await DB.prepare(`SELECT id FROM users WHERE email = ?`).bind(email).first();
   if (!user) {
-    // Always return 200 to prevent enumeration — don't reveal if email exists
+    await logAuth(DB, { user_id: null, email, event: 'magic_link_not_found', ip: getIp(context.request) });
     return new Response(JSON.stringify({ ok: true }), { headers: { 'Content-Type':'application/json' } });
   }
+  await logAuth(DB, { user_id: user.id, email, event: 'magic_link_sent', ip: getIp(context.request) });
   const raw = crypto.randomUUID() + '-' + crypto.randomUUID();
   const hashBuf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(raw));
   const hash = [...new Uint8Array(hashBuf)].map(b=>b.toString(16).padStart(2,'0')).join('');

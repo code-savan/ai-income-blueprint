@@ -1,4 +1,5 @@
 import { verifyPassword, hashPassword, isOldHash } from '../../_lib/password.js';
+import { logAuth, getIp } from '../../_lib/authLog.js';
 export async function onRequestPost(context) {
   let body;
   try { body = await context.request.json(); } catch { return new Response(JSON.stringify({ error: 'Invalid JSON' }), { status: 400 }); }
@@ -28,11 +29,13 @@ export async function onRequestPost(context) {
     }
   }
   if (!ok) {
+    await logAuth(context.env.DB, { user_id: user ? user.id : null, email, event: 'login_fail', ip: getIp(context.request) });
     return new Response(JSON.stringify({ error: 'Invalid email or password' }), { status: 401 });
   }
   const sess = crypto.randomUUID();
   await context.env.SESSIONS.put('sess:' + sess, user.id, { expirationTtl: 60*60*24*3 });
   try { await context.env.SESSIONS.put('usess:' + user.id + ':' + sess, '1', { expirationTtl: 60*60*24*3 }); } catch {}
+  await logAuth(context.env.DB, { user_id: user.id, email, event: 'login_success', ip: getIp(context.request) });
   const headers = new Headers({ 'Content-Type':'application/json' });
   headers.set('Set-Cookie', `__session=${sess}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${60*60*24*3}`);
   return new Response(JSON.stringify({ ok: true }), { headers });

@@ -2370,7 +2370,7 @@ const PROMPT_DATA = [
 // ── JOURNAL SUITE (new) ──
 var activeTrack = '30-day-blueprint';
 var currentSheet = 'outreach';
-
+function escapeHtml(s){ if(s==null) return ''; return String(s).replace(/[&<>"']/g, c=> ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 function journalFetchChecklist(track){
   return fetch('/api/journal/checklist' + (track ? '?track=' + encodeURIComponent(track) : ''), { credentials:'include' }).then(r=>r.json());
 }
@@ -2389,7 +2389,6 @@ function journalRenderTasks(data){
     meta.innerHTML = '<div class="checklist-meta-card"><div class="meta-icon">◈</div><div><strong>'+tasks.length+'</strong><span>Tasks</span></div></div>' +
                      '<div class="checklist-meta-card"><div class="meta-icon">◐</div><div><strong>'+pct+'%</strong><span>Done</span></div></div>' +
                      '<div class="checklist-meta-card"><div class="meta-icon">✦</div><div><strong>'+done+'/'+tasks.length+'</strong><span>Completed</span></div></div>';
-    // also update header ring
     const ev = new CustomEvent('journalProgress', { detail: { pct, done, total: tasks.length }});
     window.dispatchEvent(ev);
   }
@@ -2397,9 +2396,9 @@ function journalRenderTasks(data){
     <div class="journal-task ${t.done?'done':''}" data-id="${t.id}">
       <input type="checkbox" ${t.done?'checked':''} data-id="${t.id}">
       <div class="journal-task-main">
-        <div class="task-title">${t.title}</div>
-        <div class="task-detail">${t.detail||''}</div>
-        <textarea class="task-note" data-id="${t.id}" placeholder="Add note — what you did, link, result..." rows="1">${(t.note||'').replace(/</g,'&lt;')}</textarea>
+        <div class="task-title">${escapeHtml(t.title)}</div>
+        <div class="task-detail">${escapeHtml(t.detail||'')}</div>
+        <textarea class="task-note" data-id="${t.id}" placeholder="Add note — what you did, link, result..." rows="1">${escapeHtml(t.note||'')}</textarea>
       </div>
       <div class="task-actions">${t.is_custom ? `<button data-delete="${t.id}" title="Delete">×</button>` : ''}</div>
     </div>
@@ -2486,7 +2485,7 @@ async function sheetLoad(type){
   // Build header with resizer and draggable
   head.innerHTML = '<tr>' + cols.map(c=>{
     const w = widths[c] ? ` style="width:${widths[c]};min-width:${widths[c]}"` : '';
-    return `<th draggable="true" data-col="${c}"${w}>${c}<span class="col-resizer" data-col="${c}"></span></th>`;
+    return `<th draggable="true" data-col="${escapeHtml(c)}"${w}>${escapeHtml(c)}<span class="col-resizer" data-col="${escapeHtml(c)}"></span></th>`;
   }).join('') + '</tr>';
   // Ensure datalists for dropdowns
   let dlContainer = document.getElementById('sheetDatalists');
@@ -2498,10 +2497,10 @@ async function sheetLoad(type){
     dlContainer.appendChild(dl);
   });
   body.innerHTML = rows.map((r, idx)=> '<tr>' + cols.map(c=> {
-    const val = String(r[c]||'').replace(/"/g,'&quot;');
-    const hasDl = dropdowns[c] ? ` list="dl-${c.replace(/[^a-z0-9]/gi,'-')}"` : '';
+    const val = escapeHtml(String(r[c]||''));
+    const hasDl = dropdowns[c] ? ` list="dl-${escapeHtml(c).replace(/[^a-z0-9]/gi,'-')}"` : '';
     const w = widths[c] ? ` style="width:${widths[c]}"` : '';
-    return `<td${w}><input data-col="${c}" data-idx="${idx}" value="${val}"${hasDl}></td>`;
+    return `<td${w}><input data-col="${escapeHtml(c)}" data-idx="${idx}" value="${val}"${hasDl}></td>`;
   }).join('') + '</tr>').join('');
   // Input save handler
   body.querySelectorAll('input').forEach(inp=>{

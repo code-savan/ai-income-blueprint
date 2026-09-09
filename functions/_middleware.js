@@ -51,6 +51,14 @@ export async function onRequest(context) {
     }
   }
 
+  // --- Content-Length cap for journal (10kb) ---
+  if(method === 'POST' && path.startsWith('/api/journal/')){
+    const len = parseInt(context.request.headers.get('Content-Length') || '0', 10);
+    if(len > 10240){
+      return addSecurityHeaders(new Response(JSON.stringify({ error: 'Payload too large' }), { status: 413, headers: { 'Content-Type':'application/json' } }), csrfToSet);
+    }
+  }
+
   const publicPaths = ['/login', '/login.html', '/set-password', '/set-password.html', '/auth', '/api', '/favicon.ico'];
   const isPublic = publicPaths.some(p => path === p || path.startsWith(p + '/')) ||
                    path.startsWith('/api/') ||
