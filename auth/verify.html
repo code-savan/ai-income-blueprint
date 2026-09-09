@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+<title>Verifying — Zero to Paid with AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#FAF8F2;--ink:#1E1A16;--line:#E3DCC9;--purple:#7C3AED;}
+*{box-sizing:border-box;margin:0;padding:0;}body{font-family:'IBM Plex Sans',sans-serif;background:var(--paper);color:var(--ink);display:flex;min-height:100vh;align-items:center;justify-content:center;padding:24px;}
+.card{background:#fff;border:1px solid var(--line);padding:32px;max-width:420px;width:100%;text-align:center;box-shadow:6px 6px 0 var(--line);}
+h1{font-family:'IBM Plex Sans',sans-serif;font-size:18px;margin-bottom:8px;}
+p{font-size:13px;color:#5B5449;}
+.spinner{width:24px;height:24px;border:3px solid var(--line);border-top-color:var(--purple);border-radius:50%;animation:spin 0.8s linear infinite;margin:16px auto;}
+@keyframes spin{to{transform:rotate(360deg);}}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="spinner"></div>
+  <h1>Verifying your link…</h1>
+  <p id="msg">Please wait — we’re logging you in.</p>
+</div>
+<script>
+(async function(){
+  const params = new URLSearchParams(location.search);
+  const token = params.get('token');
+  const msg = document.getElementById('msg');
+  if(!token){
+    msg.textContent = 'Missing token. Please use the link from your email.';
+    return;
+  }
+  try{
+    const res = await fetch('/auth/verify', {
+      method: 'POST',
+      headers: { 'Content-Type':'application/json' },
+      body: JSON.stringify({ token }),
+      credentials: 'include'
+    });
+    const data = await res.json().catch(()=>({}));
+    if(res.ok && data.redirect){
+      location.href = data.redirect;
+    } else if(res.ok && data.ok){
+      location.href = data.redirect || '/index.html';
+    } else {
+      // Fallback: try GET with token (for old links)
+      location.href = '/auth/verify?token=' + encodeURIComponent(token);
+    }
+  }catch(e){
+    msg.textContent = 'Something went wrong. Trying direct link…';
+    setTimeout(()=>{ location.href = '/auth/verify?token=' + encodeURIComponent(token); }, 800);
+  }
+})();
+</script>
+</body>
+</html>

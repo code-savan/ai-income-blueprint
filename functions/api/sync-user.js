@@ -66,7 +66,7 @@ export async function onRequestPost(context) {
   await DB.prepare(`INSERT INTO login_tokens (token_hash, user_id, expires_at) VALUES (?, ?, ?)`).bind(hash, user.id, expires).run();
 
   const origin = new URL(context.request.url).origin;
-  const finalUrl = `${origin}/auth/verify?token=${raw}`;
+  const finalUrl = `${origin}/auth/verify.html?token=${raw}`;
   const loginUrl = `${origin}/login.html`;
 
   // Send onboarding mail — try MailChannels (no key, CF) then Resend fallback if RESEND_API_KEY is set
