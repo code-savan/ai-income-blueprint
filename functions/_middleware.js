@@ -1,6 +1,63 @@
+import { checkRateLimit } from './_lib/rateLimit.js';
+import { generateCsrfToken, verifyCsrf } from './_lib/csrf.js';
+
+function addSecurityHeaders(res){
+  const h = new Headers(res.headers);
+  h.set('X-Frame-Options', 'DENY');
+  h.set('X-Content-Type-Options', 'nosniff');
+  h.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+  h.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
+  h.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+  h.set('Cross-Origin-Opener-Policy', 'same-origin');
+  h.set('Cross-Origin-Embedder-Policy', 'credentialless');
+  // CSP: allow self + fonts + mailchannels/resend for API
+  h.set('Content-Security-Policy', "default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' https: data:; font-src https://fonts.gstatic.com data:; connect-src 'self' https://api.mailchannels.net https://api.resend.com");
+  return new Response(res.body, { status: res.status, headers: h });
+}
+
 export async function onRequest(context) {
   const url = new URL(context.request.url);
   const path = url.pathname;
+  const method = context.request.method;
+
+  // --- Security headers + CSRF cookie on GET ---
+  if(method === 'GET'){
+    const cookie = context.request.headers.get('Cookie') || '';
+    if(!cookie.includes('csrf_token=')){
+      const token = generateCsrfToken();
+      const res = await context.next();
+      const headers = new Headers(res.headers);
+      headers.append('Set-Cookie', `csrf_token=${token}; Path=/; SameSite=Lax; Max-Age=${60*60*24*7}`);
+      // add security headers
+      headers.set('X-Frame-Options', 'DENY');
+      headers.set('X-Content-Type-Options', 'nosniff');
+      headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+      headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
+      return new Response(res.body, { status: res.status, headers });
+    }
+  }
+
+  // --- CSRF check for state-changing POST to /api/* (except whop sync which uses secret) ---
+  if(method === 'POST' && path.startsWith('/api/') && path !== '/api/sync-user' && path !== '/api/whop-webhook' && path !== '/api/revoke-user'){
+    if(!verifyCsrf(context.request)){
+      return addSecurityHeaders(new Response(JSON.stringify({ error: 'CSRF failed' }), { status: 403, headers: { 'Content-Type':'application/json' } }));
+    }
+  }
+
+  // --- Rate limiting ---
+  const ip = context.request.headers.get('CF-Connecting-IP') || context.request.headers.get('X-Forwarded-For')?.split(',')[0]?.trim() || 'unknown';
+  const kv = context.env.SESSIONS;
+  let rl = null;
+  if(method === 'POST'){
+    if(path === '/api/auth/login') rl = await checkRateLimit(kv, `rl:login:${ip}`, 10, 900);
+    else if(path === '/api/auth/magic-link') rl = await checkRateLimit(kv, `rl:magic:${ip}`, 5, 3600);
+    else if(path === '/api/sync-user' || path === '/api/whop-webhook') rl = await checkRateLimit(kv, `rl:sync:${ip}`, 20, 3600);
+    else if(path.startsWith('/api/')) rl = await checkRateLimit(kv, `rl:api:${ip}:${path}`, 60, 60);
+    if(rl && !rl.allowed){
+      const headers = { 'Content-Type':'application/json', 'Retry-After': String(rl.retryAfter || 60) };
+      return addSecurityHeaders(new Response(JSON.stringify({ error: 'Too many requests, try again later' }), { status: 429, headers }));
+    }
+  }
 
   const publicPaths = ['/login', '/login.html', '/set-password', '/set-password.html', '/auth', '/api', '/favicon.ico'];
   const isPublic = publicPaths.some(p => path === p || path.startsWith(p + '/')) ||
@@ -11,7 +68,8 @@ export async function onRequest(context) {
                    path.includes('.css') || path.includes('.js') || path.includes('.svg') || path.includes('.png') || path.includes('.jpg') || path.includes('.jpeg') || path.includes('.webp') || path.includes('.woff');
 
   if (isPublic) {
-    return context.next();
+    const res = await context.next();
+    return addSecurityHeaders(res);
   }
 
   const cookie = context.request.headers.get('Cookie') || '';
@@ -19,20 +77,21 @@ export async function onRequest(context) {
   const token = match ? match[1] : null;
 
   if (!token) {
-    return Response.redirect(new URL('/login.html', url.origin).toString(), 302);
+    return addSecurityHeaders(Response.redirect(new URL('/login.html', url.origin).toString(), 302));
   }
 
   const userId = await context.env.SESSIONS.get('sess:' + token);
   if (!userId) {
-    return Response.redirect(new URL('/login.html', url.origin).toString(), 302);
+    return addSecurityHeaders(Response.redirect(new URL('/login.html', url.origin).toString(), 302));
   }
   // Revoked users have no row: reject even if a session key survived
   let exists = null;
   try { exists = await context.env.DB.prepare(`SELECT id FROM users WHERE id = ?`).bind(userId).first(); } catch {}
   if (!exists) {
     try { await context.env.SESSIONS.delete('sess:' + token); } catch {}
-    return Response.redirect(new URL('/login.html', url.origin).toString(), 302);
+    return addSecurityHeaders(Response.redirect(new URL('/login.html', url.origin).toString(), 302));
   }
 
-  return context.next();
+  const res = await context.next();
+  return addSecurityHeaders(res);
 }

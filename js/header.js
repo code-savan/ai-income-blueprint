@@ -23,6 +23,26 @@
   `;
   document.head.appendChild(style);
 
+  // CSRF auto-header for all POST /api/* (reads csrf_token cookie set by _middleware on GET)
+  (function(){
+    const orig = window.fetch;
+    window.fetch = function(input, init = {}){
+      let url = typeof input === 'string' ? input : (input && input.url) || '';
+      let method = (init.method || (input && input.method) || 'GET').toUpperCase();
+      if(method === 'POST' && url.includes('/api/')){
+        const m = document.cookie.match(/csrf_token=([^;]+)/);
+        const token = m ? decodeURIComponent(m[1]) : null;
+        if(token){
+          init = { ...init, headers: { ...(init.headers||{}), 'X-CSRF-Token': token } };
+          if(input instanceof Request){
+            return orig(new Request(input, init));
+          }
+        }
+      }
+      return orig(input, init);
+    };
+  })();
+
   const header = document.createElement('header');
   header.className = 'app-header';
   header.id = 'app-header';

@@ -47,11 +47,7 @@ document.getElementById('loginBtn').addEventListener('click', async () => {
   const msg = document.getElementById('msg');
   msg.style.display='none';
   if(!email || !password){ msg.textContent='Enter email + password'; msg.style.display='block'; return; }
-  // Simple: try magic link flow instead of password check (password check via verify? For now use magic)
-  // For password login, we need an endpoint — use magic link as fallback
-  const hash = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(password));
-  const h = [...new Uint8Array(hash)].map(b=>b.toString(16).padStart(2,'0')).join('');
-  const res = await fetch('/api/auth/login', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({email, password_hash: h}) });
+  const res = await fetch('/api/auth/login', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({email, password}) });
   const data = await res.json().catch(()=>({}));
   if(res.ok){ location.href='/checklist.html'; } else { msg.textContent=data.error||'Invalid login — try magic link'; msg.style.display='block'; }
 });

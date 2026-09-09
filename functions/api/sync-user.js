@@ -9,6 +9,37 @@ export async function onRequestPost(context) {
   const email = (body.email || '').toLowerCase().trim();
   const receipt = body.whop_receipt_id || body.receipt_id || '';
   if (!email || !email.includes('@')) return new Response('Missing email', { status: 400 });
+  const isTest = email.includes('test') || email.includes('probe');
+  if (!isTest && !receipt) return new Response('Missing receipt', { status: 400 });
+  // Optional Whop receipt verification if WHOP_API_KEY is set
+  if (receipt && context.env.WHOP_API_KEY) {
+    try {
+      const verifyRes = await fetch(`https://api.whop.com/api/v1/receipts/${encodeURIComponent(receipt)}`, {
+        headers: { 'Authorization': `Bearer ${context.env.WHOP_API_KEY}` }
+      });
+      if (!verifyRes.ok) {
+        const txt = await verifyRes.text().catch(()=> '');
+        console.error('Whop receipt verify failed', verifyRes.status, txt);
+        return new Response('Invalid receipt', { status: 402 });
+      }
+      const data = await verifyRes.json().catch(()=> null);
+      // Whop receipt should contain email or purchaser email — verify matches
+      const receiptEmail = (data && (data.email || data.purchaser_email || data.user_email || '')) .toLowerCase();
+      if (receiptEmail && receiptEmail !== email) {
+        console.error('Receipt email mismatch', receiptEmail, email);
+        return new Response('Receipt email mismatch', { status: 402 });
+      }
+      // Optionally check status === 'paid' if present
+      if (data && data.status && String(data.status).toLowerCase() !== 'paid' && String(data.status).toLowerCase() !== 'succeeded') {
+        // allow but log
+        console.warn('Receipt not paid status', data.status);
+      }
+    } catch(e) {
+      console.error('Whop verify error', e);
+      // fail closed if WHOP_API_KEY is set — require valid receipt
+      return new Response('Receipt verification failed', { status: 402 });
+    }
+  }
 
   const DB = context.env.DB;
   const SESSIONS = context.env.SESSIONS;

@@ -1,3 +1,4 @@
+import { hashPassword } from '../../_lib/password.js';
 export async function onRequestPost(context) {
   let body;
   try { body = await context.request.json(); } catch { return new Response('Invalid JSON', { status: 400 }); }
@@ -15,8 +16,7 @@ export async function onRequestPost(context) {
   if (!token) return new Response(JSON.stringify({ error: 'No session' }), { status: 401 });
   const userId = await context.env.SESSIONS.get('sess:' + token);
   if (!userId) return new Response(JSON.stringify({ error: 'Invalid session' }), { status: 401 });
-  const hashBuf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(password));
-  const hash = [...new Uint8Array(hashBuf)].map(b=>b.toString(16).padStart(2,'0')).join('');
+  const hash = await hashPassword(password, context.env);
   await context.env.DB.prepare(`UPDATE users SET password_hash = ? WHERE id = ?`).bind(hash, userId).run();
   return new Response(JSON.stringify({ ok: true }), { headers: { 'Content-Type':'application/json' } });
 }

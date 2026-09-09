@@ -5,7 +5,10 @@ export async function onRequestPost(context) {
   if (!email || !email.includes('@')) return new Response(JSON.stringify({ error: 'Valid email required' }), { status: 400 });
   const DB = context.env.DB;
   const user = await DB.prepare(`SELECT id FROM users WHERE email = ?`).bind(email).first();
-  if (!user) return new Response(JSON.stringify({ error: 'No account for that email' }), { status: 404 });
+  if (!user) {
+    // Always return 200 to prevent enumeration — don't reveal if email exists
+    return new Response(JSON.stringify({ ok: true }), { headers: { 'Content-Type':'application/json' } });
+  }
   const raw = crypto.randomUUID() + '-' + crypto.randomUUID();
   const hashBuf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(raw));
   const hash = [...new Uint8Array(hashBuf)].map(b=>b.toString(16).padStart(2,'0')).join('');
