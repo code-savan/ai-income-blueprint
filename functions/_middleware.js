@@ -29,8 +29,9 @@ export async function onRequest(context) {
     }
   }
 
-  // --- CSRF check for state-changing POST to /api/* (except whop sync which uses secret) ---
-  if(method === 'POST' && path.startsWith('/api/') && path !== '/api/sync-user' && path !== '/api/whop-webhook' && path !== '/api/revoke-user'){
+  // --- CSRF check for state-changing POST to /api/* (except whop sync which uses secret, and unauthenticated auth flows) ---
+  const csrfExempt = ['/api/sync-user','/api/whop-webhook','/api/revoke-user','/api/auth/login','/api/auth/magic-link','/api/auth/set-password'];
+  if(method === 'POST' && path.startsWith('/api/') && !csrfExempt.includes(path)){
     if(!verifyCsrf(context.request)){
       return addSecurityHeaders(new Response(JSON.stringify({ error: 'CSRF failed' }), { status: 403, headers: { 'Content-Type':'application/json' } }), csrfToSet);
     }
