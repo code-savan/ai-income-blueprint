@@ -1,4 +1,4 @@
-const ITERATIONS = 310000;
+const ITERATIONS = 100000;
 const PEPPER_FALLBACK = '';
 
 function bufToBase64(buf){
