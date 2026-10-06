@@ -1,0 +1,74 @@
+[
+  [
+    "ChatGPT",
+    "chatgpt.com",
+    "Drafting and editing",
+    "Use the free tier for briefs and first drafts. Features and usage limits vary by account.",
+    "Optional subscription; check the live plan rather than assuming a fixed number of outputs.",
+    "https://chatgpt.com/pricing/"
+  ],
+  [
+    "Claude",
+    "claude.ai",
+    "Briefs, scripts, and copy",
+    "Free plan available. Pro: $20/month, or $200 billed annually ($17/month equivalent), checked 6 October 2026.",
+    "Usage limits apply. A subscription is not a fixed number of client deliverables.",
+    "https://claude.com/pricing"
+  ],
+  [
+    "Canva",
+    "canva.com",
+    "Post layouts and PDF export",
+    "Use free elements and your own assets. Check each premium marker before designing.",
+    "Paid plans can add brand and asset features; regional prices vary. Review the current card.",
+    "https://www.canva.com/pricing/"
+  ],
+  [
+    "Pexels",
+    "pexels.com",
+    "Illustrative stock footage",
+    "Free stock license allows many uses and edits. Keep the asset URL and verify the license.",
+    "Do not imply endorsement, resell an unaltered download, or portray identifiable people offensively.",
+    "https://www.pexels.com/license/"
+  ],
+  [
+    "Higgsfield",
+    "higgsfield.ai",
+    "Optional AI scene inserts",
+    "Use your own product footage for a zero-subscription route. Preserve the actual product shape and label.",
+    "Plan access and credit cost vary by model, length, and resolution. Read the Generate cost and current plan. Website unlimited access does not extend to automated generation.",
+    "https://higgsfield.ai/pricing"
+  ],
+  [
+    "Flow",
+    "labs.google",
+    "Optional scene generation",
+    "Official support lists 50 daily credits for non-subscribers in supported regions. Eligibility and cost vary.",
+    "Google AI Pro lists 1,000 monthly credits in addition. Model costs and output counts vary; check current help and account balance.",
+    "https://support.google.com/flow/answer/16526234?hl=en"
+  ],
+  [
+    "Gumroad",
+    "gumroad.com",
+    "Product delivery and checkout",
+    "No monthly platform fee. Direct sales: 10% + $0.50; Discover sales: 30%, checked 6 October 2026.",
+    "Check payout eligibility and account requirements. Preview the actual fee and payout terms for your account before choosing.",
+    "https://gumroad.com/pricing"
+  ],
+  [
+    "Whop",
+    "whop.com",
+    "Checkout and membership access",
+    "Check your account\u2019s available checkout and payout options. Test delivery without generating a fake customer transaction.",
+    "First-sale/withdrawal reviews and account/location requirements can affect payout timing. A sale does not promise next-working-day funds.",
+    "https://whop.com/blog/getting-paid-on-whop/"
+  ],
+  [
+    "TikTok Shop",
+    "tiktok.com",
+    "Eligible affiliate demonstrations",
+    "Check the rules for your market. The reviewed US affiliate policy requires age 18+, US eligibility, and 1,000 followers; other roles and markets differ.",
+    "Under 5,000 followers, US pilot limits may apply. If unavailable, choose a program accepting your location or sell product creative as a service.",
+    "https://seller-us.tiktok.com/university/essay?knowledge_id=6939143037667118"
+  ]
+]

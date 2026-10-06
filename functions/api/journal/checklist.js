@@ -13,7 +13,7 @@ const TRACK_TEMPLATES = {
  ],
  'track-a': [
  ['Gather evidence for one product problem','B. Talk to potential buyers. An AI score is not validation. Log repeated questions and existing alternatives.'],
- ['Build one complete reusable product','B. Use the filled Salon Week Starter as a reference: instructions, example, worksheet and QA.'],
+ ['Build one complete reusable product','B. Use the filled Freelancer Project Starter as a reference: instructions, example, worksheet and QA.'],
  ['Choose delivery and verify payout access','B. Check account/location requirements, fees, review conditions and delivery in test mode.'],
  ['Write a truthful product page','B. Show preview, specific contents, compatibility, price, support and actual refund terms.'],
  ['Create three demonstration scripts','C. Show the product solving a small real task. Use factual hooks rather than earnings promises.'],

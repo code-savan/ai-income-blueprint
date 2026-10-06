@@ -49,7 +49,7 @@ document.getElementById('loginBtn').addEventListener('click', async () => {
   if(!email || !password){ msg.textContent='Enter email + password'; msg.style.display='block'; return; }
   const res = await fetch('/api/auth/login', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({email, password}) });
   const data = await res.json().catch(()=>({}));
-  if(res.ok){ location.href='/checklist.html'; } else { msg.textContent=data.error||'Invalid login — try magic link'; msg.style.display='block'; }
+  if(res.ok){ location.href='/index.html'; } else { msg.textContent=data.error||'Invalid login — try magic link'; msg.style.display='block'; }
 });
 document.getElementById('magicBtn').addEventListener('click', async (e)=>{
   e.preventDefault();

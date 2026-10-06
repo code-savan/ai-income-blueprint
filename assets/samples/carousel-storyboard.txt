@@ -1,11 +1,9 @@
-CAROUSEL / 1080x1350 / 7 SLIDES
-One idea: What goes in a usable salon content service?
-1. Bold title: Your client needs a usable pack. Visual: folder preview.
-2. Problem: Captions alone leave the owner guessing. Visual: raw caption.
-3. Brief checklist: Services. Hours. Booking link. Approved photos. Visual: brief crop.
-4. Calendar: Give each post one job. Visual: filled seven-day table.
-5. Before/after: Generic praise -> a useful consultation question. Visual: two short captions.
-6. QA: Facts. Photos. Link. Posting order. Visual: four checks.
-7. CTA: Want the filled example? Ask for SALON and I will send the preview. Use this CTA only when you can manually deliver the preview.
-CAPTION: This is a fictional delivery example. It shows the work, not an earnings claim. The full Blueprint adds the track, prospecting, delivery and follow-up workflows.
-BUILD: Use four layouts: title, checklist, screen crop, comparison. Keep safe margins, readable text and one point per slide. Export numbered PNGs, preview phone-size, write image descriptions where supported, and verify order.
+CAROUSEL / 7 SLIDES / 1080x1350
+1. Would you pay for this AI draft? Show a short vague line.
+2. The problem: unsupported claims and no clear next step. Mark the exact words.
+3. Start with facts: reader, offer, approved details, CTA and rights. Show the filled brief.
+4. Rewrite for one reader question. Show raw -> edited copy.
+5. Same process, different buyers: fitness coach / repair service / online shop. Use three short excerpts.
+6. A usable handoff: calendar, captions, layouts, QA and instructions. Show the real files.
+7. Want the example? Ask for PREVIEW. Deliver the public preview manually when requested.
+Keep one point per slide. Use title, checklist, screen crop and comparison layouts. Preview phone size, check numbered export order, and add image descriptions where supported. No reach or earnings promise.

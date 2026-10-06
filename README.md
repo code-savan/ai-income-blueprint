@@ -18,7 +18,8 @@ Node 24 is used for backend tests because the SQLite-backed D1 adapter uses `nod
 - `curriculum/books.py`: ten playbooks, action prompts, expected outputs, checks, examples and next links.
 - `curriculum/vault.json`: original 300 reference prompts.
 - `curriculum/vault_review.py`: corrections and evidence/consent constraints for the reference vault.
-- `scripts/build.py`: hub, workbench, diagnostic, playbooks, prompts, tools and sources.
+- `scripts/build.py`: onboarding, next steps, progressive readers, libraries, trackers and sources.
+- `scripts/layout.py`: shared sidebar, page furniture and route diagrams.
 - `scripts/samples.py`: complete filled examples and editable sample assets.
 - `js/workbench.js`: interactions and authenticated saving.
 - `functions/api/track.js`: saved track selection using reserved progress keys; no database migration.
@@ -44,3 +45,9 @@ Existing Cloudflare environment bindings, secret names, payment provisioning, em
 Worked businesses and numeric scenarios are fictional and labeled. Do not add invented testimonials, revenue screenshots, student counts, conversion ratios or guaranteed time-to-sale claims. Prices and eligibility are dated and linked to official sources. The video calculator uses hypothetical inputs until the buyer enters their live plan figures. Never sell a universal output count from a variable credit plan.
 
 Check `sources.html` against current official documentation before changing tool advice. The wider public marketing site and Whop listing are external to this repository; align their claims and inclusions with this version separately.
+
+## Guided interface
+
+The sidebar stays available on desktop and opens from Menu on mobile. Start here checks the saved account track: first-time members get one onboarding CTA; returning members continue their saved route. The quiz shows one of six questions at a time. My next steps shows the selected route and next unfinished task, with notes and the full checklist available on demand. Trackers have their own screen. Each playbook displays one chapter, supports direct step URLs and saves completion independently of navigation. Track changes live in profile settings.
+
+The content-service example compares a coach, repair business and shop; the product example is a reusable freelancer workbook. Previous sample URLs remain as links to the updated examples for bookmark compatibility.
