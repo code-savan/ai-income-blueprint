@@ -15,6 +15,9 @@ def table(headers,rows):
 
 def build_samples():
  A.mkdir(exist_ok=True)
+ with (A/'client-intake.csv').open('w') as f:
+  w=csv.writer(f,lineterminator='\n');w.writerow(['Field','Client-approved answer','Confirmed by / date'])
+  w.writerows((field,'','') for field in ['Business and reader','Offer and approved facts','Price and promotion rules','Hours / availability to verify','Final inquiry or product link','Voice and prohibited claims','Assets and image permissions','Deliverables and exclusions','Posting owner / reply owner','Approval contact','Due date and revision agreement'])
  selector='<div class="sample-selector"><label for="example-select">Compare a different client type</label><select id="example-select">'+''.join(f'<option value="{d["key"]}">{d["label"]} · {d["name"]}</option>' for d in EXAMPLES)+'</select><p class="muted">All three are fictional. Use the process for a business you understand.</p></div>'
  sections=''
  for n,d in enumerate(EXAMPLES):
