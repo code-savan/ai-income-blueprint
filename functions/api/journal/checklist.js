@@ -25,14 +25,14 @@ const TRACK_TEMPLATES = {
  ],
  'track-b': [
  ['Make a small sample of your selected service','F. Open your chosen service example and use the exact making steps. Check the practice output before offering paid work.'],
- ['Write a scoped offer sentence','A. Name buyer, deliverables, inputs, turnaround and exclusions. Sell defined work, not guaranteed business results.'],
+ ['Write one clear sentence about your offer','A. Say who you help, the files they receive, what you need from them and the agreed deadline. Sell specific work, not guaranteed results.'],
  ['Research ten suitable prospects','A. Choose Instagram, Facebook Groups, LinkedIn, Maps/websites or permitted marketplace requests. Follow the channel instructions and check every source.'],
- ['Set up the outreach tracker','A. Add source links and observations. AI can organize supplied facts; it must not invent contacts or buying interest.'],
- ['Write five personalized permission messages','A. Use one relevant observation. Offer to share a small sample. Keep messages manual and specific.'],
+ ['Record the businesses you checked','A. Add source links, checked dates, what you noticed and the allowed contact route. Leave unknown contacts or budgets as unknown.'],
+ ['Write a few relevant sample messages','A. Mention one checked detail and ask whether they want to see your small sample. Use the message example for the chosen platform.'],
  ['Send the first small batch and log replies','A. Follow platform rules. No fixed message-to-client conversion ratio is promised.'],
  ['Review replies before the next batch','A. Improve fit or clarity from actual feedback. Do not treat silence as permission to send repeated messages.'],
  ['Follow up only where appropriate','I. Deliver resources first. Use an agreed or relevant follow-up, then stop after refusal or a final unanswered check.'],
- ['Agree scope, payment and delivery','A. Confirm deliverables, inputs, price, milestones and revisions in writing. A verbal yes is not collected revenue.'],
+ ['Agree scope, payment and delivery','A. Confirm files, facts needed, price, dates, revision limit and payment terms in writing. A verbal yes is not a paid order.'],
  ['Deliver, request approval and review','F. Check the files, send simple use instructions and request approval. Ask permission before sharing the work. D. Review actual time and costs.']
  ]
 };
@@ -48,6 +48,16 @@ const AFFILIATE_TASKS=[
  ['Log orders, returns and commission','J. Keep pending, approved and available commission separate. Check actual payout terms.'],
  ['Review actual costs and buyer questions','D. Include sample cost, fees and hours. Use real responses to decide the next small test.']
 ];
+const GUIDE_STEPS={
+ 'track-b':[['F',2],['A',1],['A',2],['A',2],['A',4],['A',4],['A',5],['I',3],['A',6],['F',5]],
+ 'track-a':[['B',1],['B',3],['B',4],['B',5],['C',2],['C',4],['I',2],['C',2],['I',5],['D',1]],
+ 'affiliate':[['J',1],['J',2],['J',3],['C',2],['C',4],['J',4],['I',3],['E',1],['J',5],['D',1]]
+};
+function withGuide(row,affiliate){
+ const plan=GUIDE_STEPS[row.track==='track-a'&&affiliate?'affiliate':row.track];
+ const step=!row.is_custom&&plan?.[row.sort_order];
+ return step?{...row,guide:{letter:step[0],step:step[1]}}:row;
+}
 async function syncTemplates(DB,userId,track){
  const queries=[];
  const choice=await DB.prepare("SELECT module FROM progress WHERE user_id = ? AND done = 1 AND module LIKE 'selected-choice-product-%'").bind(userId).all();
@@ -60,6 +70,7 @@ async function syncTemplates(DB,userId,track){
   queries.push(DB.prepare("INSERT OR IGNORE INTO checklist_tasks (id,user_id,track,title,detail,sort_order,done,note,is_custom) SELECT ?,?,?,?,?,?,0,'',0 WHERE NOT EXISTS (SELECT 1 FROM checklist_tasks WHERE user_id = ? AND track = ? AND sort_order = ? AND is_custom = 0)").bind(`guide-v2:${userId}:${track}:${i}`,userId,track,title,detail,i,userId,track,i));
  }
  await DB.batch(queries);
+ return affiliate;
 }
 function getUserId(context){
   const c = context.request.headers.get('Cookie') || '';
@@ -75,9 +86,9 @@ export async function onRequestGet(context){
   const track = url.searchParams.get('track') || '30-day-blueprint';
   if(!TRACK_TEMPLATES[track]) return json({error:'Unknown track'},400);
   const DB = context.env.DB;
-  await syncTemplates(DB, userId, track);
+  const affiliate=await syncTemplates(DB, userId, track);
   const rows = await DB.prepare(`SELECT * FROM checklist_tasks WHERE user_id = ? AND track = ? ORDER BY sort_order, is_custom, id`).bind(userId,track).all();
-  return new Response(JSON.stringify({ tasks: rows.results }), { headers: { 'Content-Type':'application/json' } });
+  return new Response(JSON.stringify({ tasks: rows.results.map(row=>withGuide(row,affiliate)) }), { headers: { 'Content-Type':'application/json' } });
 }
 
 export async function onRequestPost(context){
@@ -116,9 +127,9 @@ export async function onRequestPost(context){
     const track = body.track;
     const templates = TRACK_TEMPLATES[track];
     if(!templates) return new Response(JSON.stringify({ error: 'Unknown track' }), { status: 400 });
-    await syncTemplates(DB, userId, track);
+    const affiliate=await syncTemplates(DB, userId, track);
     const rows = await DB.prepare(`SELECT * FROM checklist_tasks WHERE user_id = ? AND track = ? ORDER BY sort_order`).bind(userId, track).all();
-    return new Response(JSON.stringify({ tasks: rows.results }), { headers: { 'Content-Type':'application/json' } });
+    return new Response(JSON.stringify({ tasks: rows.results.map(row=>withGuide(row,affiliate)) }), { headers: { 'Content-Type':'application/json' } });
   }
   return new Response(JSON.stringify({ error: 'Unknown action' }), { status: 400 });
 }

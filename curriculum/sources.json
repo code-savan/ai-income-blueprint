@@ -163,5 +163,15 @@
     "UK telephone marketing rules",
     "https://ico.org.uk/for-organisations/direct-marketing-and-privacy-and-electronic-communications/guide-to-pecr/electronic-and-telephone-marketing/telephone-marketing/",
     "Check calling permissions and preference registers where applicable."
+  ],
+  [
+    "Google Sheets SUMIF",
+    "https://support.google.com/docs/answer/3093583?hl=en",
+    "Conditional-sum syntax used in the simple expense-sheet recipe. Check locale separators and test against hand totals."
+  ],
+  [
+    "Google Forms response storage",
+    "https://support.google.com/docs/answer/2917686?hl=en",
+    "Link Responses to a Sheet, then check ownership and sharing."
   ]
 ]

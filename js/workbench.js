@@ -1,5 +1,5 @@
-import {ROUTES,BOOK_PATHS,diagnose,capacity,csvText} from './logic.js?v=20261006-offers1';
-import {OFFER_META} from './offers.js?v=20261006-offers1';
+import {ROUTES,BOOK_PATHS,diagnose,capacity,csvText} from './logic.js?v=20261006-offers2';
+import {OFFER_META} from './offers.js?v=20261006-offers2';
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 async function api(path,body){
  const init={credentials:'include'};if(body!==undefined){init.method='POST';init.headers={'Content-Type':'application/json'};init.body=JSON.stringify(body);}
@@ -9,7 +9,7 @@ async function api(path,body){
 function status(el,msg){if(el)el.textContent=msg;}
 function download(name,text,type='text/plain'){const u=URL.createObjectURL(new Blob([text],{type})),a=document.createElement('a');a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),1000);}
 const ROUTE_BOOKS = {service:['A','F','G','I','C','E','D','H'],product:['B','C','E','I','D','J','H','G']};
-let activeTrack=null,activeChoice=null,resetConfirmed=false,initialTrack=null;
+let activeTrack=null,activeChoice=null,resetConfirmed=false,initialTrack=null,contextTouched=false;
 function newTab(a){a.target='_blank';a.rel='noopener';return a;}
 function applyChoice(choice){
  activeChoice=choice;const meta=OFFER_META[choice],own=choice==='custom';
@@ -18,11 +18,11 @@ function applyChoice(choice){
  $$('[data-choice-edit]').forEach(x=>x.textContent=choice?'Change my offer ↗':'Choose my offer →');
  $$('[data-choice-next]').forEach(x=>x.hidden=!choice);
  $$('[data-offer-needed]').forEach(x=>x.hidden=!!choice);$$('[data-offer-ready]').forEach(x=>x.hidden=!choice);
- const select=$('[data-context-choice]');if(select){if([...select.options].some(o=>o.value===choice))select.value=choice;setExample(select.value);}
+ const select=$('[data-context-choice]');if(select){if(!contextTouched&&[...select.options].some(o=>o.value===choice))select.value=choice;setExample(select.value);}
  if($('#task-track')&&choice)loadTasks();
 }
 function setExample(id){$$('[data-choice-content]').forEach(x=>x.hidden=x.dataset.choiceContent!==id);}
-$('[data-context-choice]')?.addEventListener('change',e=>setExample(e.target.value));
+$('[data-context-choice]')?.addEventListener('change',e=>{contextTouched=true;setExample(e.target.value);});
 if($('[data-context-choice]'))setExample($('[data-context-choice]').value);
 function applyTrack(track){
  activeTrack=track;const r=ROUTES[track];
@@ -63,7 +63,7 @@ function showQuestion(){
  status($('#quiz-position'),`QUESTION ${String(questionIndex+1).padStart(2,'0')} / 06`);
  $('#quiz-progress').value=questionIndex+1;$('#quiz-back').disabled=questionIndex===0;
  $('#quiz-next').disabled=!quiz.querySelector(`[name="q${questionIndex}"]:checked`);
- $('#quiz-next').textContent=questionIndex===5?'Get and save my track →':'Next question →';
+ $('#quiz-next').textContent=questionIndex===5?(resetConfirmed?'Save my track and clear old work →':'Get and save my track →'):'Next question →';
 }
 function quizResult(track){
  const r=ROUTES[track],panel=$('#quiz-result');panel.hidden=false;panel.replaceChildren();
@@ -118,11 +118,11 @@ const progress=$$('[data-progress]');if(progress.length){api('/api/progress').th
 function updateReaderProgress(){if($('#reader-progress'))$('#reader-progress').value=progress.filter(b=>b.checked).length;}
 let tasksVersion=0,taskRows=[];
 function taskStats(){const done=taskRows.filter(x=>x.done).length,total=taskRows.length,pct=total?Math.round(done/total*100):0;$('#task-progress').value=pct;status($('#tasks-status'),`${done} / ${total} tasks complete · changes save to your account`);window.dispatchEvent(new CustomEvent('journalProgress',{detail:{pct,done,total}}));
- const box=$('#next-task'),next=taskRows.find(x=>!x.done);box.hidden=false;box.replaceChildren();const k=document.createElement('span');k.className='eyebrow';k.textContent=next?'Next unfinished task':'This list is complete';const h=document.createElement('h3');h.textContent=next?next.title:'Review the work and actual results';const p=document.createElement('p');p.textContent=next?next.detail:'Use feedback and your scorecard to choose one improvement.';box.append(k,h,p);const letter=next?.detail.match(/(?:^|\s)([A-J])\./)?.[1];if(letter||!next){const a=document.createElement('a');a.className='button';a.href=BOOK_PATHS[letter||'D'];a.textContent='Open the matching guide ↗';box.append(newTab(a));}
+ const box=$('#next-task'),next=taskRows.find(x=>!x.done);box.hidden=false;box.replaceChildren();const k=document.createElement('span');k.className='eyebrow';k.textContent=next?'Next unfinished task':'This list is complete';const h=document.createElement('h3');h.textContent=next?next.title:'Review the work and actual results';const p=document.createElement('p');p.textContent=next?next.detail:'Use feedback and your scorecard to choose one improvement.';box.append(k,h,p);const letter=next?.guide?.letter||next?.detail.match(/(?:^|\s)([A-J])\./)?.[1];if(letter||!next){const a=document.createElement('a');a.className='button';a.href=BOOK_PATHS[letter||'D']+(next?.guide?.step?'#step-'+next.guide.step:'');a.textContent='Open the matching guide ↗';box.append(newTab(a));}
  if(next){const complete=document.createElement('button');complete.className='secondary finish-task';complete.textContent='I finished this task';complete.addEventListener('click',async()=>{complete.disabled=true;try{await api('/api/journal/checklist',{action:'toggle',id:next.id,done:true});next.done=true;renderTasks();taskStats();}catch(e){status($('#tasks-status'),e.message);const error=document.createElement('p');error.className='status';error.setAttribute('role','alert');error.textContent=e.message;box.append(error);complete.disabled=false;}});box.append(complete);}
 }
 async function loadTasks(){if(!$('#task-list'))return;const version=++tasksVersion,track=$('#task-track').value;status($('#tasks-status'),'Opening saved tasks…');try{const d=await api('/api/journal/checklist?track='+track);if(version!==tasksVersion)return;taskRows=d.tasks;renderTasks();taskStats();}catch(e){if(version===tasksVersion)status($('#tasks-status'),e.message);}}
-function renderTasks(){const box=$('#task-list');box.replaceChildren();for(const row of taskRows){const item=document.createElement('article');item.className='task';item.dataset.done=!!row.done;const top=document.createElement('label');top.className='task-top';const check=document.createElement('input');check.type='checkbox';check.checked=!!row.done;const title=document.createElement('span');title.className='task-title';title.textContent=row.title;top.append(check,title);const detail=document.createElement('p');detail.textContent=row.detail;detail.className='muted';const notes=document.createElement('details'),summary=document.createElement('summary');summary.textContent='My notes'+(row.note?' · saved':'');const field=document.createElement('textarea');field.value=row.note||'';field.maxLength=5000;field.setAttribute('aria-label','Notes for '+row.title);const save=document.createElement('button');save.className='secondary';save.textContent='Save note';const msg=document.createElement('span');msg.className='inline-status';msg.setAttribute('role','status');notes.append(summary,field,save,msg);item.append(top,detail,notes);const m=row.detail.match(/(?:^|\s)([A-J])\./);if(m){const a=document.createElement('a');a.href=BOOK_PATHS[m[1]];a.textContent='Open playbook '+m[1]+' ↗';item.append(newTab(a));}box.append(item);
+function renderTasks(){const box=$('#task-list');box.replaceChildren();for(const row of taskRows){const item=document.createElement('article');item.className='task';item.dataset.done=!!row.done;const top=document.createElement('label');top.className='task-top';const check=document.createElement('input');check.type='checkbox';check.checked=!!row.done;const title=document.createElement('span');title.className='task-title';title.textContent=row.title;top.append(check,title);const detail=document.createElement('p');detail.textContent=row.detail;detail.className='muted';const notes=document.createElement('details'),summary=document.createElement('summary');summary.textContent='My notes'+(row.note?' · saved':'');const field=document.createElement('textarea');field.value=row.note||'';field.maxLength=5000;field.setAttribute('aria-label','Notes for '+row.title);const save=document.createElement('button');save.className='secondary';save.textContent='Save note';const msg=document.createElement('span');msg.className='inline-status';msg.setAttribute('role','status');notes.append(summary,field,save,msg);item.append(top,detail,notes);const m=row.detail.match(/(?:^|\s)([A-J])\./);if(m){const a=document.createElement('a');a.href=BOOK_PATHS[row.guide?.letter||m[1]]+(row.guide?.step?'#step-'+row.guide.step:'');a.textContent='Open playbook '+m[1]+' ↗';item.append(newTab(a));}box.append(item);
  check.addEventListener('change',async()=>{check.disabled=true;const desired=check.checked;try{await api('/api/journal/checklist',{action:'toggle',id:row.id,done:desired});row.done=desired;item.dataset.done=desired;taskStats();}catch(e){check.checked=!!row.done;status($('#tasks-status'),e.message);}finally{check.disabled=false;}});
  save.addEventListener('click',async()=>{save.disabled=true;try{await api('/api/journal/checklist',{action:'note',id:row.id,note:field.value});row.note=field.value;msg.textContent='Saved';summary.textContent='My notes · saved';}catch(e){msg.textContent=e.message;}finally{save.disabled=false;}});
  if(row.is_custom){const del=document.createElement('button');del.className='secondary';del.textContent='Delete personal task';del.addEventListener('click',async()=>{del.disabled=true;try{await api('/api/journal/checklist',{action:'delete',id:row.id});loadTasks();}catch(e){msg.textContent=e.message;del.disabled=false;}});notes.append(del);}

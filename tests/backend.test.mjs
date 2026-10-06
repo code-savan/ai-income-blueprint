@@ -31,7 +31,7 @@ test('confirmed route reset clears only this member’s work and keeps account a
  assert.equal(db.prepare("SELECT note FROM checklist_tasks WHERE id='other'").get().note,'private note');
  assert.equal(db.prepare("SELECT data FROM sheet_rows WHERE id='other-row'").get().data,'private');
  assert.equal(db.prepare("SELECT COUNT(*) AS n FROM users WHERE id='u1'").get().n,1);assert.equal(await env.SESSIONS.get('sess:valid'),'u1');
- const fresh=await(await checklist(context('/api/journal/checklist?track=track-a'))).json();assert.ok(fresh.tasks.every(r=>!r.done&&!r.note));
+ const fresh=await(await checklist(context('/api/journal/checklist?track=track-a'))).json();assert.ok(fresh.tasks.every(r=>!r.done&&!r.note));assert.deepEqual(fresh.tasks[0].guide,{letter:'B',step:1});
 });
 test('route reset rolls back all deletions if saving the new route fails',async()=>{
  const {db,context}=setup();await track(context('/api/track',{track:'service'}));await checklist(context('/api/journal/checklist?track=track-b'));await sheets(context('/api/journal/sheets?type=outreach'));
@@ -48,6 +48,6 @@ test('offer choices are authenticated, route-bound and do not erase completed wo
 });
 test('affiliate choices show eligibility and real-item tasks rather than download-building tasks',async()=>{
  const {context}=setup();await track(context('/api/track',{track:'product'}));await choice(context('/api/choice',{track:'product',choice:'phone-affiliate'}));
- const r=await(await checklist(context('/api/journal/checklist?track=track-a'))).json();assert.equal(r.tasks.length,10);assert.match(r.tasks[0].detail,/J\./);assert.match(r.tasks[2].title,/real sample/);assert.ok(r.tasks.every(t=>!t.detail.startsWith('B.')));
+ const r=await(await checklist(context('/api/journal/checklist?track=track-a'))).json();assert.equal(r.tasks.length,10);assert.match(r.tasks[0].detail,/J\./);assert.deepEqual(r.tasks[0].guide,{letter:'J',step:1});assert.match(r.tasks[2].title,/real sample/);assert.ok(r.tasks.every(t=>!t.detail.startsWith('B.')));
  await choice(context('/api/choice',{track:'product',choice:'project-kit'}));const d=await(await checklist(context('/api/journal/checklist?track=track-a'))).json();assert.match(d.tasks[0].detail,/B\./);
 });
