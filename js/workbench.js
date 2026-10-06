@@ -1,4 +1,4 @@
-import {ROUTES,BOOK_PATHS,diagnose,capacity,csvText} from './logic.js';
+import {ROUTES,BOOK_PATHS,diagnose,capacity,csvText} from './logic.js?v=20261006-sidebar';
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 async function api(path,body){
  const init={credentials:'include'};if(body!==undefined){init.method='POST';init.headers={'Content-Type':'application/json'};init.body=JSON.stringify(body);}
