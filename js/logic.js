@@ -1,6 +1,6 @@
 export const ROUTES = {
- service: {label:'Services · Track B', list:'track-b', first:'/playbooks/playbook-f-content-service.html', action:'Finish a small delivery sample, then research and pitch suitable clients.', next:'/playbooks/playbook-a-land-first-client.html'},
- product: {label:'Products · Track A', list:'track-a', first:'/playbooks/playbook-b-launch-product.html', action:'Validate a narrow problem, finish a reusable download, then demonstrate it.', next:'/playbooks/playbook-c-faceless-funnel.html'}
+ service: {label:'Services · Track B', list:'track-b', first:'/playbooks/playbook-f-content-service.html', action:'Choose one service, make a checked sample, then find suitable clients and agree the work.', next:'/playbooks/playbook-a-land-first-client.html'},
+ product: {label:'Products · Track A', list:'track-a', first:'/playbooks/playbook-b-launch-product.html', action:'Choose one product idea, test the buyer’s problem and follow the download or eligible affiliate steps.', next:'/playbooks/playbook-c-faceless-funnel.html'}
 };
 export function diagnose(values){const p=values.filter(v=>v==='product').length,s=values.filter(v=>v==='service').length;return p===s?null:p>s?'product':'service';}
 export function capacity({credits,cost,attempts,shots,extra,price}){

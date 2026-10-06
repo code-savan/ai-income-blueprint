@@ -4,8 +4,8 @@ const TRACK_TEMPLATES = {
  '30-day-blueprint': [
  ['Select a route you can execute','Run the diagnostic. Your route saves to your account. No income deadline is predicted.'],
  ['Set up the free delivery stack','Use one writing tool, one editor, and one delivery method. Check current tools and payout eligibility.'],
- ['Finish the filled practice walkthrough','F. Service sample: intake, seven captions, three layouts, QA and handoff. B. Product sample: a complete reusable planner.'],
- ['Define the offer and its scope','A. Specify deliverables, inputs, exclusions, time, revisions and price. No booking or income guarantee.'],
+ ['Finish the filled practice walkthrough','F. Choose your service and finish its practice sample. B. Choose your product and make a complete first version.'],
+ ['Define the offer and its scope','A. Name the exact files, facts needed, work excluded, deadline, revision limit and price. No guaranteed business results.'],
  ['Use the action prompt pack','Replace brackets in the relevant prompts. Check every factual claim before using the output.'],
  ['Create a demonstration and working next step','C. Record the actual workflow. E. Turn it into a useful carousel. I. Test sample delivery.'],
  ['Inspect actual results and economics','D. Track collected revenue, costs, effort and feedback. Demonstrations are not student earnings evidence.'],
@@ -24,21 +24,36 @@ const TRACK_TEMPLATES = {
  ['Review sales, fees, delivery and feedback','D. Only collected orders count as sales. Use actual results to choose the next improvement.']
  ],
  'track-b': [
- ['Pick one service you can competently deliver','F. Content pack or G. Focused copy project. Finish the worked example before offering the service.'],
+ ['Make a small sample of your selected service','F. Open your chosen service example and use the exact making steps. Check the practice output before offering paid work.'],
  ['Write a scoped offer sentence','A. Name buyer, deliverables, inputs, turnaround and exclusions. Sell defined work, not guaranteed business results.'],
- ['Research ten suitable prospects','A. Open public sources. Record one verified observation, URL, date and appropriate contact route per business.'],
+ ['Research ten suitable prospects','A. Choose Instagram, Facebook Groups, LinkedIn, Maps/websites or permitted marketplace requests. Follow the channel instructions and check every source.'],
  ['Set up the outreach tracker','A. Add source links and observations. AI can organize supplied facts; it must not invent contacts or buying interest.'],
  ['Write five personalized permission messages','A. Use one relevant observation. Offer to share a small sample. Keep messages manual and specific.'],
  ['Send the first small batch and log replies','A. Follow platform rules. No fixed message-to-client conversion ratio is promised.'],
  ['Review replies before the next batch','A. Improve fit or clarity from actual feedback. Do not treat silence as permission to send repeated messages.'],
  ['Follow up only where appropriate','I. Deliver resources first. Use an agreed or relevant follow-up, then stop after refusal or a final unanswered check.'],
  ['Agree scope, payment and delivery','A. Confirm deliverables, inputs, price, milestones and revisions in writing. A verbal yes is not collected revenue.'],
- ['Deliver, request approval and review','F. Complete QA and handoff. Ask permission to use work or feedback. D. Check costs before offering continuity.']
+ ['Deliver, request approval and review','F. Check the files, send simple use instructions and request approval. Ask permission before sharing the work. D. Review actual time and costs.']
  ]
 };
+const AFFILIATE_TASKS=[
+ ['Check program and payout eligibility','J. Verify your country, account and payment method against official rules before buying a sample.'],
+ ['Compare three actual products','J. Use your chosen niche. Check fit, seller, recent reviews, shipping, returns, commission and sample cost.'],
+ ['Inspect one real sample','J. Check contents, dimensions, compatibility and the use you will show. Do not invent a review.'],
+ ['Plan a factual demonstration','C. Show the real result, how it works and one limitation. Use the timed shot recipe.'],
+ ['Record and edit one useful demo','C. Use real footage, checked captions and a clear affiliate disclosure.'],
+ ['Check the approved product link','J. The linked item must match the inspected sample and your permitted program.'],
+ ['Publish and answer fit questions','I. Use verified facts. Say when the product does not fit the person’s needs.'],
+ ['Make a useful carousel or next demo','E. Teach one use or fit check. Do not promise health, safety or income results.'],
+ ['Log orders, returns and commission','J. Keep pending, approved and available commission separate. Check actual payout terms.'],
+ ['Review actual costs and buyer questions','D. Include sample cost, fees and hours. Use real responses to decide the next small test.']
+];
 async function syncTemplates(DB,userId,track){
  const queries=[];
- for(const [i,[title,detail]] of TRACK_TEMPLATES[track].entries()){
+ const choice=await DB.prepare("SELECT module FROM progress WHERE user_id = ? AND done = 1 AND module LIKE 'selected-choice-product-%'").bind(userId).all();
+ const affiliate=choice.results.some(r=>r.module.endsWith('-affiliate'));
+ const templates=track==='track-a'&&affiliate?AFFILIATE_TASKS:TRACK_TEMPLATES[track];
+ for(const [i,[title,detail]] of templates.entries()){
   // Update only guide text. Never reset done/note, remove custom rows, or change existing IDs.
   queries.push(DB.prepare('UPDATE checklist_tasks SET title = ?, detail = ? WHERE user_id = ? AND track = ? AND sort_order = ? AND is_custom = 0').bind(title,detail,userId,track,i));
   // Stable ID plus NOT EXISTS prevents duplicate defaults on repeated/concurrent refreshes.

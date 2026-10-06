@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BrightStep | Fictional website practice</title>
+<style>
+:root{--paper:#faf9f6;--ink:#26212d;--accent:#7133d7;--line:#e4dfe8}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,sans-serif;line-height:1.7}header,main,footer{max-width:980px;margin:auto;padding:28px 24px}header{display:flex;justify-content:space-between;border-bottom:1px solid var(--line)}a{color:var(--accent)}a:focus-visible{outline:3px solid var(--accent);outline-offset:5px}h1{font-size:clamp(2.7rem,7vw,5rem);line-height:1.06;max-width:760px;letter-spacing:-.04em}h2{font-size:1.7rem;line-height:1.2}.intro{padding:50px 0 65px}.intro p{max-width:610px;font-size:1.16rem}.button{display:inline-block;background:var(--accent);color:white;text-decoration:none;padding:12px 22px;border-radius:3px;margin-top:12px}.section{border-top:1px solid var(--line);padding:35px 0}.topics{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}.topics p{border-left:2px solid var(--accent);padding-left:15px}details{padding:15px 0;border-bottom:1px solid var(--line)}summary{cursor:pointer;font-weight:bold}footer{font-size:.85rem;border-top:1px solid var(--line)}@media(max-width:640px){.topics{grid-template-columns:1fr}header{display:block}.intro{padding-top:25px}}
+</style>
+</head>
+<body>
+<header><strong>BrightStep</strong><span>FICTIONAL PRACTICE DEMO</span></header>
+<main>
+<section class="intro"><p>English conversation practice for adults</p><h1>Practise the conversations you need.</h1><p>Tell the tutor your current level and what you want to work on. The lesson format and fees would be agreed before a booking.</p><a class="button" href="#enquiry">Ask about a lesson</a></section>
+<section class="section"><h2>Three starting topics</h2><div class="topics"><p><strong>Everyday conversations</strong><br>Practise the situations you want to discuss.</p><p><strong>Workplace vocabulary</strong><br>Explain the conversations your work involves.</p><p><strong>Guided reading</strong><br>Ask about reading and discussion practice.</p></div></section>
+<section class="section"><h2>Before a first lesson</h2><details><summary>How do I start?</summary><p>Share your current level and one conversation you want to practise.</p></details><details><summary>Are lessons online?</summary><p>This fictional example assumes online lessons. A real business owner must approve the format.</p></details><details><summary>Is progress guaranteed?</summary><p>No. This page explains a lesson format, not a promised learning result.</p></details><details><summary>What does it cost?</summary><p>The real owner must supply an approved price. This demo does not invent one.</p></details></section>
+<section class="section" id="enquiry"><h2>Demo enquiry step</h2><p>This practice page takes no bookings and sends no messages. In a real version, replace the button link with the owner’s approved enquiry URL and test it.</p><p>Before sharing: confirm business facts, contact link, image rights, phone layout and account ownership.</p></section>
+</main><footer>Practice demo only. Edit a copy, rename it index.html and test every link before publishing.</footer>
+</body></html>

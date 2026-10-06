@@ -1,0 +1,20 @@
+WHAT THIS FILE IS
+A filled fictional example for Presentation cleanup. It shows the shape of work a client could receive. This is not commissioned work or client-results proof.
+
+FICTIONAL WORKSHOP: Plan a clearer client project.
+Slide 1: Agree the work before starting. Three points: exact files, deadline, approver. Speaker note: a vague request is not a finished agreement.
+Slide 2: Make one small first piece. Three points: approved facts, useful output, clear check. Speaker note: review the first piece before repeating it.
+Slide 3: Deliver files people can use. Three points: final exports, editable originals, Start here note. Speaker note: check access from another browser.
+Before: crowded paragraphs with no clear titles.
+After: one message per slide, readable bullets and consistent title position.
+Delivery target: ten cleaned slides from supplied content. This three-slide excerpt shows the structure, not invented business metrics.
+
+MAKE YOUR VERSION
+1. Ask for the current deck and the one thing the audience should understand or do.
+2. Open Google Slides → Blank presentation. Set 16:9 unless the client specifies another format.
+3. Turn each slide title into one clear sentence. Keep three short supporting points or one visual.
+4. Apply two fonts, matching heading positions and one accent color. Preserve the meaning of every number.
+5. Export PDF, check slides at presentation size and deliver the editable deck with an agreed revision round.
+
+FINAL CHECK
+No changed figures, text is readable at normal viewing size, and slide order supports the speaking goal.

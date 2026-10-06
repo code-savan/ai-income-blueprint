@@ -59,7 +59,7 @@
     "Whop",
     "whop.com",
     "Checkout and membership access",
-    "Check your account\u2019s available checkout and payout options. Test delivery without generating a fake customer transaction.",
+    "Check your account’s available checkout and payout options. Test delivery without generating a fake customer transaction.",
     "First-sale/withdrawal reviews and account/location requirements can affect payout timing. A sale does not promise next-working-day funds.",
     "https://whop.com/blog/getting-paid-on-whop/"
   ],
@@ -70,5 +70,69 @@
     "Check the rules for your market. The reviewed US affiliate policy requires age 18+, US eligibility, and 1,000 followers; other roles and markets differ.",
     "Under 5,000 followers, US pilot limits may apply. If unavailable, choose a program accepting your location or sell product creative as a service.",
     "https://seller-us.tiktok.com/university/essay?knowledge_id=6939143037667118"
+  ],
+  [
+    "Manus",
+    "manus.im",
+    "Optional research agent",
+    "Free Agent mode uses Manus Lite with limited refresh credits. Start with three public-source rows and verify each link.",
+    "Wide Research is currently paid. Pro is listed from $20/month. Credits, model access and terms change. No free 20-hour run or fixed number of research outputs is promised.",
+    "https://help.manus.im/en/articles/11711111-what-is-the-current-membership-pricing-for-manus"
+  ],
+  [
+    "Z.ai / GLM",
+    "z.ai",
+    "Research planning, writing and source organization",
+    "Open chat.z.ai and check which search/agent tools your account offers. Paste source text if live search is unavailable.",
+    "Chat access and the billed developer API are different products. The web-search API does not prove every chat account has free unlimited research.",
+    "https://chat.z.ai/"
+  ],
+  [
+    "Google Docs, Sheets & Slides",
+    "docs.google.com",
+    "Editable files, planners and simple client work",
+    "Use the personal tools to make and test a small file. Check storage, sharing and organizational restrictions.",
+    "Client ownership and privacy matter. Use approved sharing or client-owned accounts. Never ask for account passwords.",
+    "https://workspace.google.com/intl/en/products/"
+  ],
+  [
+    "Cloudflare Pages",
+    "cloudflare.com",
+    "Publish a static website preview",
+    "Direct Upload accepts a folder or ZIP of finished HTML/CSS/images. Use a pages.dev URL and test it on a phone. Free-plan limits apply.",
+    "Domain purchase, custom features and maintenance are separate. A static page does not add working checkout or a database. Drag-and-drop does not compile a Functions folder.",
+    "https://developers.cloudflare.com/pages/get-started/direct-upload/"
+  ],
+  [
+    "Vercel",
+    "vercel.com",
+    "Optional website hosting",
+    "Hobby is for personal, non-commercial projects. Do not use it as the free hosting plan for paid client work.",
+    "Choose a commercial-eligible plan for client sites. Check price, usage, domain ownership and ongoing costs before quoting.",
+    "https://vercel.com/docs/plans/hobby"
+  ],
+  [
+    "Shopify",
+    "shopify.com",
+    "A real store with product records and orders",
+    "Use a supported commerce platform for checkout, products, inventory and delivery settings. Trial access is not permanent free hosting.",
+    "Check the current plan, payment availability, fees and owner account. A custom static page is not a replacement for order management.",
+    "https://help.shopify.com/en/manual/products/add-update-products"
+  ],
+  [
+    "Google Voice",
+    "voice.google.com",
+    "Optional calling in supported countries",
+    "Personal and standalone local-number plans are US-only. Workspace add-ons support a listed set of countries. Use your native carrier if more suitable.",
+    "Subscriptions and international rates differ. Nigeria is not in the reviewed local-number country list. Check origin/destination and business-use terms.",
+    "https://support.google.com/voice/answer/9249103?hl=en"
+  ],
+  [
+    "Talk360",
+    "talk360.com",
+    "Optional prepaid international calling",
+    "Compare the exact origin/destination, mobile/landline rate and payment method. You need calling credit, not just an app download.",
+    "Rates and currencies vary. No free international plan or US caller ID is promised. Carrier plans and permitted messages are alternatives.",
+    "https://www.talk360.com/rates"
   ]
 ]

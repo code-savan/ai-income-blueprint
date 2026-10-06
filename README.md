@@ -51,3 +51,11 @@ Check `sources.html` against current official documentation before changing tool
 The sidebar stays available on desktop and opens from Menu on mobile. Start here checks the saved account track: first-time members get one onboarding CTA; returning members continue their saved route. The quiz shows one of six questions at a time. My next steps shows the selected route and next unfinished task, with notes and the full checklist available on demand. Trackers have their own screen. Each playbook displays one chapter, supports direct step URLs and saves completion independently of navigation. Track changes live in profile settings.
 
 The content-service example compares a coach, repair business and shop; the product example is a reusable freelancer workbook. Previous sample URLs remain as links to the updated examples for bookmark compatibility.
+
+## Offer-based routes
+
+`curriculum/choices.py` defines ten service and ten product choices, with individual recipes, checks and primary-source limits. `scripts/offers.py` builds the offer interview, practice files and explained examples. `scripts/guides.py` adapts shared chapters and adds platform-specific research instructions. Fifty action prompts and the 300-prompt reference vault remain available.
+
+`/api/choice` saves one route-bound offer without clearing work. `/api/track` requires explicit reset confirmation to change an existing track. The reset atomically clears only that member’s progress, task notes/custom tasks and tracker rows/settings, then saves the new track. Account and access are retained. The quiz warns before starting and clears work only on saving its final result. The first affiliate task checks eligibility, rather than building a download.
+
+Research notes: `docs/offer-research.md`. Recording directions: `docs/recording-plan.md`.

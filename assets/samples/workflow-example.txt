@@ -1,0 +1,22 @@
+WHAT THIS FILE IS
+A filled fictional example for Simple enquiry form and tracker. It shows the shape of work a client could receive. This is not commissioned work or client-results proof.
+
+FICTIONAL TUTOR ENQUIRY FORM
+Title: Ask about an English lesson.
+Description: Share your goal so we can explain whether the lesson format fits. This practice form uses no real personal data.
+Questions: Name / Business or contact email / Current level / What you want to practise / Optional note. Mark only necessary fields required.
+Response Sheet columns: Timestamp, Name, Email, Level, Goal, Note, Status, Follow-up date, Owner.
+Status choices: New, Replied, Agreed, Closed.
+Tests: submit fake enquiry → one new row. Set Status to Replied → dropdown accepts it. Open public form in private window → can respond. Open response-sheet link without permission → cannot see private responses.
+Delivery: client-owned Form, linked Sheet, permissions check and one-page use guide.
+No passwords, health records, automated emails or payment system included.
+
+MAKE YOUR VERSION
+1. On your own practice account open Google Forms → Blank form. Add name, business email, requested service and one optional note. Use fake test data.
+2. Click Responses → Link to Sheets → Create a new spreadsheet. Submit one practice response.
+3. Open the Sheet. Add Status, Follow-up date and Owner columns. Use Data → Data validation to add New, Replied, Agreed and Closed status choices.
+4. Check sharing settings. Do not publish response data. Test the public form link in a private browser window.
+5. For delivery recreate or transfer the setup into the client’s approved account, agree access and give a one-page guide. Don’t ask them to share passwords.
+
+FINAL CHECK
+A test enquiry reaches the Sheet, private data stays private, permissions match the client’s approval and the owner can update a status.

@@ -1,0 +1,24 @@
+WHAT THIS FILE IS
+A filled fictional example for One-page business website. It shows the shape of work a client could receive. This is not commissioned work or client-results proof.
+
+PRACTICE DEMO: BrightStep English tutor
+Headline: English lessons for adults who want more speaking practice.
+Introduction: Choose a one-to-one lesson focused on the conversations you need. Tell us your current level and what you want to practise before we agree a lesson plan.
+Services: Conversation practice / Workplace vocabulary / Guided reading.
+FAQ: How do I start? Send your level and learning goal. What happens first? We discuss your goal and explain the lesson format. Is progress guaranteed? No. Lesson outcomes depend on many factors.
+Button: Ask about a lesson.
+Approved demo facts: adult learners, online lessons, enquiry before booking. No invented prices or results.
+Delivery: index.html, tested preview URL, editable source, link-test list and update guide.
+The accompanying website-demo.html shows a complete static practice page. It has no booking backend.
+
+MAKE YOUR VERSION
+1. Pick one business type you understand. Write three common customer questions and one useful next action.
+2. Open ChatGPT, Claude or Z.ai. Paste the website prompt below with those facts. Ask for one self-contained index.html file. Copy only the HTML, without markdown fences, and save it in a new folder. The included website-starter.txt is also a complete editable practice page. Rename a copy to index.html before opening or uploading it.
+3. On Windows use Notepad → Save as → All files → index.html → UTF-8. On Mac use TextEdit → Format → Make Plain Text → save index.html without .txt. Open the file in a browser.
+4. Ask the AI to fix one problem at a time. Paste the relevant code and say what you clicked, expected and saw. Replace sample contact links before sharing.
+5. Open Cloudflare dashboard → Workers & Pages → Create application → Pages / Get started → Drag and drop. Choose a project name, upload the folder and select Deploy site. Labels may move. Use the Direct Upload source below if they differ.
+6. Open the pages.dev URL on your phone. Tap every contact link and check text at a narrow width. Send this preview to a suitable buyer, with permission.
+7. For paid delivery, agree the client-owned account, domain cost, maintenance and changes in writing. Send files and a short update guide. A static page has no working payment system or database by default.
+
+FINAL CHECK
+Every link works, phone text fits, facts are approved, images have rights, and a new visitor can find the contact button. No fake working form.

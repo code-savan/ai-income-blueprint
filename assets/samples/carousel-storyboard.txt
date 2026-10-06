@@ -1,7 +1,7 @@
 CAROUSEL / 7 SLIDES / 1080x1350
 1. Would you pay for this AI draft? Show a short vague line.
 2. The problem: unsupported claims and no clear next step. Mark the exact words.
-3. Start with facts: reader, offer, approved details, CTA and rights. Show the filled brief.
+3. Start with facts: reader, offer, approved details, Next action and rights. Show the filled brief.
 4. Rewrite for one reader question. Show raw -> edited copy.
 5. Same process, different buyers: fitness coach / repair service / online shop. Use three short excerpts.
 6. A usable handoff: calendar, captions, layouts, QA and instructions. Show the real files.

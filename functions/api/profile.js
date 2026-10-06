@@ -6,7 +6,7 @@ export async function onRequestGet(context) {
   if (!userId) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401 });
   const user = await context.env.DB.prepare(`SELECT email, name, avatar_url, created_at FROM users WHERE id = ?`).bind(userId).first();
   if (!user) return new Response(JSON.stringify({ error: 'Not found' }), { status: 404 });
-  const progress = await context.env.DB.prepare(`SELECT COUNT(*) as total, SUM(done) as done FROM progress WHERE user_id = ? AND module NOT LIKE 'selected-track-%'`).bind(userId).first();
+  const progress = await context.env.DB.prepare(`SELECT COUNT(*) as total, SUM(done) as done FROM progress WHERE user_id = ? AND module NOT LIKE 'selected-%'`).bind(userId).first();
   const curriculumSteps = 52; // 6 in A/F; 5 in the other eight playbooks
   const total = Math.max(curriculumSteps, progress ? progress.total || 0 : 0);
   const done = progress ? progress.done || 0 : 0;

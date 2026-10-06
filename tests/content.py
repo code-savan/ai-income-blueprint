@@ -4,10 +4,13 @@ from urllib.parse import urlparse,unquote
 import sys
 R=Path(__file__).resolve().parents[1];sys.path.insert(0,str(R))
 from curriculum.books import BOOKS
+from curriculum.choices import CHOICES,SERVICES,PRODUCTS
 class Parse(HTMLParser):
  def __init__(self):super().__init__(convert_charrefs=True);self.links=[];self.ids=[];self.prompts=0;self.elements=[]
  def handle_starttag(self,tag,attrs):
   a=dict(attrs)
+  if tag=='a' and a.get('href','').startswith('/playbooks/'):
+   assert a.get('target')=='_blank' and 'noopener' in a.get('rel',''),a
   self.elements.append((tag,a))
   if 'id' in a:self.ids.append(a['id'])
   if 'data-prompt-item' in a:self.prompts+=1
@@ -48,3 +51,22 @@ for b in BOOKS:
  assert all(len(s['prompt'])>100 and s['check'] and s['output'] for s in b['steps'])
 assert not errors,'\n'.join(errors)
 print(f'{count} HTML pages: local links, IDs, 10 playbooks, 50 + 300 prompts and all downloads pass.')
+
+assert len(SERVICES)==len(PRODUCTS)==10
+for track,cs in CHOICES.items():
+ assert len({c['id'] for c in cs})==10
+ for c in cs:
+  assert len(c['recipe'])>=5 and c['pro'] and c['con'] and c['check'] and c['source'].startswith('https://')
+  asset=c['id']+('-example.txt' if track=='service' else '-starter.csv')
+  assert (R/'assets/samples'/asset).is_file()
+for b in BOOKS:
+ p=Parse();p.feed((R/b['path']).read_text())
+ assert any('data-context-choice' in a for _,a in p.elements)
+ choices={a['data-choice-content'] for _,a in p.elements if 'data-choice-content' in a}
+ expected=[c['id'] for t,cs in CHOICES.items() for c in cs if b['track'] in [t,'both']]
+ assert set(expected)<=choices
+p=Parse();p.feed((R/'choose.html').read_text())
+assert len([a for _,a in p.elements if 'data-offer-id' in a])==20
+assert len([a for _,a in p.elements if a.get('data-save-choice')=='custom'])==2
+p=Parse();p.feed((R/'quiz.html').read_text());assert 'reset-consent' in p.ids and 'reset-start' in p.ids
+print('20 researched offer choices, individual recipes, shared-guide examples and confirmed reset UI pass.')

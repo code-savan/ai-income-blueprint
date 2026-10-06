@@ -1,0 +1,20 @@
+WHAT THIS FILE IS
+A filled fictional example for Product listing descriptions. It shows the shape of work a client could receive. This is not commissioned work or client-results proof.
+
+FICTIONAL PRODUCT: DeskKind organizer
+Verified practice facts: three compartments, 20 × 10 × 8 cm, intended for pens and small notes.
+Title: Three-compartment desk organizer, 20 × 10 × 8 cm.
+Description: Keep pens and small notes together in a compact desk organizer. It has three compartments and measures 20 × 10 × 8 cm. Measure your available space before ordering. Check the seller’s current material, price, delivery and return details on the real product page.
+FAQs: Will it fit? Compare the stated dimensions with your desk. What fits inside? The brief names pens and small notes. What is the material? Unknown until the owner confirms. Is delivery free? Check the real seller terms. Does it improve productivity? No measured result is claimed.
+Image text: Check the size / Three compartments / See current delivery terms.
+Delivery target: five product sections from five approved fact sheets. This is one complete practice listing.
+
+MAKE YOUR VERSION
+1. Ask for a product fact sheet with dimensions, materials, package contents and approved claims.
+2. Open Google Docs. Create one section per product with the original text and confirmed facts.
+3. Paste the prompt below. Write a clear title, factual description and answers to likely fit questions.
+4. Compare every measurement and claim with the fact sheet. Ask the owner about gaps instead of guessing.
+5. Deliver five editable listings and a check sheet. Uploading to the shop is optional and requires separate authorized access.
+
+FINAL CHECK
+All five listings match actual products and explain size, contents, compatibility and the real next step.

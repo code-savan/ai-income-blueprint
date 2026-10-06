@@ -1,69 +1,83 @@
-# Record five useful demonstrations today
+# Five scenes to record tonight
 
-The goal is to show what a buyer can do with the Blueprint. Record five screen sessions once, then cut seven posts from them. Use your own voice, readable crops and the actual interface. Label the worked examples fictional when showing their business details.
+Your target is one or two real sales before Friday ends, October 9, 2026. It is a work target, not an assured result. Keep the $97 launch price if that is the actual current checkout. Do not claim a proven $300–$500 value from the amount of written material alone.
 
-Keep $97 as the launch offer if it matches your live checkout. The stronger interface and curriculum make the offer easier to demonstrate; they do not prove a $300–$500 market price. A higher tier would need evidence that beginners can finish the work, original recorded walkthroughs, tested editable files and dependable feedback/support with a scope you can sustain.
+Record these five screen sessions once. Cut seven short videos from them and reuse the still screens for carousels. Keep each final video around 25–40 seconds. Use your own voice, readable crops and the actual interface. Mention that the practice examples use fictional facts when showing them.
 
-## Prepare once
+## Before recording
 
-1. Sign in and open Start here. If your track is already saved, open Profile & track settings and choose Review or change my track for the quiz recording. Do not erase your saved work.
-2. Open My next steps, Playbook F, the content-delivery reference, the Freelancer Project Starter, Action prompts and Tools & costs in tabs.
-3. Open the public preview while signed out. Use that public link when replying to requests; full samples require member access.
-4. Verify your actual checkout price, billing type, access and refund terms. The marketing site and Whop listing are separate from this app repository. Do not quote unverified bonuses or support promises.
-5. Record clean screen footage with notifications closed. Avoid filming profile email, private notes, customer details or actual account balances.
-6. Capture 30–60 seconds per screen action. Pause the cursor on the useful output. Crop the edit around that output while retaining enough context to show what it is.
+1. Open My next steps and Choose my offer. Pick a service you understand for the demo. Choosing a different offer keeps saved work. Changing the service/product track clears work after explicit confirmation and saving the quiz result. Do not reset an account with work you need just to film the quiz.
+2. You can show the reset warning and leave using Keep my current route. For a complete first-time quiz recording, use a fresh demo account or intentionally export any needed trackers before you reset your own account.
+3. Open the client research step, service examples, product examples, 50 Action prompts and Tools & costs in tabs. Playbook links open new tabs, keeping your task list available.
+4. Show the product ideas through Playbook B’s example selector or Product examples. You do not need to erase a service route just to inspect product examples.
+5. Check your actual checkout price, billing type, purchase/access link and refund terms. The marketing page and Whop listing are separate from this repository. Don’t announce bonuses or support you do not actually provide.
+6. Hide email, customer information, private notes and notifications. Film actual outputs, not balances or invented client results.
 
-## The five scenes
+## The five recording sessions
 
-| Scene | Exact screen actions | Opening line | Point to land |
+| Scene | Exact screens and actions | Hook | What the viewer should see |
 |---|---|---|---|
-| 1. Choose a route, see the next task | Start here → Get my track, or Profile → review track if already selected. Show one quiz question, the saved result, My next steps and its route diagram. Open the matching guide. | “If every AI money idea sounds possible, start by choosing the work you can actually finish.” | Services and products have different starting sequences. The Blueprint makes the next output visible. |
-| 2. Turn a generic draft into useful work | Worked examples → content delivery. Show the approved brief, then raw and edited captions. Switch the selector between coach, repair business and shop. Hold on the relevant facts. | “AI writing ‘the best business’ is not a finished client deliverable. Here’s the edit that matters.” | The process is reusable across business types. Actual facts and reader questions determine the copy. |
-| 3. Show the whole service handoff | In the same reference, scroll through calendar, seven captions, three layouts, QA and handoff. Return to Playbook F, advance one chapter and copy its prompt. | “Here’s what a small content service actually includes when the client needs to use it.” | You sell defined work with an understandable handoff. Show files, scope and quality checks, not promised leads. |
-| 4. Show a product someone can use | Open Freelancer Project Starter. Show the ten-minute task, filled example and blank brief. Enter a fictional reader/task in a field, then show scope, approval message and review log. | “A digital product needs to help someone finish a task. An AI outline is only the start.” | A complete product includes instructions, a filled example and a reusable worksheet. Save/print before closing temporary fields. |
-| 5. Free route, optional paid upgrade | Open a playbook’s Tool route. Toggle Free tools → Optional paid tools. Open Action prompts, expand one prompt and copy it. In Tools, show recognizable logos and the calculator. | “You can make the first sample before buying an AI video subscription.” | Start with available tools. Paid plans address a production bottleneck; output capacity depends on actual costs and retries. |
+| 1. Choose work you can actually sell | Choose my offer → Help me choose → answer three questions → inspect one suggested service → show what it includes, practice time and tradeoff → choose it → My next steps. | “You don’t need another list of AI money ideas. You need one thing you can make and sell.” | A saved offer, a clear next task and a matching guide. |
+| 2. Find clients beyond Google Maps | Playbook A → step 2 → open Instagram instructions, then Facebook Groups → show exact searches and verification → copy the research prompt → show the two-stage ChatGPT-to-Manus/Z.ai process. | “A copywriter doesn’t have to hunt only on Google Maps. Here are five places to look and what to check.” | Different channels, a checked-source row and a prompt that asks about missing facts. Do not imply the fictional research rows are real leads. |
+| 3. Show what a service buyer gets | Service examples → select Landing-page copy → show the vague original, clear headline, FAQs and next step → switch to One-page business website → show the complete starter file and publishing recipe → return to F’s first-making step. | “This is the difference between ‘I can use AI’ and a service someone can inspect.” | Specific finished work, required facts and checks. The website recipe uses a static preview, with paid/commercial hosting limits explained. |
+| 4. Show a small product doing a useful task | Product examples → select Job-application tracker or Freelancer project-start kit → show the filled practice worksheet and build steps → open the complete Freelancer Project Starter → fill one fictional task and explain the blank buyer version. | “A digital product should help someone finish a task. Here is what that looks like.” | Instructions, filled example, blank worksheet and a concrete first action. Practice CSVs are starters, not complete products ready to resell unchanged. |
+| 5. Show the practical toolkit | A playbook → free/paid tools → Tools & costs → Manus/Z.ai and Cloudflare/Vercel limits → Action prompts → copy one of the 50 → show saved tasks/tracker. | “You can start with free tools. The guide tells you when paying would actually help.” | Free paths, optional upgrades, usable prompts and saved work. Use hypothetical calculator inputs only if clearly labeled. |
 
-## Readable 25–40 second edits
+For each scene capture a clean result shot first. Then record the clicks that explain it. Leave the cursor still for two seconds on the useful output. Record two hook takes so later edits have different openings.
 
-**Scene 1 voiceover:** “Services mean making a defined deliverable for a client. Products mean packaging a reusable solution. I answer six short questions, the route saves, and this screen shows the next unfinished task. I can open its guide and work one step at a time. If I want to change routes later, that lives in settings.”
+## A complete 30-second edit
 
-**Scene 2 voiceover:** “This draft says ‘best’ and adds urgency the brief never supplied. I check the real offer, reader and next action, then rewrite the caption to answer a useful question. Watch the context change from coach to repair business to shop. The process stays the same; the facts change.”
+- 0–3 seconds: show the finished output and say the hook.
+- 3–7 seconds: show the starting problem.
+- 7–18 seconds: show two real clicks or making actions while explaining them.
+- 18–25 seconds: show the check or the finished file in use.
+- 25–30 seconds: one next action. “Ask for PREVIEW if you want to inspect the example.”
 
-**Scene 3 voiceover:** “Seven captions alone can leave someone guessing. This example has the brief, a calendar, layouts, a quality checklist and a handoff explaining which file to use. The playbook breaks the delivery into steps and gives you a prompt and pass check for each. This is a fictional delivery reference.”
+Use the public preview at https://app.zerotopaidwithai.com/preview when someone requests it. Deliver manually. Do not promise an automatic message system that isn’t installed. Show a screenshot crop that reads on a phone. Export a clean 1080 × 1920 MP4 and upload natively without another platform’s watermark.
 
-**Scene 4 voiceover:** “This small product gives a freelancer a first task, a filled example, a project brief, scope checks and an approval message. The buyer can see what completion looks like. Before selling your own version, test it with someone unfamiliar with the file and confirm how they receive it.”
+## Tonight’s recording order
 
-**Scene 5 voiceover:** “The free route uses a writing tool, editor and delivery folder. A paid scene generator is optional. Before buying, I enter the actual credits and model cost, allow for retries and calculate usable edits. These starting figures are hypothetical. The subscription helps production; it doesn’t supply customers.”
+If it is already later than your planned 5:32 PM start, use the relative blocks instead of trying to follow old clock times.
 
-Use one relevant ending per edit: “Ask for PREVIEW if you want to inspect the example.” Deliver the link manually when someone requests it. Do not promise an automatic DM until a working integration exists.
+1. 15 minutes: check checkout/preview links, choose your demonstration offer and open the five sessions in tabs.
+2. 60–90 minutes: record the five sessions, two hooks each and clean output stills.
+3. 45 minutes: finish the best video from Scene 3. Post it tonight with one preview CTA. Do not wait for all seven edits.
+4. 90–120 minutes: duplicate the edit project and finish four more videos. Check captions, phone readability and links.
+5. 45–60 minutes: cut two alternate angles, write captions and schedule the next posts using the features your accounts actually offer.
+6. 20 minutes: reply to requested previews and note the buyer’s actual question. Stop work at a sensible point rather than posting an unchecked batch.
 
-## Seven-day publishing sequence
+## Seven posts from five recordings
 
-| Day | Post from the recordings | Purpose | Carousel reuse |
-|---|---|---|---|
-| Tuesday, Oct 6 | Scene 2: generic draft → useful edit | Show a concrete difference immediately | Raw line / missing facts / approved brief / edit / check / preview CTA |
-| Wednesday, Oct 7 | Scene 3: complete handoff | Make the product’s practical depth visible | Brief / calendar / captions / layouts / QA / handoff / CTA |
-| Thursday, Oct 8 | Scene 1: route → next step | Answer “Where do I begin?” | Services vs products / quiz / saved route / next output / guide / settings |
-| Friday, Oct 9 | Scene 4: complete reusable product | Explain the product route and show usable assets | Task / filled example / worksheet / scope / approval / review |
-| Saturday, Oct 10 | Scene 5: free vs paid tools | Address the subscription-cost concern | Free stack / optional upgrade / costs / retry allowance / capacity / decision |
-| Sunday, Oct 11 | Scene 2 alternate: three buyers, one process | Show the Blueprint is not limited to one niche | Coach / repair / shop / what changes / what stays / useful output |
-| Monday, Oct 12 | Scene 1 + 3 + 5: concise product tour | State the verified offer and contents | Track / guided reader / examples / prompts / tools / $97 offer if verified |
+| Day | Video | Carousel reuse |
+|---|---|---|
+| Tuesday, Oct 6 | Scene 3: vague copy → clear service sample | Original / missing facts / revised headline / FAQ / check / preview |
+| Wednesday, Oct 7 | Scene 2: find clients in Groups and Instagram | Buyer / search phrases / useful request / verified source / message / next step |
+| Thursday, Oct 8 | Scene 1: interview → offer → next task | Work preference / small package / pros / tradeoff / next task / preview |
+| Friday, Oct 9 | Scene 4: a download’s first useful task | Buyer problem / first action / filled row / blank version / test / preview |
+| Saturday, Oct 10 | Scene 5: free tools and optional paid research | Free stack / Manus limits / Z.ai / hosting choice / copyable prompt / next step |
+| Sunday, Oct 11 | Scene 3 alternate: a novice website-building path | Approved facts / complete HTML / save file / publish preview / phone check / scope |
+| Monday, Oct 12 | Scenes 1 + 2 + 4: a concise product tour | Track / offer / research / sample / prompts / real contents and purchase link |
 
-Record alternate hooks today so the second cut has a different opening. Publish each native export without another platform’s watermark. Use carousels when the step is clearer in slides; do not assume Instagram guarantees reach for a format. Build the designed carousel assets separately after choosing the strongest angle.
+Use slides when the steps are easier to read than watch. There is no universal promise that Instagram boosts carousels. Compare your own useful replies and purchase actions, not only views. Design the final carousel assets after choosing the strongest lesson.
 
-## The Tuesday–Friday sales work
+## Sales work through Friday
 
-The goal is two collected sales by Friday, Oct 9, before Saturday. It is a target, not an assured result. Two $97 sales are $194 gross before fees, refunds and other costs; gross sales are not cash in your bank.
+Post the first strong demonstration tonight. Each day answer real requests, send the promised preview first and ask: “Are you trying to sell a service or a product, and which step is confusing?” Use their answer to show the relevant screen. Send the actual purchase link when the offer fits. Revisit only conversations where follow-up is appropriate or invited.
 
-- Tuesday: publish the before/after, make the preview easy to request, and answer relevant existing inquiries. Record the five scenes. Check payout verification and available withdrawal methods in your own account.
-- Wednesday: publish the handoff. Deliver requested previews first. Ask whether the interested person is building a service or a product and what step is blocking them. Use that answer before sending an offer.
-- Thursday: publish the route demonstration. Return to conversations where follow-up was invited. Answer the actual objection with the relevant screen or example.
-- Friday: publish the product demonstration. Review requests, delivered previews, useful conversations, checkout actions where observable and collected purchases. Improve the point where people stop. Do not invent a deadline or use your personal cash need as sales pressure.
+A plain offer reply: “The AI Income Blueprint is $97 [confirm billing]. It helps you choose an offer and follow the steps to research, make, check and show it to buyers. It has ten playbooks, ten service choices, ten product ideas, examples, free/paid tool paths, 50 action prompts and saved tasks/trackers. Here are the actual contents and terms: [verified purchase link]. It does not promise a sale.”
 
-Short offer reply after relevant interest: “The AI Income Blueprint is $97 one-time [confirm checkout]. It includes the saved track, ten guided playbooks, worked examples, free/paid tool routes, 50 action prompts plus the reference vault, and saved tasks/trackers. Here’s the actual offer page: [verified link]. It gives the process and examples; it doesn’t promise a sale.”
+Record requests, previews sent, relevant replies, checkout actions where observable, paid orders and available payout separately. Two $97 orders are $194 gross before fees, refunds and costs. They are not automatically $194 in your bank.
 
-Whop may review first sales/withdrawals and applies account, location and method requirements. Confirm the available balance and actual processing estimate in your account. Do not budget on automatic next-working-day arrival.
+## Payout timing
 
-## Where the value can grow
+Whop’s official troubleshooting guide says sales normally become available to withdraw in 1–4 business days. Standard withdrawals add processing time. Its payout-method guide says up to five business days, and troubleshooting allows up to ten for Whop and bank processing. Instant methods can be faster where actually available and not under review.
 
-Use the first buyers to test whether they can finish one complete output without help. Ask where they stalled, what input was missing and whether the handoff was usable. Improve those exact steps. For a $300–$500 tier, add your original narrated full walkthroughs, tested editable files and a clearly scoped review/support service, backed by authentic outcomes and buyer feedback. More playbooks alone do not establish that price.
+A Thursday sale does not guarantee Friday cash. A Friday sale does not mean Saturday is the next business day. Weekends and bank holidays are excluded from standard business-day processing. Your actual method, country, available/pending balance and displayed estimate control the answer. In Whop open Dashboard → Balances → review Pending and Available → Withdraw → inspect the eligible method and estimate. Do this before budgeting against a weekend deadline.
+
+Sources checked October 6, 2026:
+- https://docs.whop.com/manage-your-business/manage-payouts/payout-methods
+- https://docs.whop.com/manage-your-business/manage-payouts/troubleshoot-payouts
+
+## What would justify a higher price
+
+The improved structure makes the $97 offer more concrete and easier to demonstrate. To test a $300–$500 tier, add your original full narrated walkthroughs, tested editable finished deliverables and a specific review/support service you can sustain. Observe real beginners completing the first task without help, fix their exact stumbling points and collect authentic feedback with permission. More pages or invented bonus prices do not establish market value.

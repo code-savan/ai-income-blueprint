@@ -1,4 +1,5 @@
-import {ROUTES,BOOK_PATHS,diagnose,capacity,csvText} from './logic.js?v=20261006-sidebar';
+import {ROUTES,BOOK_PATHS,diagnose,capacity,csvText} from './logic.js?v=20261006-offers1';
+import {OFFER_META} from './offers.js?v=20261006-offers1';
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 async function api(path,body){
  const init={credentials:'include'};if(body!==undefined){init.method='POST';init.headers={'Content-Type':'application/json'};init.body=JSON.stringify(body);}
@@ -7,9 +8,25 @@ async function api(path,body){
 }
 function status(el,msg){if(el)el.textContent=msg;}
 function download(name,text,type='text/plain'){const u=URL.createObjectURL(new Blob([text],{type})),a=document.createElement('a');a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),1000);}
-const ROUTE_BOOKS = {service:['F','G','H','A','E','C','I','D'],product:['B','J','C','E','I','D']};
+const ROUTE_BOOKS = {service:['A','F','G','I','C','E','D','H'],product:['B','C','E','I','D','J','H','G']};
+let activeTrack=null,activeChoice=null,resetConfirmed=false,initialTrack=null;
+function newTab(a){a.target='_blank';a.rel='noopener';return a;}
+function applyChoice(choice){
+ activeChoice=choice;const meta=OFFER_META[choice],own=choice==='custom';
+ $$('[data-choice-name]').forEach(x=>x.textContent=own?'My own '+(activeTrack==='service'?'service':'product'):(meta?.name||'Choose your first offer.'));
+ $$('[data-choice-description]').forEach(x=>x.textContent=own?'Use the shared steps and the closest example. No text entry is required.':(meta?.sell||'Pick one small offer before starting the work.'));
+ $$('[data-choice-edit]').forEach(x=>x.textContent=choice?'Change my offer ↗':'Choose my offer →');
+ $$('[data-choice-next]').forEach(x=>x.hidden=!choice);
+ $$('[data-offer-needed]').forEach(x=>x.hidden=!!choice);$$('[data-offer-ready]').forEach(x=>x.hidden=!choice);
+ const select=$('[data-context-choice]');if(select){if([...select.options].some(o=>o.value===choice))select.value=choice;setExample(select.value);}
+ if($('#task-track')&&choice)loadTasks();
+}
+function setExample(id){$$('[data-choice-content]').forEach(x=>x.hidden=x.dataset.choiceContent!==id);}
+$('[data-context-choice]')?.addEventListener('change',e=>setExample(e.target.value));
+if($('[data-context-choice]'))setExample($('[data-context-choice]').value);
 function applyTrack(track){
- const r=ROUTES[track];
+ activeTrack=track;const r=ROUTES[track];
+ $$('[data-choice-track]').forEach(x=>x.hidden=x.dataset.choiceTrack!==track);
  $$('[data-start-new]').forEach(el=>el.hidden=!!r);
  $$('[data-start-saved]').forEach(el=>el.hidden=!r);
  $$('[data-no-track]').forEach(el=>el.hidden=!!r);
@@ -20,17 +37,26 @@ function applyTrack(track){
  $$('[data-sidebar-track]').forEach(el=>el.textContent='SELECTED / '+(track==='service'?'SERVICES':'PRODUCTS'));
  $$('[data-route-map]').forEach(el=>el.hidden=el.dataset.routeMap!==track);
  const filter=$('#book-filter');if(filter){filter.value=track;filterBooks(track);}
- const related=$('[data-related-books]');if(related){related.replaceChildren();for(const letter of ROUTE_BOOKS[track]){const p=document.createElement('p'),a=document.createElement('a');a.href=BOOK_PATHS[letter];a.textContent='Playbook '+letter+' / '+BOOK_TITLES[letter];p.append(a);related.append(p);}}
- if($('#task-track')){$('#task-track').value=r.list;loadTasks();}
+ const related=$('[data-related-books]');if(related){related.replaceChildren();for(const letter of ROUTE_BOOKS[track]){const p=document.createElement('p'),a=document.createElement('a');a.href=BOOK_PATHS[letter];a.textContent='Playbook '+letter+' / '+BOOK_TITLES[letter];p.append(newTab(a));related.append(p);}}
+ if($('#task-track'))$('#task-track').value=r.list;
+ api('/api/choice').then(d=>{if(d.track===activeTrack)applyChoice(d.choice);}).catch(e=>status($('[data-choice-status]'),e.message));
  status($('[data-track-status]'),'');
 }
-const BOOK_TITLES={A:'Find and pitch your first client',B:'Build a useful digital product',C:'Faceless demonstration videos',D:'Repeatable delivery and economics',E:'Carousels with a useful result',F:'Complete content-service delivery',G:'Focused copywriting project',H:'Product video creative',I:'Sample-to-sale follow-up',J:'Eligible affiliate demonstrations'};
-async function saveTrack(track){if(!ROUTES[track])return;await api('/api/track',{track});return ROUTES[track];}
-if($('[data-sidebar-track]')) api('/api/track').then(d=>applyTrack(d.track)).catch(e=>{
- status($('[data-track-status]'),e.message);
+const BOOK_TITLES={A:'Find and pitch your first service clients',B:'Build and test a small product',C:'Record seven demonstration videos',D:'Improve using real numbers',E:'Make a useful carousel',F:'Make and deliver your chosen service',G:'Write clear words for your offer',H:'Optional AI visuals',I:'Help an interested person take the next step',J:'Check eligibility and demonstrate an affiliate item'};
+async function saveTrack(track){if(!ROUTES[track])return;await api('/api/track',{track,...(resetConfirmed?{reset:true,confirm:'CLEAR_MY_WORK',expectedTrack:initialTrack}:{})});return ROUTES[track];}
+if($('[data-sidebar-track]')) api('/api/track').then(d=>{
+ initialTrack=d.track;applyTrack(d.track);
+ if($('#quiz-body')){
+  if(d.track){$('#route-reset').hidden=false;$('#quiz-body').hidden=true;}
+  else $('#quiz-body').hidden=false;
+ }
+}).catch(e=>{
+ status($('[data-track-status]'),e.message);status($('#quiz-status'),e.message);
  const start=$('[data-start-new]');if(start)start.hidden=false;
  const empty=$('[data-no-track]');if(empty)empty.hidden=false;
 });
+$('#reset-consent')?.addEventListener('change',e=>$('#reset-start').disabled=!e.target.checked);
+$('#reset-start')?.addEventListener('click',()=>{if(!$('#reset-consent').checked)return;resetConfirmed=true;$('#route-reset').hidden=true;$('#quiz-body').hidden=false;status($('#quiz-status'),'Reset confirmed. Saved work is cleared only when you save the final quiz result.');});
 const quiz=$('#track-quiz');let questionIndex=0;
 function showQuestion(){
  $$('[data-question]').forEach((el,i)=>{el.hidden=i!==questionIndex;el.disabled=i!==questionIndex;});
@@ -45,11 +71,11 @@ function quizResult(track){
  const k=document.createElement('span');k.className='eyebrow';k.textContent='Your starting point / saved';
  const h=document.createElement('h2');h.textContent=track==='service'?'Start with a service.':'Start with a reusable product.';
  const p=document.createElement('p');p.textContent=r.action;
- const a=document.createElement('a');a.className='button';a.href='/checklist.html';a.textContent='Show my next steps ↗';
+ const a=document.createElement('a');a.className='button';a.href='/choose.html';a.textContent='Choose what I will sell →';
  panel.append(k,h,p,a);
 }
 async function saveQuiz(track){
- try{status($('#quiz-status'),'Saving your track…');await saveTrack(track);quizResult(track);status($('#quiz-status'),'Saved. Your existing work stays in your account.');}
+ try{status($('#quiz-status'),'Saving your track…');await saveTrack(track);quizResult(track);status($('#quiz-status'),resetConfirmed?'Saved. Previous work was cleared. Choose your new offer to start.':'Saved. Now choose one offer.');}
  catch(e){status($('#quiz-status'),e.message);}
 }
 async function advanceQuiz(){
@@ -92,11 +118,11 @@ const progress=$$('[data-progress]');if(progress.length){api('/api/progress').th
 function updateReaderProgress(){if($('#reader-progress'))$('#reader-progress').value=progress.filter(b=>b.checked).length;}
 let tasksVersion=0,taskRows=[];
 function taskStats(){const done=taskRows.filter(x=>x.done).length,total=taskRows.length,pct=total?Math.round(done/total*100):0;$('#task-progress').value=pct;status($('#tasks-status'),`${done} / ${total} tasks complete · changes save to your account`);window.dispatchEvent(new CustomEvent('journalProgress',{detail:{pct,done,total}}));
- const box=$('#next-task'),next=taskRows.find(x=>!x.done);box.hidden=false;box.replaceChildren();const k=document.createElement('span');k.className='eyebrow';k.textContent=next?'Next unfinished task':'This list is complete';const h=document.createElement('h3');h.textContent=next?next.title:'Review the work and actual results';const p=document.createElement('p');p.textContent=next?next.detail:'Use feedback and your scorecard to choose one improvement.';box.append(k,h,p);const letter=next?.detail.match(/(?:^|\s)([A-J])\./)?.[1];if(letter||!next){const a=document.createElement('a');a.className='button';a.href=BOOK_PATHS[letter||'D'];a.textContent='Open the matching guide';box.append(a);}
+ const box=$('#next-task'),next=taskRows.find(x=>!x.done);box.hidden=false;box.replaceChildren();const k=document.createElement('span');k.className='eyebrow';k.textContent=next?'Next unfinished task':'This list is complete';const h=document.createElement('h3');h.textContent=next?next.title:'Review the work and actual results';const p=document.createElement('p');p.textContent=next?next.detail:'Use feedback and your scorecard to choose one improvement.';box.append(k,h,p);const letter=next?.detail.match(/(?:^|\s)([A-J])\./)?.[1];if(letter||!next){const a=document.createElement('a');a.className='button';a.href=BOOK_PATHS[letter||'D'];a.textContent='Open the matching guide ↗';box.append(newTab(a));}
  if(next){const complete=document.createElement('button');complete.className='secondary finish-task';complete.textContent='I finished this task';complete.addEventListener('click',async()=>{complete.disabled=true;try{await api('/api/journal/checklist',{action:'toggle',id:next.id,done:true});next.done=true;renderTasks();taskStats();}catch(e){status($('#tasks-status'),e.message);const error=document.createElement('p');error.className='status';error.setAttribute('role','alert');error.textContent=e.message;box.append(error);complete.disabled=false;}});box.append(complete);}
 }
 async function loadTasks(){if(!$('#task-list'))return;const version=++tasksVersion,track=$('#task-track').value;status($('#tasks-status'),'Opening saved tasks…');try{const d=await api('/api/journal/checklist?track='+track);if(version!==tasksVersion)return;taskRows=d.tasks;renderTasks();taskStats();}catch(e){if(version===tasksVersion)status($('#tasks-status'),e.message);}}
-function renderTasks(){const box=$('#task-list');box.replaceChildren();for(const row of taskRows){const item=document.createElement('article');item.className='task';item.dataset.done=!!row.done;const top=document.createElement('label');top.className='task-top';const check=document.createElement('input');check.type='checkbox';check.checked=!!row.done;const title=document.createElement('span');title.className='task-title';title.textContent=row.title;top.append(check,title);const detail=document.createElement('p');detail.textContent=row.detail;detail.className='muted';const notes=document.createElement('details'),summary=document.createElement('summary');summary.textContent='My notes'+(row.note?' · saved':'');const field=document.createElement('textarea');field.value=row.note||'';field.maxLength=5000;field.setAttribute('aria-label','Notes for '+row.title);const save=document.createElement('button');save.className='secondary';save.textContent='Save note';const msg=document.createElement('span');msg.className='inline-status';msg.setAttribute('role','status');notes.append(summary,field,save,msg);item.append(top,detail,notes);const m=row.detail.match(/(?:^|\s)([A-J])\./);if(m){const a=document.createElement('a');a.href=BOOK_PATHS[m[1]];a.textContent='Open playbook '+m[1];item.append(a);}box.append(item);
+function renderTasks(){const box=$('#task-list');box.replaceChildren();for(const row of taskRows){const item=document.createElement('article');item.className='task';item.dataset.done=!!row.done;const top=document.createElement('label');top.className='task-top';const check=document.createElement('input');check.type='checkbox';check.checked=!!row.done;const title=document.createElement('span');title.className='task-title';title.textContent=row.title;top.append(check,title);const detail=document.createElement('p');detail.textContent=row.detail;detail.className='muted';const notes=document.createElement('details'),summary=document.createElement('summary');summary.textContent='My notes'+(row.note?' · saved':'');const field=document.createElement('textarea');field.value=row.note||'';field.maxLength=5000;field.setAttribute('aria-label','Notes for '+row.title);const save=document.createElement('button');save.className='secondary';save.textContent='Save note';const msg=document.createElement('span');msg.className='inline-status';msg.setAttribute('role','status');notes.append(summary,field,save,msg);item.append(top,detail,notes);const m=row.detail.match(/(?:^|\s)([A-J])\./);if(m){const a=document.createElement('a');a.href=BOOK_PATHS[m[1]];a.textContent='Open playbook '+m[1]+' ↗';item.append(newTab(a));}box.append(item);
  check.addEventListener('change',async()=>{check.disabled=true;const desired=check.checked;try{await api('/api/journal/checklist',{action:'toggle',id:row.id,done:desired});row.done=desired;item.dataset.done=desired;taskStats();}catch(e){check.checked=!!row.done;status($('#tasks-status'),e.message);}finally{check.disabled=false;}});
  save.addEventListener('click',async()=>{save.disabled=true;try{await api('/api/journal/checklist',{action:'note',id:row.id,note:field.value});row.note=field.value;msg.textContent='Saved';summary.textContent='My notes · saved';}catch(e){msg.textContent=e.message;}finally{save.disabled=false;}});
  if(row.is_custom){const del=document.createElement('button');del.className='secondary';del.textContent='Delete personal task';del.addEventListener('click',async()=>{del.disabled=true;try{await api('/api/journal/checklist',{action:'delete',id:row.id});loadTasks();}catch(e){msg.textContent=e.message;del.disabled=false;}});notes.append(del);}
@@ -111,3 +137,38 @@ $('#sheet-type')?.addEventListener('change',loadSheet);$('#sheet-export')?.addEv
 $$('[data-brand-image]').forEach(img=>img.addEventListener('error',()=>img.hidden=true));
 
 if(location.hash==='#tasks'&&$('#tasks'))$('#tasks').open=true;
+
+// Save a concrete offer independently of the destructive service/product route reset.
+$$('[data-save-choice]').forEach(button=>button.addEventListener('click',async()=>{
+ const buttons=$$('[data-save-choice]');buttons.forEach(b=>b.disabled=true);
+ status($('[data-choice-status]'),'Saving your offer…');
+ try{const d=await api('/api/choice',{track:activeTrack,choice:button.dataset.saveChoice});applyChoice(d.choice);status($('[data-choice-status]'),'Saved. Opening your next step…');location.href='/checklist.html';}
+ catch(e){status($('[data-choice-status]'),e.message);buttons.forEach(b=>b.disabled=false);}
+}));
+let offerQuestion=0;
+const interview=$('#offer-interview');
+function showOfferQuestion(){
+ $$('[data-offer-question]').forEach((f,i)=>{f.hidden=i!==offerQuestion;f.disabled=i!==offerQuestion;});
+ $('#offer-interview-back').disabled=offerQuestion===0;
+ $('#offer-interview-next').disabled=!interview.querySelector(`[name="oi${offerQuestion}"]:checked`);
+ $('#offer-interview-next').textContent=offerQuestion===2?'Show suggested offers →':'Next question →';
+}
+$('#offer-interview-start')?.addEventListener('click',e=>{e.target.hidden=true;interview.hidden=false;showOfferQuestion();});
+interview?.addEventListener('change',showOfferQuestion);
+$('#offer-interview-back')?.addEventListener('click',()=>{if(offerQuestion>0){offerQuestion--;showOfferQuestion();}});
+$('#offer-interview-next')?.addEventListener('click',()=>{
+ if(!interview.querySelector(`[name="oi${offerQuestion}"]:checked`))return;
+ if(offerQuestion<2){offerQuestion++;showOfferQuestion();return;}
+ const values=[...interview.querySelectorAll('input:checked')].map(x=>x.value);
+ const rows=$$(`[data-choice-track="${activeTrack}"] [data-offer-id]`).filter(r=>values[2]!=='digital'||r.dataset.offerKind!=='affiliate');
+ const score=r=>r.dataset.offerTags.split(',').reduce((n,t)=>n+(values.includes(t)?(t===values[0]?3:1):0),0);
+ const best=rows.map(r=>({r,score:score(r)})).sort((a,b)=>b.score-a.score).slice(0,3);
+ const panel=$('#offer-recommendation');panel.replaceChildren();panel.hidden=false;interview.hidden=true;
+ const h=document.createElement('h3');h.textContent='Three offers to inspect first';
+ const p=document.createElement('p');p.textContent='These match your preferred work and setup. Read the scope and tradeoffs below, then choose one. Free tools still need practice and checking.';panel.append(h,p);
+ best.forEach(({r},i)=>{const b=document.createElement('button');b.className='secondary';b.textContent=(i+1)+'. '+OFFER_META[r.dataset.offerId].name;b.addEventListener('click',()=>{const details=r.querySelector('details');details.open=true;r.scrollIntoView({behavior:'smooth',block:'start'});details.querySelector('summary').focus();});panel.append(b);});
+ const again=document.createElement('button');again.className='secondary';again.textContent='Retake the offer interview';again.addEventListener('click',()=>{panel.hidden=true;interview.hidden=false;offerQuestion=0;showOfferQuestion();});panel.append(again);
+});
+// A playbook keeps the member’s task list available in the original tab.
+$$('a[href^="/playbooks/"]').forEach(newTab);
+window.addEventListener('pageshow',e=>{if(e.persisted)location.reload();});

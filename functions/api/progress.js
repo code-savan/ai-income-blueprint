@@ -27,7 +27,7 @@ export async function onRequestPost(context) {
   try { body = await context.request.json(); } catch { return new Response('Invalid JSON', { status: 400 }); }
   const mod = body.module;
   const done = body.done ? 1 : 0;
-  if (typeof mod !== 'string' || !mod || mod.length > 100 || mod.startsWith('selected-track-')) return new Response('Invalid module', { status: 400 });
+  if (typeof mod !== 'string' || !mod || mod.length > 100 || mod.startsWith('selected-')) return new Response('Invalid module', { status: 400 });
   await context.env.DB.prepare(`INSERT INTO progress (user_id, module, done) VALUES (?, ?, ?) ON CONFLICT(user_id, module) DO UPDATE SET done=excluded.done, updated_at=CURRENT_TIMESTAMP`).bind(userId, mod, done).run();
   return new Response(JSON.stringify({ ok: true }), { headers: { 'Content-Type':'application/json' } });
 }

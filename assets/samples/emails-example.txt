@@ -1,0 +1,24 @@
+WHAT THIS FILE IS
+A filled fictional example for Three welcome or follow-up emails. It shows the shape of work a client could receive. This is not commissioned work or client-results proof.
+
+FICTIONAL SIGNUP: a person requested a workshop planning checklist.
+Email 1 subject: Your workshop checklist
+Preview: Start with the date and the one thing attendees should do.
+Body: Here is the checklist you requested: [real resource link]. Start by writing your date, audience and workshop goal. Then list the first three planning actions. Reply if a heading is unclear.
+Email 2 subject: Choose the first three tasks
+Preview: Keep the plan small enough to finish.
+Body: Open your checklist and add the venue, session outline and materials you need to confirm. Assign a next action and date to each. You do not need a full event system to start.
+Email 3 subject: What is still unclear?
+Preview: Check the costs and owner of each task.
+Body: Before inviting people, check who owns each task and which costs are agreed. If you want the complete planning pack, inspect the actual preview here: [real product link]. Decide whether it fits your event.
+Replace links with working resources before delivery. Send only through the client’s permitted subscriber system. No automated sending included.
+
+MAKE YOUR VERSION
+1. Ask what the subscriber requested and what should happen after each email. Do not collect a mailing list for practice.
+2. In Docs write Email 1: deliver the promised item. Email 2: help them use it. Email 3: answer one question and offer the next step.
+3. Use the prompt below, then shorten robotic phrases and check each link.
+4. Preview on a phone. Send a test only to yourself or an authorized tester using the client’s permitted setup.
+5. Deliver subject, preview text and body for each email. Include timing suggestions for the client to approve.
+
+FINAL CHECK
+The promised item comes first, links work, the tone is clear and the sender’s actual unsubscribe settings are checked before launch.
