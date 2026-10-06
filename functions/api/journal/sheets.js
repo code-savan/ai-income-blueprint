@@ -5,21 +5,21 @@ const SHEET_DEFS = {
     defaults: 50,
     dropdowns: {
       'Platform': ['Instagram','Facebook','Google Maps','LinkedIn','Facebook Groups','Twitter','TikTok','Email'],
-      'Signal Noticed': ['No posts 3 weeks','3.2 stars / no website','Group ask — need help','Overwhelm language','No website link','Last post 2 weeks ago','No engagement'],
+      'Signal Noticed': ['Explicit request for help','Verified website issue','Verified content gap','Other sourced observation'],
       'Replied?': ['No','Yes','Pending'],
       'Called?': ['No','Yes','Scheduled'],
       'Closed?': ['No','Yes','Follow-up']
     },
     prefill: (i) => ({
-      'Prospect': `Prospect ${i+1}`,
-      'Platform': 'Instagram',
-      'Signal Noticed': 'No posts 3 weeks',
+      'Prospect': '',
+      'Platform': '',
+      'Signal Noticed': '',
       'Touch 1': '',
       'Touch 2': '',
       'Touch 3': '',
-      'Replied?': 'No',
-      'Called?': 'No',
-      'Closed?': 'No',
+      'Replied?': '',
+      'Called?': '',
+      'Closed?': '',
       'Revenue': '',
       'Notes': ''
     })
@@ -31,11 +31,11 @@ const SHEET_DEFS = {
     dropdowns: {},
     prefill: (i) => ({
       'Week': `W${i+1}`,
-      'Income': '0',
-      'Leads': '0',
-      'Closed': '0',
-      'Content': '0',
-      'Hours': '0',
+      'Income': '',
+      'Leads': '',
+      'Closed': '',
+      'Content': '',
+      'Hours': '',
       'Focus Next Week': '',
       'Blockers': ''
     })
@@ -47,21 +47,7 @@ const SHEET_DEFS = {
     dropdowns: {
       'Hook Type': ['Problem','Curiosity','Result']
     },
-    prefill: (i) => {
-      const d = new Date('2026-09-01'); d.setDate(d.getDate()+i);
-      const iso = d.toISOString().slice(0,10);
-      const hooks = ['Problem','Curiosity','Result'];
-      return {
-        'Date': iso,
-        'Hook Type': hooks[i%3],
-        'Script Title': '',
-        'Views': '0',
-        'CTR%': '0',
-        'Clicks': '0',
-        'Sales': '0',
-        'Notes': ''
-      };
-    }
+    prefill: () => ({'Date':'','Hook Type':'','Script Title':'','Views':'','CTR%':'','Clicks':'','Sales':'','Notes':''})
   }
 };
 
@@ -132,13 +118,7 @@ export async function onRequestPost(context){
     const data = def.prefill ? def.prefill(idx) : {};
     def.columns.forEach(col=> { if(!(col in data)) data[col] = ''; });
     // for add-row, keep prospect/week etc sequential but Notes empty
-    if(type==='outreach') data['Prospect'] = `Prospect ${idx+1}`;
     if(type==='weekly') data['Week'] = `W${idx+1}`;
-    if(type==='daily'){
-      const d = new Date('2026-09-01'); d.setDate(d.getDate()+idx);
-      data['Date'] = d.toISOString().slice(0,10);
-      data['Hook Type'] = ['Problem','Curiosity','Result'][idx%3];
-    }
     const rowId = crypto.randomUUID();
     await DB.prepare(`INSERT INTO sheet_rows (id, sheet_id, row_idx, data) VALUES (?, ?, ?, ?)`).bind(rowId, sheetId, idx, JSON.stringify(data)).run();
     return new Response(JSON.stringify({ ok: true, row_idx: idx }));

@@ -1,0 +1,19 @@
+COPY PROJECT / FICTIONAL PRACTICE BUSINESS
+Scope: homepage hero and three follow-up emails. No visa/admission guarantee.
+Brief: application-planning consultation; audience choosing universities; CTA consultation request. Price, qualifications, address, and booking link need owner approval.
+BEFORE: We offer world-class solutions for your future.
+AFTER HEADLINE: Plan your university applications with a clear next step.
+SUBHEAD: Book a consultation to review your study goals, documents, and application timeline.
+CTA: Request a consultation.
+SUPPORT: Bring your intended study level, subject interests, target countries, and current application questions. The consultation explains the planning scope; universities make admission decisions.
+EMAIL 1 / After a requested inquiry
+Subject: Your application-planning next step
+Hi [name], thanks for asking about a consultation. To help us prepare, share your study level, subject interests, and the stage you are at. You can request a time here: [approved link]. We will confirm the scope and any fee before the appointment is agreed.
+EMAIL 2 / If they requested follow-up
+Subject: What to bring to your consultation
+Hi [name], a short list is enough to get started: your study goals, current document list, and three questions you want answered. Please avoid emailing sensitive documents until the adviser confirms a secure route. The consultation covers planning; it does not promise admission or a visa. If useful, request a time at [approved link].
+EMAIL 3 / Final agreed reminder
+Subject: Do you still want a planning consultation?
+Hi [name], checking whether you still want help organizing your next application steps. If yes, reply with your current question or use [approved link]. If the timing has changed, no problem; I will close this follow-up and you can return when ready.
+CLAIM REVIEW: No invented credentials, success percentage, partner university logos, deadline, fee, or customer story. Verify actual offer, link, consent and follow-up preference.
+HANDOFF: Supply before/after, final hero, three emails, approved facts, unresolved questions. Owner approves before publication.

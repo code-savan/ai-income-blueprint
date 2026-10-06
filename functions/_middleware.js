@@ -60,13 +60,13 @@ export async function onRequest(context) {
     }
   }
 
-  const publicPaths = ['/login', '/login.html', '/set-password', '/set-password.html', '/auth', '/api', '/favicon.ico'];
+  const publicPaths = ['/preview.html', '/login', '/login.html', '/set-password', '/set-password.html', '/auth', '/api', '/favicon.ico'];
   const isPublic = publicPaths.some(p => path === p || path.startsWith(p + '/')) ||
                    path.startsWith('/api/') ||
                    path.startsWith('/auth/') ||
                    path === '/login.html' ||
                    path === '/set-password.html' ||
-                   path.includes('.css') || path.includes('.js') || path.includes('.svg') || path.includes('.png') || path.includes('.jpg') || path.includes('.jpeg') || path.includes('.webp') || path.includes('.woff');
+                   /\.(css|js|svg|png|jpe?g|webp|woff2?)$/i.test(path);
 
   if (isPublic) {
     const res = await context.next();

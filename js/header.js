@@ -85,7 +85,7 @@
       if(!r.ok) {
         document.getElementById('headerName').textContent = 'Guest';
         document.getElementById('headerEmail').textContent = '';
-        document.getElementById('headerAvatar').src = 'https://avatars.githubusercontent.com/u/583231?v=4';
+        document.getElementById('headerAvatar').src = '/assets/brands/avatar.svg';
         setProgress(0);
         return;
       }
@@ -94,7 +94,7 @@
       const displayName = name || data.email.split('@')[0] || '—';
       document.getElementById('headerName').textContent = displayName;
       document.getElementById('headerEmail').textContent = data.email || '';
-      document.getElementById('headerAvatar').src = data.avatar_url || 'https://avatars.githubusercontent.com/u/583231?v=4';
+      document.getElementById('headerAvatar').src = data.avatar_url || '/assets/brands/avatar.svg';
       const pct = data.progress ? data.progress.pct : 0;
       setProgress(pct);
       const ring = document.getElementById('avatarRing');

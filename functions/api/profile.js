@@ -6,8 +6,9 @@ export async function onRequestGet(context) {
   if (!userId) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401 });
   const user = await context.env.DB.prepare(`SELECT email, name, avatar_url, created_at FROM users WHERE id = ?`).bind(userId).first();
   if (!user) return new Response(JSON.stringify({ error: 'Not found' }), { status: 404 });
-  const progress = await context.env.DB.prepare(`SELECT COUNT(*) as total, SUM(done) as done FROM progress WHERE user_id = ?`).bind(userId).first();
-  const total = progress ? progress.total || 0 : 0;
+  const progress = await context.env.DB.prepare(`SELECT COUNT(*) as total, SUM(done) as done FROM progress WHERE user_id = ? AND module NOT LIKE 'selected-track-%'`).bind(userId).first();
+  const curriculumSteps = 52; // 6 in A/F; 5 in the other eight playbooks
+  const total = Math.max(curriculumSteps, progress ? progress.total || 0 : 0);
   const done = progress ? progress.done || 0 : 0;
   const pct = total ? Math.round((done/total)*100) : 0;
   return new Response(JSON.stringify({ email: user.email, name: user.name || '', avatar_url: user.avatar_url || '', created_at: user.created_at, progress: { total, done, pct } }), { headers: { 'Content-Type':'application/json' } });
