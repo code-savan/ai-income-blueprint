@@ -60,7 +60,7 @@ export async function onRequest(context) {
     }
   }
 
-  const publicPaths = ['/preview.html', '/login', '/login.html', '/set-password', '/set-password.html', '/auth', '/api', '/favicon.ico'];
+  const publicPaths = ['/preview', '/preview.html', '/login', '/login.html', '/set-password', '/set-password.html', '/auth', '/api', '/favicon.ico'];
   const isPublic = publicPaths.some(p => path === p || path.startsWith(p + '/')) ||
                    path.startsWith('/api/') ||
                    path.startsWith('/auth/') ||
